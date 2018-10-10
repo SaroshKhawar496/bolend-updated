@@ -1,0 +1,25 @@
+/*****************************************************
+**** NAVBAR
+******************************************************/
+
+.navbar {
+	background: #8a2387; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #8a2387, #e94057, #f27121); /* old chrome+safari */
+	background: linear-gradient(to right, #8a2387, #e94057, #f27121); /* modern browsers */
+
+	width: 100%;
+	height: 3em;
+
+	color: #fff;
+	/* padding: 1em 2em; */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+}

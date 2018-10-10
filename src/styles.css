@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+/*****************************************************
+**** GLOBAL
+******************************************************/
+
+body {
+	/* put dat shit tight to the browser window */
+	padding: 0;
+	margin: 0;
+	border: none;
+
+	/* default fonts */
+	font-family: "Open Sans",Helvetica, sans-serif, "Comic Sans MS";
+	font-size: 14px;
+
+	/* default colors */
+	background-color: #fff;
+
+	/* 
+	the colors in the gradient are:
+	#8a2387, #e94057, #f27121
+	*/
+
+}
+
+
+
+/*****************************************************
+**** HOME PAGE
+******************************************************/
+
+
+
+div.bg-card-0 {
+	background: #8a2387; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #8a2387, #e94057, #f27121); /* old chrome+safari */
+	background: linear-gradient(to bottom, #8a2387, #e94057, #f27121); /* modern browsers */
+	width: 100vw;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+	border: none;
+}
