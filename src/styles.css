@@ -32,8 +32,6 @@ body {
 **** HOME PAGE
 ******************************************************/
 
-
-
 div.bg-card-0 {
 	background: #8a2387; /* fallback for old browsers */
 	background: -webkit-linear-gradient(to bottom, #8a2387, #e94057, #f27121); /* old chrome+safari */
@@ -43,4 +41,19 @@ div.bg-card-0 {
 	padding: 0;
 	margin: 0;
 	border: none;
+	color: #fff;
+}
+
+
+
+
+/*****************************************************
+**** FONTS
+******************************************************/
+
+h1 {
+	margin: 0;
+	padding: 0;
+	font-weight: 300;
+	font-size: 6em;
 }

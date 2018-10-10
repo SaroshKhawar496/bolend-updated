@@ -3,23 +3,40 @@
 ******************************************************/
 
 .navbar {
-	background: #8a2387; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #8a2387, #e94057, #f27121); /* old chrome+safari */
-	background: linear-gradient(to right, #8a2387, #e94057, #f27121); /* modern browsers */
+	background: #24292e; /* fallback for old browsers */
+	/* background: -webkit-linear-gradient(to right, #8a2387, #e94057, #f27121); /* old chrome+safari */
+	/* background: linear-gradient(to right, #8a2387, #e94057, #f27121); modern browsers */
 
 	width: 100%;
 	height: 3em;
 
 	color: #fff;
-	/* padding: 1em 2em; */
+	padding: 0 1.5em;
+
+	/* size of everything in navbar is relative to font size */
+	font-size: 1em; /* increasing this will scale the navbar accordingly */
 }
 
 .navbar ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 0 1em;
 }
 
 .navbar li {
-    display: inline;
+	display: block;
+	float: left;
+	background-color: #24292e;
+}
+.navbar li:hover {
+	background-color: #1a1e22;
+}
+
+.navbar li span {
+    display: block;
+    padding: 0.75em;
+	/* opacity: 0; */
+	color: #fff;
+	font-size: 1.2em;
+	line-height: 1em;
 }
