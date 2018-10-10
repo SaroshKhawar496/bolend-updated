@@ -11,7 +11,7 @@
 	height: 3em;
 
 	color: #fff;
-	padding: 0 1.5em;
+	padding: 0;
 
 	/* size of everything in navbar is relative to font size */
 	font-size: 1em; /* increasing this will scale the navbar accordingly */
@@ -20,7 +20,7 @@
 .navbar ul {
     list-style-type: none;
     margin: 0;
-    padding: 0 1em;
+	padding: 0 1.5em;
 }
 
 .navbar li {
@@ -31,6 +31,16 @@
 .navbar li:hover {
 	background-color: #1a1e22;
 }
+.navbar li.float-right {
+	float: right;
+}
+
+.navbar li.search-li {
+	padding: 0.3em 0;
+}
+.navbar li.search-li:hover {
+	background-color: #24292e;
+}
 
 .navbar li span {
     display: block;
@@ -39,4 +49,26 @@
 	color: #fff;
 	font-size: 1.2em;
 	line-height: 1em;
+}
+
+
+
+/*****************************************************
+**** SEARCH
+******************************************************/
+
+div.searchbox-container {
+	padding: 0.4em 1em;
+	border-radius: 42069px;
+	background-color: #fff;
+}
+
+input.searchbox {
+	width: 10em;
+	background: none;
+	border: none;
+	transition: width 0.4s ease-in-out;
+}
+input.searchbox:focus {
+	width: 20em;
 }
