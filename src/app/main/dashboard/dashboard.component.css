@@ -1,0 +1,32 @@
+/*****************************************************
+**** CONTAINERS
+******************************************************/
+
+div.dashboard-body {
+	margin: 0;
+	max-width: 100vw;
+	padding: 2%;
+}
+
+div.widget-container {
+	width: 100%;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+div.widget {
+	border: 1px solid #888;
+	border-radius: 1em;
+	padding: 1em;
+}
+
+
+
+h2.greeting {
+	margin: 0;
+	padding: 0.3em 0;
+	font-weight: 300;
+}
+div.widget-title h3 {
+	font-weight: 400;
+}

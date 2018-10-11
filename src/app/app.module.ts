@@ -20,7 +20,10 @@ import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 // app router
 const appRoutes = [
-	{ path: '', component: DashboardComponent }
+	{ path: '', component: DashboardComponent },
+
+	
+	{ path: 'dashboard', redirectTo: '', pathMatch: 'full' },
 ];
 
 

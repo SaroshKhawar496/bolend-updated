@@ -7,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+	name : string;
+
+
 	constructor (
 		
 	) { }
 
 	ngOnInit() {
+		this.name = "anon";
 	}
 
 }

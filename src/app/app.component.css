@@ -27,6 +27,7 @@
 	display: block;
 	float: left;
 	background-color: #24292e;
+	min-width: 6em;
 }
 .navbar li:hover {
 	background-color: #1a1e22;
@@ -37,15 +38,16 @@
 
 .navbar li.search-li {
 	padding: 0.3em 0;
+	background: none;
 }
 .navbar li.search-li:hover {
-	background-color: #24292e;
+	background: none;
 }
 
 .navbar li span {
     display: block;
-    padding: 0.75em;
-	/* opacity: 0; */
+	padding: 0.75em;
+	text-align: center;
 	color: #fff;
 	font-size: 1.2em;
 	line-height: 1em;
@@ -60,7 +62,7 @@
 div.searchbox-container {
 	padding: 0.4em 1em;
 	border-radius: 42069px;
-	background-color: #fff;
+	background-color: rgb(255, 255, 255);
 }
 
 input.searchbox {
@@ -71,4 +73,9 @@ input.searchbox {
 }
 input.searchbox:focus {
 	width: 20em;
+}
+
+div.body {
+	background-color: #f8f8f8;
+	min-height: 100vh;
 }
