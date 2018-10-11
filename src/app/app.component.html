@@ -8,41 +8,53 @@
 <div class="body">
 
 
-<!-- 
-	The navbar
-		needs to be simple
--->
+	<!-- 
+		The hnavbar
+			needs to be simple
+	-->
 
-<div class="navbar">
-	<!-- navbar items -->
-	<ul>
-		<!-- primary links & title (float left) -->
-		<li><span><strong>444chan.</strong></span></li>
-		<li><span>Home</span></li>
-		<li><span>Profile</span></li>
+	<div class="hnavbar">
+		<!-- horizontal (h)navbar items -->
+		<ul>
+			<!-- primary links & title (float left) -->
+			<li class="vnavbar-toggle" (click)="toggleSidebar()"><span>&nbsp;</span></li>
+			<li class="title"><span><strong>444chan.</strong></span></li>
+			<!-- <li><span>Home</span></li>
+			<li><span>Profile</span></li> -->
 
-		<!-- search, profile, settings, etc. (float right) -->
-		<li class="float-right">
-			<span>You</span>
-		</li>
-		<li class="float-right search-li">
-			<div class="searchbox-container">
-				<input type="text" class="searchbox" 
-				placeholder="Search for anything">
-				<a class="search-btn" href="#">
+			<!-- search, profile, settings, etc. (float right) -->
+			<li class="float-right">
+				<span>You</span>
+			</li>
+			<li class="float-right search-li">
+				<div class="searchbox-container">
+					<input type="text" class="searchbox" 
+					placeholder="Search for anything">
+					<a class="search-btn" href="#">
 
-				</a>
-			</div>
-		</li>
-		
+					</a>
+				</div>
+			</li>
+			
+		</ul>
 
-	</ul>
-</div>
+	</div>
 
 
 
-<!-- router outlet -->
-<router-outlet></router-outlet>
+	<!-- sidebar - only visible when it needs to be -->
+	<div class="sidebar" [class.sidenav-hidden]="sidenavHidden">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+
+
+	<!-- router outlet -->
+	<router-outlet></router-outlet>
 
 
 

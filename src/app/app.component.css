@@ -1,8 +1,8 @@
 /*****************************************************
-**** NAVBAR
+**** HNAVBAR
 ******************************************************/
 
-.navbar {
+.hnavbar {
 	background: #24292e; /* fallback for old browsers */
 	/* background: -webkit-linear-gradient(to right, #8a2387, #e94057, #f27121); /* old chrome+safari */
 	/* background: linear-gradient(to right, #8a2387, #e94057, #f27121); modern browsers */
@@ -13,46 +13,110 @@
 	color: #fff;
 	padding: 0;
 
-	/* size of everything in navbar is relative to font size */
-	font-size: 1em; /* increasing this will scale the navbar accordingly */
+	/* size of everything in hnavbar is relative to font size */
+	font-size: 1em; /* increasing this will scale the hnavbar accordingly */
 }
 
-.navbar ul {
+.hnavbar ul {
     list-style-type: none;
     margin: 0;
-	padding: 0 1.5em;
+	padding: 0 1em 0 0em;
 }
 
-.navbar li {
+.hnavbar li {
 	display: block;
 	float: left;
 	background-color: #24292e;
 	min-width: 6em;
+	transition: all 0.25s ease-in-out;
 }
-.navbar li:hover {
+.hnavbar li:hover {
 	background-color: #1a1e22;
 }
-.navbar li.float-right {
+.hnavbar li.float-right {
 	float: right;
 }
 
-.navbar li.search-li {
+.hnavbar li.search-li {
 	padding: 0.3em 0;
 	background: none;
 }
-.navbar li.search-li:hover {
+.hnavbar li.search-li:hover {
 	background: none;
 }
 
-.navbar li span {
+.hnavbar li span {
     display: block;
 	padding: 0.75em;
 	text-align: center;
-	color: #fff;
+	color: #bbb;
 	font-size: 1.2em;
 	line-height: 1em;
+	transition: color 0.25s ease-in-out;
+}
+.hnavbar li span:hover {
+	color: #eee;
 }
 
+.hnavbar li.vnavbar-toggle {
+	width: 3em;
+	min-width: 3em !important;
+	padding: 0;
+}
+.hnavbar li.vnavbar-toggle span {
+	padding: 0.75em 0;
+}
+
+
+/*****************************************************
+**** SIDEBAR NAV
+******************************************************/
+
+.sidebar {
+	position: fixed; /* Stay in place */
+	background-color: #24292e;
+	width: 10em;
+	height: 100vh;
+	top: 4em;
+	z-index: 10;		/* stay on top */
+	top: 0;
+	left: 0;
+	overflow-x: hidden; /* Disable horizontal scroll */
+	/* padding: 4em 0 1em 1em; */
+
+	transition: all 0.25s ease-in-out;
+}
+
+.sidebar ul {
+	list-style-type: none;
+	margin: 0;
+	color: #bbb;
+}
+
+.sidebar li {
+	transition: all 0.25s ease-in-out;
+	color: #bbb;
+	width: 100%;
+	padding: 0.75em 1em;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 3em;
+}
+
+.sidenav-hidden {
+	width: 0;
+}
+
+/* when we have a screen with limited height */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
 
 
 /*****************************************************
@@ -62,7 +126,12 @@
 div.searchbox-container {
 	padding: 0.4em 1em;
 	border-radius: 42069px;
-	background-color: rgb(255, 255, 255);
+	/* background-color: rgb(255, 255, 255); */
+	background-color: #24292e;
+	border: 1px solid #b62db1;
+}
+div.searchbox-container:focus-within {
+	box-shadow: 0px 0px 2px 1px #b62db1;
 }
 
 input.searchbox {
@@ -70,9 +139,13 @@ input.searchbox {
 	background: none;
 	border: none;
 	transition: width 0.4s ease-in-out;
+	color: #eee;
 }
 input.searchbox:focus {
 	width: 20em;
+}
+input.searchbox::placeholder {
+	color: #bbb;
 }
 
 div.body {
