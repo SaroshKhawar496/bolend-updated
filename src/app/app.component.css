@@ -75,14 +75,14 @@
 .sidebar {
 	position: fixed; /* Stay in place */
 	background-color: #24292e;
-	width: 10em;
+	width: 14em;
 	height: 100vh;
 	top: 4em;
 	z-index: 10;		/* stay on top */
 	top: 0;
 	left: 0;
 	overflow-x: hidden; /* Disable horizontal scroll */
-	/* padding: 4em 0 1em 1em; */
+	padding: 1em 0;
 
 	transition: all 0.25s ease-in-out;
 }
@@ -91,6 +91,7 @@
 	list-style-type: none;
 	margin: 0;
 	color: #bbb;
+	padding: 0;
 }
 
 .sidebar li {
@@ -98,6 +99,13 @@
 	color: #bbb;
 	width: 100%;
 	padding: 0.75em 1em;
+	background: rgba(255, 255, 255, 0);
+}
+.sidebar li:hover {
+	color: #fff;
+	background: #8a2387; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #8a2387, #e94057, #f27121); /* old chrome+safari */
+	background: linear-gradient(to right, #8a2387, #e94057, #f27121); /* modern browsers */
 }
 
 /* Position and style the close button (top right corner) */
@@ -108,15 +116,21 @@
     font-size: 3em;
 }
 
-.sidenav-hidden {
+.sidebar-hidden {
 	width: 0;
 }
 
 /* when we have a screen with limited height */
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
 }
+
+.sidebar li, .hnavbar li {
+	cursor: pointer;
+}
+
+
 
 
 /*****************************************************
@@ -151,4 +165,28 @@ input.searchbox::placeholder {
 div.body {
 	background-color: #f8f8f8;
 	min-height: 100vh;
+}
+
+
+
+/*****************************************************
+**** RESPONSIVE
+******************************************************/
+
+/* mobile/small screens */
+@media screen and (max-width:768px) {
+	/* .hide-on-mobile { display:none !important; } */
+
+}
+
+/* medium size screens */
+@media screen and (min-width:769px) and (max-width:1440px) {
+	.sidebar-hidden { width: 0; }
+}
+
+/* large screens */
+@media screen and (min-width:1441px) {
+	/* .hide-on-large { display: none !important; } */
+	.sidebar-hidden { width: 14em; }		/* always show sidebar */
+	.sidebar-pushover {	margin-left: 14em; }
 }

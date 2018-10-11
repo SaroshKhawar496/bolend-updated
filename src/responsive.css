@@ -15,3 +15,24 @@
 	/* justify-content: center; */
 	align-items: center;
 }
+
+
+
+/*****************************************************
+**** MEDIA SCREEN SIZE QUERIES
+******************************************************/
+
+/* mobile/small screens */
+@media screen and (max-width:768px) {
+	.hide-on-mobile { display:none !important; }
+}
+
+/* medium size screens */
+@media screen and (min-width:769px) and (max-width:1440px) {
+
+}
+
+/* large screens */
+@media screen and (min-width:1441px) {
+	.hide-on-large { display: none !important; }
+}

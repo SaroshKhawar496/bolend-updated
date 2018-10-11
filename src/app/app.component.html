@@ -5,57 +5,56 @@
 -->
 
 
-<div class="body">
 
 
-	<!-- 
-		The hnavbar
-			needs to be simple
-	-->
+<!-- 
+	The hnavbar
+		needs to be simple
+-->
 
-	<div class="hnavbar">
-		<!-- horizontal (h)navbar items -->
-		<ul>
-			<!-- primary links & title (float left) -->
-			<li class="vnavbar-toggle" (click)="toggleSidebar()"><span>&nbsp;</span></li>
-			<li class="title"><span><strong>444chan.</strong></span></li>
-			<!-- <li><span>Home</span></li>
-			<li><span>Profile</span></li> -->
+<div class="hnavbar">
+	<!-- horizontal (h)navbar items -->
+	<ul>
+		<!-- primary links & title (float left) -->
+		<li class="vnavbar-toggle" (click)="toggleSidebar()"><span>&nbsp;</span></li>
+		<li class="title hide-on-mobile"><span><strong>{{title}}</strong></span></li>
 
-			<!-- search, profile, settings, etc. (float right) -->
-			<li class="float-right">
-				<span>You</span>
-			</li>
-			<li class="float-right search-li">
-				<div class="searchbox-container">
-					<input type="text" class="searchbox" 
-					placeholder="Search for anything">
-					<a class="search-btn" href="#">
+		<!-- search, profile, settings, etc. (float right) -->
+		<li class="float-right hide-on-mobile">
+			<span>You</span>
+		</li>
+		<li class="float-right search-li">
+			<div class="searchbox-container">
+				<input type="text" class="searchbox" 
+				placeholder="Search for anything">
+				<a class="search-btn" href="#">
 
-					</a>
-				</div>
-			</li>
-			
-		</ul>
+				</a>
+			</div>
+		</li>
+		
+	</ul>
 
-	</div>
+</div>
 
 
 
-	<!-- sidebar - only visible when it needs to be -->
-	<div class="sidebar" [class.sidenav-hidden]="sidenavHidden">
-		<ul>
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
-			<li>4</li>
-		</ul>
-	</div>
+<!-- sidebar - only visible when it needs to be -->
+<div class="sidebar" [class.sidebar-hidden]="sidebarHidden">
+	<ul>
+		<li class="hide-on-large" (click)="toggleSidebar(true)"><</li>
+		<li class="hide-on-mobile"><span><strong class="hide-on-mobile">{{title}}</strong></span></li>
+		<li><span>Home</span></li>
+		<li><span>You</span></li>
+		<li>&nbsp;</li>
+		<li>&nbsp;</li>
+	</ul>
+</div>
 
 
+
+<!-- the body -->
+<div class="body sidebar-pushover">
 	<!-- router outlet -->
 	<router-outlet></router-outlet>
-
-
-
 </div>
