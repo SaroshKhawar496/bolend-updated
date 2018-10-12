@@ -1,4 +1,9 @@
+// core, components, services
 import { Component } from '@angular/core';
+
+// icons
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
 	selector: 'app-root',

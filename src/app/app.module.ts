@@ -17,6 +17,10 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 
+// etc
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
 
 // app router
 const appRoutes = [
@@ -35,7 +39,8 @@ const appRoutes = [
 	],
 	imports: [
 		BrowserModule,
-		RouterModule.forRoot( appRoutes )
+		RouterModule.forRoot( appRoutes ),
+		FontAwesomeModule
 	],
 	providers: [{
 		provide: RouteReuseStrategy, 

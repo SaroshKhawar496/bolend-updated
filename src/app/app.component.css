@@ -68,6 +68,7 @@
 }
 
 
+
 /*****************************************************
 **** SIDEBAR NAV
 ******************************************************/
@@ -82,7 +83,8 @@
 	top: 0;
 	left: 0;
 	overflow-x: hidden; /* Disable horizontal scroll */
-	padding: 1em 0;
+	padding: 0;
+	font-size: 1.05em;
 
 	transition: all 0.25s ease-in-out;
 }
@@ -106,6 +108,13 @@
 	background: #8a2387; /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #8a2387, #e94057, #f27121); /* old chrome+safari */
 	background: linear-gradient(to right, #8a2387, #e94057, #f27121); /* modern browsers */
+}
+
+.sidebar li span {
+	line-height: 1em;
+}
+.sidebar-hidden li span {
+	display: none;
 }
 
 /* Position and style the close button (top right corner) */
@@ -180,13 +189,26 @@ div.body {
 }
 
 /* medium size screens */
-@media screen and (min-width:769px) and (max-width:1440px) {
-	.sidebar-hidden { width: 0; }
+@media screen and (min-width:769px) and (max-width:1280px) {
+	.sidebar-hidden { width: 3em; }			/* show only icons */
+	.sidebar-pushover { margin-left: 3em; }
 }
 
 /* large screens */
-@media screen and (min-width:1441px) {
+@media screen and (min-width:1281px) {
 	/* .hide-on-large { display: none !important; } */
 	.sidebar-hidden { width: 14em; }		/* always show sidebar */
 	.sidebar-pushover {	margin-left: 14em; }
+}
+
+
+
+/*****************************************************
+**** ICONS
+******************************************************/
+
+svg {
+	width: 1em;
+	height: 1em;
+	stroke-width: 2;
 }

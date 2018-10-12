@@ -4,25 +4,22 @@
 	services which are app-wide will be instantiated and rooted here
 -->
 
-
-
-
-<!-- 
-	The hnavbar
-		needs to be simple
--->
-
+<!-- The horizontal navbar -->
 <div class="hnavbar">
-	<!-- horizontal (h)navbar items -->
+
 	<ul>
 		<!-- primary links & title (float left) -->
-		<li class="vnavbar-toggle" (click)="toggleSidebar()"><span>&nbsp;</span></li>
+		<li class="vnavbar-toggle" (click)="toggleSidebar()" style="padding: 0.75em 1em; width: 1em; min-width: 1em !important;">
+			<svg><use href="assets/icons/navbar.svg#i-menu"></use></svg>
+		</li>
 		<li class="title hide-on-mobile"><span><strong>{{title}}</strong></span></li>
 
-		<!-- search, profile, settings, etc. (float right) -->
+		<!-- profile (float right); hide on small screens -->
 		<li class="float-right hide-on-mobile">
 			<span>You</span>
 		</li>
+
+		<!-- search box -->
 		<li class="float-right search-li">
 			<div class="searchbox-container">
 				<input type="text" class="searchbox" 
@@ -42,10 +39,30 @@
 <!-- sidebar - only visible when it needs to be -->
 <div class="sidebar" [class.sidebar-hidden]="sidebarHidden">
 	<ul>
-		<li class="hide-on-large" (click)="toggleSidebar(true)"><</li>
-		<li class="hide-on-mobile"><span><strong class="hide-on-mobile">{{title}}</strong></span></li>
-		<li><span>Home</span></li>
-		<li><span>You</span></li>
+
+		<!-- close the sidebar -->
+		<li class="hide-on-large" (click)="toggleSidebar()">
+			<svg><use href="assets/icons/navbar.svg#i-menu"></use></svg>
+		</li>
+
+		<!-- title; will be hidden for medium & small screens -->
+		<li class="hide-on-medium">
+			<span>
+				<strong>{{title}}</strong>
+			</span>
+		</li>
+
+		<!-- others; show only icons by default on medium screens -->
+		<li>
+			<svg>
+				<use href="assets/icons/navbar.svg#i-home"></use>
+			</svg>
+			<span class="">&nbsp;Home</span>&nbsp;
+		</li>
+		<li>
+			<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
+			<span class="">&nbsp;You</span>&nbsp;
+		</li>
 		<li>&nbsp;</li>
 		<li>&nbsp;</li>
 	</ul>
