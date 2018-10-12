@@ -40,9 +40,11 @@
 <div class="sidebar" [class.sidebar-hidden]="sidebarHidden">
 	<ul>
 
-		<!-- close the sidebar -->
+		<!-- toggle the sidebar -->
 		<li (click)="toggleSidebar()" class="hide-on-large">
-			<svg ><use href="assets/icons/navbar.svg#i-menu"></use></svg>&nbsp;
+			<svg *ngIf="sidebarHidden"><use href="assets/icons/navbar.svg#i-menu"></use></svg>
+			<svg *ngIf="!sidebarHidden"><use href="assets/icons/navbar.svg#i-close"></use></svg>
+			&nbsp;
 		</li>
 
 		<!-- title; will be hidden for medium & small screens -->
@@ -53,13 +55,11 @@
 		</li>
 
 		<!-- others; show only icons by default on medium screens -->
-		<li>
-			<svg>
-				<use href="assets/icons/navbar.svg#i-home"></use>
-			</svg>
+		<li routerLink="">
+			<svg><use href="assets/icons/navbar.svg#i-home"></use></svg>
 			<span class="">&nbsp;Home</span>&nbsp;
 		</li>
-		<li>
+		<li routerLink="you">
 			<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
 			<span class="">&nbsp;You</span>&nbsp;
 		</li>
