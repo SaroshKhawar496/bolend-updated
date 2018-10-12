@@ -4,58 +4,74 @@
 	services which are app-wide will be instantiated and rooted here
 -->
 
+<!-- The horizontal navbar -->
+<div class="hnavbar">
 
-<div class="body">
+	<ul>
+		<!-- primary links & title (float left) -->
+		<li class="vnavbar-toggle" (click)="toggleSidebar()" style="padding: 0.75em 1em; width: 1em; min-width: 1em !important;">
+			<svg><use href="assets/icons/navbar.svg#i-menu"></use></svg>
+		</li>
+		<li class="title hide-on-mobile"><span><strong>{{title}}</strong></span></li>
 
+		<!-- profile (float right); hide on small screens -->
+		<li class="float-right hide-on-mobile">
+			<span>You</span>
+		</li>
 
-	<!-- 
-		The hnavbar
-			needs to be simple
-	-->
+		<!-- search box -->
+		<li class="float-right search-li">
+			<div class="searchbox-container">
+				<input type="text" class="searchbox" 
+				placeholder="Search for anything">
+				<a class="search-btn" href="#">
 
-	<div class="hnavbar">
-		<!-- horizontal (h)navbar items -->
-		<ul>
-			<!-- primary links & title (float left) -->
-			<li class="vnavbar-toggle" (click)="toggleSidebar()"><span>&nbsp;</span></li>
-			<li class="title"><span><strong>444chan.</strong></span></li>
-			<!-- <li><span>Home</span></li>
-			<li><span>Profile</span></li> -->
+				</a>
+			</div>
+		</li>
+		
+	</ul>
 
-			<!-- search, profile, settings, etc. (float right) -->
-			<li class="float-right">
-				<span>You</span>
-			</li>
-			<li class="float-right search-li">
-				<div class="searchbox-container">
-					<input type="text" class="searchbox" 
-					placeholder="Search for anything">
-					<a class="search-btn" href="#">
-
-					</a>
-				</div>
-			</li>
-			
-		</ul>
-
-	</div>
+</div>
 
 
 
-	<!-- sidebar - only visible when it needs to be -->
-	<div class="sidebar" [class.sidenav-hidden]="sidenavHidden">
-		<ul>
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
-			<li>4</li>
-		</ul>
-	</div>
+<!-- sidebar - only visible when it needs to be -->
+<div class="sidebar" [class.sidebar-hidden]="sidebarHidden">
+	<ul>
+
+		<!-- toggle the sidebar -->
+		<li (click)="toggleSidebar()" class="hide-on-large">
+			<svg *ngIf="sidebarHidden"><use href="assets/icons/navbar.svg#i-menu"></use></svg>
+			<svg *ngIf="!sidebarHidden"><use href="assets/icons/navbar.svg#i-close"></use></svg>
+			&nbsp;
+		</li>
+
+		<!-- title; will be hidden for medium & small screens -->
+		<li class="hide-on-medium">
+			<span>
+				<strong>{{title}}</strong>
+			</span>
+		</li>
+
+		<!-- others; show only icons by default on medium screens -->
+		<li routerLink="">
+			<svg><use href="assets/icons/navbar.svg#i-home"></use></svg>
+			<span class="">&nbsp;Home</span>&nbsp;
+		</li>
+		<li routerLink="you">
+			<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
+			<span class="">&nbsp;You</span>&nbsp;
+		</li>
+		<li>&nbsp;</li>
+		<li>&nbsp;</li>
+	</ul>
+</div>
 
 
+
+<!-- the body -->
+<div class="body" [class.sidebar-collapse-pushover]="sidebarHidden" [class.sidebar-pushover]="!sidebarHidden">
 	<!-- router outlet -->
 	<router-outlet></router-outlet>
-
-
-
 </div>

@@ -17,11 +17,14 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 
+// etc
+
+
 
 // app router
 const appRoutes = [
 	{ path: '', component: DashboardComponent },
-
+	{ path: 'you', component: DashboardComponent },
 	
 	{ path: 'dashboard', redirectTo: '', pathMatch: 'full' },
 ];
@@ -35,7 +38,7 @@ const appRoutes = [
 	],
 	imports: [
 		BrowserModule,
-		RouterModule.forRoot( appRoutes )
+		RouterModule.forRoot( appRoutes ),
 	],
 	providers: [{
 		provide: RouteReuseStrategy, 

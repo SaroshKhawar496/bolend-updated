@@ -68,6 +68,8 @@
 }
 
 
+
+
 /*****************************************************
 **** SIDEBAR NAV
 ******************************************************/
@@ -75,14 +77,14 @@
 .sidebar {
 	position: fixed; /* Stay in place */
 	background-color: #24292e;
-	width: 10em;
+	width: 14em;
 	height: 100vh;
 	top: 4em;
 	z-index: 10;		/* stay on top */
 	top: 0;
 	left: 0;
 	overflow-x: hidden; /* Disable horizontal scroll */
-	/* padding: 4em 0 1em 1em; */
+	padding: 0;
 
 	transition: all 0.25s ease-in-out;
 }
@@ -91,6 +93,8 @@
 	list-style-type: none;
 	margin: 0;
 	color: #bbb;
+	padding: 0;
+	font-size: 1.05em;
 }
 
 .sidebar li {
@@ -98,6 +102,20 @@
 	color: #bbb;
 	width: 100%;
 	padding: 0.75em 1em;
+	background: rgba(255, 255, 255, 0);
+}
+.sidebar li:hover {
+	color: #fff;
+	background: #8a2387; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #8a2387, #e94057, #f27121); /* old chrome+safari */
+	background: linear-gradient(to right, #8a2387, #e94057, #f27121); /* modern browsers */
+}
+
+.sidebar li span {
+	line-height: 1em;
+}
+.sidebar-hidden li span {
+	display: none;
 }
 
 /* Position and style the close button (top right corner) */
@@ -108,15 +126,21 @@
     font-size: 3em;
 }
 
-.sidenav-hidden {
+.sidebar-hidden {
 	width: 0;
 }
 
 /* when we have a screen with limited height */
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
 }
+
+.sidebar li, .hnavbar li {
+	cursor: pointer;
+}
+
+
 
 
 /*****************************************************
@@ -148,7 +172,52 @@ input.searchbox::placeholder {
 	color: #bbb;
 }
 
+
+
+
+
 div.body {
 	background-color: #f8f8f8;
 	min-height: 100vh;
+
+	transition: all 0.25s ease-in-out;
+}
+
+
+
+
+/*****************************************************
+**** RESPONSIVE
+******************************************************/
+
+/* mobile/small screens */
+@media screen and (max-width:768px) {
+}
+
+/* medium size screens */
+@media screen and (min-width:769px) and (max-width:1280px) {
+	.sidebar-hidden { width: 3em; }			/* show only icons */
+	.sidebar-collapse-pushover { margin-left: 3em; }
+	.sidebar-pushover { margin-left: 14em; }
+}
+
+/* large screens */
+@media screen and (min-width:1281px) {
+	.sidebar-hidden { width: 14em; }		/* always show sidebar */
+	.sidebar-collapse-pushover { margin-left: 14em; }
+	.sidebar-pushover {	margin-left: 14em; }
+	.sidebar-hidden li span { display: inline; }
+}
+
+
+
+
+/*****************************************************
+**** ICONS
+******************************************************/
+
+svg {
+	width: 1em;
+	height: 1em;
+	stroke-width: 2;
 }

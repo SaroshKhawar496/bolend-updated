@@ -1,4 +1,8 @@
+// core, components, services
 import { Component } from '@angular/core';
+// import { ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
 	selector: 'app-root',
@@ -8,7 +12,7 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 	title = '444chan.';
-	sidenavHidden = true;
+	sidebarHidden = true;
 
 	constructor() {
 
@@ -18,10 +22,14 @@ export class AppComponent {
 
 	// event handlers
 
+	/**
+	 * Toggle the visibility status of the sidebar
+	 * @param hide specify to set to a specific value
+	 */
 	public toggleSidebar ( hide : boolean = undefined ) : void {
 		if ( hide != undefined )
-			this.sidenavHidden = hide;
+			this.sidebarHidden = hide;
 		else
-			this.sidenavHidden = !this.sidenavHidden;
+			this.sidebarHidden = !this.sidebarHidden;
 	}
 }
