@@ -69,6 +69,7 @@
 
 
 
+
 /*****************************************************
 **** SIDEBAR NAV
 ******************************************************/
@@ -84,7 +85,6 @@
 	left: 0;
 	overflow-x: hidden; /* Disable horizontal scroll */
 	padding: 0;
-	font-size: 1.05em;
 
 	transition: all 0.25s ease-in-out;
 }
@@ -94,6 +94,7 @@
 	margin: 0;
 	color: #bbb;
 	padding: 0;
+	font-size: 1.05em;
 }
 
 .sidebar li {
@@ -171,10 +172,17 @@ input.searchbox::placeholder {
 	color: #bbb;
 }
 
+
+
+
+
 div.body {
 	background-color: #f8f8f8;
 	min-height: 100vh;
+
+	transition: all 0.25s ease-in-out;
 }
+
 
 
 
@@ -184,22 +192,23 @@ div.body {
 
 /* mobile/small screens */
 @media screen and (max-width:768px) {
-	/* .hide-on-mobile { display:none !important; } */
-
 }
 
 /* medium size screens */
 @media screen and (min-width:769px) and (max-width:1280px) {
 	.sidebar-hidden { width: 3em; }			/* show only icons */
-	.sidebar-pushover { margin-left: 3em; }
+	.sidebar-collapse-pushover { margin-left: 3em; }
+	.sidebar-pushover { margin-left: 14em; }
 }
 
 /* large screens */
 @media screen and (min-width:1281px) {
-	/* .hide-on-large { display: none !important; } */
 	.sidebar-hidden { width: 14em; }		/* always show sidebar */
+	.sidebar-collapse-pushover { margin-left: 14em; }
 	.sidebar-pushover {	margin-left: 14em; }
+	.sidebar-hidden li span { display: inline; }
 }
+
 
 
 

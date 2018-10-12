@@ -41,8 +41,8 @@
 	<ul>
 
 		<!-- close the sidebar -->
-		<li class="hide-on-large" (click)="toggleSidebar()">
-			<svg><use href="assets/icons/navbar.svg#i-menu"></use></svg>
+		<li (click)="toggleSidebar()" class="hide-on-large">
+			<svg ><use href="assets/icons/navbar.svg#i-menu"></use></svg>&nbsp;
 		</li>
 
 		<!-- title; will be hidden for medium & small screens -->
@@ -71,7 +71,7 @@
 
 
 <!-- the body -->
-<div class="body sidebar-pushover">
+<div class="body" [class.sidebar-collapse-pushover]="sidebarHidden" [class.sidebar-pushover]="!sidebarHidden">
 	<!-- router outlet -->
 	<router-outlet></router-outlet>
 </div>
