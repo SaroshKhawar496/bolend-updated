@@ -1,0 +1,147 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+/*****************************************************
+**** GLOBAL
+******************************************************/
+
+body {
+	/* put dat shit tight to the browser window */
+	padding: 0;
+	margin: 0;
+	border: none;
+
+	/* default fonts */
+	font-family: "Open Sans",Helvetica, sans-serif, "Comic Sans MS";
+	font-size: 14px;
+
+	/* default colors */
+	background-color: #fff;
+
+	/* 
+	the colors in the gradient are:
+	#8a2387, #e94057, #f27121
+	*/
+
+}
+
+
+
+/*****************************************************
+**** SPLASH
+******************************************************/
+
+/* define styles for the background of the splash page */
+div.bg-card-0 {
+	background: #8a2387; /* fallback for old browsers */
+	background: -webkit-linear-gradient(135deg, #8a2387, #e94057, #f27121); /* old chrome+safari */
+	background: linear-gradient(135deg, #8a2387, #e94057, #f27121); /* modern browsers */
+	width: 100vw;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+	border: none;
+	color: #fff;
+
+	align-content: center;
+	overflow: hidden;
+}
+
+/* styles for the column in the splash page containing the content */
+.splash-column {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+}
+
+/* logo svg */
+.splash svg {
+	fill: #fff;
+	color: #fff;
+	transition: all 0.25s ease-in-out;
+}
+
+/* buttons */
+.btn-row {
+	margin: 1em 0;
+}
+.splash button {
+	padding: 0.5em;
+	width: 8em;
+	border-radius: 0.25em;
+	cursor: pointer;
+	text-align: center;
+}
+.splash button.start-btn {
+	border: 1px solid #fff;
+	background: #fff;
+	color: #e94057;
+}
+.splash button.start-btn:hover {
+	background: #fff;
+}
+.splash button.nav-btn {
+	border: 1px solid #fff;
+	color: #fff;
+	background: none;
+	transition: all 0.25s ease-in-out;
+}
+.splash button.nav-btn:hover {
+	background: #fff;
+	color: #e94057;
+}
+
+
+
+@media screen and (max-height:420px) {		/* nice */
+	.splash svg { height: 128px; width: 128px; margin: 0 auto;}
+}
+
+
+
+
+/*****************************************************
+**** FONTS
+******************************************************/
+
+h1 {
+	font-weight: 300;
+	font-size: 6.9em;		/* nice */
+}
+h2 {
+	font-weight: 300;
+	font-size: 2.5em;
+	color: #ddd;
+}
+h1, h2 {
+	margin: 0.2em 0;
+	padding: 0;
+	transition: all 0.25s ease-in-out;
+}
+
+@media screen and (max-width:768px), (max-height:420px) {
+	h1 { font-size: 3.5em; }
+	h2 { font-size: 1.5em; }
+}
+
+
+
+
+
+/*****************************************************
+**** MISC GLOBALS
+******************************************************/
+
+svg * {
+	width:  100%;
+	height: 100%;
+}
+
+a {
+	text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+}
