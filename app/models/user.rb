@@ -20,7 +20,7 @@ class User < ApplicationRecord
 			  format: {with: VALID_EMAIL_REGEX}
 
 	#gender validation
-	validates :gender, presence: true, inclusion: %w(male female), uniqueness: { case_sensitive: false}
+	validates :gender, presence: true, inclusion: %w(male female)
 
 	validates :dateofbirth, presence: true
 	
@@ -34,5 +34,8 @@ class User < ApplicationRecord
 		end
 
 	end
+
+	#using helper to encrypt and store passwords in users table
+	has_secure_password
 	
 end

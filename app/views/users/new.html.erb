@@ -29,8 +29,9 @@
 	Address: <%= f.text_field :address %> <br>
 	Phone: <%= f.text_field :phone %> <br>
 	Email: <%= f.text_field :email %> <br>
+	Password: <%= f.password_field :password %> <br>
 	Gender <%= f.select :gender, [['Male','male'],['Female','female']] %> <br>
-	Date of Birth <%=f.date_field :dateofbirth %>
+	Date of Birth <%=f.date_field :dateofbirth %><br>
 	<%= f.submit "Sign-Up"%>
 
 

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root "welcome#home"
 
  
-
-  resources :users
+  get "/signup", to: "users#new"
+  resources :users, except: [:new]
 end

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.create(user_params)
 		if @user.save
-			flash[:notice] = "Welcome to your Profile!"
+			flash[:notice] = "Welcome to your Profile! #{@user.fname}"
 			redirect_to user_path(@user)
 		else
 			render 'new'
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 	private
 		#whitelisting the parameters
 		def user_params
-			params.require(:user).permit(:fname, :lname, :address, :phone, :email, :gender, :dateofbirth)
+			params.require(:user).permit(:fname, :lname, :address, :phone, :email, :gender, :dateofbirth, :password)
 
 		end
 

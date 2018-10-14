@@ -12,6 +12,9 @@ gem 'rails', '~> 5.2.1'
 #changing DB over to Postgress
 gem 'pg'
 
+#bcrypt gem to be used for encrypting passwords for user-signup
+gem 'bcrypt', '~> 3.1.7'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
