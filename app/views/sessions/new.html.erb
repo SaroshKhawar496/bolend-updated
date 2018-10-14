@@ -1,0 +1,18 @@
+<!-- LOGIN PAGE -->
+
+
+<h1 align="center">LOGIN</h1>
+
+<div>
+	<!-- no need of instance model/variable so using :session
+	session hash is backed by browser -->
+	<%= form_for(:session, url: login_path) do |f| %>
+
+	Email: <%= f.text_field :email %> <br>
+	Password: <%= f.password_field :password %> <br>
+
+	<%= f.submit "Login" %>
+	<% end %>
+
+
+</div>

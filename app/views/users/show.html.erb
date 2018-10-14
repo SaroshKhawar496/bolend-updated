@@ -9,3 +9,6 @@ Shown after user signs up-->
 	<h1>Welcome to your Dashboard</h1>
 </body>
 </html>
+
+<!-- link to logout, goes to logout_path and  method delete specfies the delete method in sessions_controller -->
+<%= link_to '<button type="button">Logout</button>'.html_safe, logout_path, method: :delete %>
