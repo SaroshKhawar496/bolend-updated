@@ -10,6 +10,16 @@
   </head>
 
   <body>
+
+    <!-- Adding flash messages -->
+    <% flash.each do |name, msg| %>
+      <ul>
+        <li><%=msg %></li>
+      </ul>
+    <% end %>
+
+
+
     <%= yield %>
   </body>
 </html>

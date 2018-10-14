@@ -7,13 +7,35 @@
 <body>
 
 	<h1>NEW USER SIGN UP</h1>
+	<div>
+	<ul>
+		<% if @user.errors.any? %>
+		<% @user.errors.full_messages.each do |msg| %>
 
-	<!-- form for user to fill in SIGN UP info -->
-	<% form_for @user do |f| %>
-	
+		<li> <%=msg%> </li>
+
+		<% end %>
+	</ul>
+
 
 	<% end %>
+	</div>
 
+	<div>
+	<!-- form for user to fill in SIGN UP info -->
+	<%= form_for @user do |f| %>
+	First Name: <%= f.text_field :fname %> <br>
+	Last Name: <%= f.text_field :lname %> <br>
+	Address: <%= f.text_field :address %> <br>
+	Phone: <%= f.text_field :phone %> <br>
+	Email: <%= f.text_field :email %> <br>
+	Gender <%= f.select :gender, [['Male','male'],['Female','female']] %> <br>
+	Date of Birth <%=f.date_field :dateofbirth %>
+	<%= f.submit "Sign-Up"%>
+
+
+	<% end %>
+	</div>
 
 	<p>
 		<%= link_to '<button type="button">Home</button>'.html_safe, root_path %>
