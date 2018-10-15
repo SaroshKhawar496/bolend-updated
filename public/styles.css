@@ -10,11 +10,12 @@ body {
 	/* put dat shit tight to the browser window */
 	padding: 0;
 	margin: 0;
+	overflow-x: hidden;
 	border: none;
 
 	/* default fonts */
 	font-family: "Open Sans",Helvetica, sans-serif, "Comic Sans MS";
-	font-size: 14px;
+	font-size: 16px;
 
 	/* default colors */
 	background-color: #fff;
@@ -100,6 +101,73 @@ div.bg-card-0 {
 	.splash svg { height: 128px; width: 128px; margin: 0 auto;}
 }
 
+
+
+/*****************************************************
+**** NAVBAR
+******************************************************/
+
+.hnavbar {
+	background: #24292e; /* fallback for old browsers */
+
+	width: 100%;
+	height: 3em;
+	color: #fff;
+	padding: 0;
+
+	position: sticky;
+	top: 0px;
+
+	/* size of everything in hnavbar is relative to font size */
+	font-size: 1em; /* increasing this will scale the hnavbar accordingly */
+}
+
+.hnavbar ul {
+    list-style-type: none;
+    margin: 0;
+	padding: 0 1em 0 0em;
+}
+
+.hnavbar li {
+	display: block;
+	float: left;
+	background-color: #24292e;
+	min-width: 6em;
+	transition: all 0.25s ease-in-out;
+	cursor: pointer;
+}
+.hnavbar li:hover {
+	background-color: #1a1e22;
+}
+.hnavbar li.float-right {
+	float: right;
+}
+
+
+.hnavbar li span {
+    display: block;
+	padding: 0.75em;
+	text-align: center;
+	color: #bbb;
+	font-size: 1.2em;
+	line-height: 1em;
+	transition: color 0.25s ease-in-out;
+}
+.hnavbar li span:hover {
+	color: #eee;
+}
+
+
+
+
+/*****************************************************
+**** SLIDES
+******************************************************/
+
+div.slide {
+	height: 100vh;
+	width: 100vw;
+}
 
 
 
