@@ -11,4 +11,14 @@ Shown after user signs up-->
 </html>
 
 <!-- link to logout, goes to logout_path and  method delete specfies the delete method in sessions_controller -->
-<%= link_to '<button type="button">Logout</button>'.html_safe, logout_path, method: :delete %>
+
+<!-- display logout path only if user is logged in 
+otherwise you want to display login -->
+<% if logged_in? %>
+	<%= link_to '<button type="button">Logout</button>'.html_safe, logout_path, method: :delete %>
+<% else %>
+	<!-- user is not logged in -->
+	<%= link_to '<button type="button">Log In</button>'.html_safe, login_path %>
+	<%= link_to '<button type="button">SignUp</button>'.html_safe, signup_path%>
+
+<% end %>
