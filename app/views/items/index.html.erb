@@ -7,7 +7,7 @@
  <%= item.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
  <p>
   <strong>Item Name:</strong>
-  <%= item.name %>
+  <%= link_to item.name, item_path(item.id) %>
   <br>
   <strong>Description:</strong>
   <%= item.description %>

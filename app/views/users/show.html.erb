@@ -1,21 +1,35 @@
 <!-- DASHBOARD OF A USER  
 Shown after user signs up-->
-<!DOCTYPE html>
-<html>
-<head>
-  <title>User Dashboard</title>
-</head>
-<body>
-  <h1>Welcome to your Dashboard</h1>
-</body>
-</html>
 
 <!-- link to logout, goes to logout_path and  method delete specfies the delete method in sessions_controller -->
 
 <!-- display logout path only if user is logged in 
 otherwise you want to display login -->
 <% if logged_in? %>
+  
+  <h2><%= @user.fname %> <%= @user.lname %>'s Items </h2>
+
 	<%= link_to '<button type="button">Logout</button>'.html_safe, logout_path, method: :delete %>
+
+  <ul>
+    <% @user.items.reverse.each do |item| %>
+    
+      <p>
+      <strong>Item Name:</strong>
+      <%= link_to item.name, item_path(item.id) %>
+      <br>
+      <strong>Description:</strong>
+      <%= item.description %>
+      <br>
+      <strong>Posted at:</strong> 
+      <%= item.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
+      <br>
+      </p>
+      — — — — — — — — — — — — — — — — — — — — — — — — — — — -
+      <br><br>
+    <% end %>
+  </ul>
+
 <% else %>
 	<!-- user is not logged in -->
 	<%= link_to '<button type="button">Log In</button>'.html_safe, login_path %>

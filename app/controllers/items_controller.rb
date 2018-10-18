@@ -15,6 +15,12 @@ class ItemsController < ApplicationController
     @user = User.find(session[:user_id])
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to items_path
+  end
+
   def create
     @item = Item.new(permit_item)
     @user = User.find(session[:user_id])

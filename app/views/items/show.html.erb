@@ -1,5 +1,11 @@
 <%= render 'items' %>
-<h2>Item</h2>
+<h2>This item belongs to
+  <% if @user.id === @item.user_id%>
+    you
+  <% else %>
+    <%= @item.user.fname %> <%= @item.user.lname %>
+  <% end %>
+</h2>
 <p>
   <strong>Item Name:</strong>
   <%= @item.name %>
@@ -12,5 +18,9 @@
 
 <p>
   <strong>Posted at:<strong> 
-  <%= @item.created_at %>
+  <%= @item.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
 </p>
+
+<% if @user.id === @item.user_id%>
+  <%= link_to "Delete item", @item, method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
