@@ -38,4 +38,7 @@ class User < ApplicationRecord
 	#using helper to encrypt and store passwords in users table
 	has_secure_password
 	
+  #creating a one to many relationship 
+  has_many :items
+
 end

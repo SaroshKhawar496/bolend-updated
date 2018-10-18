@@ -1,0 +1,10 @@
+<h1>BorrowLand</h1>
+
+<h3>Logged in as <%= @user.fname %> <%= @user.lname %></h3>
+
+<%= link_to "Browse Items", items_path %>
+<%= link_to "Post an Item", new_item_path %>
+<br>
+<br>
+<!-- link to logout, goes to logout_path and  method delete specfies the delete method in sessions_controller -->
+<%= link_to '<button type="button">Logout</button>'.html_safe, logout_path, method: :delete %>

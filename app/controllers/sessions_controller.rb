@@ -20,10 +20,15 @@ class SessionsController < ApplicationController
 			
 			#saving user email in session hash
 			session[:user_email] = user.email
+
+      #saving user id in session hash (in the form of a temporary cookie)
+      session[:user_id] = user.id
+
 			#user is authenticated
 			flash[:notice] = "You have successfully logged in"
 
-			redirect_to user_path(user)
+			#redirect_to user_path(user)
+      redirect_to items_path
 
 		else
 			#this is not a model backed, 

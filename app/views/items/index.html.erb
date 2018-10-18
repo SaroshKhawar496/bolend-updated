@@ -1,0 +1,19 @@
+<%= render 'items' %>
+<h2>Browse All Items</h2>
+
+<ul>
+ <% @items.reverse.each do |item| %>
+ <strong><%= link_to item.user.fname, user_path(item.user_id) %></strong>
+ <%= item.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
+ <p>
+  <strong>Item Name:</strong>
+  <%= item.name %>
+  <br>
+  <strong>Description:</strong>
+  <%= item.description %>
+  <br>
+</p>
+ — — — — — — — — — — — — — — — — — — — — — — — — — — — -
+ <br><br>
+ <% end %>
+</ul>
