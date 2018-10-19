@@ -20,8 +20,8 @@
 				<h1>444chan.</h1>
 				<h2>by BoLend</h2>
 				<div class="btn-row">
-					<button class="start-btn">Start</button>
-					<button class="nav-btn">Explore</button>
+					<a href="app/"><button class="start-btn">Start</button></a>
+					<a href="#slide-1"><button class="nav-btn">Explore</button></a>
 				</div>
 			</div>
 		</div>
@@ -43,12 +43,14 @@
 
 
 		<!-- 1st slide: Lend -->
-		<div class="slide">
-			<div>
-				1 foreground
-			</div>
-			<div>
-				1 background
+		<div class="slide parallax" id="slide-1">
+			<div class="parallax__group">
+				<div class="parallax__layer parallax__layer--base" style="padding:200px">
+					1 foreground
+				</div>
+				<div class="parallax__layer parallax__layer--back" style="padding:200px">
+					1 background
+				</div>
 			</div>
 		</div>
 
