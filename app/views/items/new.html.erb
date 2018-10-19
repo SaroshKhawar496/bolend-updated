@@ -4,8 +4,13 @@
 <%= form_for @item do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <br>
   <%= f.label :description %>
   <%= f.text_area :description %>
+  <br>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+  <br>
   <br>
   <%= f.submit %>
 
