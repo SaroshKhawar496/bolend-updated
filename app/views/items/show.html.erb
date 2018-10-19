@@ -21,6 +21,12 @@
   <%= @item.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
 </p>
 
+<% if @item.image.attached? %>
+  <div style="width:200px; height:auto">
+    <%= image_tag(@item.image, style: 'width:100%') %>
+  </div>
+<% end %>
+
 <% if @user.id === @item.user_id%>
   <%= link_to "Delete item", @item, method: :delete, data: { confirm: "Are you sure?" } %>
 <% end %>
