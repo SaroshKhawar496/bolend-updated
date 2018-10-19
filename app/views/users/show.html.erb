@@ -6,6 +6,7 @@ Shown after user signs up-->
 <!-- display logout path only if user is logged in 
 otherwise you want to display login -->
 <% if logged_in? %>
+<% puts "User is logged in!" %>
   
   <h2><%= @user.fname %> <%= @user.lname %>'s Items </h2>
 
@@ -31,6 +32,7 @@ otherwise you want to display login -->
   </ul>
 
 <% else %>
+  <% puts "HELLO HERE" %>
 	<!-- user is not logged in -->
 	<%= link_to '<button type="button">Log In</button>'.html_safe, login_path %>
 	<%= link_to '<button type="button">SignUp</button>'.html_safe, signup_path%>

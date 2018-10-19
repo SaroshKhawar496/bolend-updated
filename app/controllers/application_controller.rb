@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 		
 		#return current_user if you had already queried the DB before
 		#if not (||=) then check the DB 
-		#finding user by email in the DB
+		#finding user by user_id in the DB
 		@current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
 	end
 

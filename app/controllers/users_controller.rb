@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 	
+	#preventing a user to goto other user profile  by changing URI
+	before_action :require_same_user, only: [:show]
+
 	def new
 		@user = User.new
 	end
@@ -26,5 +29,14 @@ class UsersController < ApplicationController
 
 		end
 
+	def require_same_user 
+		#if current user doesn't match the visiting profile user
+		#then shows error and takes you back to root_path
+		if current_user != @user
+			flash[:notice] = "You cannot see other person's proifle!"
+			redirect_to root_path
+		end
+
+	end
 	
 end
