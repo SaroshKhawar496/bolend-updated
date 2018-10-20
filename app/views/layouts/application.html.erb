@@ -12,11 +12,15 @@
   <body>
 
     <!-- Adding flash messages -->
-    <% flash.each do |name, msg| %>
+<!--     <% flash.each do |name, msg| %>
       <ul>
         <li><%=msg %></li>
       </ul>
-    <% end %>
+    <% end %> -->
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
 
 
 

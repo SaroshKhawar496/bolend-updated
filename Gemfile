@@ -13,7 +13,10 @@ gem 'rails', '~> 5.2.1'
 gem 'pg'
 
 #bcrypt gem to be used for encrypting passwords for user-signup
-gem 'bcrypt', '~> 3.1.7'
+#gem 'bcrypt', '~> 3.1.7'
+
+
+gem 'devise', '~> 4.2'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

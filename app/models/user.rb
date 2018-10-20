@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
 	#adding validations on the input data
 	validates :fname, presence: true, length: { minimum: 3, maximum: 25 } 
@@ -36,7 +40,7 @@ class User < ApplicationRecord
 	end
 
 	#using helper to encrypt and store passwords in users table
-	has_secure_password
+	#has_secure_password
 	
   #creating a one to many relationship 
   has_many :items

@@ -1,18 +1,21 @@
 class ItemsController < ApplicationController
+  #using current_user.id now
+  
   def new
     @item = Item.new
-    @user = User.find(session[:user_id])
+    @user = User.find(current_user.id)
   end
 
   def index
     @items = Item.all
     #@user = session[:user_id]
-    @user = User.find(session[:user_id])
+    #userId = current_user.id
+    @user = User.find(current_user.id)
   end
 
   def show
     @item = Item.find(params[:id])
-    @user = User.find(session[:user_id])
+    @user = User.find(current_user.id)
   end
 
   def destroy
@@ -23,7 +26,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(permit_item)
-    @user = User.find(session[:user_id])
+    @user = User.find(current_user.id)
     @item.user_id = @user.id
     if @item.save
       flash[:success] = "Success!"

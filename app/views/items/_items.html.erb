@@ -7,5 +7,5 @@
 <%= link_to "View my Items", user_path(@user.id) %>
 <br>
 <br>
-<!-- link to logout, goes to logout_path and  method delete specfies the delete method in sessions_controller -->
-<%= link_to '<button type="button">Logout</button>'.html_safe, logout_path, method: :delete %>
+
+<%= link_to '<button type="button">Logout</button>'.html_safe, destroy_user_session_path, method: :delete %>

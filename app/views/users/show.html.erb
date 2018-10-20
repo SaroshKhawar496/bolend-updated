@@ -1,16 +1,15 @@
 <!-- DASHBOARD OF A USER  
-Shown after user signs up-->
+Shown after user log in or Sign up-->
 
-<!-- link to logout, goes to logout_path and  method delete specfies the delete method in sessions_controller -->
 
-<!-- display logout path only if user is logged in 
-otherwise you want to display login -->
-<% if logged_in? %>
-<% puts "User is logged in!" %>
+
+<!-- params[:id] comes back as a string and current_user.id comes back as a fixnum. -->
+<!-- preventing user to go to other users profile by comparing the current_user.id & id from params hash (id of the typed url ..../users/45) -->
+<% if (current_user.id.to_s == params[:id].to_s) %>
+  
   
   <h2><%= @user.fname %> <%= @user.lname %>'s Items </h2>
-
-	<%= link_to '<button type="button">Logout</button>'.html_safe, logout_path, method: :delete %>
+  <%= link_to '<button type="button">Logout</button>'.html_safe, destroy_user_session_path, method: :delete %>
 
   <ul>
     <% @user.items.reverse.each do |item| %>
@@ -36,10 +35,14 @@ otherwise you want to display login -->
     <% end %>
   </ul>
 
+
+<!-- user was blocked to access other person's profile -->
 <% else %>
-  <% puts "HELLO HERE" %>
-	<!-- user is not logged in -->
-	<%= link_to '<button type="button">Log In</button>'.html_safe, login_path %>
-	<%= link_to '<button type="button">SignUp</button>'.html_safe, signup_path%>
+    
+    <% flash.now[:alert] = "Don't have permission for the action" %>
+
+    <!-- link to go back to items page -->
+    <%= link_to "Go Back", items_path%>
+
 
 <% end %>

@@ -1,19 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  #devise_for :users with path accounts to avoid confusion
+
+  devise_for :users, :path => 'accounts'
+
   root "welcome#home"
-
- 	
-  get "/signup", to: "users#new"
-  resources :users, except: [:new]
-
-  #login route to sessions controller and new action
-  get "/login", to: "sessions#new"
-
-  #post of login will be handled by sessions#create
-  post "/login", to: "sessions#create"
-
-  #logout
-  delete "/logout", to: "sessions#destroy"
+  resources :users
 
   resources :items
 
