@@ -13,7 +13,7 @@ gem 'rails', '~> 5.2.1'
 gem 'pg'
 
 #bcrypt gem to be used for encrypting passwords for user-signup
-#gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 
 gem 'devise', '~> 4.2'
