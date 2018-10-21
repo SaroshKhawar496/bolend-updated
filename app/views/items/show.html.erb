@@ -1,4 +1,4 @@
-<%= render 'items' %>
+<%= render :partial => 'layouts/navbar' %>
 <h2>This item belongs to
   <% if @user.id === @item.user_id%>
     you
@@ -6,27 +6,5 @@
     <%= @item.user.fname %> <%= @item.user.lname %>
   <% end %>
 </h2>
-<p>
-  <strong>Item Name:</strong>
-  <%= @item.name %>
-</p>
- 
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
 
-<p>
-  <strong>Posted at:<strong> 
-  <%= @item.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
-</p>
-
-<% if @item.image.attached? %>
-  <div style="width:200px; height:auto">
-    <%= image_tag(@item.image, style: 'width:100%') %>
-  </div>
-<% end %>
-
-<% if @user.id === @item.user_id%>
-  <%= link_to "Delete item", @item, method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
+<%= render :partial => 'items/item', locals: {item: @item} %>

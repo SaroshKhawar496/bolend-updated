@@ -1,29 +1,10 @@
-<%= render 'items' %>
+<%= render :partial => 'layouts/navbar' %>
 <h2>Browse All Items</h2>
 
 <ul>
   <% @items.reverse.each do |item| %>
-    <strong><%= link_to item.name, item_path(item.id) %></strong>
-    
-    <p>
-      <strong>Description:</strong>
-      <%= item.description %>
-      <br>
-    </p>
-    <p>
-      Posted by 
-      <%= link_to item.user.fname, user_path(item.user_id) %>
-      <%= time_ago_in_words(item.created_at) %>
-      ago
-      <br>
-    </p>
-    
-    <% if item.image.attached? %>
-      <div style="width:200px; height:auto">
-        <%= image_tag(item.image, style: 'width:100%') %>
-      </div>
-    <% end %>
-— — — — — — — — — — — — — — — — — — — — — — — — — — — -
- <br><br>
+
+    <%= render :partial => 'items/item', locals: {item: item} %>
+
  <% end %>
 </ul>

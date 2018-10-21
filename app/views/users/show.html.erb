@@ -1,3 +1,4 @@
+<%= render :partial => 'layouts/navbar' %>
 <!-- DASHBOARD OF A USER  
 Shown after user log in or Sign up-->
 
@@ -17,25 +18,7 @@ Shown after user log in or Sign up-->
 <!-- ----------------------------------------------------------------------------------- -->
   <ul>
     <% @user.items.reverse.each do |item| %>
-    
-      <p>
-      <strong>Item Name:</strong>
-      <%= link_to item.name, item_path(item.id) %>
-      <br>
-      <strong>Description:</strong>
-      <%= item.description %>
-      <br>
-      <strong>Posted at:</strong> 
-      <%= item.created_at.strftime("%d-%m-%Y %H:%M:%S") %>
-      <br>
-      </p>
-      <% if item.image.attached? %>
-        <div style="width:200px; height:auto">
-          <%= image_tag(item.image, style: 'width:100%') %>
-        </div>
-      <% end %>
-      — — — — — — — — — — — — — — — — — — — — — — — — — — — -
-      <br><br>
+      <%= render :partial => 'items/item', locals: {item: item} %>
     <% end %>
   </ul>
 

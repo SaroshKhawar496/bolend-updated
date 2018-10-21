@@ -43,6 +43,10 @@ class User < ApplicationRecord
 	#has_secure_password
 	
   #creating a one to many relationship 
-  has_many :items
+  has_many :items, dependent: :destroy
+
+  # the like associations
+  has_many :requests, dependent: :destroy
+  has_many :requested_items, :through => :requests, :source => :items
 
 end
