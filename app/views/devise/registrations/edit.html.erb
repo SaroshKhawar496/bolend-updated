@@ -4,9 +4,10 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+  <br>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -20,17 +21,47 @@
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
+  <br>
 
+  <!-- Adding other fields to edit -->
+  <div class="field">
+    <%= f.label :"First Name" %><br />
+    <%= f.text_field :fname, autofocus: true %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :"Last Name" %><br />
+    <%= f.text_field :lname, autofocus: true %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :"Address" %><br />
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :"Phone" %><br />
+    <%= f.text_field :phone, autofocus: true %>
+  </div>
+  <br>
+
+  
+  <!--  -->
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

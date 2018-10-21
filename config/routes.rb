@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
   #devise_for :users with path accounts to avoid confusion
-
-  devise_for :users, :path => 'accounts'
+  #rerouting the Devise registrations controller to extra registrations controller
+  #to overwrite the after_update_path for accounts. ie take to /items after profile update 
+  devise_for :users, :path => 'accounts', :controllers => {:registrations => :registrations }
 
   root "welcome#home"
   resources :users

@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
+	
+
 
 	#using the devise-builtIN method to authenticate users, its available to all controllers now
 	before_action :authenticate_user!
@@ -9,6 +11,7 @@ class ApplicationController < ActionController::Base
 		#devise only has allows email and password fields
 		def configure_permitted_parameters
 			devise_parameter_sanitizer.permit(:sign_up, keys: [:fname, :lname, :address, :phone, :gender, :dateofbirth])
+			devise_parameter_sanitizer.permit(:account_update, keys: [:fname, :lname, :address, :phone])
 		end
 		#over-writing the devise default paths
 
@@ -21,6 +24,8 @@ class ApplicationController < ActionController::Base
 		def after_sign_out_path_for(accounts)
 			root_path
 		end
+
+
 
 
 

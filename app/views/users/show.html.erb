@@ -11,6 +11,10 @@ Shown after user log in or Sign up-->
   <h2><%= @user.fname %> <%= @user.lname %>'s Items </h2>
   <%= link_to '<button type="button">Logout</button>'.html_safe, destroy_user_session_path, method: :delete %>
 
+<!-- User Profile Editing -->
+  <%= link_to 'Edit Profile', edit_user_registration_path%>
+  
+<!-- ----------------------------------------------------------------------------------- -->
   <ul>
     <% @user.items.reverse.each do |item| %>
     
