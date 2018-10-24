@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
 	#using the devise-builtIN method to authenticate users, its available to all controllers now
 	before_action :authenticate_user!
+
+
+	def fallback_index_html
+		render :file => 'public/app/index.html'
+	end
+
 	
 	protected
 		#passing the required fields for devise signup form. By default,
