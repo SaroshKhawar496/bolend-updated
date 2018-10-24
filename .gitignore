@@ -32,3 +32,6 @@
 
 # ignore built files
 /dist
+
+# ignore vendor directory
+/vendor
