@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-// utils 
+// utils
 import { CustomReuseStrategy } from './reuse-strategy';
-import { 
-	// ActivatedRoute, 
-	RouterModule, 
+import {
+	// ActivatedRoute,
+	RouterModule,
 	RouteReuseStrategy ,
 	// DefaultUrlSerializer, ActivatedRouteSnapshot, DetachedRouteHandle
 } from '@angular/router';
@@ -52,7 +52,7 @@ const appRoutes = [
 		HttpClientModule
 	],
 	providers: [{
-		provide: RouteReuseStrategy, 
+		provide: RouteReuseStrategy,
 		useClass: CustomReuseStrategy
 	}],
 	bootstrap: [

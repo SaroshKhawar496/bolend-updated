@@ -17,10 +17,10 @@ export class AppComponent {
 	navigationDislay = true;
 
 	constructor (
-		public activeRoute : ActivatedRoute,
+		public activeRoute: ActivatedRoute,
 	) {
 		this.activeRoute.params.subscribe ( params => {
-			let snapshot = this.activeRoute.snapshot;
+			const snapshot = this.activeRoute.snapshot;
 			console.log ( 'app-component', snapshot );
 		});
 	}
@@ -33,10 +33,11 @@ export class AppComponent {
 	 * Toggle the visibility status of the sidebar
 	 * @param hide specify to set to a specific value
 	 */
-	public toggleSidebar ( hide : boolean = undefined ) : void {
-		if ( hide != undefined )
+	public toggleSidebar ( hide: boolean = undefined ): void {
+		if ( hide != undefined ) {
 			this.sidebarHidden = hide;
-		else
+		} else {
 			this.sidebarHidden = !this.sidebarHidden;
+		}
 	}
 }
