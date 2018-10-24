@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 
 	#using the devise-builtIN method to authenticate users, its available to all controllers now
-	before_action :authenticate_user!
+	before_action :authenticate_user!, :except => [:fallback_index_html]
 
 
 	def fallback_index_html
