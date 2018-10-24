@@ -1,6 +1,7 @@
 // core, components, services
 import { Component } from '@angular/core';
-// import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -13,9 +14,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
 	title = '444chan.';
 	sidebarHidden = true;
+	navigationDislay = true;
 
-	constructor() {
-
+	constructor (
+		public activeRoute : ActivatedRoute,
+	) {
+		this.activeRoute.params.subscribe ( params => {
+			let snapshot = this.activeRoute.snapshot;
+			console.log ( 'app-component', snapshot );
+		});
 	}
 
 

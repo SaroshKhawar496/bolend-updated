@@ -1,0 +1,22 @@
+/* define styles for the background of the login page */
+div.bg {
+	height: 100%;
+	/* height: 100vh; */
+	width: 100%;
+	margin: 0;
+	padding: 0;
+
+	color: #fff;
+	background: #8a2387; /* fallback for old browsers */
+
+	align-content: center;
+	overflow: hidden;
+}
+
+.form-column {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+}

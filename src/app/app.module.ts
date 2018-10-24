@@ -15,6 +15,7 @@ import {
 // components
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 
 // etc
@@ -23,10 +24,16 @@ import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 // app router
 const appRoutes = [
+	// default home
 	{ path: '', component: DashboardComponent },
-	{ path: 'you', component: DashboardComponent },
-	
 	{ path: 'dashboard', redirectTo: '', pathMatch: 'full' },
+
+	// login page; if a page requires authentication,
+	// user will be redirected here if they are not already authenticated
+	{ path: 'login', component: LoginComponent },
+
+	// user profile page
+	{ path: 'you', component: DashboardComponent }
 ];
 
 
@@ -34,7 +41,8 @@ const appRoutes = [
 @NgModule({
 	declarations: [
 		AppComponent,
-		DashboardComponent
+		DashboardComponent,
+		LoginComponent
 	],
 	imports: [
 		BrowserModule,
