@@ -11,6 +11,7 @@ body {
 	padding: 0;
 	margin: 0;
 	overflow-x: hidden;
+	overflow-y: hidden;
 	border: none;
 
 	/* default fonts */
@@ -162,12 +163,41 @@ div.bg-card-0 {
 
 
 /*****************************************************
-**** SLIDES
+**** SLIDES & PARALLAX
 ******************************************************/
 
-div.slide {
+/* div.slide {
 	height: 100vh;
 	width: 100vw;
+} */
+
+.parallax {
+	perspective: 1px;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.parallax__layer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	/* padding: 200px; */
+}
+.parallax__layer--base {
+	transform: translateZ(0);
+}
+.parallax__layer--back {
+	transform: translateZ(-1px) scale(2);
+	background: linear-gradient(to bottom, #8a2387, #e94057, #f27121); /* modern browsers */
+	border: none;
+}
+.parallax__group {
+	position: relative;
+	height: 100vh;
+	transform-style: preserve-3d;
 }
 
 
