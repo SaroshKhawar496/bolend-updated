@@ -24,4 +24,8 @@ export class LoginComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	public submitLogin () : void {
+		// do something here
+	}
+
 }
