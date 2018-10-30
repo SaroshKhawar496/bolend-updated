@@ -1,8 +1,13 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+	devise :database_authenticatable, 
+			:registerable,
+			:jwt_authenticatable,
+			jwt_revocation_strategy: Devise::JWT::RevocationStrategies::Null
+			# jwt_revocation_strategy: JWTBlacklist
+			# :registerable,
+    		# :recoverable, :rememberable, :validatable
 
 	#adding validations on the input data
 	validates :fname, presence: true, length: { minimum: 3, maximum: 25 } 
@@ -39,14 +44,19 @@ class User < ApplicationRecord
 
 	end
 
+	# JWT additional payload
+	# def jwt_payload
+	# 	{ email:  }
+	# end
+
 	#using helper to encrypt and store passwords in users table
 	#has_secure_password
 	
-  #creating a one to many relationship 
-  has_many :items, dependent: :destroy
+	#creating a one to many relationship 
+	has_many :items, dependent: :destroy
 
-  # the like associations
-  has_many :requests, dependent: :destroy
-  has_many :requested_items, :through => :requests, :source => :items
+	# the like associations
+	has_many :requests, dependent: :destroy
+	has_many :requested_items, :through => :requests, :source => :items
 
 end

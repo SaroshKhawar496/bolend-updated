@@ -1,4 +1,6 @@
-class ApplicationController < ActionController::Base
+include ActionController::MimeResponds
+
+class ApplicationController < ActionController::API
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	
 
@@ -6,7 +8,9 @@ class ApplicationController < ActionController::Base
 	#using the devise-builtIN method to authenticate users, its available to all controllers now
 	before_action :authenticate_user!, :except => [:fallback_index_html]
 
+	respond_to :json
 
+	# used to 
 	def fallback_index_html
 		render :file => 'public/app/index.html'
 	end

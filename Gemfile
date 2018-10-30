@@ -15,8 +15,9 @@ gem 'pg'
 #bcrypt gem to be used for encrypting passwords for user-signup
 gem 'bcrypt', '~> 3.1.7'
 
-
+# add devise and JWT support
 gem 'devise', '~> 4.2'
+gem 'devise-jwt', '~> 0.5.8'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
