@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import {ApiService} from '../api.service';
-// import {CustomerService} from '../customer.service';
+import { HttpService } from '../http.service';
 import {Router} from '@angular/router';
 
 
@@ -16,16 +15,32 @@ export class LoginComponent implements OnInit {
 
 	constructor (
 		private router: Router,
-
-	) {
-
-	}
+		private http: HttpService
+	) {}
 
 	ngOnInit() {
 	}
 
+	/**
+	 * Authenticate the user
+	 */
 	public submitLogin () : void {
-		// do something here
+		// set the path and construct the payload
+		let path = "/you/sign_in";
+		let payload = {
+			user: {
+				email: this.username,		// this.username should be an email
+				password: this.password
+			}
+		}
+		this.http.postObservable ( path, payload ).subscribe(
+			data => {
+				console.log ( data );
+			},
+			err => {
+				console.error ( err );
+			}
+		);
 	}
 
 }

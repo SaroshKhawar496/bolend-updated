@@ -24,8 +24,14 @@ export class HttpService {
 		return this.baseUrl;
 	}
 
-	httpGetObservable ( url: string ): Observable<object> {
-
+	getObservable ( path: string ): Observable<object> {
+		let url = `${this.baseUrl}${path}`;
 		return this.http.get ( url );
 	}
+
+	postObservable ( path: string, payload: object ) : Observable<object> {
+		let url = `${this.baseUrl}${path}`;
+		return this.http.post (url, payload);
+	}
+	
 }
