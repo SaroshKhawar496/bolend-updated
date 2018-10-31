@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to items_path
+    # redirect_to items_path
   end
 
   def create
@@ -29,11 +29,13 @@ class ItemsController < ApplicationController
     @user = User.find(current_user.id)
     @item.user_id = @user.id
     if @item.save
-      flash[:success] = "Success!"
-      redirect_to item_path(@item)
+      # flash[:success] = "Success!"
+      # redirect_to item_path(@item)
+      render :show, status: :ok, location: @item
     else
-      flash[:error] = @item.errors.full_messages
-      redirect_to new_item_path
+      # flash[:error] = @item.errors.full_messages
+      # redirect_to new_item_path
+      render json: @item.errors, status: :unprocessable_entity
     end
         
   end
