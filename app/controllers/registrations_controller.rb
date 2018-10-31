@@ -3,8 +3,9 @@
 #root page
 
 class RegistrationsController < Devise::RegistrationsController
-	protected
-		def after_update_path_for(accounts)
-			items_path
-		end
+	respond_to :json
+	# protected
+	# 	def after_update_path_for(accounts)
+	# 		items_path
+	# 	end
 end

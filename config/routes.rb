@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #to overwrite the after_update_path for accounts. ie take to /items after profile update 
   # devise_for :users, :path => 'accounts', :controllers => {:registrations => :registrations }
 
-  devise_for :users, :path => 'accounts'
+  devise_for :users, :path => 'api/you', :controllers => {sessions: 'sessions', registrations: 'registrations'}
 
 
   root "welcome#home"
