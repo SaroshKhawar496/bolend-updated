@@ -12,13 +12,7 @@ Devise.setup do |config|
   
   # JWT config
   config.jwt do |jwt|
-    # jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
-    jwt.secret = '8aee2f857a538e2ed05ee949c6894e8f2f1fa4ce531b6c3d0d571c033f921a3e5e6a11e8d4ea63491a3ca4f294f893934a8b5886f9dcca3b0b268ce8b2caca06'
-    puts "hello devise.rb"
-    # puts jwt.secret
-    puts Rails.application.credentials.secret_key_base
-    # puts ENV['DEVISE_JWT_SECRET_KEY']
-    puts "goodbye devise jwt config"
+    jwt.secret = Rails.application.credentials.secret_key_base
   end
 
   # do not use flash messages

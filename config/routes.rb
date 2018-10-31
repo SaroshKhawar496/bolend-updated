@@ -5,15 +5,23 @@ Rails.application.routes.draw do
   #to overwrite the after_update_path for accounts. ie take to /items after profile update 
   # devise_for :users, :path => 'accounts', :controllers => {:registrations => :registrations }
 
-  devise_for :users, :path => 'api/you', :controllers => {sessions: 'sessions', registrations: 'registrations'}
 
 
-  root "welcome#home"
-  resources :users
+  # API accesses will use the /api/ path prefix
+  scope(:path => '/api') do
+    # the rest of your routes go here
+    devise_for :users, :path => 'you', :controllers => {sessions: 'sessions', registrations: 'registrations'}
 
-  resources :items
 
-  resources :requests
+    root "welcome#home"
+    resources :users
+  
+    resources :items
+  
+    resources :requests
+
+  end
+ 
 
   get 'app/*path', to: "application#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?
