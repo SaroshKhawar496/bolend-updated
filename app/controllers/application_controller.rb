@@ -1,10 +1,11 @@
 include ActionController::MimeResponds
 
 class ApplicationController < ActionController::API
+	include Response
+
+
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	
-
-
 	#using the devise-builtIN method to authenticate users, its available to all controllers now
 	before_action :authenticate_user!, :except => [:fallback_index_html]
 

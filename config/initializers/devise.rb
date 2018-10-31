@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 
+
+
+Rails.application.config.to_prepare do              # to_prepare ensures that the monkey patching happens before the first request
+  Devise::OmniauthCallbacksController.class_eval do # reopen the class
+    def failure                                     # redefine the failure method
+      set_flash_message! :alert, :failure, kind: OmniAuth::Utils.camelize(failed_strategy.name), reason: failure_message
+      redirect_to after_omniauth_failure_path_for(resource_name)
+    end
+  end
+end
+
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -16,7 +28,7 @@ Devise.setup do |config|
   end
 
   # do not use flash messages
-  config.navigational_formats = []
+  # config.navigational_formats = []
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -295,4 +307,7 @@ Devise.setup do |config|
   # ActiveSupport.on_load(:devise_failure_app) do
   #   include Turbolinks::Controller
   # end
+  config.navigational_formats = []
 end
+
+

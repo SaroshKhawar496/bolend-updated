@@ -38,6 +38,7 @@ class ItemsController < ApplicationController
         
   end
 
+
   private
 
     def permit_item
