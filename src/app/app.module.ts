@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 // utils
 import { CustomReuseStrategy } from './reuse-strategy';
+import { ErrorInterceptor } from './utils/error.interceptor';
+import { JwtInterceptor } from './utils/jwt.interceptor';
+import { AuthGuard } from './utils/auth.guard';
 import {
 	// ActivatedRoute,
 	RouterModule,
@@ -26,7 +29,7 @@ import { LoginComponent } from './login/login.component';
 // app router
 const appRoutes = [
 	// default home
-	{ path: '', component: DashboardComponent },
+	{ path: '', component: DashboardComponent, canActivate: [AuthGuard] },
 	{ path: 'dashboard', redirectTo: '', pathMatch: 'full' },
 
 	// login page; if a page requires authentication,
@@ -34,7 +37,7 @@ const appRoutes = [
 	{ path: 'login', component: LoginComponent },
 
 	// user profile page
-	{ path: 'you', component: DashboardComponent }
+	{ path: 'you', component: DashboardComponent, canActivate: [AuthGuard] }
 ];
 
 
