@@ -17,19 +17,21 @@ export class HttpService {
 	) {}
 
 	private baseUrl: string = environment.baseUrl;
-	private authPath: string = "/you/sign_in";
+	private authPath: string = "/accounts/sign_in";
 	private currentUser: User = new User;
+	public static lsTokenKey: string = 'currentUser';			// access the JWT in localStorage with this key
+
 
 
 	/****************************************************************
 	 * Auth
 	 ****************************************************************/
 
-	 /**
-	  * Attempt to authenticate the user using the credentials provided
-	  * @param email email
-	  * @param pw password
-	  */
+	/**
+	 * Attempt to authenticate the user using the credentials provided
+	 * @param email email
+	 * @param pw password
+	 */
 	public authenticate ( email: string, pw: string ) : void {
 		// construct the request URL and payload
 		let url = `${this.baseUrl}${this.authPath}`;
@@ -47,7 +49,7 @@ export class HttpService {
 				if ( response.ok ){
 					// get JWT from header and store it in localStorage; save user info in currentUser
 					let token: string = response.headers.get('Authorization');
-					localStorage.setItem ( 'currentUser', token );
+					localStorage.setItem ( HttpService.lsTokenKey, token );
 					// for ( var f in response.body[f] )
 					// 	this.currentUser[f] = response.body[f];
 					// console.log ( 'Auth successful.', token, this.currentUser );
@@ -56,12 +58,24 @@ export class HttpService {
 				// if the attempt failed:
 				else {
 					// remove any currentUser entry from localStorage
-					localStorage.removeItem ( 'currentUser' );
+					localStorage.removeItem ( HttpService.lsTokenKey );
 					console.error ( 'Auth unsuccessful!' );
 				}
 			}
-		)
+		);
 	}
+
+	public checkToken ( token: string ) : boolean {
+		return true;
+	}
+
+	/**
+	 * Remove token from local storage, effectively logging user out
+	 */
+	public logout () : void {
+		localStorage.removeItem ( HttpService.lsTokenKey );
+	}
+
 
 
 	/****************************************************************

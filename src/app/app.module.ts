@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // utils
 import { CustomReuseStrategy } from './reuse-strategy';
@@ -54,10 +54,12 @@ const appRoutes = [
 		FormsModule,
 		HttpClientModule
 	],
-	providers: [{
-		provide: RouteReuseStrategy,
-		useClass: CustomReuseStrategy
-	}],
+	providers: [
+		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+		{ provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
+		AuthGuard
+	],
 	bootstrap: [
 		AppComponent
 	]

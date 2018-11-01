@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   # API accesses will use the /api/ path prefix
   scope(:path => '/api') do
     # the rest of your routes go here
-    devise_for :users, :path => 'you', :controllers => {sessions: 'sessions', registrations: 'registrations'}, defaults: { format: :json }
+    devise_for :users, :path => 'accounts', 
+                :controllers => {sessions: 'sessions', registrations: 'registrations'}, 
+                defaults: { format: :json }
 
 
     root "welcome#home"
