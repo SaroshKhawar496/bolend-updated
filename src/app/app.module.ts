@@ -20,6 +20,8 @@ import {
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './main/profile/profile.component';
+import { YouComponent } from './main/you/you.component';
 
 
 // etc
@@ -37,7 +39,7 @@ const appRoutes = [
 	{ path: 'login', component: LoginComponent },
 
 	// user profile page
-	{ path: 'you', component: DashboardComponent, canActivate: [AuthGuard] }
+	{ path: 'you', component: ProfileComponent, canActivate: [AuthGuard] }
 ];
 
 
@@ -46,7 +48,9 @@ const appRoutes = [
 	declarations: [
 		AppComponent,
 		DashboardComponent,
-		LoginComponent
+		LoginComponent,
+		ProfileComponent,
+		YouComponent
 	],
 	imports: [
 		BrowserModule,

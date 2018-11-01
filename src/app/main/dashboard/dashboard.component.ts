@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../http.service';
+import { User } from '../../_models/user';
+
 
 @Component({
 	selector: 'app-dashboard',
@@ -8,8 +10,8 @@ import { HttpService } from '../../http.service';
 })
 export class DashboardComponent implements OnInit {
 
-	name: string;
 	itemList: any;
+	currentUser: User;
 
 
 	constructor (
@@ -17,10 +19,13 @@ export class DashboardComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.name = 'anon';
+		this.loadCurrentUser();
 		this.getItemsList();
 	}
 
+	loadCurrentUser () : void {
+		this.currentUser = this.http.getCurrentUser();
+	}
 
 	getItemsList () : void {
 		let path: string = '/items.json';

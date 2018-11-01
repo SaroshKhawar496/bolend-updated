@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from './_models/user';
+import { User, JWT } from './_models/user';
 import { Router } from '@angular/router';
 
 
@@ -53,9 +53,11 @@ export class HttpService {
 					// get JWT from header and store it in localStorage; save user info in currentUser
 					let token: string = response.headers.get('Authorization');
 					localStorage.setItem ( HttpService.lsTokenKey, token );
-					// for ( var f in response.body[f] )
-					// 	this.currentUser[f] = response.body[f];
-					// console.log ( 'Auth successful.', token, this.currentUser );
+					
+					// save information about the currently authenticated user
+					this.currentUser = Object.assign ( this.currentUser, response.body );
+					this.currentUser.jwt = new JWT ( token );
+					console.log ( 'Auth successful for:', this.currentUser );
 
 					// navigate to return URL if it is provided
 					if ( returnUrl )
