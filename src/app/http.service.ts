@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './_models/user';
+import { Router } from '@angular/router';
+
 
 // environment
 import { environment } from '../environments/environment';
@@ -13,7 +15,8 @@ import { environment } from '../environments/environment';
 export class HttpService {
 
 	constructor (
-		private http: HttpClient
+		private http: HttpClient,
+		private router: Router
 	) {}
 
 	private baseUrl: string = environment.baseUrl;
@@ -32,7 +35,7 @@ export class HttpService {
 	 * @param email email
 	 * @param pw password
 	 */
-	public authenticate ( email: string, pw: string ) : void {
+	public authenticate ( email: string, pw: string, returnUrl?: string ) : void {
 		// construct the request URL and payload
 		let url = `${this.baseUrl}${this.authPath}`;
 		let payload = {
@@ -53,6 +56,10 @@ export class HttpService {
 					// for ( var f in response.body[f] )
 					// 	this.currentUser[f] = response.body[f];
 					// console.log ( 'Auth successful.', token, this.currentUser );
+
+					// navigate to return URL if it is provided
+					if ( returnUrl )
+						this.router.navigate([returnUrl]);
 				}
 
 				// if the attempt failed:
