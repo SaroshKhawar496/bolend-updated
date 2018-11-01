@@ -9,8 +9,8 @@ div.bg {
 
 	color: #fff;
 	background: #8a2387; /* fallback for old browsers */
-	/* background: -webkit-linear-gradient(135deg, #8a2387, #e94057, #f27121); */
-	/* background: linear-gradient(135deg, #8a2387, #e94057, #f27121); */
+	background: -webkit-linear-gradient(135deg, #8a2387, #e94057, #f27121); 
+	background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
 	
 	align-content: center;
 	overflow: hidden;
@@ -60,7 +60,7 @@ div.bg {
 	font-size: 1.5em;
 }
 .labeled-input input::placeholder {
-	color: #aaa;
+	color: #ccc;
 	opacity: 1;
 }
 

@@ -1,7 +1,8 @@
 // core, components, services
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { HttpService } from './http.service';
+// import { LoginComponent } from './login/login.component';
 
 
 
@@ -18,6 +19,7 @@ export class AppComponent {
 
 	constructor (
 		public activeRoute: ActivatedRoute,
+		private http: HttpService
 	) {
 		this.activeRoute.params.subscribe ( params => {
 			const snapshot = this.activeRoute.snapshot;
@@ -39,5 +41,10 @@ export class AppComponent {
 		} else {
 			this.sidebarHidden = !this.sidebarHidden;
 		}
+	}
+
+	public logout () : void {
+		console.log ('logging out');
+		this.http.logout();
 	}
 }
