@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
+import { HttpService } from '../../http.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -15,14 +15,16 @@ export class LoginComponent implements OnInit {
 	returnUrl: string;
 
 	constructor (
-		private router: Router,
+		// private router: Router,
 		private route: ActivatedRoute,
-		private http: HttpService
+		private http: HttpService,
 	) {}
+	
 
 	ngOnInit() {
 		this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 	}
+
 
 	/**
 	 * Authenticate the user

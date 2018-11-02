@@ -1,0 +1,15 @@
+div.bg {
+	/* height: 100vh; */
+	height: calc(100vh - 3em);
+	width: 100%;
+	margin: 0;
+	padding: 0;
+
+	color: #fff;
+	background: #8a2387; /* fallback for old browsers */
+	background: -webkit-linear-gradient(135deg, #8a2387, #e94057, #f27121); 
+	background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
+	
+	align-content: center;
+	overflow: hidden;
+}

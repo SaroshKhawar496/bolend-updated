@@ -178,7 +178,8 @@ input.searchbox::placeholder {
 
 div.body {
 	background-color: #f8f8f8;
-	min-height: 100vh;
+	/* min-height: 100vh; */
+	min-height: calc(100vh - 3em);
 
 	transition: all 0.25s ease-in-out;
 }

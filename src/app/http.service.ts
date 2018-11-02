@@ -118,5 +118,7 @@ export class HttpService {
 	/****************************************************************
 	 * Accessors/mutators
 	 ****************************************************************/
-	public getCurrentUser () : User { return this.currentUser; }
+	public getCurrentUser () : User { 
+		return this.currentUser; 
+	}
 }

@@ -19,9 +19,12 @@ import {
 // components
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './accounts/login/login.component';
 import { ProfileComponent } from './main/profile/profile.component';
 import { YouComponent } from './main/you/you.component';
+import { AccountsComponent } from './accounts/accounts.component';
+import { RegisterComponent } from './accounts/register/register.component';
+import { RecoverComponent } from './accounts/recover/recover.component';
 
 
 // etc
@@ -34,9 +37,19 @@ const appRoutes = [
 	{ path: '', component: DashboardComponent, canActivate: [AuthGuard] },
 	{ path: 'dashboard', redirectTo: '', pathMatch: 'full' },
 
-	// login page; if a page requires authentication,
+	// accounts group:
 	// user will be redirected here if they are not already authenticated
-	{ path: 'login', component: LoginComponent },
+	// they will be able to access the login, register, or password recovery pages
+	{ 
+		path: 'accounts', 
+		component: AccountsComponent,
+		children: [
+			{ path: '', redirectTo: 'login', pathMatch: 'full' },
+			{ path: 'login', component: LoginComponent },
+			{ path: 'register', component: RegisterComponent },
+			{ path: 'recover', component: RecoverComponent }
+		]
+	},
 
 	// user profile page
 	{ path: 'you', component: ProfileComponent, canActivate: [AuthGuard] }
@@ -50,7 +63,10 @@ const appRoutes = [
 		DashboardComponent,
 		LoginComponent,
 		ProfileComponent,
-		YouComponent
+		YouComponent,
+		AccountsComponent,
+		RegisterComponent,
+		RecoverComponent,
 	],
 	imports: [
 		BrowserModule,

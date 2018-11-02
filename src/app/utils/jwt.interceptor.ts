@@ -15,7 +15,9 @@ export class JwtInterceptor implements HttpInterceptor {
 
         // add authorization header with jwt token if available
         let currentUserToken = localStorage.getItem ( HttpService.lsTokenKey );
-        if (currentUserToken) {
+
+        // do not intercept any requests involving accounts (login, register, forgot password)
+        if ( request.url.search('accounts') === -1 && currentUserToken ) {
             request = request.clone({
                 setHeaders: { 
                     Authorization: currentUserToken
