@@ -139,3 +139,7 @@ p.notice, p.alert {
 		transform: translateX(0);
 	}
 }
+
+button {
+	transition: all 0.25s ease-in-out;	 
+}

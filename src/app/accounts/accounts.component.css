@@ -93,7 +93,6 @@ button.solid {
 	border: 1px solid #fff;
 	background: #fff;
 	color: #e94057;
-	transition: all 0.25s ease-in-out;
 }
 button.solid:hover {
 	box-shadow: 0 0 10px 2px #fff;
@@ -104,7 +103,6 @@ button.nofill {
 	border: 1px solid #fff;
 	color: #fff;
 	background: none;
-	transition: all 0.25s ease-in-out;
 }
 button.nofill:hover {
 	background: #fff;
