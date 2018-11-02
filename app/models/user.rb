@@ -14,7 +14,8 @@ class User < ApplicationRecord
 	validates :lname, presence: true, length: { minimum: 3, maximum: 25 }
 	
 	#breakdown the address into different fields, like apt, street, city etc later and validate them!!!
-	validates :address, presence: true
+	# validates :address, presence: true
+	# let's replace this with postal/zip code
 
 	#reg expression for email format validity
 	VALID_EMAIL_REGEX= /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i 
@@ -23,13 +24,13 @@ class User < ApplicationRecord
 	VALID_PHONE_REGEX= /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/i
 
 	#10 digit length restriction on phone number, assuming Canadian numbers only
-	validates :phone, presence: true, length: {is: 10}, format: {with: VALID_PHONE_REGEX} 
+	# validates :phone, presence: true, length: {is: 10}, format: {with: VALID_PHONE_REGEX} 
 
 	validates :email, presence: true, length: {maximum: 100}, uniqueness: { case_sensitive: false }, 
 			  format: {with: VALID_EMAIL_REGEX}
 
 	#gender validation
-	validates :gender, presence: true, inclusion: %w(male female)
+	# validates :gender, presence: true, inclusion: %w(male female)
 
 	validates :dateofbirth, presence: true
 	
