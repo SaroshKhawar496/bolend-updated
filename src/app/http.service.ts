@@ -126,8 +126,11 @@ export class HttpService {
 	/****************************************************************
 	 * Alert messages
 	 ****************************************************************/
-	public static unsecureProtocolAlert: 
+	public static unsecureProtocolAlert = 
 `This page was NOT loaded using HTTPS protocol.  
 The data you submit in this form may not be safe from attackers and Russian hackers.  
-Are you sure you want to submit?`
+Are you sure you want to submit? 
+Note: your browser may block this submission regardless of what you choose`
+
+
 }
