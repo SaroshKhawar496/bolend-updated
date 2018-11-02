@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // utils
@@ -72,7 +72,8 @@ const appRoutes = [
 		BrowserModule,
 		RouterModule.forRoot( appRoutes ),
 		FormsModule,
-		HttpClientModule
+		HttpClientModule,
+		ReactiveFormsModule
 	],
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

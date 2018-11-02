@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../http.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { validateConfig } from '@angular/router/src/config';
 
 
 @Component({

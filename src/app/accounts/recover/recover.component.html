@@ -5,18 +5,15 @@
 		<span>&nbsp;</span>
 
 		<form class="form-box">
-			<h2>Reset password</h2>
+			<h2 class="fade-in">Reset password</h2>
 
-			<!-- 3rd party -->
 			<span>&nbsp;</span>
-
-			<!-- <hr /> -->
 
 			<form (ngSubmit)="submitRecover()">
 
-				<div class="form fade-in delay-0-2">
+				<div class="form">
 
-					<div class="labeled-input fade-in-up delay-0-4">
+					<div class="labeled-input fade-in-up delay-0-2">
 						<!-- <label>Username</label> -->
 						<input type="text" [(ngModel)]="username" placeholder="Email" name="username"/>
 					</div>
@@ -26,7 +23,7 @@
 			</form>
 
 			<!-- submit button -->
-			<button class="solid transition-0-25 fade-in delay-0-8" (click)="submitRecover">Submit</button>
+			<button class="solid transition-0-25 fade-in-up delay-0-4" (click)="submitRecover">Submit</button>
 
 
 

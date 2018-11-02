@@ -63,11 +63,16 @@ div.container {
 
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	
+	transition: all 0.25s ease-in-out;
 }
 .labeled-input input::placeholder {
 	color: #ccc;
 	opacity: 1;
+}
+.labeled-input input:focus {
+	box-shadow: 0 0 5px 1px #fff;
 }
 
 .form-column button {
@@ -83,14 +88,18 @@ div.container {
 .form-column button.small {
 	font-size: 1em;
 }
+
 button.solid {
 	border: 1px solid #fff;
 	background: #fff;
 	color: #e94057;
+	transition: all 0.25s ease-in-out;
 }
 button.solid:hover {
+	box-shadow: 0 0 10px 2px #fff;
 	background: #fff;
 }
+
 button.nofill {
 	border: 1px solid #fff;
 	color: #fff;
@@ -100,6 +109,12 @@ button.nofill {
 button.nofill:hover {
 	background: #fff;
 	color: #e94057;
+}
+
+button svg {
+	height: 1em;
+	width: 1em;
+	stroke-width: 2;
 }
 
 

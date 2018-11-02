@@ -121,4 +121,13 @@ export class HttpService {
 	public getCurrentUser () : User { 
 		return this.currentUser; 
 	}
+
+
+	/****************************************************************
+	 * Alert messages
+	 ****************************************************************/
+	public static unsecureProtocolAlert: 
+`This page was NOT loaded using HTTPS protocol.  
+The data you submit in this form may not be safe from attackers and Russian hackers.  
+Are you sure you want to submit?`
 }

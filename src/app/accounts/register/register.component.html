@@ -1,3 +1,81 @@
-<p>
-  register works!
-</p>
+<div class="container">
+
+	<div class="form-column">
+
+		<span>&nbsp;</span>
+
+		<form class="form-box">
+			<h2 class="fade-in">Register</h2>
+
+			<span>&nbsp;</span>
+
+			<form [formGroup]="regForm" (ngSubmit)="submitRegister()">
+
+				<div class="form fade-in ">
+
+          <!-- first name -->
+					<div class="labeled-input fade-in-up">
+            <input 
+              type="text" 
+              formControlName="fname" 
+              placeholder="First name" 
+              name="fname"
+            />
+          </div>
+          
+          <!-- last name -->
+					<div class="labeled-input fade-in-up delay-0-2">
+            <input 
+              type="text" 
+              formControlName="lname" 
+              placeholder="Last name" 
+              name="lname"
+            />
+          </div>
+
+          <!-- birthday/dob -->
+          <div class="labeled-input fade-in-up delay-0-4">
+            <input 
+              type="text" 
+              formControlName="dob" 
+              placeholder="Birthday: yyyy-mm-dd" 
+              name="dob"
+            />
+          </div>
+
+          <!-- email -->
+          <div class="labeled-input fade-in-up delay-0-6">
+            <input 
+              type="text" 
+              formControlName="email" 
+              placeholder="Email" 
+              name="username"
+            />
+          </div>
+
+          <!-- password -->
+          <div class="labeled-input fade-in-up delay-0-8">
+            <input 
+              type="password" 
+              formControlName="password" 
+              placeholder="Password" 
+              name="password"
+            />
+          </div>
+
+					
+				</div>
+			</form>
+
+			<!-- submit button -->
+			<button class="solid transition-0-25 fade-in delay-1-0" (click)="submitRegister()">Submit</button>
+
+
+
+		</form>
+
+		<span>&nbsp;</span>
+
+	</div>
+
+</div>

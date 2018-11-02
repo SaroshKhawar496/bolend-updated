@@ -5,24 +5,19 @@
 		<span>&nbsp;</span>
 
 		<form class="form-box">
-			<h2>Login</h2>
+			<h2 class="fade-in">Login</h2>
 
-			<!-- 3rd party -->
 			<span>&nbsp;</span>
-
-			<!-- <hr /> -->
 
 			<form (ngSubmit)="submitLogin()">
 
 				<div class="form fade-in">
 
 					<div class="labeled-input fade-in-up">
-						<!-- <label>Username</label> -->
 						<input type="text" [(ngModel)]="username" placeholder="Email" name="username"/>
 					</div>
 
 					<div class="labeled-input fade-in-up delay-0-2">
-						<!-- <label>Password</label> -->
 						<input type="password" [(ngModel)]="password" placeholder="Password" name="password"/>
 					</div>
 
@@ -31,9 +26,13 @@
 
 
 			<!-- login button -->
-			<button type="submit" class="solid transition-0-25 fade-in-up delay-0-4" (click)="submitLogin()">Login</button>
+			<button type="submit" class="solid transition-0-25 fade-in-up delay-0-4" (click)="submitLogin()">
+				<svg *ngIf="secureProtocol"><use href="assets/icons/navbar.svg#i-lock"></use></svg>
+				<svg *ngIf="!secureProtocol"><use href="assets/icons/navbar.svg#i-alert"></use></svg>
+				Login
+			</button>
 
-			<hr />
+			<hr class="fade-in delay-0-6" />
 
 			<!-- register button -->
 			<button class="small nofill transition-0-25 fade-in-up delay-0-8" (click)="routerNav('accounts/register')">Register</button>
