@@ -16,18 +16,18 @@ export class ErrorInterceptor implements HttpInterceptor {
 	 * @param next HttpHandler
 	 */
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		if ( request.url.search('accounts') === -1 ){
-			return next.handle(request).pipe(catchError(err => {
-				if (err.status === 401) {
-					// auto logout if 401 response returned from api
-					this.http.logout();
-					location.reload(true);
-				}
-				
-				const error = err.error.message || err.statusText;
-				return throwError(error);
-			}));
-		} else return null;
+		return next.handle(request).pipe(catchError(err => {
+
+			// do not apply this logic to requests from 'accounts' family (login, register, etc.)
+			if (err.status === 401 && request.url.search('accounts') === -1) {
+				// auto logout if 401 response returned from api
+				this.http.logout();
+				location.reload(true);
+			}
+			
+			const error = err.error.message || err.statusText;
+			return throwError(error);
+		}));
 	}
 
 }
