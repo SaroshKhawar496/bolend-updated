@@ -4,7 +4,7 @@ import { HttpService } from '../../http.service';
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
-	styleUrls: ['./register.component.css', '../login/login.component.css']
+	styleUrls: [ '../accounts.component.css' ]
 })
 export class RegisterComponent implements OnInit {
 
