@@ -26,27 +26,20 @@
 						<input type="password" [(ngModel)]="password" placeholder="Password" name="password"/>
 					</div>
 
-					<!-- login button -->
-					<button type="submit" class="solid transition-0-25 fade-in delay-0-8" (click)="submitLogin()">Login</button>
-
-					<!-- register button -->
-					<button class="small nofill transition-0-25">Register</button>
-
-					<!-- forgot password button -->
-					<button class="small nofill transition-0-25">Forgot password</button>
-
-					<!-- <div style="height: 2em">
-						<p *ngIf="inProgress">Authenticating...</p>
-						<ng-container *ngIf="failureReason!=undefined">
-							<p *ngIf="failureReason==401">Your username or password was incorrect. Please try again.</p>
-							<p *ngIf="failureReason==403">You'll need to request access permission.</p>
-							<p *ngIf="failureReason==0">Could not establish connection with the Elasticsearch server. Please make sure you are connected to the Intel network.</p>
-						</ng-container>
-					</div> -->
-
 				</div>
 			</form>
 
+
+			<!-- login button -->
+			<button type="submit" class="solid transition-0-25 fade-in delay-0-8" (click)="submitLogin()">Login</button>
+
+			<hr />
+
+			<!-- register button -->
+			<button class="small nofill transition-0-25" (click)="routerNav('accounts/register')">Register</button>
+
+			<!-- forgot password button -->
+			<button class="small nofill transition-0-25" (click)="routerNav('accounts/recover')">Forgot password</button>
 
 
 		</form>

@@ -27,7 +27,7 @@ div.container {
 	/* border: 2px solid #fff; */
 	border-radius: 10px; 
 
-	padding: 25px;
+	/* padding: 25px; */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -45,7 +45,7 @@ div.container {
 	background-color: transparent;
 	height: 2em;
 	padding: 1.25em 0.5em;
-	margin: 0.5em 0 1em;
+	margin: 0.5em 0;
 
 	color: #fff;
 	border: 1px solid #fff;
@@ -61,7 +61,7 @@ div.container {
 	opacity: 1;
 }
 
-.form button {
+.form-column button {
 	padding: 0.5em 1em;
 	margin: 0.25em 0;
 	min-width: 8em;
@@ -71,7 +71,7 @@ div.container {
 	font-size: 1.5em;
 	width: 100%;
 }
-.form button.small {
+.form-column button.small {
 	font-size: 1em;
 }
 button.solid {
@@ -99,4 +99,10 @@ button.nofill:hover {
 ******************************************************/
 h2 {
 	font-weight: 300;
+}
+hr {
+	height: 1px;
+	border: 0;
+	background: #fff;
+	margin: 1em 0;
 }

@@ -1,3 +1,37 @@
-<p>
-  recover works!
-</p>
+<div class="container">
+
+	<div class="form-column">
+
+		<span>&nbsp;</span>
+
+		<form class="form-box">
+			<h2>Reset password</h2>
+
+			<!-- 3rd party -->
+			<span>&nbsp;</span>
+
+			<!-- <hr /> -->
+
+			<form (ngSubmit)="submitLogin()">
+
+				<div class="form fade-in delay-0-2">
+
+					<div class="labeled-input fade-in-up delay-0-4">
+						<!-- <label>Username</label> -->
+						<input type="text" [(ngModel)]="username" placeholder="Email" name="username"/>
+					</div>
+
+					<!-- login button -->
+					<button type="submit" class="solid transition-0-25 fade-in delay-0-8" (click)="submitLogin()">Submit</button>
+
+				</div>
+			</form>
+
+
+		</form>
+
+		<span>&nbsp;</span>
+
+	</div>
+
+</div>

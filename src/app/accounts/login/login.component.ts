@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../http.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
@@ -15,7 +14,7 @@ export class LoginComponent implements OnInit {
 	returnUrl: string;
 
 	constructor (
-		// private router: Router,
+		private router: Router,
 		private route: ActivatedRoute,
 		private http: HttpService,
 	) {}
@@ -31,6 +30,10 @@ export class LoginComponent implements OnInit {
 	 */
 	public submitLogin () : void {
 		let user = this.http.authenticate ( this.username, this.password, this.returnUrl );
+	}
+
+	public routerNav ( path: string ) : void {
+		this.router.navigateByUrl ( path );
 	}
 
 }
