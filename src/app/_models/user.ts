@@ -2,10 +2,10 @@ export class User {
     id: number;
     fname: string = "Anon";
     lname: string;
-    address: string;
-    phone: string;
+    address: string;        // optional
+    phone: string;          // optional
     email: string;
-    gender: string;
+    gender: string;         // optional
     dob: string;
 
     created_at: string;

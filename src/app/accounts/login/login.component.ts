@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
 		private http: HttpService,
 	) {}
 	
-
 	ngOnInit() {
 		this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 	}
