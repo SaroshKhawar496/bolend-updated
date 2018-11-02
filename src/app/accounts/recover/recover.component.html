@@ -12,7 +12,7 @@
 
 			<!-- <hr /> -->
 
-			<form (ngSubmit)="submitLogin()">
+			<form (ngSubmit)="submitRecover()">
 
 				<div class="form fade-in delay-0-2">
 
@@ -21,11 +21,13 @@
 						<input type="text" [(ngModel)]="username" placeholder="Email" name="username"/>
 					</div>
 
-					<!-- login button -->
-					<button type="submit" class="solid transition-0-25 fade-in delay-0-8" (click)="submitLogin()">Submit</button>
-
+					
 				</div>
 			</form>
+
+			<!-- submit button -->
+			<button class="solid transition-0-25 fade-in delay-0-8" (click)="submitRecover">Submit</button>
+
 
 
 		</form>
