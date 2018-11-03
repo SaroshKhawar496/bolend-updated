@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../http.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AlertService } from '../../utils/alert/alert.service';
 
 
@@ -24,6 +24,10 @@ export class RegisterComponent implements OnInit {
 		private alert: AlertService
 	) { }
 
+
+	/**
+	 * Get the form's controls
+	 */
 	get f() { return this.regForm.controls; }
 
 	ngOnInit() {
@@ -35,11 +39,11 @@ export class RegisterComponent implements OnInit {
 	 */
 	initializeForm () : void {
 		this.regForm = this.formBuilder.group ({
-			fname: [ '', Validators.required ],
-			lname: [ '', Validators.required ],
-			email: [ '', Validators.required ],
-			password: [ '', Validators.required ],
-			dateofbirth: [ '', Validators.required ]
+			fname: new FormControl ( null, [Validators.required, Validators.minLength(2) ]),
+			lname: new FormControl ( null, [Validators.required, Validators.minLength(2) ]),
+			email: new FormControl ( null, [Validators.required, Validators.email ] ),
+			password: new FormControl ( null, Validators.required ),
+			dateofbirth: new FormControl ( null, Validators.required )
 		});
 	}
 
@@ -74,7 +78,6 @@ export class RegisterComponent implements OnInit {
 				this.alert.error ( err );
 			}
 		)
-
 
 	}
 }
