@@ -1,4 +1,6 @@
-<div *ngIf="message"
+<div *ngIf="message" (click)="close()"
+	class="fade-in-down"
 	[ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
 	{{message.text}}
+	<span class="closebtn" (click)="close()">&times;</span>
 </div>

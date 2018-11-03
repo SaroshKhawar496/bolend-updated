@@ -1,4 +1,38 @@
 .alert {
     width: 100%;
-    padding: 0.5em 0;
+    padding: 1em 0;
+    text-align: center;
+    margin: 0;
+    position: fixed;
+
+    /* border: 1px solid #fff; */
+    color: #fff;
+}
+
+.alert > .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: left;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.alert > .closebtn:hover {
+    color: black;
+}
+
+.alert-success {
+    background-color: #6abc6d;
+}
+.alert-danger {
+    background-color: #f44336;
+}
+.alert-info {
+    background-color: #46a7f5;
+}
+.alert-warning {
+    background-color: #ffa92a;
 }

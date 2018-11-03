@@ -12,7 +12,9 @@ export class AlertComponent implements OnInit {
 	private subscription: Subscription;
 	message: any;
 
-	constructor(private alertService: AlertService) { }
+	constructor (
+		private alertService: AlertService
+	) { }
 
 	ngOnInit() {
 		this.subscription = this.alertService.getMessage().subscribe(message => { 
@@ -22,5 +24,9 @@ export class AlertComponent implements OnInit {
 
 	ngOnDestroy() {
 		this.subscription.unsubscribe();
+	}
+
+	close () : void {
+		this.alertService.clear();
 	}
 }
