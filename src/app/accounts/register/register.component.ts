@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
 			lname: [ '', Validators.required ],
 			email: [ '', Validators.required ],
 			password: [ '', Validators.required ],
-			dob: [ '', Validators.required ]
+			dateofbirth: [ '', Validators.required ]
 		});
 	}
 
@@ -56,6 +56,20 @@ export class RegisterComponent implements OnInit {
 		}
 
 		this.loading = true;
+
+		let registerPath: string = '/accounts'
+		let payload: object = {
+			user: this.regForm.value
+		}
+		this.http.postObservable ( registerPath, payload ).subscribe(
+			data => {
+				console.log ( 'Registration successful', data );
+				this.router.navigateByUrl ('');		// redirect to home page (which may then redirect to login)
+			},
+			err => {
+				console.error ( err );
+			}
+		)
 
 
 	}
