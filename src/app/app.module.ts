@@ -14,6 +14,7 @@ import {
 	RouteReuseStrategy ,
 	// DefaultUrlSerializer, ActivatedRouteSnapshot, DetachedRouteHandle
 } from '@angular/router';
+import { AlertService } from './utils/alert/alert.service';
 
 
 // components
@@ -25,9 +26,11 @@ import { YouComponent } from './main/you/you.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { RegisterComponent } from './accounts/register/register.component';
 import { RecoverComponent } from './accounts/recover/recover.component';
+import { AlertComponent } from './utils/alert/alert.component';
 
 
 // etc
+
 
 
 
@@ -67,19 +70,21 @@ const appRoutes = [
 		AccountsComponent,
 		RegisterComponent,
 		RecoverComponent,
+		AlertComponent,
 	],
 	imports: [
 		BrowserModule,
 		RouterModule.forRoot( appRoutes ),
 		FormsModule,
 		HttpClientModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
 	],
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 		{ provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
-		AuthGuard
+		AuthGuard,
+		AlertService,
 	],
 	bootstrap: [
 		AppComponent

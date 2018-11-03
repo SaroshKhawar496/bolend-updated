@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../http.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from '../../utils/alert/alert.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class RegisterComponent implements OnInit {
 	constructor(
 		private http: HttpService,
 		private formBuilder: FormBuilder,
-		private router: Router
+		private router: Router,
+		private alert: AlertService
 	) { }
 
 	get f() { return this.regForm.controls; }
@@ -65,9 +67,11 @@ export class RegisterComponent implements OnInit {
 			data => {
 				console.log ( 'Registration successful', data );
 				this.router.navigateByUrl ('');		// redirect to home page (which may then redirect to login)
+				this.alert.success ( "Yay!!" );
 			},
 			err => {
 				console.error ( err );
+				this.alert.error ( err );
 			}
 		)
 
