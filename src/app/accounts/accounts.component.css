@@ -1,6 +1,6 @@
 div.bg {
 	/* height: 100vh; */
-	height: calc(100vh - 3em);
+	/* min-height: calc(100vh - 3em); */
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -16,6 +16,7 @@ div.bg {
 
 div.container {
 	height: 100%;
+	min-height: calc(100vh - 3em);
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -34,6 +35,7 @@ div.container {
 	align-content: center;
 
 	height: 100%;
+	min-height: inherit;
 	/* padding: 25vh 0; */
 }
 
@@ -44,12 +46,12 @@ div.container {
 	justify-content: space-evenly;
 }
 
-.labeled-input label { 
+.text-input label { 
 	width: 100%;
 	color: #f0f0f0;
 	font-size: 1.5em;
 }
-.labeled-input input { 
+.text-input input { 
 	width: 100%;
 	background-color: transparent;
 	height: 2em;
@@ -67,13 +69,23 @@ div.container {
 	
 	transition: all 0.25s ease-in-out;
 }
-.labeled-input input::placeholder {
-	color: #ccc;
+.text-input input::placeholder {
+	color: #f7b4bb;			/* monochromatic color! */
 	opacity: 1;
 }
-.labeled-input input:focus {
+.text-input input:focus {
 	box-shadow: 0 0 5px 1px #fff;
 }
+input.is-invalid {
+	border: 1px solid #e3d53e !important;
+	box-shadow: 0 0 7px 2px #e3d53e !important;
+}
+
+.labeled-input.text-input input {
+	margin: 0 0 0.5em 0;
+}
+label { text-align: left; }
+label.error-label { color: #e3d53e; }
 
 .form-column button {
 	padding: 0.5em 1em;

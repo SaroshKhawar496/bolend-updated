@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
 
 	respond_to :json
 
-	# used to 
+	# used to serve static files for frontend SPA
 	def fallback_index_html
 		render :file => 'public/app/index.html'
 	end

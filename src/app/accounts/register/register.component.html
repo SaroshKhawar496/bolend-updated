@@ -11,55 +11,77 @@
 
 			<form [formGroup]="regForm" (ngSubmit)="submitRegistration()">
 
-				<div class="form fade-in ">
+				<div class="form reg-form">
 
           <!-- first name -->
-					<div class="labeled-input fade-in-up">
+          <label class="error-label" for="fname" *ngIf="submitted && f.fname.errors">
+            First name is too short.
+          </label>
+					<div class="labeled-input text-input fade-in-up">
             <input 
               type="text" 
               formControlName="fname" 
               placeholder="First name" 
               name="fname"
+              [ngClass]="{ 'is-invalid': submitted && f.fname.errors }"
             />
           </div>
           
           <!-- last name -->
-					<div class="labeled-input fade-in-up delay-0-2">
+          <label for="lname" *ngIf="submitted && f.lname.errors">
+            Last name is too short.
+          </label>
+					<div class="labeled-input text-input fade-in-up delay-0-2">
             <input 
               type="text" 
               formControlName="lname" 
               placeholder="Last name" 
               name="lname"
+              [ngClass]="{ 'is-invalid': submitted && f.lname.errors }"
             />
           </div>
 
           <!-- birthday/dob -->
-          <div class="labeled-input fade-in-up delay-0-4">
+          <label for="dateofbirth" *ngIf="submitted && f.dateofbirth.errors">
+            Date of birth is too short.
+          </label>
+          <div class="labeled-input text-input fade-in-up delay-0-4">
             <input 
               type="text" 
               formControlName="dateofbirth" 
               placeholder="Birthday: yyyy-mm-dd" 
               name="dateofbirth"
+              [ngClass]="{ 'is-invalid': submitted && f.dateofbirth.errors }"
             />
           </div>
 
           <!-- email -->
-          <div class="labeled-input fade-in-up delay-0-6">
+          <label for="email" *ngIf="submitted && f.email.errors">
+            <span *ngIf="f.email.errors.required">Email is required.</span>
+            &nbsp;
+            <span *ngIf="f.email.errors.email">Email is invalid.</span>
+          </label>
+          <div class="labeled-input text-input fade-in-up delay-0-6">
             <input 
               type="text" 
               formControlName="email" 
               placeholder="Email" 
               name="username"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
             />
           </div>
 
           <!-- password -->
-          <div class="labeled-input fade-in-up delay-0-8">
+          <label for="password" *ngIf="submitted && f.password.errors">
+            Password is required.
+          </label>
+          <div class="labeled-input text-input fade-in-up delay-0-8">
             <input 
               type="password" 
               formControlName="password" 
               placeholder="Password" 
               name="password"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
             />
           </div>
 
@@ -74,7 +96,7 @@
 
 		</form>
 
-		<span>&nbsp;</span>
+    <span>&nbsp;</span>
 
 	</div>
 

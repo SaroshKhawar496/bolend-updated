@@ -10,8 +10,8 @@ class User < ApplicationRecord
     		# :recoverable, :rememberable, :validatable
 
 	#adding validations on the input data
-	validates :fname, presence: true, length: { minimum: 3, maximum: 25 } 
-	validates :lname, presence: true, length: { minimum: 3, maximum: 25 }
+	validates :fname, presence: true, length: { minimum: 2, maximum: 25 } 
+	validates :lname, presence: true, length: { minimum: 2, maximum: 25 }
 	
 	#breakdown the address into different fields, like apt, street, city etc later and validate them!!!
 	# validates :address, presence: true
