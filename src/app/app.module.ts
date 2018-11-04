@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // utils
-import { CustomReuseStrategy } from './reuse-strategy';
+// import { CustomReuseStrategy } from './reuse-strategy';
+import { MaltsevRouteReuseStrategy } from './utils/reuse-strategy-2';
 import { ErrorInterceptor } from './utils/error.interceptor';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { AuthGuard } from './utils/auth.guard';
@@ -82,7 +83,8 @@ const appRoutes = [
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-		{ provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
+		{ provide: RouteReuseStrategy, useClass: MaltsevRouteReuseStrategy },
+		// { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
 		AuthGuard,
 		AlertService,
 	],

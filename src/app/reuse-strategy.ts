@@ -100,6 +100,9 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
 
 		// return null if the path does not have a routerConfig OR if there is no stored route for that routerConfig
 		if (!route.routeConfig || !this.storedRoutes[route.routeConfig.path]) { return null; }
+		// console.log ( 'retrieve', route );
+		// if ( route.routeConfig.children )
+		// 	return
 		// console.log("retrieving", "return: ", this.storedRoutes[route.routeConfig.path]);
 
 		/** returns handle when the route.routeConfig.path is already stored */
