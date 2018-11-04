@@ -3,12 +3,15 @@ class RequestsController < ApplicationController
 
   def create
     @item = Item.find(params[:id])
-    @request = current_user.requests.new(item: @item) 
-
-    if @request.save
-      redirect_to item_path(@item)
-    end
-
+    if ! current_user.requested_items.include? @item #to prevent user from requesting the same item again
+        if ! current_user.items.include? @item
+          @request = current_user.requests.new(item: @item) 
+          if @request.save
+            #redirect_to item_path(@item)
+            render :index, status: :ok
+          end
+        end
+    end    
   end
 
   def index
@@ -19,7 +22,6 @@ class RequestsController < ApplicationController
   def destroy
     @request = Request.find(params[:id])
     @request.destroy
-    redirect_to items_path
   end
 
   private

@@ -58,6 +58,6 @@ class User < ApplicationRecord
 
 	# the like associations
 	has_many :requests, dependent: :destroy
-	has_many :requested_items, :through => :requests, :source => :items
+	has_many :requested_items, :through => :requests, :source => :item
 
 end
