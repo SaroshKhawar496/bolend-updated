@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
     root "welcome#home"
     resources :users
-  
+    
+    get 'app/notif', to: "notifications#show"
+
     resources :items
   
     resources :requests
