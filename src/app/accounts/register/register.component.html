@@ -14,7 +14,7 @@
 				<div class="form reg-form">
 
           <!-- first name -->
-          <label for="fname" *ngIf="submitted && f.fname.errors">
+          <label class="error-label" for="fname" *ngIf="submitted && f.fname.errors">
             First name is too short.
           </label>
 					<div class="labeled-input text-input fade-in-up">
@@ -96,7 +96,7 @@
 
 		</form>
 
-		<span>&nbsp;</span>
+    <span>&nbsp;</span>
 
 	</div>
 

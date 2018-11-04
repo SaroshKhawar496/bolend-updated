@@ -3,6 +3,7 @@ import { HttpService } from '../../http.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AlertService } from '../../utils/alert/alert.service';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -67,17 +68,56 @@ export class RegisterComponent implements OnInit {
 		let payload: object = {
 			user: this.regForm.value
 		}
-		this.http.postObservable ( registerPath, payload ).subscribe(
-			data => {
-				console.log ( 'Registration successful', data );
-				this.router.navigateByUrl ('');		// redirect to home page (which may then redirect to login)
-				this.alert.success ( "Yay!!" );
+		let fname: string = this.regForm.value.fname;
+
+		// include headers with the request. We will do our own error handling here
+		this.http.postObservable ( registerPath, payload, true ).subscribe(
+			res => {
+				let response = <HttpResponse<object>> res;
+				if ( response && response.ok ) {
+					// if the HTTP response was OK (no errors), try to extract the JWT
+					let extractRes = this.http.extractJWT ( <HttpResponse<object>> res );
+
+					if ( extractRes ) {
+						console.log ( 'Registration successful', response.body );
+						this.alert.success ( `Thanks ${fname}! Your account was successfully created!`, true );
+						this.router.navigateByUrl ('');		// redirect to login page
+					} else {
+						console.log ( 'Failed to extract JWT, although response was OK' );
+						this.alert.error ( 'OOPSIE WOOPSIE!! Uwu We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!');
+					}
+				} else if (response) {
+					console.log ( response );
+				} else 
+					console.log ( res );
 			},
-			err => {
-				console.error ( err );
-				this.alert.error ( err );
+			(err: HttpErrorResponse) => {
+				this.errorHandler ( err );
 			}
 		)
 
 	}
+
+
+	/**
+	 * Handle registration errors
+	 * @param response HttpErrorResponse object
+	 */
+	private errorHandler ( response: HttpErrorResponse ) : void {
+		console.error ( 'errorHander', response );
+
+		// "unprocessable entity"
+		if ( response.status == 422 ) {
+			let payload: object = response.error.errors;
+			let alertMsgs: Array<string> = [];
+			for ( var e in payload ) {
+				let msg: string = `${e} ${payload[e].join(', ')}`;
+				alertMsgs.push(msg);
+			}
+			console.log ( 'alerting:', alertMsgs.join('') );
+			this.alert.error ( alertMsgs.join('. ') );
+		}
+
+	}
+
 }

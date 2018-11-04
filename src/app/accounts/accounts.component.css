@@ -1,6 +1,6 @@
 div.bg {
 	/* height: 100vh; */
-	height: calc(100vh - 3em);
+	/* min-height: calc(100vh - 3em); */
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -16,6 +16,7 @@ div.bg {
 
 div.container {
 	height: 100%;
+	min-height: calc(100vh - 3em);
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -34,6 +35,7 @@ div.container {
 	align-content: center;
 
 	height: 100%;
+	min-height: inherit;
 	/* padding: 25vh 0; */
 }
 
@@ -83,6 +85,7 @@ input.is-invalid {
 	margin: 0 0 0.5em 0;
 }
 label { text-align: left; }
+label.error-label { color: #e3d53e; }
 
 .form-column button {
 	padding: 0.5em 1em;

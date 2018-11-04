@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, JWT } from './_models/user';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 // environment
 import { environment } from '../environments/environment';
+
 
 
 @Injectable({
@@ -50,17 +51,11 @@ export class HttpService {
 			response => {
 				// check that the auth attempt was OK; if so:
 				if ( response.ok ){
-					// get JWT from header and store it in localStorage; save user info in currentUser
-					let token: string = response.headers.get('Authorization');
-					localStorage.setItem ( HttpService.lsTokenKey, token );
-					
-					// save information about the currently authenticated user
-					this.currentUser = Object.assign ( this.currentUser, response.body );
-					this.currentUser.jwt = new JWT ( token );
-					console.log ( 'Auth successful for:', this.currentUser );
+					// extract the token (JWT) from the headers
+					let extractRes: ReturnType<HttpService['extractJWT']> = this.extractJWT ( response );
 
-					// navigate to return URL if it is provided
-					if ( returnUrl )
+					// navigate to return URL if it is provided and token extraction was OK
+					if ( extractRes && returnUrl )
 						this.router.navigate([returnUrl]);
 				}
 
@@ -73,6 +68,26 @@ export class HttpService {
 			}
 		);
 	}
+
+	/**
+	 * Extract JWT from HttpResponse headers
+	 * @param response full HttpResponse object. MUST include headers! Call request methods with `include` set to true
+	 */
+	public extractJWT ( response: HttpResponse<object> ) : boolean {
+		// get JWT from header and store it in localStorage; save user info in currentUser
+		let token: string = response.headers.get('Authorization');
+		if ( !token )
+			return false;
+		localStorage.setItem ( HttpService.lsTokenKey, token );
+		
+		// save information about the currently authenticated user
+		this.currentUser = Object.assign ( this.currentUser, response.body );
+		this.currentUser.jwt = new JWT ( token );
+		console.log ( 'Auth successful for:', this.currentUser );
+
+		return true;
+	}
+
 
 	public checkToken ( token: string ) : boolean {
 		return true;
@@ -103,9 +118,22 @@ export class HttpService {
 		return this.http.get ( url );
 	}
 
-	postObservable ( path: string, payload: object ) : Observable<object> {
+	/**
+	 * Build an `Observable` for an HTTP POST request. `subscribe()` to the Observable to send it
+	 * @param path API path
+	 * @param payload payload object
+	 * @param include include the request headers 
+	 */
+	postObservable ( path: string, payload: object, include: boolean = false ) 
+	: Observable<Object>
+	{
+		// build the request
 		let url = `${this.baseUrl}${path}`;
-		return this.http.post (url, payload);
+		let options: object = {};
+		if (include) options['observe'] = 'response';
+
+		let request: Observable<Object> = this.http.post (url, payload, options);
+		return request;
 	}
 
 
