@@ -104,10 +104,12 @@ export class HttpService {
 	}
 
 	/**
-	 * Remove token from local storage, effectively logging user out
+	 * Remove token from local storage, effectively logging user out. Redirect to login page
 	 */
-	public logout () : void {
+	public logout ( redirect: boolean = true ) : void {
 		localStorage.removeItem ( HttpService.lsTokenKey );
+		if ( redirect )
+			this.router.navigateByUrl ( 'accounts' );
 	}
 
 

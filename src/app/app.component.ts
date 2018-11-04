@@ -44,7 +44,6 @@ export class AppComponent {
 	}
 
 	public logout () : void {
-		console.log ('logging out');
 		this.http.logout();
 	}
 }

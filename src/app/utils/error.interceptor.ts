@@ -22,7 +22,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 			if (err.status === 401 && request.url.search('accounts') === -1) {
 				// auto logout if 401 response returned from api
 				this.http.logout();
-				location.reload(true);
+				// location.reload(true);
 			}
 			
 			// const error = err.error.message || err.statusText;

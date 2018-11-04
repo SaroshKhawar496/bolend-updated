@@ -63,11 +63,14 @@
 			<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
 			<span class="">&nbsp;You</span>&nbsp;
 		</li>
-		<li routerLink="accounts/login" (click)="logout()">
+		<li (click)="logout()">
 			<svg><use href="assets/icons/navbar.svg#i-lock"></use></svg>
 			<span>&nbsp;Logout</span>
 		</li>
-		<li>&nbsp;</li>
+		<li routerLink="user/1">
+			<svg><use href="assets/icons/navbar.svg#i-alert"></use></svg>
+			<span>&nbsp;user 1</span>
+		</li>
 		<li>&nbsp;</li>
 		<li>&nbsp;</li>
 		<li>&nbsp;</li>
