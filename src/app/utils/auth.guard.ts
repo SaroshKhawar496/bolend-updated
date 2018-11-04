@@ -17,7 +17,6 @@ export class AuthGuard implements CanActivate {
 		let currentUserJWT = localStorage.getItem('currentUser');
 		if ( currentUserJWT ) {
 			// logged in so return true
-			console.log ( "User logged in. JWT:", currentUserJWT );
 			return true;
 		}
 

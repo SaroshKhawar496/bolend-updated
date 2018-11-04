@@ -58,13 +58,13 @@
 
 
 /*************************************************************
-* Misc
+* Profile section
 **************************************************************/
 img.profile {
 	width: 228px;
 	height: 228px;
 	border-radius: 50%;
-	box-shadow: 0 0 5px 2px #888;
+	box-shadow: 0 0 5px 1px #888;
 }
 table.profile {
 	margin: 1em 0.5em;
@@ -72,7 +72,7 @@ table.profile {
 	border-spacing: 1em 0.25em;
 }
 .profile td.label {
-	font-weight: bold;
+	font-weight: 600;
 	text-align: right;
 }
 .profile td.data {

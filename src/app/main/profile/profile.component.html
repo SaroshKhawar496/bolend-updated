@@ -17,13 +17,14 @@
 			<tr *ngIf="u.address"><td class="label">address</td><td class="data">{{u.address}}</td></tr>
 			<tr *ngIf="u.gender"><td class="label">gender</td><td class="data">{{u.gender}}</td></tr>
 		</table>
-		<pre>{{u | json}}</pre>
 	</div>
 	
 
 	<!-- items available -->
 	<div class="grid-box1">
-		box1
+		Items
+		<pre>{{u.items | json}}</pre>
+
 	</div>
 
 
