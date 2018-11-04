@@ -91,8 +91,7 @@ export class HttpService {
 		localStorage.setItem ( HttpService.lsTokenKey, token );
 		
 		// save information about the currently authenticated user
-		this.currentUser = Object.assign ( this.currentUser, response.body );
-		this.currentUser.jwt = new JWT ( token );
+		this.currentUser = new User ( response.body, token );
 		console.log ( 'Auth successful for:', this.currentUser );
 
 		return true;

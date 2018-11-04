@@ -35,7 +35,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
 			}
 		);
 
-		
 	}
 
 	loadUser ( id?: number ) : void {
@@ -44,7 +43,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 		this.http.getObservable ( path ).subscribe(
 			data => {
 				console.log ( 'loadUser', data );
-				this.currentUser = Object.assign ( this.currentUser, data );
+				this.currentUser = new User(data);
 			},
 			(err: HttpErrorResponse) => this.loadUserErrorHandler(err),
 		)
@@ -62,6 +61,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
 			this.alert.error ( Consts.serverFaultMsg );
 		} 
 	}
+
+
+	get u() { return this.currentUser; }
 
 	ngOnDestroy(): void {
 		this.paramSub.unsubscribe();
