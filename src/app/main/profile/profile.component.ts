@@ -3,6 +3,8 @@ import { HttpService } from '../../http.service';
 import { User } from '../../_models/user';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Consts } from '../../_models/consts';
+import { AlertService } from 'src/app/utils/alert/alert.service';
 // import { Observable } from 'rxjs';
 
 @Component({
@@ -19,6 +21,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 		private http: HttpService,
 		private route: ActivatedRoute,
 		private router: Router,
+		private alert: AlertService,
 	) { }
 
 
@@ -47,14 +50,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
 		)
 	}
 
-
 	// 401 errors (invalid/expired JWT) will have been intercepted before this
 	// we should only be dealing with 404 or 5xx here
 	loadUserErrorHandler ( err: HttpErrorResponse ) : void {
 		// user not found
 		if ( err.status == 404 ) {
-			
-		}
+			console.error ( "No user with this ID exists!" );
+			this.alert.error ( "No user with this ID exists!" );
+		} else if ( err.status >= 500 ) {
+			console.error ( Consts.serverFaultMsg );
+			this.alert.error ( Consts.serverFaultMsg );
+		} 
 	}
 
 	ngOnDestroy(): void {

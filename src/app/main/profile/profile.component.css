@@ -1,7 +1,55 @@
+/*************************************************************
+* Grid container
+**************************************************************/
 #PROFILE-CONTAINER {
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 
-	padding: 1em;
+	padding: 1em 2em;
+
+
+	/* grid */
+	display: grid;
+	grid-template-columns: [left-bar] 256px [left-bar-end body1] 1fr [body1-end body2] 1fr [body2-end];
+	grid-template-rows: auto;
+
+	grid-template-areas: 
+		"header header header"
+		"profile box1 box2"
+		"profile box3 box4";
+	
+	transition: all 0.25s ease-in-out;
 }
+
+
+/* mobile/small screens */
+@media screen and (max-width:768px) {
+	#PROFILE-CONTAINER {
+		grid-template-columns: [left] 1fr [right];
+		grid-template-areas:
+			"header"
+			"profile"
+			"box1" "box2" "box3" "box4"
+	}
+}
+
+/* medium size screens */
+@media screen and (min-width:769px) and (max-width:1280px) {
+}
+
+/* large screens */
+@media screen and (min-width:1281px) {
+}
+
+
+
+/*************************************************************
+* Grid items
+**************************************************************/
+.grid-header { grid-area: header; }
+.grid-profile { grid-area: profile; }
+.grid-box1 { grid-area: box1; }
+.grid-box2 { grid-area: box2; }
+.grid-box3 { grid-area: box3; }
+.grid-box4 { grid-area: box4; }

@@ -46,4 +46,23 @@ export class AppComponent {
 	public logout () : void {
 		this.http.logout();
 	}
+
+
+	
+	// for a good kek
+	public fuckMyShitUp () {
+		console.log ("Pls to halp!")
+		var cssId = 'myCss';  // you could encode the css path itself to generate id..
+		if (!document.getElementById(cssId))
+		{
+			var head  = document.getElementsByTagName('head')[0];
+			var link  = document.createElement('link');
+			link.id   = cssId;
+			link.rel  = 'stylesheet';
+			link.type = 'text/css';
+			link.href = 'assets/kek/ooo3.css';
+			link.media = 'all';
+			head.appendChild(link);
+		}
+	}
 }
