@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Consts } from '../../_models/consts';
 import { AlertService } from 'src/app/utils/alert/alert.service';
+import { Subscription } from 'rxjs';
 // import { Observable } from 'rxjs';
 
 @Component({
@@ -15,7 +16,7 @@ import { AlertService } from 'src/app/utils/alert/alert.service';
 export class ProfileComponent implements OnInit, OnDestroy {
 
 	currentUser: User;
-	paramSub: any;
+	paramSub: Subscription;
 
 	constructor ( 
 		private http: HttpService,
@@ -66,6 +67,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 	get u() { return this.currentUser; }
 
 	ngOnDestroy(): void {
-		this.paramSub.unsubscribe();
+		if ( this.paramSub )
+			this.paramSub.unsubscribe();
 	}
 }

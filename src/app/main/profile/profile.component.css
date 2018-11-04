@@ -65,6 +65,14 @@ img.profile {
 	height: 228px;
 	border-radius: 50%;
 	box-shadow: 0 0 5px 1px #888;
+	display: block;
+	margin: 0 auto;
+}
+.profile.full-name {
+	width: 100%;
+	text-align: center;
+	font-weight: 600;
+	font-size: 1.25em;
 }
 table.profile {
 	margin: 1em 0.5em;
@@ -74,7 +82,4 @@ table.profile {
 .profile td.label {
 	font-weight: 600;
 	text-align: right;
-}
-.profile td.data {
-	/* text-align: left; */
 }

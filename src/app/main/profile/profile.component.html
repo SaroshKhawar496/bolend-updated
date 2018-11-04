@@ -2,14 +2,17 @@
 
 	<!-- header -->
 	<div class="grid-header">
-		<h2>{{u.fname}} {{u.lname}}'s Profile</h2>
+		<h2>{{u.fname}}'s Profile</h2>
 	</div>
 
 
 	<!-- profile -->
 	<div class="grid-profile">
-		<img class="profile" [src]="u.profileImgUrl || 'assets/img/pepe.png'">
+		<div style="width: 100%">
+			<img class="profile" [src]="u.profileImgUrl || 'assets/img/pepe.png'">
+		</div>
 		<br />
+		<div class="profile full-name">{{u.fname}} {{u.lname}}</div>
 		<table class="profile">
 			<tr *ngIf="u.created_date"><td class="label">Member since</td><td class="data">{{u.created_date.toDateString()}}</td></tr>
 			<tr *ngIf="u.email"><td class="label">email</td><td class="data">{{u.email}}</td></tr>
