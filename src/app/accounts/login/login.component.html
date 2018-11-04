@@ -21,6 +21,9 @@
 						<input type="password" [(ngModel)]="password" placeholder="Password" name="password"/>
 					</div>
 
+					<!-- fake/invisible login button -->
+					<input type="submit" value="Login" (click)="submitLogin()" style="display:none;"/>
+
 				</div>
 			</form>
 

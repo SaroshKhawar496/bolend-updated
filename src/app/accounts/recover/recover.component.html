@@ -17,11 +17,14 @@
 						<input type="text" [(ngModel)]="username" placeholder="Email" name="username"/>
 					</div>
 
+					<!-- invisible submit button -->
+					<input type="submit" value="Login" (click)="submitRecover()" style="display:none;"/>
+					
 				</div>
 			</form>
 
 			<!-- submit button -->
-			<button class="solid transition-0-25 fade-in-up delay-0-4" (click)="submitRecover">Submit</button>
+			<button class="solid transition-0-25 fade-in-up delay-0-4" (click)="submitRecover()">Submit</button>
 
 			<hr class="fade-in delay-0-6" />
 
