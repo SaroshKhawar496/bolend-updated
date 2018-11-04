@@ -3,7 +3,8 @@
     padding: 1em 0;
     text-align: center;
     margin: 0;
-    position: fixed;
+    position: sticky;
+    top: 0;
 
     /* border: 1px solid #fff; */
     color: #fff;

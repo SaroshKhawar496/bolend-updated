@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, JWT } from './_models/user';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 // environment
 import { environment } from '../environments/environment';
+import { AlertService } from './utils/alert/alert.service';
 
 
 
@@ -17,7 +18,8 @@ export class HttpService {
 
 	constructor (
 		private http: HttpClient,
-		private router: Router
+		private router: Router,
+		private alert: AlertService,
 	) {}
 
 	private baseUrl: string = environment.baseUrl;
@@ -36,7 +38,7 @@ export class HttpService {
 	 * @param email email
 	 * @param pw password
 	 */
-	public authenticate ( email: string, pw: string, returnUrl?: string ) : void {
+	public authenticate ( email: string, pw: string, returnUrl?: string, showAlert: boolean = true ) : void {
 		// construct the request URL and payload
 		let url = `${this.baseUrl}${this.authPath}`;
 		let payload = {
@@ -64,6 +66,14 @@ export class HttpService {
 					// remove any currentUser entry from localStorage
 					localStorage.removeItem ( HttpService.lsTokenKey );
 					console.error ( 'Auth unsuccessful!' );
+				}
+			},
+			(error: HttpErrorResponse) => {				// handle errors
+				// unauthorized - bad email/password
+				if ( error.status == 401 ) {
+					console.error ( 'Authentication failure. Invalid email or password' );
+					if ( showAlert )
+						this.alert.error ( "Invalid email or password. Please try again." );
 				}
 			}
 		);

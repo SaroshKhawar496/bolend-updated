@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 		}
 
 		// submit authentication request
-		let user = this.http.authenticate ( this.username, this.password, this.returnUrl );
+		let user = this.http.authenticate ( this.username, this.password, this.returnUrl, true );
 	}
 
 	public routerNav ( path: string ) : void {
