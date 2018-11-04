@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AlertService } from '../../utils/alert/alert.service';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Consts } from '../../_models/consts';
 
 
 @Component({
@@ -84,7 +85,7 @@ export class RegisterComponent implements OnInit {
 						this.router.navigateByUrl ('');		// redirect to login page
 					} else {
 						console.log ( 'Failed to extract JWT, although response was OK' );
-						this.alert.error ( 'OOPSIE WOOPSIE!! Uwu We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!');
+						this.alert.error ( Consts.serverFaultMsg );
 					}
 				} else if (response) {
 					console.log ( response );

@@ -56,7 +56,11 @@ const appRoutes = [
 	},
 
 	// user profile page
-	{ path: 'you', component: ProfileComponent, canActivate: [AuthGuard] }
+	{
+		path: "user/:id",
+		component: ProfileComponent,
+	},
+	{ path: 'you', component: YouComponent, canActivate: [AuthGuard] }
 ];
 
 
