@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   scope :api, defaults: { format: :json } do
     # the rest of your routes go here
     devise_for :users, :path => 'accounts', 
-                :controllers => {sessions: 'sessions', registrations: 'registrations'}, 
+                :controllers => {sessions: 'sessions', registrations: 'registrations', passwords: 'passwords'}, 
                 defaults: { format: :json }
 
 

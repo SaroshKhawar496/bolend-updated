@@ -61,4 +61,32 @@ Rails.application.configure do
 
   # report debug info in API mode
   config.debug_exception_response_format = :api
+
+  # Sending Email Configuration 
+
+  #adding the mailer for local machine
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.action_mailer.perform_deliveries = true 
+  #raise an error during sending an email fails
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default :charset => "utf-8"
+
+  #config.action_mailer.smtp_settings = {
+  ActionMailer::Base.smtp_settings = {  
+    address: "smtp.gmail.com",
+    port: 587,
+    # tls: true,
+    #ssl: true,
+    domain: ENV["GMAIL_DOMAIN"],
+    authentication: "plain",
+    enable_starttls_auto: true,
+    # openssl_verify_mode: "none",
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
+
+  }
+
 end

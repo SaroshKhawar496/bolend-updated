@@ -35,3 +35,6 @@
 
 # ignore vendor directory
 /vendor
+
+.evn
+Procfile
