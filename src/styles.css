@@ -100,10 +100,15 @@ p.notice, p.alert {
 ******************************************************/
 
 /* animation delay presets */
+.delay-0-1{animation-delay:0.1s !important;}
 .delay-0-2{animation-delay:0.2s !important;}
+.delay-0-3{animation-delay:0.3s !important;}
 .delay-0-4{animation-delay:0.4s !important;}
+.delay-0-5{animation-delay:0.5s !important;}
 .delay-0-6{animation-delay:0.6s !important;}
+.delay-0-7{animation-delay:0.7s !important;}
 .delay-0-8{animation-delay:0.8s !important;}
+.delay-0-9{animation-delay:0.9s !important;}
 .delay-1-0{animation-delay:1s !important;}
 
 /* fade-in animations */
