@@ -6,9 +6,9 @@ class PasswordsController < Devise::PasswordsController
 		user = User.reset_password_by_token(params[:user])
 		if user.errors.empty?
 			render json: {
-				{
-					"message": "Your Password has been updated successfully"
-				}
+				
+				"message": "Your Password has been updated successfully"
+				
 			}
 		else
 			respond_with_namespace(user)
