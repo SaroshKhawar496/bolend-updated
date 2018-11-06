@@ -149,6 +149,19 @@ export class HttpService {
 	}
 
 
+	putObservable ( path: string, payload: object, include: boolean = false )
+	: Observable<object>
+	{
+		// build the request
+		let url = `${this.baseUrl}${path}`;
+		let options: object = {};
+		if (include) options['observe'] = 'response';
+
+		let request: Observable<Object> = this.http.put ( url, payload, options );
+		return request;
+	}
+
+
 	updateCurrentUser ( user: object | User ) : void {
 
 	}

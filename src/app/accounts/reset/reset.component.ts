@@ -37,7 +37,7 @@ export class ResetComponent extends LoginComponent {
 			}
 		}
 		// console.log ( payload );
-		this.http.postObservable ( path, payload ).subscribe (
+		this.http.putObservable ( path, payload ).subscribe (
 			data => {
 				console.log (data);
 				this.alert.success ( "Password updated. Please login", true );
