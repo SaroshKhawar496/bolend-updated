@@ -17,8 +17,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
 	currentUser: User;
 	paramSub: Subscription;
-	defaultMaxAvailableItems:	number = 3;
-	defaultMaxBorrowedItems:	number = 3;
+	defaultMaxAvailableItems:	number = 6;
+	defaultMaxBorrowedItems:	number = 6;
 
 
 	constructor ( 

@@ -11,18 +11,33 @@
 
 	/* grid */
 	display: grid;
-	grid-template-columns: [left-bar] 256px [left-bar-end body1] 1fr [body1-end body2] 1fr [body2-end];
+	/* grid-template-columns: [left-bar] 256px [left-bar-end body1] 1fr [body1-end body2] 1fr [body2-end]; */
+	grid-template-columns: [left-bar] 256px [left-bar-end body1] 1fr [body1-end];
 	grid-template-rows: auto;
 
-	grid-template-areas: 
+	/* grid-template-areas: 
 		"header header header"
 		"profile box1 box2"
-		"profile box3 box4";
+		"profile box3 box4"; */
+	grid-template-areas: 
+		"header header"
+		"profile box1"
+		"profile box2"
+		"profile box3"
+		"profile box4";
+
 	
 	transition: all 0.25s ease-in-out;
 }
 
-hr.divider { visibility: hidden; }
+hr.divider { 
+	visibility: hidden;
+	/* border: 0;  */
+	/* height: 1px; */
+	max-width: 75vw;
+	border-top: 1px solid #8c8b8b;
+	border-bottom: 1px solid #fff;
+}
 
 
 /* mobile/small screens */
@@ -35,6 +50,7 @@ hr.divider { visibility: hidden; }
 			"box1" "box2" "box3" "box4"
 	}
 	hr.divider { visibility: visible; }
+	h2, h3 { text-align: center; }
 }
 
 /* medium size screens */
@@ -85,4 +101,17 @@ table.profile {
 .profile td.label {
 	font-weight: 600;
 	text-align: right;
+}
+
+h2, h3 {
+	font-weight: 600;
+}
+
+
+
+/*************************************************************
+* Item section
+**************************************************************/
+.card-carousel {
+	justify-content: space-evenly;
 }

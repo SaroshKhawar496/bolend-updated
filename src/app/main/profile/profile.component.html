@@ -26,30 +26,38 @@
 
 	<!-- items available -->
 	<div class="grid-box1">
-		Items Available
-		<pre>{{u.items | json}}</pre>
-
+		<h3 class="box-title">Items Available</h3>
+		<div *ngIf="u.itemsAvailable" class="box-content flex card-carousel">
+			<div *ngFor="let item of u.itemsAvailable.slice(0,defaultMaxAvailableItems); let i=index">
+				<app-item-card [item]="item"></app-item-card>
+			</div>
+		</div>
+		<!-- <pre>{{u.items | json}}</pre> -->
+		<hr class="divider" />
 	</div>
 
 
 
 	<!-- items borrowed -->
 	<div class="grid-box2">
-		Items Borrowed
+		<h3 class="box-title">Items Borrowed</h3>
+		<hr class="divider" />
 	</div>
 
 
 
 	<!-- activity feed -->
 	<div class="grid-box3">
-		box3
+		<h3 class="box-title">box3</h3>
+		<hr class="divider" />
 	</div>
 
 
 
 
 	<div class="grid-box4">
-		box4
+		<h3 class="box-title">box4</h3>
+		<hr class="divider" />
 	</div>
 
 
