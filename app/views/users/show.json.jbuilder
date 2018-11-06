@@ -10,5 +10,5 @@ json.created_at @user.created_at
 json.items @user.items.reverse do |item|
   json.id item.id
   json.name item.name
-  json.desc item.description
+  json.description item.description
 end
