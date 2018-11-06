@@ -8,6 +8,7 @@
 			# jwt_revocation_strategy: JWTBlacklist
 			# :registerable,
     		# :recoverable, :rememberable, :validatable
+    		
 
 	#adding validations on the input data
 	validates :fname, presence: true, length: { minimum: 2, maximum: 25 } 
