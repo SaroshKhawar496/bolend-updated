@@ -22,6 +22,8 @@
 	transition: all 0.25s ease-in-out;
 }
 
+hr.divider { visibility: hidden; }
+
 
 /* mobile/small screens */
 @media screen and (max-width:768px) {
@@ -32,6 +34,7 @@
 			"profile"
 			"box1" "box2" "box3" "box4"
 	}
+	hr.divider { visibility: visible; }
 }
 
 /* medium size screens */
@@ -75,7 +78,7 @@ img.profile {
 	font-size: 1.25em;
 }
 table.profile {
-	margin: 1em 0.5em;
+	margin: 1em auto;
 	border: none;
 	border-spacing: 1em 0.25em;
 }
