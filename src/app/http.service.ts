@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, JWT } from './_models/user';
-import { Router } from '@angular/router';
+import { Router, RouterStateSnapshot } from '@angular/router';
 
 
 // environment
@@ -107,8 +107,9 @@ export class HttpService {
 	 */
 	public logout ( redirect: boolean = true ) : void {
 		localStorage.removeItem ( HttpService.lsTokenKey );
+		let state: RouterStateSnapshot = this.router.routerState.snapshot;
 		if ( redirect )
-			this.router.navigateByUrl ( 'accounts' );
+			this.router.navigate(['/accounts/login'], { queryParams: { returnUrl: state.url }});
 	}
 
 
@@ -168,8 +169,7 @@ export class HttpService {
 	public static unsecureProtocolAlert = 
 `This page was NOT loaded using HTTPS protocol.  
 The data you submit in this form may not be safe from attackers and Russian hackers.  
-Are you sure you want to submit? 
-Note: your browser may block this submission regardless of what you choose`
+Continue at your own risk.`
 
 
 }

@@ -100,10 +100,15 @@ p.notice, p.alert {
 ******************************************************/
 
 /* animation delay presets */
+.delay-0-1{animation-delay:0.1s !important;}
 .delay-0-2{animation-delay:0.2s !important;}
+.delay-0-3{animation-delay:0.3s !important;}
 .delay-0-4{animation-delay:0.4s !important;}
+.delay-0-5{animation-delay:0.5s !important;}
 .delay-0-6{animation-delay:0.6s !important;}
+.delay-0-7{animation-delay:0.7s !important;}
 .delay-0-8{animation-delay:0.8s !important;}
+.delay-0-9{animation-delay:0.9s !important;}
 .delay-1-0{animation-delay:1s !important;}
 
 /* fade-in animations */
@@ -143,3 +148,50 @@ p.notice, p.alert {
 button {
 	transition: all 0.25s ease-in-out;	 
 }
+
+
+
+
+/*****************************************************
+**** FONTS
+******************************************************/
+/* open-sans-300 - latin */
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Open Sans Light'), local('OpenSans-Light'),
+		 url('assets/fonts/open-sans-v15-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+		 url('assets/fonts/open-sans-v15-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* open-sans-regular - latin */
+  @font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Open Sans Regular'), local('OpenSans-Regular'),
+		 url('assets/fonts/open-sans-v15-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+		 url('assets/fonts/open-sans-v15-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* open-sans-600 - latin */
+  @font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 600;
+	src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
+		 url('assets/fonts/open-sans-v15-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+		 url('assets/fonts/open-sans-v15-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+  /* open-sans-700 - latin */
+  @font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Open Sans Bold'), local('OpenSans-Bold'),
+		 url('assets/fonts/open-sans-v15-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+		 url('assets/fonts/open-sans-v15-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  

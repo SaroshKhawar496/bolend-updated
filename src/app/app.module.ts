@@ -28,6 +28,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { RegisterComponent } from './accounts/register/register.component';
 import { RecoverComponent } from './accounts/recover/recover.component';
 import { AlertComponent } from './utils/alert/alert.component';
+import { ItemCardComponent } from './main/items/item-card/item-card.component';
 
 
 // etc
@@ -59,6 +60,7 @@ const appRoutes = [
 	{
 		path: "user/:id",
 		component: ProfileComponent,
+		canActivate: [AuthGuard]
 	},
 	{ path: 'you', component: YouComponent, canActivate: [AuthGuard] }
 ];
@@ -76,6 +78,7 @@ const appRoutes = [
 		RegisterComponent,
 		RecoverComponent,
 		AlertComponent,
+		ItemCardComponent,
 	],
 	imports: [
 		BrowserModule,

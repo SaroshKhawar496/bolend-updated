@@ -1,0 +1,17 @@
+<div class="item-card-container">
+
+    <!-- item image -->
+    <div class="item-img-main">
+        <img *ngIf="item.imgUrl" src="item.imgUrl" />
+        <svg *ngIf="!item.imgUrl"><use href="assets/icons/navbar.svg#i-photo"></use></svg>
+    </div>
+
+    <!-- card body -->
+    <div class="item-card-body">
+        <h4 class="item-name">{{item.id}} - {{item.name}}</h4>
+        <div class="item-description">
+            {{item.description}}
+        </div>
+    </div>
+
+</div>

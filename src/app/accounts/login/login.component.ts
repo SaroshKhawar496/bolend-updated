@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../http.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { AlertService } from 'src/app/utils/alert/alert.service';
 
 @Component({
 	selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 		private router: Router,
 		private route: ActivatedRoute,
 		private http: HttpService,
+		private alert: AlertService
 	) {}
 	
 	ngOnInit() {
@@ -26,6 +28,9 @@ export class LoginComponent implements OnInit {
 
 		// determine whether the page is accessed using a secure protocol
 		this.secureProtocol = location.protocol.startsWith('https');
+		if ( !this.secureProtocol && environment.production )
+			this.alert.warning ( HttpService.unsecureProtocolAlert );
+
 	}
 
 

@@ -2,14 +2,17 @@
 
 	<!-- header -->
 	<div class="grid-header">
-		<h2>{{u.fname}} {{u.lname}}'s Profile</h2>
+		<h2>{{u.fname}}'s Profile</h2>
 	</div>
 
 
 	<!-- profile -->
 	<div class="grid-profile">
-		<img class="profile" [src]="u.profileImgUrl || 'assets/img/pepe.png'">
+		<div style="width: 100%">
+			<img class="profile" [src]="u.profileImgUrl || 'assets/img/pepe.png'">
+		</div>
 		<br />
+		<div class="profile full-name">{{u.fname}} {{u.lname}}</div>
 		<table class="profile">
 			<tr *ngIf="u.created_date"><td class="label">Member since</td><td class="data">{{u.created_date.toDateString()}}</td></tr>
 			<tr *ngIf="u.email"><td class="label">email</td><td class="data">{{u.email}}</td></tr>
@@ -17,34 +20,44 @@
 			<tr *ngIf="u.address"><td class="label">address</td><td class="data">{{u.address}}</td></tr>
 			<tr *ngIf="u.gender"><td class="label">gender</td><td class="data">{{u.gender}}</td></tr>
 		</table>
-		<pre>{{u | json}}</pre>
+		<hr class="divider" />
 	</div>
 	
 
 	<!-- items available -->
 	<div class="grid-box1">
-		box1
+		<h3 class="box-title">Items Available</h3>
+		<div *ngIf="u.itemsAvailable" class="box-content flex card-carousel">
+			<div *ngFor="let item of u.itemsAvailable.slice(0,defaultMaxAvailableItems); let i=index">
+				<app-item-card [item]="item"></app-item-card>
+			</div>
+		</div>
+		<!-- <pre>{{u.items | json}}</pre> -->
+		<hr class="divider" />
 	</div>
 
 
 
 	<!-- items borrowed -->
 	<div class="grid-box2">
-		box2
+		<h3 class="box-title">Items Borrowed</h3>
+		<hr class="divider" />
 	</div>
 
 
 
 	<!-- activity feed -->
 	<div class="grid-box3">
-		box3
+		<h3 class="box-title">box3</h3>
+		<hr class="divider" />
 	</div>
 
 
 
 
 	<div class="grid-box4">
-		box4
+		<h3 class="box-title">box4</h3>
+		<hr class="divider" />
 	</div>
 
 

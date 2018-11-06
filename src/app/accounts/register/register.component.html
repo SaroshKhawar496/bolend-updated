@@ -17,7 +17,7 @@
           <label class="error-label" for="fname" *ngIf="submitted && f.fname.errors">
             First name is too short.
           </label>
-					<div class="labeled-input text-input fade-in-up">
+					<div class="labeled-input text-input fade-in-up delay-0-1">
             <input 
               type="text" 
               formControlName="fname" 
@@ -45,7 +45,7 @@
           <label for="dateofbirth" *ngIf="submitted && f.dateofbirth.errors">
             Date of birth is too short.
           </label>
-          <div class="labeled-input text-input fade-in-up delay-0-4">
+          <div class="labeled-input text-input fade-in-up delay-0-3">
             <input 
               type="text" 
               formControlName="dateofbirth" 
@@ -61,7 +61,7 @@
             &nbsp;
             <span *ngIf="f.email.errors.email">Email is invalid.</span>
           </label>
-          <div class="labeled-input text-input fade-in-up delay-0-6">
+          <div class="labeled-input text-input fade-in-up delay-0-4">
             <input 
               type="text" 
               formControlName="email" 
@@ -75,7 +75,7 @@
           <label for="password" *ngIf="submitted && f.password.errors">
             Password is required.
           </label>
-          <div class="labeled-input text-input fade-in-up delay-0-8">
+          <div class="labeled-input text-input fade-in-up delay-0-5">
             <input 
               type="password" 
               formControlName="password" 
@@ -92,7 +92,14 @@
 			</form>
 
 			<!-- submit button -->
-			<button class="solid transition-0-25 fade-in delay-1-0" (click)="submitRegistration()">Submit</button>
+			<button class="solid transition-0-25 fade-in delay-0-6" (click)="submitRegistration()">Submit</button>
+
+      <hr class="fade-in delay-0-7" />
+      
+      <!-- return to login page button -->
+			<button class="small nofill transition-0-25 fade-in-up delay-0-8" (click)="routerNav('accounts')">
+				Back
+			</button>
 
 
 

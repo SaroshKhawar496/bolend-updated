@@ -5,6 +5,8 @@ import { catchError } from 'rxjs/operators';
 
 import { HttpService } from '../http.service';
 import { AlertService } from './alert/alert.service';
+import { Consts } from '../_models/consts';
+
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -29,7 +31,13 @@ export class ErrorInterceptor implements HttpInterceptor {
 			// do not apply this logic to requests from 'accounts' family (login, register, etc.)
 			else if (err.status === 401 && request.url.search('accounts') === -1) {
 				// auto logout if 401 response returned from api
+				this.alert.info ( "Please log in to view this page.", true );
 				this.http.logout();
+			}
+
+			else if ( err.status >= 500 ) {
+				this.alert.error ( Consts.serverFaultMsg );
+				console.error ( err );
 			}
 			
 			// const error = err.error.message || err.statusText;

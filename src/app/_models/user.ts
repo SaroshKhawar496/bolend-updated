@@ -1,3 +1,5 @@
+import { Item } from "./item";
+
 export class User {
 	id: number;
 	fname: string = "Anon";
@@ -13,6 +15,7 @@ export class User {
 	profileImgUrl: string;
 
 	items: Array<object>;
+	itemsAvailable: Array<Item>;
 
 	jwt: JWT;
 
@@ -22,6 +25,8 @@ export class User {
 	created_readable: string;
 	updated_date: Date;
 	updated_readable: string;
+
+
 	/**
 	 * Instantiate a User object, optionally providing an object with attributes required for 
 	 * @param attribs 
@@ -38,6 +43,11 @@ export class User {
 
 		// convert string dates to Date objects
 		this.dateStrToObj();
+
+		// parse user's items available
+		console.log ( this );
+		if ( this.items )
+			this.parseItems ( this.items, 'itemsAvailable' );
 	}
 
 	dateStrToObj () : void {
@@ -50,6 +60,22 @@ export class User {
 		if (this.updated_at)
 			this.updated_date = new Date ( this.updated_at);
 	}
+
+	/**
+	 * Create instances of Item object for each object in array
+	 * @param source array of objects, each containing info about an item
+	 * @param assignTo the class variable to assign the parsed array to
+	 */
+	parseItems ( source: Array<object>, assignTo: string ) : void {
+		if ( !source ) return;
+
+		let itemList: Array<Item> = [];
+		for ( let item of source ) {
+			itemList.push ( new Item(item) );
+		}
+		this[assignTo] = itemList;
+	}
+
 
 }
 

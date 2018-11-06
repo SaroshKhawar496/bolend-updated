@@ -1,0 +1,19 @@
+div.item-card-container {
+    max-width: 250px;
+    margin: 1em 0.5em;
+    border: 1px solid #aaa;
+}
+
+div.item-img-main {
+    background-color: #ccc;
+    width: inherit;
+}
+.item-img-main svg {
+    width: 100%;
+}
+
+div.item-card-body {
+    padding: 1em;
+}
+
+h4 { font-weight: 600; }
