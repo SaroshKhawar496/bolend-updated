@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
 	constructor (
 		private router: Router,
 		private route: ActivatedRoute,
-		private http: HttpService,
-		private alert: AlertService
+		public http: HttpService,
+		public alert: AlertService
 	) {}
 	
 	ngOnInit() {

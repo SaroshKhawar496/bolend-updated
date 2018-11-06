@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
-// import { HttpService } from 'src/app/http.service';
 
 @Component({
 	selector: 'app-recover',
@@ -9,9 +8,9 @@ import { LoginComponent } from '../login/login.component';
 })
 export class RecoverComponent extends LoginComponent {
 
-	username: string;
+	email: string;
 
-	ngOnInit() {
+	ngOnInit (  ) {
 
 	}
 
@@ -19,6 +18,12 @@ export class RecoverComponent extends LoginComponent {
 	 * Submit password recovery request to server
 	 */
 	submitRecover () {
-
+		let path: string = "/accounts/password";
+		let payload: object = { user: { email: this.email } };
+		this.http.postObservable ( path, payload ).subscribe (
+			res => {
+				console.log ('submitRecover()', res );
+			}
+		)
 	}
 }
