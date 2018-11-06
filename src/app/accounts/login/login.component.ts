@@ -17,22 +17,26 @@ export class LoginComponent implements OnInit {
 	returnUrl: string;
 
 	constructor (
-		private router: Router,
-		private route: ActivatedRoute,
+		public router: Router,
+		public route: ActivatedRoute,
 		public http: HttpService,
 		public alert: AlertService
 	) {}
 	
 	ngOnInit() {
 		this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+		this.protocolCheck();
+	}
 
+	/**
+	 * A password is submitted thru this page, check HTTPS status
+	 */
+	protocolCheck () : void {
 		// determine whether the page is accessed using a secure protocol
 		this.secureProtocol = location.protocol.startsWith('https');
 		if ( !this.secureProtocol && environment.production )
 			this.alert.warning ( HttpService.unsecureProtocolAlert );
-
 	}
-
 
 	/**
 	 * Authenticate the user

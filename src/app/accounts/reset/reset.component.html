@@ -1,0 +1,42 @@
+<div class="container">
+
+	<div class="form-column">
+
+		<span>&nbsp;</span>
+
+		<form class="form-box">
+			<h2 class="fade-in">Reset password</h2>
+
+			<span>&nbsp;</span>
+
+			<form (ngSubmit)="submitReset()">
+
+				<div class="form">
+
+					<div class="text-input fade-in-up delay-0-2">
+						<input type="text" [(ngModel)]="password" placeholder="New password" name="password"/>
+					</div>
+
+					<!-- invisible submit button -->
+					<input type="submit" value="Login" (click)="submitReset()" style="display:none;"/>
+					
+				</div>
+			</form>
+
+			<!-- submit button -->
+			<button class="solid transition-0-25 fade-in-up delay-0-4" (click)="submitReset()">Submit</button>
+
+			<!-- <hr class="fade-in delay-0-6" /> -->
+
+			<!-- return to login page button -->
+			<!-- <button class="small nofill transition-0-25 fade-in-up delay-0-8" (click)="routerNav('accounts')">
+				Back
+			</button> -->
+
+		</form>
+
+		<span>&nbsp;</span>
+
+	</div>
+
+</div>

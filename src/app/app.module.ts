@@ -29,6 +29,7 @@ import { RegisterComponent } from './accounts/register/register.component';
 import { RecoverComponent } from './accounts/recover/recover.component';
 import { AlertComponent } from './utils/alert/alert.component';
 import { ItemCardComponent } from './main/items/item-card/item-card.component';
+import { ResetComponent } from './accounts/reset/reset.component';
 
 
 // etc
@@ -52,7 +53,8 @@ const appRoutes = [
 			{ path: '', redirectTo: 'login', pathMatch: 'full' },
 			{ path: 'login', component: LoginComponent },
 			{ path: 'register', component: RegisterComponent },
-			{ path: 'recover', component: RecoverComponent }
+			{ path: 'recover', component: RecoverComponent },
+			{ path: 'reset', component: ResetComponent }
 		]
 	},
 
@@ -79,6 +81,7 @@ const appRoutes = [
 		RecoverComponent,
 		AlertComponent,
 		ItemCardComponent,
+		ResetComponent,
 	],
 	imports: [
 		BrowserModule,
