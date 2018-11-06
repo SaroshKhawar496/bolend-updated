@@ -19,7 +19,7 @@ class NotificationsController < ApplicationController
 		end 
 		json_str = json_str[0...-2]
 		json_str += "\n\t]\n}"
-		puts "#{json_str}"
+		# puts "#{json_str}"
 		
 	end
 end
