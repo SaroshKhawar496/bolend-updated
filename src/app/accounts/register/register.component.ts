@@ -121,4 +121,8 @@ export class RegisterComponent implements OnInit {
 
 	}
 
+
+	public routerNav ( path: string ) : void {
+		this.router.navigateByUrl ( path );
+	}
 }
