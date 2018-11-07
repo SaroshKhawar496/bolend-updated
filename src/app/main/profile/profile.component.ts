@@ -16,20 +16,22 @@ import { Subscription } from 'rxjs';
 export class ProfileComponent implements OnInit, OnDestroy {
 
 	currentUser: User;
+	you: boolean = true;
 	paramSub: Subscription;
 	defaultMaxAvailableItems:	number = 6;
 	defaultMaxBorrowedItems:	number = 6;
 
 
 	constructor ( 
-		private http: HttpService,
-		private route: ActivatedRoute,
-		private router: Router,
-		private alert: AlertService,
+		protected http: HttpService,
+		protected route: ActivatedRoute,
+		protected router: Router,
+		protected alert: AlertService,
 	) { }
 
 
 	ngOnInit () {
+		// load a default, empty user
 		this.currentUser = this.http.getCurrentUser();
 
 		// subscribe to changes in url params
@@ -41,13 +43,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
 	}
 
+	/**
+	 * Given an user id, request more info about that user from the server
+	 * @param id user id
+	 */
 	loadUser ( id?: number ) : void {
 		// this.currentUser = this.http.getCurrentUser();
 		let path: string = `/users/${id}`;
 		this.http.getObservable ( path ).subscribe(
 			data => {
-				console.log ( 'loadUser', data );
 				this.currentUser = new User(data);
+				this.you = (this.currentUser.id == this.http.getCurrentUser().id);
+				console.log ( this.http.getCurrentUser() );
 			},
 			(err: HttpErrorResponse) => this.loadUserErrorHandler(err),
 		)
@@ -55,7 +62,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
 	// 401 errors (invalid/expired JWT) will have been intercepted before this
 	// we should only be dealing with 404 or 5xx here
-	loadUserErrorHandler ( err: HttpErrorResponse ) : void {
+	protected loadUserErrorHandler ( err: HttpErrorResponse ) : void {
 		// user not found
 		if ( err.status == 404 ) {
 			console.error ( "No user with this ID exists!" );
@@ -67,7 +74,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 	}
 
 
-	get u() { return this.currentUser; }
+	get user() { return this.currentUser; }
 
 	ngOnDestroy(): void {
 		if ( this.paramSub )

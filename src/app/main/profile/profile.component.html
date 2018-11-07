@@ -2,24 +2,26 @@
 
 	<!-- header -->
 	<div class="grid-header">
-		<h2>{{u.fname}}'s Profile</h2>
+		<h2>{{user.fname}}'s Profile</h2>
 	</div>
 
 
 	<!-- profile -->
 	<div class="grid-profile">
 		<div style="width: 100%">
-			<img class="profile" [src]="u.profileImgUrl || 'assets/img/pepe.png'">
+			<img class="profile" [src]="user.profileImgUrl || 'assets/img/pepe.png'">
 		</div>
 		<br />
-		<div class="profile full-name">{{u.fname}} {{u.lname}}</div>
+		<div class="profile full-name">{{user.fname}} {{user.lname}}</div>
 		<table class="profile">
-			<tr *ngIf="u.created_date"><td class="label">Member since</td><td class="data">{{u.created_date.toDateString()}}</td></tr>
-			<tr *ngIf="u.email"><td class="label">email</td><td class="data">{{u.email}}</td></tr>
-			<tr *ngIf="u.phone"><td class="label">phone</td><td class="data">{{u.phone}}</td></tr>
-			<tr *ngIf="u.address"><td class="label">address</td><td class="data">{{u.address}}</td></tr>
-			<tr *ngIf="u.gender"><td class="label">gender</td><td class="data">{{u.gender}}</td></tr>
+			<tr *ngIf="user.created_date"><td class="label">Member since</td><td class="data">{{user.created_date.toDateString()}}</td></tr>
+			<tr *ngIf="user.email"><td class="label">email</td><td class="data">{{user.email}}</td></tr>
+			<tr *ngIf="user.phone"><td class="label">phone</td><td class="data">{{user.phone}}</td></tr>
+			<tr *ngIf="user.address"><td class="label">address</td><td class="data">{{user.address}}</td></tr>
+			<tr *ngIf="user.gender"><td class="label">gender</td><td class="data">{{user.gender}}</td></tr>
 		</table>
+		<button *ngIf="you">Edit Profile</button>
+		<h5></h5>
 		<hr class="divider" />
 	</div>
 	
@@ -27,12 +29,12 @@
 	<!-- items available -->
 	<div class="grid-box1">
 		<h3 class="box-title">Items Available</h3>
-		<div *ngIf="u.itemsAvailable" class="box-content flex card-carousel">
-			<div *ngFor="let item of u.itemsAvailable.slice(0,defaultMaxAvailableItems); let i=index">
+		<div *ngIf="user.itemsAvailable" class="box-content flex card-carousel">
+			<div *ngFor="let item of user.itemsAvailable.slice(0,defaultMaxAvailableItems); let i=index">
 				<app-item-card [item]="item"></app-item-card>
 			</div>
 		</div>
-		<!-- <pre>{{u.items | json}}</pre> -->
+		<!-- <pre>{{user.items | json}}</pre> -->
 		<hr class="divider" />
 	</div>
 
