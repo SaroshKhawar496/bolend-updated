@@ -3,6 +3,7 @@ export class Item {
 	name: string = "";
 	description: string = "";
 	url: string = "";
+	tags: string | Array<string>;
 
 	imgUrl: string;			// main image; more images are allowed
 
