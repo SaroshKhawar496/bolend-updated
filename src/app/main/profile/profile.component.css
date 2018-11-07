@@ -113,5 +113,6 @@ h2, h3 {
 * Item section
 **************************************************************/
 .card-carousel {
-	justify-content: space-evenly;
+	justify-content: flex-start;
+	align-items: stretch;
 }

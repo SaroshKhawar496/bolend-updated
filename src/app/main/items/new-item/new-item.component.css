@@ -1,0 +1,25 @@
+div.container {
+	min-height: calc(100vh - 3em);
+	width: 100%;
+	margin: 0;
+	padding: 0;
+
+	background: #850565;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(135deg, #61045F, #AA076B);  /* semi-old browsers */
+	background: linear-gradient(135deg, #61045F, #AA076B); /* modern browsers */
+
+	align-content: center;
+	overflow: hidden;
+}
+
+/* div.form-column {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+
+	height: 100%;
+	min-height: inherit;
+} */

@@ -30,6 +30,7 @@ import { RecoverComponent } from './accounts/recover/recover.component';
 import { AlertComponent } from './utils/alert/alert.component';
 import { ItemCardComponent } from './main/items/item-card/item-card.component';
 import { ResetComponent } from './accounts/reset/reset.component';
+import { NewItemComponent } from './main/items/new-item/new-item.component';
 
 
 // etc
@@ -64,6 +65,14 @@ const appRoutes = [
 		component: ProfileComponent,
 		canActivate: [AuthGuard]
 	},
+
+	// new item
+	{
+		path: 'items',
+		component: NewItemComponent,			// temporarily make the default items component NewItem
+		canActivate: [AuthGuard],
+	},
+
 	{ path: 'you', component: YouComponent, canActivate: [AuthGuard] }
 ];
 
@@ -82,6 +91,7 @@ const appRoutes = [
 		AlertComponent,
 		ItemCardComponent,
 		ResetComponent,
+		NewItemComponent,
 	],
 	imports: [
 		BrowserModule,

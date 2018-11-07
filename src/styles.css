@@ -92,6 +92,25 @@ p.notice, p.alert {
 	display: none;
 }
 
+.form-column {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+
+	height: 100%;
+	min-height: inherit;
+	/* padding: 25vh 0; */
+}
+
+.form {
+	width: 256px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
 
 
 

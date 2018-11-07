@@ -26,7 +26,7 @@ div.container {
 }
 
 
-.form-column {
+/* .form-column {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -37,14 +37,14 @@ div.container {
 	height: 100%;
 	min-height: inherit;
 	/* padding: 25vh 0; */
-}
+/* }
 
 .form {
 	width: 256px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-}
+}  */
 
 .text-input label { 
 	width: 100%;
