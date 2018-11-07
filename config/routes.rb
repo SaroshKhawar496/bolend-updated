@@ -14,6 +14,9 @@ Rails.application.routes.draw do
                 :controllers => {sessions: 'sessions', registrations: 'registrations', passwords: 'passwords'}, 
                 defaults: { format: :json }
 
+    # custom routes for resources
+    get "users/you", to: 'users#you'    # show currently auth'd user
+    
 
     root "welcome#home"
     resources :users

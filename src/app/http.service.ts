@@ -149,6 +149,12 @@ export class HttpService {
 	}
 
 
+	/**
+	 * Build an `Observable` for an HTTP PUT request. `subscribe()` to send the request
+	 * @param path API path
+	 * @param payload payload object
+	 * @param include include the request headers?
+	 */
 	putObservable ( path: string, payload: object, include: boolean = false )
 	: Observable<object>
 	{
