@@ -1,4 +1,4 @@
-<div class="item-card-container">
+<div class="item-card-container" [ngClass]="{'color-white': cardOptions.colorWhite}">
 
     <!-- item image -->
     <div class="item-img-main">
@@ -8,7 +8,7 @@
 
     <!-- card body -->
     <div class="item-card-body">
-        <h4 class="item-name">{{item.id || -1}} - {{item.name || 'null'}}</h4>
+        <h4 class="item-name">{{item.id}} {{item.name || 'Item Name'}}</h4>
         <div class="item-description">
             {{item.description}}
         </div>

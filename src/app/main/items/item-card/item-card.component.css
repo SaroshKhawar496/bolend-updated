@@ -1,12 +1,12 @@
 div.item-card-container {
     max-width: 250px;
     margin: 1em auto;
-    border: 1px solid #aaa;
+    border: 1px solid #ccc;
     height: 100%;
 }
 
 div.item-img-main {
-    background-color: #ccc;
+    background-color: #ddd;
     width: inherit;
 }
 .item-img-main svg {
@@ -18,3 +18,12 @@ div.item-card-body {
 }
 
 h4 { font-weight: 600; }
+
+
+.color-white {
+    color: #fff;
+}
+.color-white div.item-img-main{
+    background: none;
+    border-bottom: 1px solid #ccc;
+}

@@ -7,7 +7,8 @@ import { Item } from 'src/app/_models/item';
 	styleUrls: ['./item-card.component.css']
 })
 export class ItemCardComponent implements OnInit {
-	@Input() item: Item;
+	@Input() item: Item | object;
+	@Input() cardOptions?: ItemCardOptions | object;
 
 	constructor () { }
 
@@ -15,4 +16,17 @@ export class ItemCardComponent implements OnInit {
 		
 	}
 
+}
+
+
+export class ItemCardOptions {
+	colorWhite: boolean = false;
+
+
+	constructor ( options?: object ) {
+		if ( options ){
+			for ( let p in options )
+				this[p] = options[p];
+		}
+	}
 }
