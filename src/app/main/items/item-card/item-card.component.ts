@@ -7,8 +7,8 @@ import { Item } from 'src/app/_models/item';
 	styleUrls: ['./item-card.component.css']
 })
 export class ItemCardComponent implements OnInit {
-	@Input() item: Item | object;
-	@Input() cardOptions?: ItemCardOptions | object;
+	@Input() item: Item;
+	@Input() cardOptions?: ItemCardOptions = new ItemCardOptions();
 
 	constructor () { }
 
