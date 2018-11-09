@@ -5,10 +5,12 @@
 
 		<div class="flex new-item-form">
 
-			<app-item-card [item]="{
-				name: f.name.value,
-				description: f.description.value
-			}" [cardOptions]="itemCardOptions"></app-item-card>
+			<div style="margin: 1em 0;">
+				<app-item-card [item]="{
+					name: f.name.value,
+					description: f.description.value
+				}" [cardOptions]="itemCardOptions"></app-item-card>
+			</div>
 
 			<form [formGroup]="itemForm" (ngSubmit)="submitItem()" class="item-form">
 

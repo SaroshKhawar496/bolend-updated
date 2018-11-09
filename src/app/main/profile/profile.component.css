@@ -102,6 +102,11 @@ table.profile {
 	font-weight: 600;
 	text-align: right;
 }
+.grid-profile button {
+	width: 100%;
+	font-size: 1.25em;
+	padding: 0.5em;
+}
 
 h2, h3 {
 	font-weight: 600;
@@ -115,4 +120,7 @@ h2, h3 {
 .card-carousel {
 	justify-content: flex-start;
 	align-items: stretch;
+}
+.item {
+	margin: 0.5em;
 }
