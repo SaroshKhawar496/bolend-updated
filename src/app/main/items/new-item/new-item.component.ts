@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Item } from 'src/app/_models/item';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ItemCardOptions } from '../item-card/item-card.component';
 
 
 @Component({
@@ -16,8 +17,9 @@ export class NewItemComponent implements OnInit {
 	// member properties
 	itemForm: FormGroup;
 	get f() { return this.itemForm.controls; }
-	item: Item = new Item();
+	// item: Item = new Item();
 	submitted: boolean = false;
+	itemCardOptions: ItemCardOptions = new ItemCardOptions ({colorWhite: true});
 
 	constructor (
 		protected http: HttpService,
@@ -28,7 +30,6 @@ export class NewItemComponent implements OnInit {
 
 	ngOnInit() {
 		this.initializeForm();
-
 	}
 
 	/**
@@ -41,6 +42,8 @@ export class NewItemComponent implements OnInit {
 			tags: new FormControl(),
 		});
 	}
+
+
 
 
 	/**

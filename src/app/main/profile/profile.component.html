@@ -30,7 +30,7 @@
 	<div class="grid-box1">
 		<h3 class="box-title">Items Available</h3>
 		<div *ngIf="user.itemsAvailable" class="box-content flex card-carousel">
-			<div *ngFor="let item of user.itemsAvailable.slice(0,defaultMaxAvailableItems); let i=index">
+			<div *ngFor="let item of user.itemsAvailable.slice(0,defaultMaxAvailableItems); let i=index" class="item">
 				<app-item-card [item]="item"></app-item-card>
 			</div>
 		</div>

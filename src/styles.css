@@ -112,6 +112,11 @@ p.notice, p.alert {
 	justify-content: space-evenly;
 }
 
+button {
+	background: none;
+	border: 2px solid #000;	
+}
+
 
 
 /*****************************************************

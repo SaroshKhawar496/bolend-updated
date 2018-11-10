@@ -13,22 +13,27 @@ div.container {
 }
 
 div.new-item-form {
-	background: #eee;
-	padding: 1em;
+	/* background: #eee; */
+	/* padding: 1em; */
 	align-items: stretch;
 }
 
 
 form.item-form {
 	padding: 1em;
+	max-width: 256px;
 }
 .item-form input.text-input, .item-form textarea {
 	width: 100%;
 	padding: 0.5em;
 	margin-bottom: 1em;
-	border: 2px solid #bbb;
+	border: 2px solid #eee;
 	float: left;
-	max-width: 256px;
+	background: none;
+	resize: vertical;
+	color: #fff;
+	font-family: inherit;
+	font-size: inherit;
 
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -37,16 +42,34 @@ form.item-form {
 	transition: all 0.25s ease-in-out;
 }
 .item-form input.text-input:focus, .item-form textarea:focus {
-	border: 2px solid rgba(207, 22, 136, 0.6);
-	box-shadow: 0 0 5px 1px rgba(207, 22, 136, 0.6);
+	border: 2px solid #fff;
+	box-shadow: 0 0 5px 1px #fff;
+}
+.item-form input.text-input::placeholder, .item-form textarea::placeholder {
+	color: #ddd;
 }
 
 
 /* labels */
 .item-form label {			/* regular labels */
-	font-size: 0.75em;
-	color: #666;		/* nice */
+	font-size: 0.9em;
+	color: #ddd;		/* nice */
 	float: left;
+}
+
+.item-form input.submit-btn {
+	width: 100%;
+	padding: 0.5em 1em;
+	color: #fff;
+	font-size: 1.25em;
+	border: 2px solid #eee;
+	background: none;
+	cursor: pointer;
+	transition: all 0.25s ease-in-out;
+}
+.item-form input.submit-btn:hover {
+	box-shadow: 0 0 5px 1px #fff;
+	border: 2px solid #fff;
 }
 
 
@@ -54,11 +77,15 @@ form.item-form {
 	div.new-item-form { flex-direction: column; }
 }
 @media screen and (min-width:1281px) {
-	.item-form input.text-input, .item-form textarea {
+	form.item-form {
 		max-width: 512px;
 	}
 }
 
+h2 {
+	font-weight: 300;
+	color: #fff;
+}
 
 /* div.form-column {
 	text-align: center;

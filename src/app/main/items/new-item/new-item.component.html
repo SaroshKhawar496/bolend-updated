@@ -1,26 +1,32 @@
 <div class="container">
 	<div class="form-column">
 		<span>&nbsp;</span>
+		<h2 class="fade-in">Post New Item</h2>
 
 		<div class="flex new-item-form">
 
-			<app-item-card [item]="item"></app-item-card>
+			<div style="margin: 1em 0;">
+				<app-item-card [item]="{
+					name: f.name.value,
+					description: f.description.value
+				}" [cardOptions]="itemCardOptions"></app-item-card>
+			</div>
 
 			<form [formGroup]="itemForm" (ngSubmit)="submitItem()" class="item-form">
 
 				<!-- item name -->
 				<label for="name">Item Name</label>
 				<input type="text" formControlName="name" name="item-name" 
-					[ngClass]="{'is-invalid': submitted && f.name.errors}" 
+					[ngClass]="{'is-invalid': submitted && f.name.errors}"
+					placeholder="Item name"
 					class="text-input" 
 				/> 
 
 				<!-- item description -->
 				<label for="description">Description</label><br>
-				<textarea rows="4" formControlName="description" 
+				<textarea rows="4" formControlName="description" placeholder="Item description"
 					[ngClass]="{'is-invalid': submitted && f.name.errors}">
 				</textarea>
-				<!-- <input type="text" formControlName -->
 					
 
 				<!-- item tags -->
