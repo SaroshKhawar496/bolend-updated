@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'loans/index'
+  get 'loans/create'
   #devise_for :users with path accounts to avoid confusion
   #rerouting the Devise registrations controller to extra registrations controller
   #to overwrite the after_update_path for accounts. ie take to /items after profile update 
@@ -26,6 +28,8 @@ Rails.application.routes.draw do
     resources :items
   
     resources :requests
+
+    resources :loans
     
   end
  

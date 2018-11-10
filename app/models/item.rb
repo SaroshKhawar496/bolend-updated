@@ -6,4 +6,7 @@ class Item < ApplicationRecord
 
   has_many :requests, dependent: :destroy
   has_many :requesting_users, :through => :requests, :source => :user
+
+  has_one :loan, dependent: :destroy
+  has_one :borrower, :through => :loan, :source => :user
 end

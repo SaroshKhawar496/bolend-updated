@@ -54,11 +54,15 @@
 	#using helper to encrypt and store passwords in users table
 	#has_secure_password
 	
-	#creating a one to many relationship 
+	#item association
 	has_many :items, dependent: :destroy
 
-	# the like associations
+	#requests association
 	has_many :requests, dependent: :destroy
 	has_many :requested_items, :through => :requests, :source => :item
+
+  #loans association
+  has_many :loans, dependent: :destroy
+  has_many :borrowed_items, :through => :loans, :source => :item
 
 end

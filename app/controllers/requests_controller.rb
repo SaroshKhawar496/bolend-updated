@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
   def create
     @item = Item.find(params[:id])
     if ! current_user.requested_items.include? @item #to prevent user from requesting the same item again
-        if ! current_user.items.include? @item
+        if ! current_user.items.include? @item #to prevent user from requesting his own item
           @request = current_user.requests.new(item: @item) 
           if @request.save
             #redirect_to item_path(@item)
@@ -15,7 +15,6 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = Request.all 
     @user = User.find(current_user.id)
   end
 

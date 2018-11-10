@@ -1,7 +1,10 @@
 json.incoming_requests @user.items do |item|
-  json.my_item item
-  json.requesting_users item.requesting_users do |requesting_user|
-    json.requester requesting_user
+  if item.requesting_users.present?
+    json.my_item item
+    json.requests item.requests do |request|
+      json.request_id request.id
+      json.requesting_user request.user
+    end
   end
 end
 
