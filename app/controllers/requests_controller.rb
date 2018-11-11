@@ -29,10 +29,6 @@ class RequestsController < ApplicationController
             
             end
 
-
-
-
-
             #redirect_to item_path(@item)
             render :index, status: :ok
           end

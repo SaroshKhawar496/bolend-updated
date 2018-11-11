@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     root "welcome#home"
     resources :users
     
-    get 'app/notif', to: "notifications#show"
+    get 'app/notify', to: "notifications#index"
 
     resources :items
   
