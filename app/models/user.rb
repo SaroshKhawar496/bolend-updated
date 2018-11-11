@@ -65,4 +65,8 @@
   has_many :loans, dependent: :destroy
   has_many :borrowed_items, :through => :loans, :source => :item
 
+
+  #notifications association
+  has_many :notifications
+
 end
