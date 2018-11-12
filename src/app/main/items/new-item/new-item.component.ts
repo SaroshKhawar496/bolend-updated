@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Item } from 'src/app/_models/item';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ItemCardOptions } from '../item-card/item-card.component';
+import { AlertService } from 'src/app/utils/alert/alert.service';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class NewItemComponent implements OnInit {
 		protected http: HttpService,
 		protected router: Router,
 		protected formBuilder: FormBuilder,
+		protected alert: AlertService,
 		// protected file: File,
 		// protected fReader: FileReader,
 	) { }
@@ -74,9 +76,11 @@ export class NewItemComponent implements OnInit {
 		this.submitted = true;
 
 		// send the request
+		this.alert.info ( "Submitting new item..." );
 		this.http.postObservable ( path, payload ).subscribe (
 			res => {
 				console.log ( res );
+				this.alert.success ( "Your new item has been uploaded and is available for request!", true );
 			},
 			(err: HttpErrorResponse) => console.error ( err )
 		)

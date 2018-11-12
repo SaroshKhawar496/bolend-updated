@@ -35,11 +35,13 @@
 				<input type="text" formControlName="tags" name="tags"> -->
 
 				<!-- item image(s) -->
-				<input #imageInput
-					type="file"
-					accept="image/*"
-					(change)="processFile(imageInput)">
-
+				<label class="fileContainer" title="Upload a cover image. More images can be added later.">
+					Add photo
+					<input #imageInput
+						type="file"
+						accept="image/*"
+						(change)="processFile(imageInput)">
+				</label>
 				<input type="submit" value="Submit" class="submit-btn">
 
 			</form>
