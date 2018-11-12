@@ -14,11 +14,8 @@
 	/* grid-template-columns: [left-bar] 256px [left-bar-end body1] 1fr [body1-end body2] 1fr [body2-end]; */
 	grid-template-columns: [left-bar] 256px [left-bar-end body1] 1fr [body1-end];
 	grid-template-rows: auto;
+	grid-gap: 1em;
 
-	/* grid-template-areas: 
-		"header header header"
-		"profile box1 box2"
-		"profile box3 box4"; */
 	grid-template-areas: 
 		"header header"
 		"profile box1"

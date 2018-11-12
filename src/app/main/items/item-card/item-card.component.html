@@ -2,8 +2,8 @@
 
     <!-- item image -->
     <div class="item-img-main">
-        <img *ngIf="item.imgUrl" src="item.imgUrl" />
-        <svg *ngIf="!item.imgUrl"><use href="assets/icons/navbar.svg#i-photo"></use></svg>
+        <img *ngIf="item.imgSrc || item.imgUrl" [src]="item.imgSrc || item.imgUrl" />
+        <svg *ngIf="!item.imgSrc && !item.imgUrl"><use href="assets/icons/navbar.svg#i-photo"></use></svg>
     </div>
 
     <!-- card body -->

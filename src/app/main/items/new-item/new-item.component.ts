@@ -17,6 +17,7 @@ export class NewItemComponent implements OnInit {
 	// member properties
 	itemForm: FormGroup;
 	get f() { return this.itemForm.controls; }
+	imgSrc: string | ArrayBuffer;
 	// item: Item = new Item();
 	submitted: boolean = false;
 	itemCardOptions: ItemCardOptions = new ItemCardOptions ({colorWhite: true});
@@ -25,6 +26,8 @@ export class NewItemComponent implements OnInit {
 		protected http: HttpService,
 		protected router: Router,
 		protected formBuilder: FormBuilder,
+		// protected file: File,
+		// protected fReader: FileReader,
 	) { }
 
 
@@ -43,6 +46,20 @@ export class NewItemComponent implements OnInit {
 		});
 	}
 
+
+	processFile ( input: any ) : void {
+		console.log ( 'processFile', input);
+		const file: File = input.files[0];
+		const reader: FileReader = new FileReader();
+		if (file){
+			console.log ( 'file', file );
+			reader.onload = (e: any) => {
+				console.log ('onload', e);
+				this.imgSrc = e.target.result;
+			}
+			reader.readAsDataURL(file);
+		}
+	}
 
 
 

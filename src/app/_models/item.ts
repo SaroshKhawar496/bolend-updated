@@ -6,6 +6,7 @@ export class Item {
 	tags: string | Array<string>;
 
 	imgUrl: string;			// main image; more images are allowed
+	imgSrc: string | ArrayBuffer;	// src buffer of main image
 
 	constructor ( attribs?: object ) {
 		if ( attribs ){

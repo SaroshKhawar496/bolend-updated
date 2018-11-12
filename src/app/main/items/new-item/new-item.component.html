@@ -8,7 +8,8 @@
 			<div style="margin: 1em 0;">
 				<app-item-card [item]="{
 					name: f.name.value,
-					description: f.description.value
+					description: f.description.value,
+					imgSrc: imgSrc
 				}" [cardOptions]="itemCardOptions"></app-item-card>
 			</div>
 
@@ -32,6 +33,12 @@
 				<!-- item tags -->
 				<!-- <label for="tags"></label>
 				<input type="text" formControlName="tags" name="tags"> -->
+
+				<!-- item image(s) -->
+				<input #imageInput
+					type="file"
+					accept="image/*"
+					(change)="processFile(imageInput)">
 
 				<input type="submit" value="Submit" class="submit-btn">
 
