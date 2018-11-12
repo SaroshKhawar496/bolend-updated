@@ -13,11 +13,13 @@ class Item < ApplicationRecord
   #Searching
   searchkick
 
-  def search_data
-  	{
-  		item_name: name,
-  		item_detail: description
-  	}
+  # def search_data
+  # 	{
+  # 		item_name: name,
+  # 		item_detail: description
+  # 	}
 
+
+  # end
 
 end
