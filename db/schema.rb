@@ -41,11 +41,7 @@ ActiveRecord::Schema.define(version: 2018_11_11_184526) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "owner"class Loan < ApplicationRecord
-  belongs_to :user
-  belongs_to :item
-end
-
+    t.string "owner"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
@@ -104,4 +100,4 @@ end
   add_foreign_key "notifications", "users"
   add_foreign_key "requests", "items"
   add_foreign_key "requests", "users"
-end
+

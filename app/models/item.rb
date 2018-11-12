@@ -9,4 +9,15 @@ class Item < ApplicationRecord
 
   has_one :loan, dependent: :destroy
   has_one :borrower, :through => :loan, :source => :user
+
+  #Searching
+  searchkick
+
+  def search_data
+  	{
+  		item_name: name,
+  		item_detail: description
+  	}
+
+
 end
