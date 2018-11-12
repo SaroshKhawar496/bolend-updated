@@ -121,3 +121,9 @@ h2, h3 {
 .item {
 	margin: 0.5em;
 }
+
+
+/* mobile/small screens */
+@media screen and (max-width:768px) {
+	.card-carousel { justify-content: center; }
+}
