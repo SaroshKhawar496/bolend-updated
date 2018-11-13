@@ -18,14 +18,28 @@ Rails.application.routes.draw do
 
     # custom routes for resources
     get "users/you", to: 'users#you'    # show currently auth'd user
-    
+      
 
     root "welcome#home"
     resources :users
     
     get 'app/notify', to: "notifications#index"
 
+    post 'app/friendrequest', to: "friendships#newFriendRequest"
+    post 'app/addfriend', to: "friendships#acceptFriendRequest"
+    post 'app/declinefriend', to: "friendships#declineFriendRequest"
+    post 'app/blockfriend', to: "friendships#blockFriend"
+    get 'app/getpendingfriends', to: "friendships#getPendingRequests"
+    get 'app/getblockedfriends', to: "friendships#getBlockedFriends"
+
+    # get 'app/friendrequest', to "user_relations#show"
+    # get 'app/friendrequest', to "user_relations#show"
+
+    resources :user_relations
     resources :items
+
+    # resources :friendships
+
   
     resources :requests
 

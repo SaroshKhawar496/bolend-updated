@@ -21,6 +21,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise', '~> 4.2'
 gem 'devise-jwt', '~> 0.5.8'
 
+# add friendship support
+gem 'has_friendship'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
