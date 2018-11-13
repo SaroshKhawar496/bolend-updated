@@ -9,6 +9,10 @@ class ItemsController < ApplicationController
   end
 
   def index
+
+    #to search send GET request to localhost:3000/api/items?search_item=hel
+    #search_item=hel searching for item with name hel
+
     #State before implementing the searchkick
 
     # @items = Item.all
