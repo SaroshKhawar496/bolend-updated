@@ -101,3 +101,4 @@ ActiveRecord::Schema.define(version: 2018_11_11_184526) do
   add_foreign_key "requests", "items"
   add_foreign_key "requests", "users"
 
+end

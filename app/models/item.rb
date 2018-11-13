@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
   # respond_to :json
+  
+  scope :item_name, -> (search_item) { where("name like ?", "%#{search_item}%")}
 
   belongs_to :user
   has_one_attached :image # one-to-one relationship
@@ -11,7 +13,7 @@ class Item < ApplicationRecord
   has_one :borrower, :through => :loan, :source => :user
 
   #Searching
-  searchkick
+  # searchkick
 
   # def search_data
   # 	{

@@ -1,16 +1,47 @@
 class ItemsController < ApplicationController
   #using current_user.id now
   
+  
+
   def new
     @item = Item.new
     @user = User.find(current_user.id)
   end
 
   def index
-    @items = Item.all
-    #@user = session[:user_id]
-    #userId = current_user.id
+    #State before implementing the searchkick
+
+    # @items = Item.all
+    # @user = User.find(current_user.id)
+
+    # #old stuff
+    # #@user = session[:user_id]
+    # #userId = current_user.id
+    
+
+    # after implementing the searchkick
     @user = User.find(current_user.id)
+
+    if params[:search_item].present?
+      # puts "search_item is present"
+
+      @items = Item.item_name(params[:search_item])
+
+      if @items.length == 0
+        render json: {
+          "message": "We could not find what you were looking for!"
+        }
+       
+      end
+
+      # puts "items.length #{@items.length}"
+    else
+      # puts "item.all"
+      @items = Item.all
+      # puts "items.length #{@items.length}"
+    end
+
+     
   end
 
   def show
@@ -37,14 +68,14 @@ class ItemsController < ApplicationController
       # redirect_to new_item_path
       render json: @item.errors, status: :unprocessable_entity
     end
-        
+
   end
 
 
   private
 
-    def permit_item
-      params.require(:item).permit(:name, :description, :user_id, :image)
-    end
+  def permit_item
+    params.require(:item).permit(:name, :description, :user_id, :image)
+  end
 
 end
