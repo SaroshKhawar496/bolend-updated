@@ -19,7 +19,6 @@ export class NewItemComponent implements OnInit {
 	itemForm: FormGroup;
 	get f() { return this.itemForm.controls; }
 	imgSrc: string | ArrayBuffer;
-	// item: Item = new Item();
 	submitted: boolean = false;
 	itemCardOptions: ItemCardOptions = new ItemCardOptions ({colorWhite: true});
 
@@ -28,8 +27,6 @@ export class NewItemComponent implements OnInit {
 		protected router: Router,
 		protected formBuilder: FormBuilder,
 		protected alert: AlertService,
-		// protected file: File,
-		// protected fReader: FileReader,
 	) { }
 
 
@@ -81,9 +78,18 @@ export class NewItemComponent implements OnInit {
 			res => {
 				console.log ( res );
 				this.alert.success ( "Your new item has been uploaded and is available for request!", true );
+				this.redirectOnSuccess ( res['id'].toString() );
 			},
 			(err: HttpErrorResponse) => console.error ( err )
 		)
+	}
+
+	/**
+	 * Redirect user to page showing details of their item on success
+	 */
+	redirectOnSuccess ( id: string ) : void {
+		let path: Array<string> = [ '/item', id ];
+		this.router.navigate ( path );
 	}
 
 }

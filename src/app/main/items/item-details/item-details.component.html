@@ -11,7 +11,10 @@
 		<!-- title card + user details -->
 		<div class="title">
 			<h2 class="title-header">{{item.name || 'Item name'}}</h2>
-			<h5 class="item-user-name">{{item.user.fullName || 'Anon'}}</h5>
+			<h5 class="item-user-name">
+				<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
+				{{item.user.fullName || 'Anon'}}
+			</h5>
 			<hr />
 		</div>
 		
@@ -36,7 +39,7 @@
 			</div>
 
 			<!-- link -->
-			<div class="action-btn" title="favorite">
+			<div class="action-btn" title="get link">
 				<svg><use href="assets/icons/navbar.svg#i-link"></use></svg>
 			</div>
 

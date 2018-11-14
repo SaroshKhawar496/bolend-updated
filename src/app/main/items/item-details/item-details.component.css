@@ -35,13 +35,27 @@
 	line-height: 1.2em;
 	font-size: 1.2em;
 }
+.title h5 svg {
+	height: 1.2em;
+	width: 1.2em;
+	color: #444;
+	stroke-width: 2px;
+}
+
+
+
+/***** body *****/
+.tags-container {
+	font-weight: 600;
+}
 
 
 
 /****** item controls ******/
 .item-controls.container {
-
+	justify-content: flex-start;
 }
+.item-controls.container > .action-btn:first-child { margin-left: 0; }
 .action-btn {
 	border: 1px solid #bbb;
 	box-shadow: 0 0 4px 1px #bbb;
@@ -49,9 +63,10 @@
 	width: 3em;
 	height: 3em;
 	padding: 1em;
+	margin: 0.5em;
 }
 .action-btn:hover {
-	border: 2px solid #999;
+	box-shadow: 0 0 8px 2px #bbb;
 }
 .action-btn svg {
 	width: 100%;
