@@ -1,3 +1,47 @@
-<p>
-  item-details works!
-</p>
+<div class="detail-container flex flex-column full-body-height">
+	
+	<div *ngIf="item" class="detail-card">
+		<!-- <pre>{{item | json}}</pre> -->
+
+		<!-- cover photo/gallery carousel -->
+		<div>
+			carousel
+		</div>
+
+		<!-- title card + user details -->
+		<div class="title">
+			<h2 class="title-header">{{item.name || 'Item name'}}</h2>
+			<h5 class="item-user-name">{{item.user.fullName || 'Anon'}}</h5>
+			<hr />
+		</div>
+		
+		<!-- description -->
+		<div class="desc-container">
+			{{item.description}}
+		</div>
+
+		<!-- tags -->
+		<div class="tags-container">
+			{{item.tags || '#tags appear here'}}
+		</div>
+
+
+
+		<!-- controls -->
+		<div class="item-controls-container flex">
+
+			<!-- favorite -->
+			<div class="action-btn" title="favorite">
+				<svg><use href="assets/icons/navbar.svg#i-star"></use></svg>
+			</div>
+
+			<!-- link -->
+			<div class="action-btn" title="favorite">
+				<svg><use href="assets/icons/navbar.svg#i-link"></use></svg>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

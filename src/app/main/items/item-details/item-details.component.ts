@@ -39,7 +39,8 @@ export class ItemDetailsComponent implements OnInit {
 		let path: string = `/items/${id}`;
 		this.http.getObservable ( path ).subscribe (
 			data => {
-
+				this.item = new Item(data);
+				console.log ( this.item );
 			},
 			(err: HttpErrorResponse) => this.http.genericModelErrorHandler(err, Model.Item)
 		)

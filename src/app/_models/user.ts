@@ -76,7 +76,7 @@ export class User {
 		this[assignTo] = itemList;
 	}
 
-
+	get fullName() { return `${this.fname} ${this.lname}`; }
 }
 
 
