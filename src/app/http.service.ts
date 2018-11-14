@@ -8,6 +8,7 @@ import { Router, RouterStateSnapshot } from '@angular/router';
 // environment
 import { environment } from '../environments/environment';
 import { AlertService } from './utils/alert/alert.service';
+import { Consts } from './_models/consts';
 
 
 
@@ -183,12 +184,38 @@ export class HttpService {
 
 
 	/****************************************************************
-	 * Alert messages
+	 * Alert messages & error handling
 	 ****************************************************************/
 	public static unsecureProtocolAlert = 
 `This page was NOT loaded using HTTPS protocol.  
 The data you submit in this form may not be safe from attackers and Russian hackers.  
 Continue at your own risk.`
 
+	/**
+	 * Handle generic errors, such as 404 and 5xx errors
+	 * @param err HtppErrorResponse object
+	 * @param type String enum, describing the model type
+	 * @returns {boolean} true if error handled; false if not
+	 */
+	public genericModelErrorHandler ( err: HttpErrorResponse, type: Model ) : boolean {
+		// user not found
+		if ( err.status == 404 ) {
+			console.error ( `No ${type} with this ID exists!` );
+			this.alert.error ( `No ${type} with this ID exists!` );
+			return true;
+		} else if ( err.status >= 500 ) {
+			console.error ( Consts.serverFaultMsg );
+			this.alert.error ( Consts.serverFaultMsg );
+			return true;
+		} 
+		return false;
+	}
+}
 
+/**
+ * String enum, used for error reporting
+ */
+export enum Model {
+	User	= 'user',
+	Item	= 'item',
 }

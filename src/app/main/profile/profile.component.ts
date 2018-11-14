@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpService } from '../../http.service';
+import { HttpService, Model } from '../../http.service';
 import { User } from '../../_models/user';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -56,23 +56,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
 				this.you = (this.currentUser.id == this.http.getCurrentUser().id);
 				console.log ( this.http.getCurrentUser() );
 			},
-			(err: HttpErrorResponse) => this.loadUserErrorHandler(err),
+			(err: HttpErrorResponse) => this.http.genericModelErrorHandler(err, Model.User)
 		)
 	}
-
-	// 401 errors (invalid/expired JWT) will have been intercepted before this
-	// we should only be dealing with 404 or 5xx here
-	protected loadUserErrorHandler ( err: HttpErrorResponse ) : void {
-		// user not found
-		if ( err.status == 404 ) {
-			console.error ( "No user with this ID exists!" );
-			this.alert.error ( "No user with this ID exists!" );
-		} else if ( err.status >= 500 ) {
-			console.error ( Consts.serverFaultMsg );
-			this.alert.error ( Consts.serverFaultMsg );
-		} 
-	}
-
 
 	get user() { return this.currentUser; }
 

@@ -31,6 +31,7 @@ import { AlertComponent } from './utils/alert/alert.component';
 import { ItemCardComponent } from './main/items/item-card/item-card.component';
 import { ResetComponent } from './accounts/reset/reset.component';
 import { NewItemComponent } from './main/items/new-item/new-item.component';
+import { ItemDetailsComponent } from './main/items/item-details/item-details.component';
 
 
 // etc
@@ -72,6 +73,12 @@ const appRoutes = [
 		component: NewItemComponent,			// temporarily make the default items component NewItem
 		canActivate: [AuthGuard],
 	},
+	// item details
+	{
+		path: 'item/:id',
+		component: ItemDetailsComponent,
+		canActivate: [AuthGuard],
+	},
 
 	{ path: 'you', component: YouComponent, canActivate: [AuthGuard] }
 ];
@@ -92,6 +99,7 @@ const appRoutes = [
 		ItemCardComponent,
 		ResetComponent,
 		NewItemComponent,
+		ItemDetailsComponent,
 	],
 	imports: [
 		BrowserModule,

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
 import { User } from 'src/app/_models/user';
-import { HttpService } from 'src/app/http.service';
+import { Model } from 'src/app/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -28,7 +28,7 @@ export class YouComponent extends ProfileComponent {
 				this.currentUser = new User(data);
 				this.you = true;
 			},
-			(err: HttpErrorResponse) => this.loadUserErrorHandler(err),
+			(err: HttpErrorResponse) => this.http.genericModelErrorHandler(err, Model.User),
 		)
 	}
 
