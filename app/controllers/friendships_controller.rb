@@ -19,17 +19,25 @@ class FriendshipsController < ApplicationController
 		@user.decline_request(@friend)
 	end
 
-	def getPendingRequests
-		@user = User.find(current_user.id)
-	end
-
 	def blockFriend
 		@friend = User.find(params[:friend_id])
 		@user = User.find(current_user.id)
 		@user.block_friend(@friend)
 	end
 
+	def getPendingRequests
+		@user = User.find(current_user.id)
+	end
+
 	def getBlockedFriends
+		@user = User.find(current_user.id)
+	end
+
+	def getAllFriends
+		@user = User.find(current_user.id)
+	end
+
+	def getRequestedFriends
 		@user = User.find(current_user.id)
 	end
 

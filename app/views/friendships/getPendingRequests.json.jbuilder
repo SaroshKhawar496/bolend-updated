@@ -1,4 +1,3 @@
 json.pending @user.pending_friends do |pending|
-	# json.request pending["fname"]
-	json.detail "Your friend request to #{pending["fname"]} is still pending"
+	json.detail "Your friend request to #{pending["fname"]} #{pending["lname"]} is still pending"
 end

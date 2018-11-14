@@ -1,4 +1,3 @@
 json.blocked @user.blocked_friends do |blocked|
-	# json.request pending["fname"]
-	json.detail "You have blocked user: #{blocked.fname}"
+	json.detail "You have blocked: #{blocked["fname"]} #{blocked["lname"]}"
 end
