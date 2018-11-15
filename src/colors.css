@@ -11,6 +11,25 @@
 
 
 /*****************************************************
+**** Homepage: gradient stops
+******************************************************/
+.gradient-stop-0 {
+    background-color: #8a2387;
+    color: #fff;
+}
+.gradient-stop-1 {
+    background-color: #e94057;
+    color: #fff;
+}
+.gradient-stop-2 {
+    background-color: #f27121;
+    color: #fff;
+}
+
+
+
+
+/*****************************************************
 **** Generic control buttons
 ******************************************************/
 button.solid {
