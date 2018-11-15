@@ -15,19 +15,27 @@
 ******************************************************/
 .gradient-stop-0 {
     background-color: #8a2387;
-    color: #fff;
 }
 .gradient-stop-1 {
     background-color: #e94057;
-    color: #fff;
 }
 .gradient-stop-2 {
     background-color: #f27121;
-    color: #fff;
 }
 
+.complementary-0 {
+	background-color: #4a7cfa;
+}
+.analogous-0 {
+	background-color: #e943af;
+}
+.bs-green-0 {
+	background-color: #3ca843;
+}
 
-
+.white-text {
+	color: #fff;
+}
 
 /*****************************************************
 **** Generic control buttons
