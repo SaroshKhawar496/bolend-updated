@@ -91,12 +91,25 @@
 .requested-splash {
 	transition: 0.25s all ease-in-out;
 }
+.requested-splash button {
+	min-width: 8em;
+	font-size: 1.2em;
+	padding: 0.5em 1em;
+	margin: 0.2em 0.5em;
+	cursor: pointer;
+	text-align: center;
+	border-radius: 0.2em;
+}
 svg#SEND {
 	stroke-dasharray: 85;
 	stroke-dashoffset: 85;
 	animation-duration: 3s;
 	transition: 0.25s all ease-in-out;
 
-	height: 22em;
-	width: 22em;
+	flex-grow: 1;
+	max-height: 20em;
+	align-self: stretch;
+}
+div.control-container {
+	padding: 1em;
 }

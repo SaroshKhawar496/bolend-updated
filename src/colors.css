@@ -1,0 +1,34 @@
+/*****************************************************
+**** Backgrounds
+******************************************************/
+.gradient-0 {
+	color: #fff;
+	background: #8a2387; /* fallback for old browsers */
+	background: -webkit-linear-gradient(135deg, #8a2387, #e94057, #f27121); 
+	background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
+}
+
+
+
+/*****************************************************
+**** Generic control buttons
+******************************************************/
+button.solid {
+	border: 1px solid #fff;
+	background: #fff;
+	color: #e94057;
+}
+button.solid:hover {
+	box-shadow: 0 0 10px 2px #fff;
+	background: #fff;
+}
+
+button.nofill {
+	border: 1px solid #fff;
+	color: #fff;
+	background: none;
+}
+button.nofill:hover {
+	background: #fff;
+	color: #e94057;
+}

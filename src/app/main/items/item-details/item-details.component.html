@@ -75,11 +75,10 @@
 <!-- item successfully requested splash -->
 <div *ngIf="+qparams.requested" class="requested-splash full-body-height gradient-0">
 	<div class="form-column scale-fontsize">
-		
+		<div>&nbsp;</div>
+
 		<!-- animated send svg -->
-		<div >
-			<svg id="SEND" class="animated-svg"><use href="assets/icons/navbar.svg#i-send"></use></svg>
-		</div>
+		<svg id="SEND" class="animated-svg"><use href="assets/icons/navbar.svg#i-send"></use></svg>
 		<div>
 			<h2>Request sent!</h2>
 			<p>
@@ -87,9 +86,11 @@
 				You'll receive a notification when the owner makes a decision.
 			</p>
 		</div>
-		<div>
-			<button class="" (click)="returnToItemDetails()">Back to Item</button>
+		<div class="control-container">
+			<button class="nofill" (click)="returnToItemDetails()">Back to Item</button>
+			<a routerLink="/"><button class="nofill">Home</button></a>
 		</div>
 
+		<div>&nbsp;</div>
 	</div>
 </div>

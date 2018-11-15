@@ -29,6 +29,8 @@ body {
 }
 
 
+
+
 /*****************************************************
 **** HOME PAGE
 ******************************************************/
@@ -45,12 +47,6 @@ div.bg-card-0 {
 	color: #fff;
 }
 
-.gradient-0 {
-	color: #fff;
-	background: #8a2387; /* fallback for old browsers */
-	background: -webkit-linear-gradient(135deg, #8a2387, #e94057, #f27121); 
-	background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
-}
 
 
 
@@ -198,6 +194,11 @@ button {
 
 button {
 	transition: all 0.25s ease-in-out;	 
+}
+button svg {
+	height: 1em;
+	width: 1em;
+	stroke-width: 2;
 }
 
 
