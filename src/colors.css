@@ -14,7 +14,8 @@
 **** Generic control buttons
 ******************************************************/
 button.solid {
-	border: 1px solid #fff;
+	border: 2px solid #fff;
+	/* border: 1px solid #fff; */
 	background: #fff;
 	color: #e94057;
 }
@@ -24,7 +25,8 @@ button.solid:hover {
 }
 
 button.nofill {
-	border: 1px solid #fff;
+	border: 2px solid #fff;
+	/* border: 1px solid #fff; */
 	color: #fff;
 	background: none;
 }

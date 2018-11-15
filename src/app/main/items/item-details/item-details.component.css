@@ -98,7 +98,7 @@
 	margin: 0.2em 0.5em;
 	cursor: pointer;
 	text-align: center;
-	border-radius: 0.2em;
+	border: 2px solid #fff;
 }
 svg#SEND {
 	stroke-dasharray: 85;

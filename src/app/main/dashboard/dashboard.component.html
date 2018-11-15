@@ -1,31 +1,77 @@
-<div class="dashboard-body">
-	
-	<!-- greeting -->
-	<div>
-		<h2 class="greeting">Hello {{currentUser.fname}}.</h2>
-	</div>
+<div class="full-body-height">
+	<div class="dashboard-body border-box scale-fontsize">
 
-	<!-- at-a-glance widgets -->
-	<div class="widget-container flex">
 
-		<!-- loaned out -->
-		<div class="widget">
-			<div class="widget-title"><h3>Loaned Out</h3></div>
-			<div>
-				<h3>List of items</h3>
-				<pre>{{itemList | json}}</pre>
+		<!-- header/greeting -->
+		<div class="g-header">
+			<h2 class="greeting">Hello {{currentUser.fname}}.</h2>
+		</div>
+
+
+		<!-- new item -->
+		<div class="g-new-item grid-link grid-large" routerLink="/items">
+			<div class="box-column">
+				<div>&nbsp;</div>
+				<svg><use href="assets/icons/navbar.svg#i-compose"></use></svg>
+				<h3>Post New Item</h3>
+				<div>&nbsp;</div>
 			</div>
 		</div>
 
 
-		<!-- borrowing -->
+		<!-- explore -->
+		<div class="g-explore grid-link grid-large">
+			<div class="box-column">
+				<div>&nbsp;</div>
+				<svg><use href="assets/icons/navbar.svg#i-eye"></use></svg>
+				<h3>Explore</h3>
+				<div>&nbsp;</div>
+			</div>
+		</div>
+
 		
-		<div class="widget">
-			<div class="widget-title"><h3>Borrowing</h3></div>
-			
+		<!-- social -->
+		<div class="g-social grid-link">
+			<div class="box-column">
+				<div>&nbsp;</div>
+				<svg><use href="assets/icons/navbar.svg#i-network"></use></svg>
+				<h3>Social</h3>
+				<div>&nbsp;</div>
+			</div>
+		</div>
+
+
+		<!-- search -->
+		<div class="g-search grid-link">
+			<div class="box-column">
+				<div>&nbsp;</div>
+				<svg><use href="assets/icons/navbar.svg#i-search"></use></svg>
+				<h3>Search</h3>
+				<div>&nbsp;</div>
+			</div>
+		</div>
+
+
+		<!-- notifs -->
+		<div class="g-notifs grid-link">
+			<div class="box-column">
+				<div>&nbsp;</div>
+				<svg><use href="assets/icons/navbar.svg#i-bell"></use></svg>
+				<h3>Notifications</h3>
+				<div>&nbsp;</div>
+			</div>
+		</div>
+
+
+		<!-- profile -->
+		<div class="g-profile grid-link">
+			<div class="box-column">
+				<div>&nbsp;</div>
+				<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
+				<h3>Profile</h3>
+				<div>&nbsp;</div>
+			</div>
 		</div>
 
 	</div>
-
-
 </div>
