@@ -200,7 +200,7 @@ Continue at your own risk.`
 	public genericModelErrorHandler ( err: HttpErrorResponse, type: Model ) : boolean {
 		// user not found
 		if ( err.status == 404 ) {
-			console.error ( `No ${type} with this ID exists!` );
+			console.error ( `No ${type} with this ID exists!`, err.error['exception'] );
 			this.alert.error ( `No ${type} with this ID exists!` );
 			return true;
 		} else if ( err.status >= 500 ) {

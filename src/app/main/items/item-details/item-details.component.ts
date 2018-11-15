@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Item } from 'src/app/_models/item';
 import { HttpErrorResponse } from '@angular/common/http';
+import { RequestService } from '../request.service';
 
 @Component({
 	selector: 'app-item-details',
@@ -17,7 +18,8 @@ export class ItemDetailsComponent implements OnInit {
 		protected http: HttpService,
 		protected alert: AlertService,
 		protected router: Router,
-		protected route: ActivatedRoute
+		protected route: ActivatedRoute,
+		protected request: RequestService,
 	) { }
 
 	paramSub: Subscription;
@@ -43,6 +45,20 @@ export class ItemDetailsComponent implements OnInit {
 				console.log ( this.item );
 			},
 			(err: HttpErrorResponse) => 
+				this.http.genericModelErrorHandler(err, Model.Item)
+		)
+	}
+
+
+	/**
+	 * Submit a request to borrow an item
+	 */
+	requestItem () : void {
+		this.request.requestItem ( +this.item.id ).subscribe (
+			res => {
+				console.log ('requestItem', res);
+			},
+			(err: HttpErrorResponse) =>
 				this.http.genericModelErrorHandler(err, Model.Item)
 		)
 	}
