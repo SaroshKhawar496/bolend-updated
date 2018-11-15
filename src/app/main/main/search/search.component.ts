@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 
@@ -29,13 +29,17 @@ export class SearchComponent implements OnInit, OnDestroy {
 	qparams:	Params;
 	searchResults: object;
 
+	searchString: string;
+
 	ngOnInit() {
 		this.fullScreen = true;
 
 		// subscribe to 
+		this.qparams = this.route.snapshot.queryParamMap;
 		this.qparamsSub = this.route.queryParams.subscribe (
 			qparams => {
 				this.qparams = qparams;
+				this.searchString = qparams['q'];
 				this.performSearch ( qparams['q'] );
 			}
 		)
@@ -43,10 +47,22 @@ export class SearchComponent implements OnInit, OnDestroy {
 
 
 	/**
-	 * Perform a search
-	 * @param query 
+	 * Trigger performSearch by navigating with an updated search string
+	 */
+	updateSearch () : void {
+		let queryParams: NavigationExtras = { queryParams: {
+			q: this.searchString
+		}};
+		this.router.navigate ( [], queryParams );
+	}
+
+
+	/**
+	 * Perform a search with the query string provided
+	 * @param query query string; may not be undefined, null, or empty
 	 */
 	performSearch ( query: string ) : void {
+		if (!query) return;
 		let path = `/items/?search_item=${query}`;
 		this.http.getObservable ( path ).subscribe (
 			res => {
@@ -55,6 +71,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 			},
 			err => this.http.genericModelErrorHandler(err)
 		);
+
+		// un-fullscreen the search bar after a search is performed
+		this.fullScreen = false;
 	}
 
 

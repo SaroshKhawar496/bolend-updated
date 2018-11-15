@@ -7,30 +7,38 @@
 	background: -webkit-linear-gradient(135deg, #8a2387, #e94057, #f27121); 
 	background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
 }
+.gradient-1 {
+	background: #8E0E00;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(45deg, #6701bb, #c74028);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(45deg, #6701bb, #c74028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
 
 
 /*****************************************************
 **** Homepage: gradient stops
 ******************************************************/
-.gradient-stop-0 {
+.gradient-0-stop-0 {
     background-color: #8a2387;
 }
-.gradient-stop-1 {
+.gradient-0-stop-1 {
     background-color: #e94057;
 }
-.gradient-stop-2 {
+.gradient-0-stop-2 {
     background-color: #f27121;
 }
 
-.complementary-0 {
-	background-color: #4a7cfa;
+/* .complementary-0 { */
+.gradient-1-stop-0 {
+	background-color: #8c4cb1;
 }
-.analogous-0 {
-	background-color: #e943af;
+/* .analogous-0 { */
+.gradient-1-stop-1 {
+	background-color: #d8454a;
 }
-.bs-green-0 {
-	background-color: #3ca843;
+/* .bs-green-0 { */
+.gradient-1-stop-2 {
+	background-color: #7a941a;
 }
 
 .white-text {
@@ -68,6 +76,7 @@ button.nofill:hover {
 /*****************************************************
 **** Transitions
 ******************************************************/
-.trans-0-25 {
-	transition: 0.25s all ease-in-out;
-}
+.trans-0-25 { transition: 0.25s all ease-in-out; }
+.trans-0-5 	{ transition: 0.5s all ease-in-out; }
+.trans-0-75 { transition: 0.75s all ease-in-out; }
+.trans-1 	{ transition: 1s all ease-in-out; }

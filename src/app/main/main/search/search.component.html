@@ -1,9 +1,14 @@
 <!-- this template renders the search bar -->
-<div [ngClass]="{'full-body-height': fullScreen}" class="search-bg gradient-0">
+<div [ngClass]="{'full-body-height': fullScreen}" class="search-bg gradient-0 trans-0-5">
 
-		<div class="searchbar-container">
+		<div class="searchbar-container white-text trans-0-25">
 			<svg><use href="assets/icons/navbar.svg#i-search"></use></svg>
-			<input class="searchbar white-text border-box trans-0-25" type="text" placeholder="Search for anything" />
+			<input class="searchbar white-text border-box trans-0-25"
+				[(ngModel)]="searchString"
+				type="text" 
+				placeholder="Search for anything" 
+				(keydown.enter)="updateSearch()"
+				/>
 		</div>
 
 </div>
