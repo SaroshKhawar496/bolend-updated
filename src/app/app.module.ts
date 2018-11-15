@@ -32,6 +32,7 @@ import { ItemCardComponent } from './main/items/item-card/item-card.component';
 import { ResetComponent } from './accounts/reset/reset.component';
 import { NewItemComponent } from './main/items/new-item/new-item.component';
 import { ItemDetailsComponent } from './main/items/item-details/item-details.component';
+import { SearchComponent } from './main/main/search/search.component';
 
 
 // etc
@@ -80,6 +81,13 @@ const appRoutes = [
 		canActivate: [AuthGuard],
 	},
 
+	// search page
+	{
+		path: 'search',
+		component: SearchComponent,
+		canActivate: [AuthGuard],
+	},
+
 	{ path: 'you', component: YouComponent, canActivate: [AuthGuard] }
 ];
 
@@ -100,6 +108,7 @@ const appRoutes = [
 		ResetComponent,
 		NewItemComponent,
 		ItemDetailsComponent,
+		SearchComponent,
 	],
 	imports: [
 		BrowserModule,

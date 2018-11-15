@@ -197,7 +197,7 @@ Continue at your own risk.`
 	 * @param type String enum, describing the model type
 	 * @returns {boolean} true if error handled; false if not
 	 */
-	public genericModelErrorHandler ( err: HttpErrorResponse, type: Model ) : boolean {
+	public genericModelErrorHandler ( err: HttpErrorResponse, type?: Model ) : boolean {
 		// user not found
 		if ( err.status == 404 ) {
 			console.error ( `No ${type} with this ID exists!`, err.error['exception'] );
@@ -218,4 +218,5 @@ Continue at your own risk.`
 export enum Model {
 	User	= 'user',
 	Item	= 'item',
+
 }

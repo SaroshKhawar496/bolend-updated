@@ -36,13 +36,16 @@
 .white-text {
 	color: #fff;
 }
+.white-text::placeholder {
+	color: #bbb;
+}
+
 
 /*****************************************************
 **** Generic control buttons
 ******************************************************/
 button.solid {
 	border: 2px solid #fff;
-	/* border: 1px solid #fff; */
 	background: #fff;
 	color: #e94057;
 }
@@ -53,11 +56,18 @@ button.solid:hover {
 
 button.nofill {
 	border: 2px solid #fff;
-	/* border: 1px solid #fff; */
 	color: #fff;
 	background: none;
 }
 button.nofill:hover {
 	background: #fff;
 	color: #e94057;
+}
+
+
+/*****************************************************
+**** Transitions
+******************************************************/
+.trans-0-25 {
+	transition: 0.25s all ease-in-out;
 }
