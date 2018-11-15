@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     get 'app/getblockedfriends', to: "friendships#getBlockedFriends"
     get 'app/friends', to: "friendships#getAllFriends"
     get 'app/requestedfriends', to: "friendships#getRequestedFriends"
+    get 'app/mutualfriends', to: "friendships#getMutualFriends"
 
     # get 'app/friendrequest', to "user_relations#show"
     # get 'app/friendrequest', to "user_relations#show"
