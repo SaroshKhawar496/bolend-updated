@@ -2,6 +2,7 @@
 	margin: auto;
 	/* padding: 1em; */
 	max-width: 666px;
+	font-size: 1.25em;
 }
 .detail-container.flex-column {
 	flex-direction: column;
@@ -21,6 +22,7 @@
 }
 
 
+
 /***** title ******/
 .title h2, .title h5 {
 	padding: 0;
@@ -36,8 +38,8 @@
 	font-size: 1.2em;
 }
 .title h5 svg {
-	height: 1.2em;
-	width: 1.2em;
+	height: 1.1em;
+	width: 1.1em;
 	color: #444;
 	stroke-width: 2px;
 }
@@ -64,9 +66,10 @@
 	height: 3em;
 	padding: 1em;
 	margin: 0.5em;
+	transition: 0.25s all ease-in-out;
 }
 .action-btn:hover {
-	box-shadow: 0 0 8px 2px #bbb;
+	box-shadow: 0 0 10px 2px #bbb;
 }
 .action-btn svg {
 	width: 100%;

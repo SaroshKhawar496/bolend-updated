@@ -138,6 +138,10 @@ button {
     top: 0;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 
 /*****************************************************
 **** TIMED ANIMATIONS

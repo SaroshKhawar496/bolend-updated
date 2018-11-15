@@ -1,14 +1,16 @@
 <div class="item-card-container" [ngClass]="{'color-white': cardOptions.colorWhite || false}">
 
     <!-- item image -->
-    <div class="item-img-main">
+    <div class="item-img-main pointer" (click)='navigateToDetails()'>
         <img *ngIf="item.imgSrc || item.imgUrl" [src]="item.imgSrc || item.imgUrl" />
         <svg *ngIf="!item.imgSrc && !item.imgUrl"><use href="assets/icons/navbar.svg#i-photo"></use></svg>
     </div>
 
     <!-- card body -->
     <div class="item-card-body">
-        <h4 class="item-name">{{item.id}} {{item.name || 'Item Name'}}</h4>
+        <h4 class="item-name pointer" (click)='navigateToDetails()'>
+            {{item.name || 'Item Name'}}
+        </h4>
         <div class="item-description">
             {{item.description}}
         </div>

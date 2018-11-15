@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Item } from 'src/app/_models/item';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-item-card',
@@ -10,10 +11,21 @@ export class ItemCardComponent implements OnInit {
 	@Input() item: Item;
 	@Input() cardOptions?: ItemCardOptions = new ItemCardOptions();
 
-	constructor () { }
+	constructor (
+		protected router: Router,
+	) { }
 
 	ngOnInit() {
 		
+	}
+
+
+	/**
+	 * Navigate to item details for this particular item
+	 */
+	navigateToDetails() {
+		let path: Array<string> = [ '/item', this.item.id.toString() ];
+		this.router.navigate ( path );
 	}
 
 }

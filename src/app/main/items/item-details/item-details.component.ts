@@ -42,7 +42,8 @@ export class ItemDetailsComponent implements OnInit {
 				this.item = new Item(data);
 				console.log ( this.item );
 			},
-			(err: HttpErrorResponse) => this.http.genericModelErrorHandler(err, Model.Item)
+			(err: HttpErrorResponse) => 
+				this.http.genericModelErrorHandler(err, Model.Item)
 		)
 	}
 
