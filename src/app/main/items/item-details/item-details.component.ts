@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService, Model } from 'src/app/http.service';
 import { AlertService } from 'src/app/utils/alert/alert.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Item } from 'src/app/_models/item';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -22,7 +22,9 @@ export class ItemDetailsComponent implements OnInit {
 		protected request: RequestService,
 	) { }
 
-	paramSub: Subscription;
+	paramSub:	Subscription;
+	qparamSub:	Subscription;
+	qparams:	Params;
 	item: Item;
 
 
@@ -31,6 +33,12 @@ export class ItemDetailsComponent implements OnInit {
 		this.paramSub = this.route.params.subscribe (
 			params => this.loadItem ( +params.id )
 		);
+
+		// listen to changes in query params
+		this.qparams = { requested: '0' };
+		this.qparamSub = this.route.queryParams.subscribe (
+			params => this.qparams = params
+		)
 	}
 
 	/**
@@ -42,11 +50,11 @@ export class ItemDetailsComponent implements OnInit {
 		this.http.getObservable ( path ).subscribe (
 			data => {
 				this.item = new Item(data);
-				console.log ( this.item );
+				console.log ( 'loadItem', this.item, id==data['id'] );
 			},
 			(err: HttpErrorResponse) => 
 				this.http.genericModelErrorHandler(err, Model.Item)
-		)
+		);
 	}
 
 
@@ -57,10 +65,21 @@ export class ItemDetailsComponent implements OnInit {
 		this.request.requestItem ( +this.item.id ).subscribe (
 			res => {
 				console.log ('requestItem', res);
+
+				// 'navigate' to add queryparam 'requested=true'
+				let extras: NavigationExtras = {
+					queryParams: { requested: 1 }
+				}
+				this.router.navigate ([], extras );
 			},
 			(err: HttpErrorResponse) =>
 				this.http.genericModelErrorHandler(err, Model.Item)
 		)
+	}
+
+
+	returnToItemDetails () {
+		this.router.navigate ([]);
 	}
 
 }

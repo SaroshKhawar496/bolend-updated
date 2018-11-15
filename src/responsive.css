@@ -30,9 +30,11 @@
 /* medium size screens */
 @media screen and (min-width:769px) and (max-width:1280px) {
 	.hide-on-medium { display:none !important; }
+	.scale-fontsize { font-size: 1.25em; }
 }
 
 /* large screens */
 @media screen and (min-width:1281px) {
 	.hide-on-large { display: none !important; }
+	.scale-fontsize { font-size: 1.5em; }
 }

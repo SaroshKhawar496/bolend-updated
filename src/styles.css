@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-
 /*****************************************************
 **** GLOBAL
 ******************************************************/
@@ -39,14 +37,20 @@ div.bg-card-0 {
 	background: #8a2387; /* fallback for old browsers */
 	background: -webkit-linear-gradient(to bottom, #8a2387, #e94057, #f27121); /* old chrome+safari */
 	background: linear-gradient(to bottom, #8a2387, #e94057, #f27121); /* modern browsers */
-	width: 100vw;
-	height: 100vh;
+	/* width: 100vw;
+	height: 100vh; */
 	padding: 0;
 	margin: 0;
 	border: none;
 	color: #fff;
 }
 
+.gradient-0 {
+	color: #fff;
+	background: #8a2387; /* fallback for old browsers */
+	background: -webkit-linear-gradient(135deg, #8a2387, #e94057, #f27121); 
+	background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
+}
 
 
 
@@ -105,7 +109,6 @@ p.notice, p.alert {
 
 	height: 100%;
 	min-height: inherit;
-	/* padding: 25vh 0; */
 }
 
 .form {
@@ -243,3 +246,18 @@ button {
 		 url('assets/fonts/open-sans-v15-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
   
+
+
+/*****************************************************
+**** FONTS
+******************************************************/
+.animated-svg {
+	/* stroke-dasharray: 1000;
+	stroke-dashoffset: 1000; */
+	animation: dash 5s ease-in-out forwards;
+}
+@keyframes dash {
+	to {
+		stroke-dashoffset: 0;
+	}
+}

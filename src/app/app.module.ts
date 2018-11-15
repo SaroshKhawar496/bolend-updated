@@ -32,7 +32,6 @@ import { ItemCardComponent } from './main/items/item-card/item-card.component';
 import { ResetComponent } from './accounts/reset/reset.component';
 import { NewItemComponent } from './main/items/new-item/new-item.component';
 import { ItemDetailsComponent } from './main/items/item-details/item-details.component';
-import { RequestSentComponent } from './main/items/request-sent/request-sent.component';
 
 
 // etc
@@ -101,7 +100,6 @@ const appRoutes = [
 		ResetComponent,
 		NewItemComponent,
 		ItemDetailsComponent,
-		RequestSentComponent,
 	],
 	imports: [
 		BrowserModule,
