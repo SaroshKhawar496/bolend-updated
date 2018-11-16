@@ -20,7 +20,12 @@ export class NewItemComponent implements OnInit {
 	get f() { return this.itemForm.controls; }
 	imgSrc: string | ArrayBuffer;
 	submitted: boolean = false;
-	itemCardOptions: ItemCardOptions = new ItemCardOptions ({colorWhite: true});
+	itemCardOptions: ItemCardOptions = new ItemCardOptions (
+		{
+			colorWhite: true,
+			hideOwnerName: true
+		}
+	);
 
 	constructor (
 		protected http: HttpService,

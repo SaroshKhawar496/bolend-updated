@@ -87,6 +87,7 @@ export class User {
 			fullName: `${this.fname} ${this.lname}`,
 		}
 	}
+
 }
 
 

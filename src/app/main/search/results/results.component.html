@@ -3,7 +3,7 @@
 	<!-- tabs -->
 	<div class="result-tabs-container">
 		<div *ngFor="let tab of tabs" 
-			class="tab" 
+			class="tab trans-0-25" 
 			(click)="tabSelected=tab.id"
 			[ngClass]="{'tab-selected': tabSelected == tab.id}">
 			{{tab.name}}
@@ -15,16 +15,42 @@
 
 		<!-- All tab -->
 		<ng-container *ngIf="tabSelected == 0">
-			hello all tab
+			<!-- <div *ngFor="let tab of tabLutValues"> -->
+				<!-- <pre>{{tab | json}}_{{s[tab.property] | json}}</pre> -->
+
+			<!-- display items -->
+			<div class="result-block">
+				<h3>Items</h3>
+				<div class="card-container" >
+					<ng-container *ngFor="let item of s.item">
+						<app-item-card [item]="item"></app-item-card>
+					</ng-container>
+				</div>
+			</div>
+				
+			<!-- </div> -->
 		</ng-container>
+
+
 
 
 		<!-- individual tabs -->
 		<ng-container *ngIf="tabSelected > 0">
-			hello {{tabLUT[tabSelected].property}} tab
+			<ng-container [ngSwitch]="tabSelected">
+
+				<div *ngSwitchCase="1" class="card-container" >
+					<ng-container *ngFor="let item of s.item">
+						<app-item-card [item]="item"></app-item-card>
+					</ng-container>
+				</div>
+
+			</ng-container>
 			
 		</ng-container>
 
 	</div>
 	
 </div>
+
+
+

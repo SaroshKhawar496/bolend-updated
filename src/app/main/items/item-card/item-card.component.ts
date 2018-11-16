@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ItemCardComponent implements OnInit {
 	@Input() item: Item;
-	@Input() owner?: object = { fullName: 'Anon' };
+	@Input() owner?: object;
 	@Input() cardOptions?: ItemCardOptions = new ItemCardOptions();
 
 	constructor (
@@ -33,17 +33,42 @@ export class ItemCardComponent implements OnInit {
 	 * navigate to profile page of the item owner; if item owner was not specified, do nothing
 	 */
 	navigateToOwner () {
-		if ( !this.owner ) return;
-		let path: Array<string> = [ '/user', this.owner['id'].toString() ];
+		if ( !this.owner && !this.item.user.id ) return;
+		console.log ( this.owner, this.item.user );
+		let userId: string = (this.owner ? this.owner['id'] : this.item.user.id).toString();
+		console.log ( 'navtoowner', userId);
+		let path: Array<string> = [ '/user', userId ];
 		this.router.navigate ( path );
 	}
 
+	/**
+	 * Given an object containing the name of the user, 
+	 * @param user 
+	 */
+	public getOwnerFullName (user: object){
+		if ( !user || !('fname' in user) || !('lname' in user) )
+			return null;
+		else 
+		return `${user['fname']} ${user['lname']}`;
+	}
+
+
+	/**
+	 * Get the owner ID of this item, if possible
+	 */
+	public get ownerId () : number {
+		if ( this.owner && this.owner['id'] ) 
+			return this.owner['id'];
+		else if ( this.item.user && this.item.user.id ) 
+			return this.item.user.id;
+		else return null;
+	}
 }
 
 
 export class ItemCardOptions {
 	colorWhite: boolean = false;
-
+	hideOwnerName: boolean = false;
 
 	constructor ( options?: object ) {
 		if ( options ){

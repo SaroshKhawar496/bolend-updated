@@ -18,6 +18,7 @@ export class ResultsComponent implements OnInit {
 	tabs: Array<object>;
 	tabSelected: number;
 	tabLUT: typeof TabToProperty = TabToProperty;	// look up table; use tabSelected to make lookups
+	get tabLutValues () { return Object.values(this.tabLUT); }
 
 	constructor (
 		protected router: Router,
@@ -46,7 +47,8 @@ export enum ResultTab {
 
 export const TabToProperty: object = {
 	1: {
-		property: 'item'
+		property: 'item',
+		templateId: 'itemResults'
 	},
 	2: {
 		property: 'user'

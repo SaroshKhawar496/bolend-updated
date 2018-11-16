@@ -13,10 +13,11 @@
             {{item.name || 'Item Name'}}
         </h4>
 
-        <h5 class="item-user-name" [ngClass]="{'pointer': owner && owner['id']}"
+        <h5 *ngIf="!cardOptions.hideOwnerName" class="item-user-name" [ngClass]="{'pointer': ownerId }"
             (click)="navigateToOwner()">
             <svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
-            {{owner ? owner['fullName'] : 'Anon'}}
+            <ng-container *ngIf="owner else username" >{{owner['fullName']}}</ng-container>
+            <ng-template #username>{{getOwnerFullName(item.user) || 'Anon'}}</ng-template>
         </h5>
 
         <div class="item-description">
