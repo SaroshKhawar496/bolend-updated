@@ -26,8 +26,37 @@
 	background: none;
 	border: none;
 	width: 100%;
-	padding: 0.25em 0.5em;
+	padding: 0.35em 0.5em;
 
 	font-size: inherit;
 	font-weight: 300;
+}
+
+
+
+/***** search results *****/
+.result-grid {
+	margin: 0;
+	padding: 1em;
+}
+.result-tabs-container {
+	padding: 1em 20%;
+	display: flex;
+	justify-content: space-around;
+}
+.result-tabs-container > .tab {
+	font-size: 1.5em;
+	flex-grow: 1;
+	text-align: center;
+	cursor: pointer;
+
+	margin: 0 1em;
+	padding: 0.25em 0;
+}
+.result-tabs-container > .tab.tab-selected {
+	border-bottom: 2px solid #f27121;
+}
+
+.result-content-container {
+	margin: 1em;
 }

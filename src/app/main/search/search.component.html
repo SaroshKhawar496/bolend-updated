@@ -1,5 +1,5 @@
 <!-- this template renders the search bar -->
-<div [ngClass]="{'full-body-height': fullScreen}" class="search-bg gradient-0 trans-0-5">
+<div [ngClass]="{'full-body-height': fullScreen}" class="search-bg gradient-0 trans-0-75">
 
 		<div class="searchbar-container white-text trans-0-25">
 			<svg><use href="assets/icons/navbar.svg#i-search"></use></svg>
@@ -12,3 +12,5 @@
 		</div>
 
 </div>
+
+<app-results [searchResults]="searchResults"></app-results>

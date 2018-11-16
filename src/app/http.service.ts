@@ -59,7 +59,7 @@ export class HttpService {
 
 					// navigate to return URL if it is provided and token extraction was OK
 					if ( extractRes && returnUrl )
-						this.router.navigate([returnUrl]);
+						this.router.navigateByUrl(returnUrl);
 				}
 
 				// if the attempt failed:

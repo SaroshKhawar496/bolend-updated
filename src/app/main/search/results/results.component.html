@@ -1,0 +1,29 @@
+<div *ngIf="searchResults" class="result-grid fade-in-up delay-0-2">
+	
+	<!-- tabs -->
+	<div class="result-tabs-container">
+		<div *ngFor="let tab of tabs" 
+			class="tab" 
+			(click)="tabSelected=tab.id"
+			[ngClass]="{'tab-selected': tabSelected == tab.id}">
+			{{tab.name}}
+		</div>
+	</div>
+
+
+	<div class="result-content-container">
+
+		<!-- All tab -->
+		<ng-container *ngIf="tabSelected == 0">
+			hello all tab
+		</ng-container>
+
+
+		<!-- individual tabs -->
+		<ng-container *ngIf="tabSelected > 0">
+			hello {{tabLUT[tabSelected].property}} tab
+		</ng-container>
+
+	</div>
+	
+</div>

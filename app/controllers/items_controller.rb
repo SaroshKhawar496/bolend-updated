@@ -33,7 +33,8 @@ class ItemsController < ApplicationController
 
       if @items.length == 0
         render json: {
-          "message": "We could not find what you were looking for!"
+          "message": "We could not find what you were looking for!",
+          "item": []
         }
        
       end
