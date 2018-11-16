@@ -39,7 +39,16 @@ class FriendshipsController < ApplicationController
 				end
 			end	
 		end
-		@nonempty = mutual_users.uniq # ensure uniquness, TODO: can potentially by used to determine how many mutual friends and use as heuristic
+
+		@heuristicArray = []
+		mutual_users.each do |heuristic|
+			@heuristicArray << [heuristic.id, heuristic.fname, heuristic.lname, mutual_users.count(heuristic)]
+		end
+
+		intermediate = @heuristicArray.uniq
+
+		@return = intermediate.sort {|x| x[3]}
+		# @nonempty = intermediate.uniq # ensure uniquness, TODO: can potentially by used to determine how many mutual friends and use as heuristic
 	end
 
 	def getPendingRequests
