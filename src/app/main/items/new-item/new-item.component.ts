@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Item } from 'src/app/_models/item';
+import { Item } from 'src/app/_models/models';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ItemCardOptions } from '../item-card/item-card.component';
 import { AlertService } from 'src/app/utils/alert/alert.service';

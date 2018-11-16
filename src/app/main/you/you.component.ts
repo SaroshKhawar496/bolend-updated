@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
-import { User } from 'src/app/_models/user';
+import { User } from 'src/app/_models/models';
 import { Model } from 'src/app/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 

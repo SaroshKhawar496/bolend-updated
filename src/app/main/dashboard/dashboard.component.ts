@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../http.service';
-import { User } from '../../_models/user';
+import { User } from '../../_models/models';
 
 
 @Component({

@@ -17,11 +17,22 @@ div.item-img-main {
     width: 100%;
 }
 
+.item-user-name {
+    color: #666;
+}
+.item-user-name svg {
+    height: 1em;
+    width: 1em;
+}
+
 div.item-card-body {
     padding: 1em;
 }
 
-h4 { font-weight: 600; }
+h4, h5 { 
+    margin: 0.5em 0;
+}
+h5 { font-weight: 400; }
 
 
 .color-white {

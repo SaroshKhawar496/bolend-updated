@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class ResultsComponent implements OnInit {
 	@Input() searchResults: object;
 	@Input() defaultTab?: ResultTab = ResultTab.All;
+	get s() { return this.searchResults; }			// in template, 's' can used as a shorthand for searchResults
 	defaultMaxResults: 		number = 12;
 	defaultMaxTypedResults: number = 6;
 

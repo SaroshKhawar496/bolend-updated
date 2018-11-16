@@ -6,11 +6,19 @@
         <svg *ngIf="!item.imgSrc && !item.imgUrl"><use href="assets/icons/navbar.svg#i-photo"></use></svg>
     </div>
 
+
     <!-- card body -->
     <div class="item-card-body">
         <h4 class="item-name pointer" (click)='navigateToDetails()'>
             {{item.name || 'Item Name'}}
         </h4>
+
+        <h5 class="item-user-name" [ngClass]="{'pointer': owner && owner['id']}"
+            (click)="navigateToOwner()">
+            <svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
+            {{owner ? owner['fullName'] : 'Anon'}}
+        </h5>
+
         <div class="item-description">
             {{item.description}}
         </div>

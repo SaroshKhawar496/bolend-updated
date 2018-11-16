@@ -3,7 +3,7 @@ import { HttpService, Model } from 'src/app/http.service';
 import { AlertService } from 'src/app/utils/alert/alert.service';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Item } from 'src/app/_models/item';
+import { Item } from 'src/app/_models/models';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RequestService } from '../request.service';
 

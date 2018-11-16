@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User, JWT } from './_models/user';
+import { User, JWT } from './_models/models';
 import { Router, RouterStateSnapshot } from '@angular/router';
 
 

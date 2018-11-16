@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpService, Model } from '../../http.service';
-import { User } from '../../_models/user';
+import { User } from '../../_models/models';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Consts } from '../../_models/consts';
@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 			data => {
 				this.currentUser = new User(data);
 				this.you = (this.currentUser.id == this.http.getCurrentUser().id);
-				console.log ( this.http.getCurrentUser() );
+				// console.log ( this.http.getCurrentUser() );
 			},
 			(err: HttpErrorResponse) => this.http.genericModelErrorHandler(err, Model.User)
 		)

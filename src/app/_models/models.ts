@@ -1,4 +1,4 @@
-import { Item } from "./item";
+// import { Item } from "./item";
 
 export class User {
 	id: number;
@@ -46,7 +46,7 @@ export class User {
 
 		// parse user's items available
 		console.log ( this );
-		if ( this.items )
+		if ( attribs && attribs['items'] )
 			this.parseItems ( this.items, 'itemsAvailable' );
 	}
 
@@ -77,9 +77,24 @@ export class User {
 	}
 
 	get fullName() { return `${this.fname} ${this.lname}`; }
+
+	/**
+	 * Return a subset of properties of this user - enough to identify them
+	 */
+	get userIdentity() : object {
+		return {
+			id: this.id, fname: this.fname, lname: this.lname, 
+			fullName: `${this.fname} ${this.lname}`,
+		}
+	}
 }
 
 
+
+/*
+	A JWT token consists of a header, payload, and signature. 
+	The header & payload are base64 encoded, and the signature is appended to the end, following a '.' character
+*/
 export class JWT {
 	public static tokenAuthPrefix: string = "Bearer ";
 	tokenString: string;
@@ -108,7 +123,33 @@ export class JWT {
 		);
 	}
 }
-/*
-	A JWT token consists of a header, payload, and signature. 
-	The header & payload are base64 encoded, and the signature is appended to the end, following a '.' character
-*/
+
+
+
+export class Item {
+	id: string | number;
+	name: string = "";
+	description: string = "";
+	url: string = "";
+	tags: string | Array<string>;
+
+	imgUrl: string;			// main image; more images are allowed
+	imgSrc: string | ArrayBuffer;	// src buffer of main image
+
+	user: User;
+
+	constructor ( attribs?: object ) {
+		if ( attribs ){
+			for ( var p in attribs )
+				this[p] = attribs[p];
+		}
+		
+		// if the object has a 'user' property, create an instance of user
+		if ( attribs && attribs['user'] )
+			this.createUserInstance ( attribs['user'] );
+	}
+
+	createUserInstance ( userData: object ) {
+		this.user = new User(userData);
+	}
+}
