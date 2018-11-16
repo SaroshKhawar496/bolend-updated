@@ -5,34 +5,34 @@
 		<!-- <pre>{{item | json}}</pre> -->
 
 		<!-- cover photo/gallery carousel -->
-		<div>
+		<div class="fade-in">
 			carousel
 		</div>
 
 		<!-- title card + user details -->
 		<div class="title">
-			<h2 class="title-header">{{item.name || 'Item name'}}</h2>
-			<h5 class="item-user-name">
+			<h2 class="title-header fade-in delay-0-2">{{item.name || 'Item name'}}</h2>
+			<h5 class="item-user-name fade-in delay-0-3">
 				<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
 				{{item.user.fullName || 'Anon'}}
 			</h5>
-			<hr />
+			<hr class="fade-in delay-0-4" />
 		</div>
 		
 		<!-- description -->
-		<div class="desc-container">
+		<div class="desc-container fade-in delay-0-5">
 			{{item.description}}
 		</div>
 
 		<!-- tags -->
-		<div class="tags-container">
+		<div class="tags-container fade-in delay-0-6">
 			{{item.tags || '#tags appear here'}}
 		</div>
 
 
 
 		<!-- controls -->
-		<div class="item-controls-container flex" id="CONTROLS">
+		<div class="item-controls-container flex fade-in-up delay-0-8" id="CONTROLS">
 
 			<!-- request/heart -->
 			<div class="action-btn" title="Request Item" (click)="requestItem()">
@@ -80,13 +80,13 @@
 		<!-- animated send svg -->
 		<svg id="SEND" class="animated-svg"><use href="assets/icons/navbar.svg#i-send"></use></svg>
 		<div>
-			<h2>Request sent!</h2>
-			<p>
-				You've successfully requested {{item ? item.name : 'this item'}}. <br>
+			<h2 class="fade-in-up delay-0-2">Request sent!</h2>
+			<p class="fade-in-up delay-0-4">
+				You've successfully requested <strong>{{item ? item.name : 'this item'}}</strong>. <br>
 				You'll receive a notification when the owner makes a decision.
 			</p>
 		</div>
-		<div class="control-container">
+		<div class="control-container fade-in-up delay-0-6">
 			<button class="nofill" (click)="returnToItemDetails()">Back to Item</button>
 			<a routerLink="/"><button class="nofill">Home</button></a>
 		</div>
