@@ -71,7 +71,7 @@ export class ItemCardOptions {
 	hideOwner:		boolean = false;	// hide the name of the item owner?
 	inRequest:		boolean = false;	// is this item card used to show an incoming request?
 	hideDescription:boolean = true;		// hide item description?
-	hideTags:		boolean = true;		// 
+	hideTags:		boolean = true;		// hide tags?
 
 
 	constructor ( options?: object ) {

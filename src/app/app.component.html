@@ -63,22 +63,18 @@
 			<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
 			<span class="">&nbsp;You</span>&nbsp;
 		</li>
-		<li routerLink="/you">
+		<li routerLink="/notifications">
 			<svg><use href="assets/icons/navbar.svg#i-bell"></use></svg>
-			<span class="">&nbsp;Updates</span>&nbsp;
-		</li>
-		<li (click)="logout()">
-			<svg><use href="assets/icons/navbar.svg#i-lock"></use></svg>
-			<span>&nbsp;Logout</span>
+			<span class="">&nbsp;Notifications</span>&nbsp;
 		</li>
 		<li routerLink="/user/1">
 			<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
 			<span>&nbsp;user 1</span>
 		</li>
-		<li routerLink="/user/69">
+		<!-- <li routerLink="/user/69">
 			<svg><use href="assets/icons/navbar.svg#i-alert"></use></svg>
 			<span>&nbsp;user 69</span>
-		</li>
+		</li> -->
 		<li (click)="fuckMyShitUp()">
 			<svg><use href="assets/icons/navbar.svg#i-photo"></use></svg>
 			<span>&nbsp;??</span>
@@ -91,10 +87,10 @@
 			<svg><use href="assets/icons/navbar.svg#i-bag"></use></svg>
 			<span>&nbsp;Item 2</span>
 		</li>
-		<li routerLink="/item/69">
+		<!-- <li routerLink="/item/69">
 			<svg><use href="assets/icons/navbar.svg#i-alert"></use></svg>
 			<span>&nbsp;Item 69</span>
-		</li>
+		</li> -->
 		<li routerLink="/search">
 			<svg><use href="assets/icons/navbar.svg#i-search"></use></svg>
 			<span>&nbsp;Search</span>
@@ -102,6 +98,10 @@
 		<li routerLink="/social">
 			<svg><use href="assets/icons/navbar.svg#i-heart"></use></svg>
 			<span>&nbsp;Social</span>
+		</li>
+		<li (click)="logout()">
+			<svg><use href="assets/icons/navbar.svg#i-lock"></use></svg>
+			<span>&nbsp;Logout</span>
 		</li>
 		<a href="https://github.com/tsytsman/csc444">
 			<li>

@@ -22,19 +22,21 @@ Rails.application.routes.draw do
 
     root "welcome#home"
     resources :users
+    
+    get 'notifications', to: "notifications#index"
 
-    post 'app/friendrequest', to: "friendships#newFriendRequest"
-    post 'app/addfriend', to: "friendships#acceptFriendRequest"
-    post 'app/declinefriend', to: "friendships#declineFriendRequest"
-    post 'app/blockfriend', to: "friendships#blockFriend"
-    get 'app/getpendingfriends', to: "friendships#getPendingRequests"
-    get 'app/getblockedfriends', to: "friendships#getBlockedFriends"
-    get 'app/friends', to: "friendships#getAllFriends"
-    get 'app/requestedfriends', to: "friendships#getRequestedFriends"
-    get 'app/mutualfriends', to: "friendships#getMutualFriends"
+    post 'friendrequest', to: "friendships#newFriendRequest"
+    post 'addfriend', to: "friendships#acceptFriendRequest"
+    post 'declinefriend', to: "friendships#declineFriendRequest"
+    post 'blockfriend', to: "friendships#blockFriend"
+    get 'getpendingfriends', to: "friendships#getPendingRequests"
+    get 'getblockedfriends', to: "friendships#getBlockedFriends"
+    get 'friends', to: "friendships#getAllFriends"
+    get 'requestedfriends', to: "friendships#getRequestedFriends"
+    get 'mutualfriends', to: "friendships#getMutualFriends"
 
-    # get 'app/friendrequest', to "user_relations#show"
-    # get 'app/friendrequest', to "user_relations#show"
+    # get 'friendrequest', to "user_relations#show"
+    # get 'friendrequest', to "user_relations#show"
 
     resources :user_relations
     resources :items
@@ -51,7 +53,7 @@ Rails.application.routes.draw do
   end
  
 
-  get 'app/*path', to: "application#fallback_index_html", constraints: ->(request) do
+  get '*path', to: "application#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?
   end
 

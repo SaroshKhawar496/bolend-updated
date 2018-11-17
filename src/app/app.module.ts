@@ -35,6 +35,7 @@ import { ItemDetailsComponent } from './main/items/item-details/item-details.com
 import { SearchComponent } from './main/search/search.component';
 import { ResultsComponent } from './main/search/results/results.component';
 import { SocialComponent } from './main/social/social.component';
+import { NotificationsComponent } from './main/notifications/notifications.component';
 
 
 // etc
@@ -97,6 +98,14 @@ const appRoutes = [
 		canActivate: [AuthGuard]
 	},
 
+	// notifications page
+	{
+		path: 'notifications',
+		component: NotificationsComponent,
+		canActivate: [AuthGuard]
+	},
+
+	// profile page of currently authenticated user
 	{ path: 'you', component: YouComponent, canActivate: [AuthGuard] }
 ];
 
@@ -120,6 +129,7 @@ const appRoutes = [
 		SearchComponent,
 		ResultsComponent,
 		SocialComponent,
+		NotificationsComponent,
 	],
 	imports: [
 		BrowserModule,

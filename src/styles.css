@@ -141,6 +141,10 @@ button {
 	cursor: pointer;
 }
 
+.pad-1em {
+	padding: 1em;
+}
+
 
 /*****************************************************
 **** TIMED ANIMATIONS
