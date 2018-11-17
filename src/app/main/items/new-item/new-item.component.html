@@ -11,7 +11,8 @@
 					name: f.name.value,
 					description: f.description.value,
 					imgSrc: imgSrc
-				}" [cardOptions]="itemCardOptions"></app-item-card>
+				}" [cardOptions]="itemCardOptions"
+				[owner]="currentUser"></app-item-card>
 			</div>
 
 			<form [formGroup]="itemForm" (ngSubmit)="submitItem()" class="item-form">

@@ -17,13 +17,8 @@ div.item-img-main {
     width: 100%;
 }
 
-.item-user-name {
-    color: #444;
-}
-.item-user-name svg {
-    height: 1em;
-    width: 1em;
-}
+.item-user-name { color: #444; }
+.color-white .item-user-name { color: #ccc; }
 
 div.item-card-body {
     padding: 1em;

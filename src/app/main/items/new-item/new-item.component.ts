@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Item } from 'src/app/_models/models';
+import { Item, User } from 'src/app/_models/models';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ItemCardOptions } from '../item-card/item-card.component';
 import { AlertService } from 'src/app/utils/alert/alert.service';
@@ -17,13 +17,14 @@ export class NewItemComponent implements OnInit {
 
 	// member properties
 	itemForm: FormGroup;
+	currentUser: User;
 	get f() { return this.itemForm.controls; }
 	imgSrc: string | ArrayBuffer;
 	submitted: boolean = false;
 	itemCardOptions: ItemCardOptions = new ItemCardOptions (
 		{
 			colorWhite: true,
-			hideOwnerName: true
+			// hideOwner: true
 		}
 	);
 
@@ -37,6 +38,7 @@ export class NewItemComponent implements OnInit {
 
 	ngOnInit() {
 		this.initializeForm();
+		this.currentUser = this.http.getCurrentUser();
 	}
 
 	/**

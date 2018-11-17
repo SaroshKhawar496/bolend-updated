@@ -93,7 +93,7 @@ export class User extends ExtensibleModel {
 		this[assignTo] = itemList;
 	}
 
-	get fullName() { return `${this.fname} ${this.lname}`; }
+	get fullName() { return `${this.fname} ${this.lname || ''}`; }
 
 	/**
 	 * Return a subset of properties of this user - enough to identify them
@@ -101,7 +101,7 @@ export class User extends ExtensibleModel {
 	get userIdentity() : object {
 		return {
 			id: this.id, fname: this.fname, lname: this.lname, 
-			fullName: `${this.fname} ${this.lname}`,
+			fullName: this.fullName,
 		}
 	}
 

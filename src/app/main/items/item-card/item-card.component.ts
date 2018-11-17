@@ -49,7 +49,7 @@ export class ItemCardComponent implements OnInit {
 		if ( !user || !('fname' in user) || !('lname' in user) )
 			return null;
 		else 
-		return `${user['fname']} ${user['lname']}`;
+		return `${user['fname']} ${user['lname'] || ''}`;
 	}
 
 
