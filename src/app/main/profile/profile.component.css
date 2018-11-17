@@ -127,3 +127,15 @@ h2, h3 {
 @media screen and (max-width:768px) {
 	.card-carousel { justify-content: center; }
 }
+
+
+
+
+/**********************************************************
+* Requests
+**********************************************************/
+
+.status {
+	color: #666;
+	font-style: italic;
+}

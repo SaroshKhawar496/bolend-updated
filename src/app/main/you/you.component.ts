@@ -10,6 +10,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 	styleUrls: ['../profile/profile.component.css']
 })
 export class YouComponent extends ProfileComponent {
+	incomingRequests: object;
+	outgoingRequests: object;
+	get in () { return this.incomingRequests; }
+	get out() { return this.outgoingRequests; }
 
 
 	ngOnInit() {
@@ -19,7 +23,9 @@ export class YouComponent extends ProfileComponent {
 		this.loadYou();
 	}
 
-
+	/**
+	 * Load your own user model
+	 */
 	private loadYou () : void {
 		let path: string = '/users/you';
 		this.http.getObservable ( path ).subscribe (
@@ -29,6 +35,20 @@ export class YouComponent extends ProfileComponent {
 				this.you = true;
 			},
 			(err: HttpErrorResponse) => this.http.genericModelErrorHandler(err, Model.User),
+		)
+	}
+
+	/**
+	 * Load your requests
+	 */
+	private loadRequests () : void {
+		let path: string = '/requests';
+		this.http.getObservable (path).subscribe(
+			data => {
+				console.log ( 'loadRequests', data );
+				this.incomingRequests = data['incomingRequests'];
+				this.outgoingRequests = data['outgoingRequests'];
+			}
 		)
 	}
 

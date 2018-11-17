@@ -22,9 +22,9 @@
 			<div class="result-block">
 				<h3>Items</h3>
 				<div class="card-container" >
-					<ng-container *ngFor="let item of s.item">
+					<div *ngFor="let item of s.item" class="card">
 						<app-item-card [item]="item"></app-item-card>
-					</ng-container>
+					</div>
 				</div>
 			</div>
 				

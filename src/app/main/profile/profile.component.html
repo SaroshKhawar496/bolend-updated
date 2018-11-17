@@ -56,9 +56,32 @@
 
 
 
+	<!-- requests -->
+	<div *ngIf="you" class="grid-box4">
+		<h3 class="box-title">Requests</h3>
+		
+		<!-- incoming requests -->
+		<div class="incoming-requests-container">
+			<h4>Incoming</h4>
+			<ng-container *ngIf="in else noIncoming">
 
-	<div class="grid-box4">
-		<h3 class="box-title">box4</h3>
+			</ng-container>
+			<ng-template #noIncoming>
+				<p class="status">You have no incoming item requests.</p>
+			</ng-template>
+		</div>
+
+		<!-- outgoing requests -->
+		<div class="outgoing-requests-container">
+			<h4>Outgoing</h4>
+			<ng-container *ngIf="out else noOutgoing">
+
+			</ng-container>
+			<ng-template #noOutgoing>
+				<p class="status">You have no outgoing item requests.</p>
+			</ng-template>
+		</div>
+
 		<hr class="divider" />
 	</div>
 

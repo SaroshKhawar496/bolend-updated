@@ -80,3 +80,6 @@
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 }
+.card {
+	margin: 0.5em 0.25em;
+}
