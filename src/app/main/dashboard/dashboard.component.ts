@@ -13,14 +13,13 @@ export class DashboardComponent implements OnInit {
 	itemList: any;
 	currentUser: User;
 
-
 	constructor (
 		private http: HttpService
 	) { }
 
 	ngOnInit() {
 		this.loadCurrentUser();
-		this.getItemsList();
+		// this.getItemsList();
 	}
 
 	loadCurrentUser () : void {

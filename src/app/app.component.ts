@@ -21,10 +21,6 @@ export class AppComponent {
 		public activeRoute: ActivatedRoute,
 		private http: HttpService
 	) {
-		this.activeRoute.params.subscribe ( params => {
-			// const snapshot = this.activeRoute.snapshot;
-			// console.log ( 'app-component', snapshot );
-		});
 	}
 
 

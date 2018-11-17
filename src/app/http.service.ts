@@ -99,9 +99,23 @@ export class HttpService {
 	}
 
 
+	/**
+	 * Given a JWT token, check that it is valid with the server.  
+	 * If it is valid, load data about the currently authenticated user
+	 * @param token 
+	 */
 	public checkToken ( token: string ) : boolean {
+		let path: string = "/users/you";
+		this.getObservable (path).subscribe(
+			data => {
+				this.currentUser = new User(data);
+				return true;
+			},
+			err => false			// do not need to handle error if request does not work
+		);
 		return true;
 	}
+
 
 	/**
 	 * Remove token from local storage, effectively logging user out. Redirect to login page
@@ -168,10 +182,6 @@ export class HttpService {
 		return request;
 	}
 
-
-	updateCurrentUser ( user: object | User ) : void {
-
-	}
 
 
 
