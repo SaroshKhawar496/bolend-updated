@@ -2,7 +2,8 @@
 
 	<!-- header -->
 	<div class="grid-header">
-		<h2>{{user.fname}}'s Profile</h2>
+		<h2 *ngIf="you">Your Profile</h2>
+		<h2 *ngIf="!you">{{user.fullName}}'s public profile</h2>
 	</div>
 
 
@@ -30,11 +31,10 @@
 	<div class="grid-box1">
 		<h3 class="box-title">Items Available</h3>
 		<div *ngIf="user.itemsAvailable" class="box-content flex card-carousel">
-			<div *ngFor="let item of user.itemsAvailable.slice(0,defaultMaxAvailableItems); let i=index" class="item">
+			<div *ngFor="let item of user.itemsAvailable.slice(0,defaultMaxAvailableItems)" class="item">
 				<app-item-card [item]="item" [owner]="user.userIdentity"></app-item-card>
 			</div>
 		</div>
-		<!-- <pre>{{user.items | json}}</pre> -->
 		<hr class="divider" />
 	</div>
 
@@ -56,15 +56,21 @@
 
 
 
-	<!-- requests -->
+	<!-- item requests -->
 	<div *ngIf="you" class="grid-box4">
 		<h3 class="box-title">Requests</h3>
 		
 		<!-- incoming requests -->
 		<div class="incoming-requests-container">
-			<h4>Incoming</h4>
+			<h4>Incoming Item Requests</h4>
 			<ng-container *ngIf="in else noIncoming">
-
+				<div class="box-content flex card-carousel">
+					<div *ngFor="let request of in" class="notification">
+						<!-- user in this case is you -->
+						<!-- <app-item-card [item]="request['my_item']" ></app-item-card> -->
+						<pre>{{request | json}}</pre>
+					</div>
+				</div>
 			</ng-container>
 			<ng-template #noIncoming>
 				<p class="status">You have no incoming item requests.</p>
@@ -73,9 +79,13 @@
 
 		<!-- outgoing requests -->
 		<div class="outgoing-requests-container">
-			<h4>Outgoing</h4>
+			<h4>Outgoing Item Requests</h4>
 			<ng-container *ngIf="out else noOutgoing">
-
+				<div class="box-content flex card-carousel">
+					<div *ngFor="let request of out" class="notification">
+						<pre>{{request|json}}</pre>
+					</div>
+				</div>
 			</ng-container>
 			<ng-template #noOutgoing>
 				<p class="status">You have no outgoing item requests.</p>

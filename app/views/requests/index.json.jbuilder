@@ -10,4 +10,5 @@ end
 
 json.outgoing_requests @user.requested_items do |item|
   json.item item
+  json.user item.user
 end

@@ -6,7 +6,7 @@
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 
-	padding: 1em 2em;
+	padding: 1em;
 
 
 	/* grid */
@@ -47,7 +47,7 @@ hr.divider {
 			"box1" "box2" "box3" "box4"
 	}
 	hr.divider { visibility: visible; }
-	h2, h3 { text-align: center; }
+	h2, h3, h4, h5, .status { text-align: center; }
 }
 
 /* medium size screens */
