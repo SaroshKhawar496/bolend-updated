@@ -1,3 +1,11 @@
-<div class="full-body-height pad-1em">
-	<pre>{{n || 'no notifs' |json}}</pre>
+<div class="full-body-height pad-1em scale-fontsize">
+	<h2>Notifications</h2>
+	
+	<div *ngIf="notifications && n" class="notifications-container unread-notifications">
+		<div *ngFor="let notif of n" class="notification-card-container pad-1em">
+			<pre>{{notif | json}}</pre>
+			<app-notification-card [notification]="notif"></app-notification-card>
+		</div>
+	</div>
+
 </div>

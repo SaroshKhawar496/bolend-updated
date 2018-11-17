@@ -23,8 +23,6 @@ Rails.application.routes.draw do
     root "welcome#home"
     resources :users
     
-    get 'notifications', to: "notifications#index"
-
     post 'friendrequest', to: "friendships#newFriendRequest"
     post 'addfriend', to: "friendships#acceptFriendRequest"
     post 'declinefriend', to: "friendships#declineFriendRequest"

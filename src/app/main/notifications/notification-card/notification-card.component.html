@@ -1,3 +1,41 @@
-<p>
-  notification-card works!
-</p>
+<div>
+
+	<!-- notification type -->
+	<div [ngSwitch]="n.Type" class="notif-type">
+		<ng-template [ngSwitchCase]="type.item_request">Incoming item request</ng-template>
+		<ng-template [ngSwitchCase]="type.friend_request">Friend request</ng-template>
+		<ng-template [ngSwitchCase]="type.borrow_accept">Borrow request accepted</ng-template>
+		<ng-template [ngSwitchCase]="type.friend_accept">Friend request accepted</ng-template>
+		<ng-template *ngSwitchDefault>Notification</ng-template>
+	</div>
+
+
+	<!-- notification body -->
+	<div [ngSwitch]="n.Type" class="notif-body">
+
+		<ng-template [ngSwitchCase]="type.item_request">
+			<span (click)="navigateToSender()" class="pointer"><strong>{{n.Sender.fullName}} </strong></span>
+			requested your
+			<span (click)="navigateToLink(n.Type, n['notifiable_object'])" class="pointer"><strong>item</strong></span>.
+		</ng-template>
+
+		<ng-template [ngSwitchCase]="type.friend_request">
+			<strong>{{n.Sender.fullName}}</strong> sent you a friend request.
+		</ng-template>
+
+		<ng-template [ngSwitchCase]="type.borrow_accept">
+			<strong>{{n.Sender.fullName}}</strong> borrow accept
+		</ng-template>
+
+		<ng-template [ngSwitchCase]="type.friend_accept">
+			<strong>{{n.Sender.fullName}}</strong> Friend accept
+		</ng-template>
+									
+		<ng-template *ngSwitchDefault>
+			You got a generic notification
+		</ng-template>
+	</div>
+
+	
+
+</div>

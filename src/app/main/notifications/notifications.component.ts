@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
+import { Notification,NotificationType } from './notification-card/notification-card.component';
 
 @Component({
 	selector: 'app-notifications',
@@ -14,14 +15,16 @@ export class NotificationsComponent implements OnInit {
 		protected http: HttpService
 	) { }
 
+	NotificationType: typeof NotificationType = NotificationType;
 
 	ngOnInit() {
 		this.getNotifications();
 	}
 
 
-	notifications: object;
-	get n() { return this.notifications; }		// n is shorthand for notifications
+	get n() { return this.notifications; }
+	notifications: Array<Notification>;
+
 
 	/**
 	 * Get currently auth'd user's notifications
@@ -38,8 +41,14 @@ export class NotificationsComponent implements OnInit {
 	 * Parse notifications data returned by getNotifications()
 	 * @param data data object returned; may be JSON
 	 */
-	parseNotifications ( data: object ) {
-		console.log ( 'notifications', data );
-		this.notifications = data;
+	protected parseNotifications ( data: object ) {
+		// console.log ( 'notifications', data );
+		let notifObject: object = data;
+
+		// parse user_notifcations
+		this.notifications = notifObject['user_notifications'].map (
+			notif => new Notification(notif)
+		)
+		console.log ( 'parsed notifications:', this.notifications );
 	}
 }

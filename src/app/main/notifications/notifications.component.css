@@ -1,0 +1,12 @@
+.notifications-container{
+    padding: 1em;
+}
+
+/* .notification-card-container {
+    padding: 1em;
+} */
+
+/* apply a border between consecutive notification cards */
+.notification-card-container + .notification-card-container {
+    border-top: 1px solid #bbb;
+}

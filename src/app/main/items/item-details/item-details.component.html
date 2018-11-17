@@ -12,7 +12,7 @@
 		<!-- title card + user details -->
 		<div class="title">
 			<h2 class="title-header fade-in delay-0-2">{{item.name || 'Item name'}}</h2>
-			<h5 class="item-user-name fade-in delay-0-3">
+			<h5 class="item-user-name fade-in delay-0-3 pointer" (click)="navigateToOwnerProfile()">
 				<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
 				{{item.user.fullName || 'Anon'}}
 			</h5>
@@ -50,7 +50,7 @@
 			</div>
 
 			<!-- user profile -->
-			<div class="action-btn" title="Owner profile">
+			<div class="action-btn" title="Owner profile" (click)="navigateToOwnerProfile()">
 				<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
 			</div>
 

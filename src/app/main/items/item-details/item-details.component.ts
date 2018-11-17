@@ -73,8 +73,39 @@ export class ItemDetailsComponent implements OnInit {
 				this.router.navigate ([], extras );
 			},
 			(err: HttpErrorResponse) =>
-				this.http.genericModelErrorHandler(err, Model.Item)
+				this.handleHttpError (err)
+				// this.http.genericModelErrorHandler(err, Model.Item)
 		)
+	}
+
+	/**
+	 * Specialized error handler; return true if error handled
+	 * @param err HttpErrorResponse instance
+	 */
+	handleHttpError ( err: HttpErrorResponse ) : boolean {
+		// first determine if this is a generic HTTP error (i.e. 404, 500, etc)
+		let genericError: boolean = this.http.genericModelErrorHandler(err, Model.Item);
+		if ( genericError ) return genericError;
+
+		// otherwise, try to handle it
+		if ( err.status == 422 ) {
+			// not allowed to request this item, either b/c it belongs to you, or you've already requested it
+			console.error ( err.error['message'] );
+			this.alert.error ( err.error['message'] );
+			return true;
+		}
+
+		this.alert.error ( "Unexpected error. Please inform the code monkeys behind this project." );
+		return false;
+	}
+
+
+	/**
+	 * Navigate to the public profile page of the item owner
+	 */
+	navigateToOwnerProfile () : void {
+		let path: Array<string> = ['/user', this.item.user.id.toString()];
+		this.router.navigate(path);
 	}
 
 

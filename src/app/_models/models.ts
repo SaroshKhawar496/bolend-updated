@@ -1,8 +1,24 @@
 // import { Item } from "./item";
 
-export class User {
+
+export class ExtensibleModel {
+	/**
+	 * Initialize an object with attribs by assigning every property from input object to this object
+	 * @param attribs object containing properties to be copied
+	 */
+	constructor ( attribs?: object ) {
+		if ( attribs ) {
+			for ( let prop in attribs )
+				this[prop] = attribs[prop];
+		}
+	}
+}
+
+
+
+export class User extends ExtensibleModel {
 	id: number;
-	fname: string = "Anon";
+	fname: string;
 	lname: string;
 	address: string;        // optional
 	phone: string;          // optional
@@ -32,10 +48,11 @@ export class User {
 	 * @param attribs 
 	 */
 	constructor ( attribs?: object, jwtStr?: string ) {
-		if ( attribs ) {
-			for ( var p in attribs )
-				this[p] = attribs[p];
-		}
+		super(attribs);
+
+		// assign 'Anon' as first name if it is undefined
+		if ( !this.fname ) this.fname = 'Anon';
+
 		if ( jwtStr ) {
 			console.log ( 'jwtStr', jwtStr );
 			this.jwt = new JWT (jwtStr);
@@ -127,7 +144,7 @@ export class JWT {
 
 
 
-export class Item {
+export class Item extends ExtensibleModel {
 	id: string | number;
 	name: string = "";
 	description: string = "";
@@ -140,10 +157,7 @@ export class Item {
 	user: User;
 
 	constructor ( attribs?: object ) {
-		if ( attribs ){
-			for ( var p in attribs )
-				this[p] = attribs[p];
-		}
+		super(attribs);
 		
 		// if the object has a 'user' property, create an instance of user
 		if ( attribs && attribs['user'] )

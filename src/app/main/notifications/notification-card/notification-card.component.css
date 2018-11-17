@@ -1,0 +1,10 @@
+.notif-type {
+    color: #444;
+    font-style: italic;
+    font-size: 0.9em;
+    margin: 0.5em 0;
+}
+
+.notif-body {
+    margin: 0.5em 0;
+}
