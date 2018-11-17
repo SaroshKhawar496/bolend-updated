@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="n">
 
 	<!-- notification type -->
 	<div [ngSwitch]="n.Type" class="notif-type">
@@ -36,6 +36,12 @@
 		</ng-template>
 	</div>
 
+
+	<!-- created how long ago? -->
+	<div *ngIf="n.created_at" class="notif-time-delta">
+		<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>
+		{{timeDelta(n.created_at)}}
+	</div>
 	
 
 </div>

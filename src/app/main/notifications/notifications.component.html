@@ -3,7 +3,7 @@
 	
 	<div *ngIf="notifications && n" class="notifications-container unread-notifications">
 		<div *ngFor="let notif of n" class="notification-card-container pad-1em">
-			<pre>{{notif | json}}</pre>
+			<!-- <pre>{{notif | json}}</pre> -->
 			<app-notification-card [notification]="notif"></app-notification-card>
 		</div>
 	</div>

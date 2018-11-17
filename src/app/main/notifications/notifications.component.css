@@ -10,3 +10,7 @@
 .notification-card-container + .notification-card-container {
     border-top: 1px solid #bbb;
 }
+
+h2 {
+    margin: 0.5em;
+}

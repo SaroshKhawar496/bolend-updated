@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExtensibleModel, User } from 'src/app/_models/models';
+import * as moment from 'moment';
 
 @Component({
 	selector: 'app-notification-card',
@@ -40,6 +41,28 @@ export class NotificationCardComponent implements OnInit {
 	protected navigateToSender () : void {
 		let path: Array<string|number> = ['/user', this.n.Sender.id];
 		this.router.navigate(path);
+	}
+
+
+	/**
+	 * Get the time difference between now and a specified Date as a string.  
+	 * If the time difference is over 1 week ()
+	 * @param date specified Date instance
+	 */
+	protected timeDelta ( date: Date ) : string {
+		// create a moment.js instance with the date specified
+		let dateMoment = moment(date);
+
+		// determine the time difference in milliseconds between now and date specified
+		let diff: number = dateMoment.diff(Date.now());
+
+		// if the time difference is over 1 week, return the date as a formatted string
+		if ( Math.abs(diff) > 6.048e+8 ) 
+			return moment().format("MMM Do YYYY");
+
+		// otherwise, return the fromNow() difference
+		else 
+			return dateMoment.fromNow();
 	}
 
 }
@@ -93,13 +116,6 @@ export class Notification extends ExtensibleModel {
 		if ( this.sender ) {
 			this.Sender = new User (this.sender);
 		}
-
-		// parse datetime created and datetime read, if they exist
-		// if ( this.created_at ) 
-		// 	this.dtCreated = new Date ( this.created_at );
-		// if ( this.read_at )
-		// 	this.dtRead = new Date ( this.read_at );
-		
 
 		return count;
 	}
