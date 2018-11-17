@@ -14,22 +14,18 @@ class LoansController < ApplicationController
         if @loan.save
           @request.destroy # I don't think there is any point of keeping the request entry if it has been approved
 
-          #Creating Notification for the requesting user of his request being accepted
-          detail = "#{current_user.fname} has accepted your borrow request for #{@requested_item.name}"
-
-          @notification = Notification.new(user_id: @requesting_user.id, description: detail)
-
-          if @notification.save
-          else
-            render json: @notification.errors
-          end
+          Notification.create(recipient: @requesting_user, sender: current_user, action: "accept_item_request", notifiable_object: @loan)
 
 
           render :show, status: :created, location: @loan
         else
           render json: @loan.errors, status: :unprocessable_entity
         end  
+      else
+        render json: {"message": "This item does not belong to you"}, status: :unprocessable_entity
       end
+    else
+      render json: {"message": "error"}, status: :unprocessable_entity
     end  
   end
 

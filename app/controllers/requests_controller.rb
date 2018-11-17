@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
     else
       @request = current_user.requests.new(item: @item) 
       if @request.save
-
+        Notification.create(recipient: @item.user, sender: current_user, action: "item_request", notifiable_object: @request)
         render :show, status: :ok, location: @request
       end
     end    

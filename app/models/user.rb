@@ -69,6 +69,6 @@
 
 
   #notifications association
-  has_many :notifications
+  has_many :notifications, foreign_key: :recipient_id
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_221620) do
+ActiveRecord::Schema.define(version: 2018_11_17_100858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,11 +66,15 @@ ActiveRecord::Schema.define(version: 2018_11_12_221620) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.integer "recipient_id"
+    t.integer "sender_id"
+    t.datetime "read_at"
+    t.string "action"
+    t.integer "notifiable_object_id"
+    t.string "notifiable_object_type"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -80,13 +84,6 @@ ActiveRecord::Schema.define(version: 2018_11_12_221620) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_requests_on_item_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
-  end
-
-  create_table "user_relations", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_relations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -110,7 +107,6 @@ ActiveRecord::Schema.define(version: 2018_11_12_221620) do
   add_foreign_key "items", "users"
   add_foreign_key "loans", "items"
   add_foreign_key "loans", "users"
-  add_foreign_key "notifications", "users"
   add_foreign_key "requests", "items"
   add_foreign_key "requests", "users"
 end

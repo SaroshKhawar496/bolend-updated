@@ -21,7 +21,8 @@ class NotificationsController < ApplicationController
 		# json_str += "\n\t]\n}"
 		# # puts "#{json_str}"
 		
-		@user = User.find(current_user.id)
+		#@user = User.find(current_user.id)
+    @notifications = Notification.where(recipient: current_user)
 	end
 
 

@@ -22,8 +22,6 @@ Rails.application.routes.draw do
 
     root "welcome#home"
     resources :users
-    
-    get 'app/notify', to: "notifications#index"
 
     post 'app/friendrequest', to: "friendships#newFriendRequest"
     post 'app/addfriend', to: "friendships#acceptFriendRequest"
@@ -47,6 +45,8 @@ Rails.application.routes.draw do
     resources :requests
 
     resources :loans
+
+    resources :notifications
     
   end
  
