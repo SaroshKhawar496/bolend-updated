@@ -13,6 +13,9 @@ class ItemsController < ApplicationController
     #to search send GET request to localhost:3000/api/items?search_item=hel
     #search_item=hel searching for item with name hel
 
+    # Send Get to localhost:3000/api/items?search_item=el&page=2 for pagination
+    # localhost:3000/api/items?search_item=el&page=2&per_page=5
+
     #State before implementing the searchkick
 
     # @items = Item.all
@@ -25,10 +28,20 @@ class ItemsController < ApplicationController
 
     # after implementing the searchkick
     @user = User.find(current_user.id)
+    
+
+
+    # log(params[])
 
     if params[:search_item].present?
       # puts "search_item is present"
+      # test = CGI::parse('param1=value1&param2=value2&param3=value3')
+      # puts("-----------------\n ")
+      # puts("#{test}\n")
+      # puts("-------------\n")
 
+
+      # puts params.inspect
       @items = Item.item_name(params[:search_item])
 
       if @items.length == 0
@@ -44,10 +57,43 @@ class ItemsController < ApplicationController
       # puts "item.all"
       @items = Item.all
       # puts "items.length #{@items.length}"
+
+    end
+    
+
+    #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
+    #option to change the numOfresults shown perpage also available 
+    @items = @items.paginate(page: page, per_page: per_page)
+    
+    numOfPages = @items.total_pages
+
+        # check for not lettting page exceeding the last page, if it does show last page
+    if (params[:page].to_i > numOfPages.to_i)
+
+      # render json:{
+      #   "message": "Showing the last page of results"
+      # }
+      @items = @items.paginate(page: numOfPages, per_page: per_page)
+      
+
     end
 
      
   end
+
+  # methods for pagination controls
+  def page
+    @page ||= params[:page] || 1
+  end
+
+  def per_page
+    @per_page ||= params[:per_page] || 10
+  end
+
+
+
+  # ----------------------------------------
+
 
   def show
     @item = Item.find(params[:id])
