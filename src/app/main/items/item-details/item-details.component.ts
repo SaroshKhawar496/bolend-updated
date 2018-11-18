@@ -3,7 +3,7 @@ import { HttpService, Model } from 'src/app/http.service';
 import { AlertService } from 'src/app/utils/alert/alert.service';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Item } from 'src/app/_models/models';
+import { Item, User } from 'src/app/_models/models';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RequestService } from '../request.service';
 
@@ -27,6 +27,9 @@ export class ItemDetailsComponent implements OnInit {
 	qparams:	Params;
 	item: Item;
 
+	// current user
+	currentUser: User;
+
 
 	ngOnInit() {
 		// listen to changes in URL params
@@ -39,6 +42,9 @@ export class ItemDetailsComponent implements OnInit {
 		this.qparamSub = this.route.queryParams.subscribe (
 			params => this.qparams = params
 		)
+
+		// load currentuser from HttpService
+		this.currentUser = this.http.getCurrentUser();
 	}
 
 	/**

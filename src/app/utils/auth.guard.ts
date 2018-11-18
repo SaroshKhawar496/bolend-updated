@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
 
 		// check if http.currentUser has an id & JWT; if it does, that means http.authenticate() has already been called
 		let user: User = this.http.getCurrentUser();
-		if ( user.id && user.jwt )
+		if ( user.id )
 			return true;		// so we can safely return true
 		
 		// otherwise, try to get a JWT out of localstorage and ask HttpService to check that token

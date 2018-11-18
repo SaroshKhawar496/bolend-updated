@@ -149,6 +149,9 @@ svg.inline {
     width: 1em;
 }
 
+.round {
+	border-radius: 9999px;
+}
 
 /*****************************************************
 **** TIMED ANIMATIONS

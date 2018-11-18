@@ -66,8 +66,8 @@
 }
 .item-controls.container > .action-btn:first-child { margin-left: 0; }
 .action-btn {
-	border: 1px solid #bbb;
-	box-shadow: 0 0 4px 1px #bbb;
+	/* border: 1px solid #bbb; */
+	/* box-shadow: 0 0 4px 1px #bbb; */
 	border-radius: 6969px;
 	width: 3em;
 	height: 3em;
@@ -83,6 +83,7 @@
 .action-btn svg {
 	width: 100%;
 	height: 100%;
+	color: #fff;
 }
 
 

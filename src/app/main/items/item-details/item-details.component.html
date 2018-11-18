@@ -32,30 +32,41 @@
 
 
 		<!-- controls -->
-		<div class="item-controls-container flex fade-in-up delay-0-8" id="CONTROLS">
+		<div class="item-controls-container flex fade-in-up delay-0-7" id="CONTROLS">
 
-			<!-- request/heart -->
-			<div class="action-btn" title="Request Item" (click)="requestItem()">
-				<svg><use href="assets/icons/navbar.svg#i-heart"></use></svg>
-			</div>
+			<!-- if this item belongs to the currentUser, display additional controls -->
+			<ng-container *ngIf="item.user.id == currentUser.id else notYou">
+				<!-- edit item -->
+				<div class="action-btn gradient-1-stop-2" title="Edit Item">
+					<svg><use href="assets/icons/navbar.svg#i-edit"></use></svg>
+				</div>
+				<!-- delete item -->
+				<div class="action-btn gradient-0-stop-1" title="Delete Item">
+					<svg><use href="assets/icons/navbar.svg#i-trash"></use></svg>
+				</div>
+			</ng-container>
 
-			<!-- favorite -->
-			<!-- <div class="action-btn" title="Add to Favorites">
-				<svg><use href="assets/icons/navbar.svg#i-star"></use></svg>
-			</div> -->
 
-			<!-- message owner -->
-			<div class="action-btn" title="Message Owner">
-				<svg><use href="assets/icons/navbar.svg#i-mail"></use></svg>
-			</div>
 
-			<!-- user profile -->
-			<div class="action-btn" title="Owner profile" (click)="navigateToOwnerProfile()">
+			<!-- only display these controls if NOT the current user -->
+			<ng-template #notYou>
+				<!-- request -->
+				<div class="action-btn gradient-0-stop-0" title="Request Item" (click)="requestItem()">
+					<svg><use href="assets/icons/navbar.svg#i-heart"></use></svg>
+				</div>
+				<!-- message owner -->
+				<div class="action-btn gradient-0-stop-2" title="Message Owner">
+					<svg><use href="assets/icons/navbar.svg#i-mail"></use></svg>
+				</div>
+			</ng-template>
+
+			<!-- user PUBLIC profile -->
+			<div class="action-btn gradient-1-stop-0" title="Owner profile" (click)="navigateToOwnerProfile()">
 				<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
 			</div>
 
 			<!-- link -->
-			<div class="action-btn" title="Get link">
+			<div class="action-btn gradient-1-stop-1" title="Get link to item">
 				<svg><use href="assets/icons/navbar.svg#i-link"></use></svg>
 			</div>
 
