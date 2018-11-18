@@ -1,4 +1,4 @@
-json.pending @user.pending_friends do |pending|
+json.users @user.pending_friends do |pending|
 	json.partial! "friendships/friend", friend: pending
 end
 

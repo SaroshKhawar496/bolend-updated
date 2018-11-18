@@ -1,0 +1,2 @@
+.tabs-container > .tab:hover { border-bottom: 1px solid #e94057; }
+.tabs-container > .tab.tab-selected { border-bottom: 3px solid #e94057; }

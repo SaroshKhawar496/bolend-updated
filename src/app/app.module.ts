@@ -39,12 +39,14 @@ import { NotificationsComponent } from './main/notifications/notifications.compo
 import { NotificationCardComponent } from './main/notifications/notification-card/notification-card.component';
 import { RequestedComponent } from './main/items/requested/requested.component';
 import { ProfileCardComponent } from './main/profile/profile-card/profile-card.component';
+import { FriendsComponent } from './main/social/friends/friends.component';
 
 
 // etc
 
 
 
+// vars accessed in appRoutes
 
 // app router
 const appRoutes = [
@@ -103,7 +105,8 @@ const appRoutes = [
 		component: SocialComponent,
 		canActivate: [AuthGuard],
 		children: [
-			{ path: '', component: SocialComponent }
+			{ path: ':cat', component: FriendsComponent },
+			{ path: '', redirectTo: 'friends', pathMatch: 'full' },
 		]
 	},
 
@@ -142,6 +145,7 @@ const appRoutes = [
 		NotificationCardComponent,
 		RequestedComponent,
 		ProfileCardComponent,
+		FriendsComponent,
 	],
 	imports: [
 		BrowserModule,

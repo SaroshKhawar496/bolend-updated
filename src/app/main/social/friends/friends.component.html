@@ -1,0 +1,16 @@
+<div class="friends-container">
+
+		<!-- tabs -->
+	<div class="tabs-container">
+			<div *ngFor="let tab of catKeys" 
+				class="tab trans-0-25" 
+				(click)="changeTab(tab)"
+				[ngClass]="{'tab-selected': category == tab}">
+				{{catLut[tab].title}}
+			</div>
+		</div>
+
+	<div>
+		<pre>{{friends|json}}</pre>
+	</div>
+</div>
