@@ -146,9 +146,9 @@ export class JWT {
 
 export class Item extends ExtensibleModel {
 	id: string | number;
-	name: string = "";
-	description: string = "";
-	url: string = "";
+	name: string;
+	description: string;
+	url: string;
 	tags: string | Array<string>;
 
 	imgUrl: string;			// main image; more images are allowed
@@ -158,7 +158,7 @@ export class Item extends ExtensibleModel {
 
 	constructor ( attribs?: object ) {
 		super(attribs);
-		
+		console.log ( 'item constrcutor', this, this.name);
 		// if the object has a 'user' property, create an instance of user
 		if ( attribs && attribs['user'] )
 			this.createUserInstance ( attribs['user'] );
