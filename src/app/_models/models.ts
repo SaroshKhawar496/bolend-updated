@@ -62,7 +62,6 @@ export class User extends ExtensibleModel {
 		this.dateStrToObj();
 
 		// parse user's items available
-		console.log ( this );
 		if ( attribs && attribs['items'] )
 			this.parseItems ( this.items, 'itemsAvailable' );
 	}
@@ -133,12 +132,12 @@ export class JWT {
 		this.tokenPayload = JSON.parse ( atob(split[1]) );
 		this.tokenSignature = split[2];
 
-		console.log (
-			'JWT: header payload signature', 
-			this.tokenHeader, 
-			this.tokenPayload,
-			this.tokenSignature
-		);
+		// console.log (
+		// 	'JWT: header payload signature', 
+		// 	this.tokenHeader, 
+		// 	this.tokenPayload,
+		// 	this.tokenSignature
+		// );
 	}
 }
 
@@ -158,7 +157,6 @@ export class Item extends ExtensibleModel {
 
 	constructor ( attribs?: object ) {
 		super(attribs);
-		console.log ( 'item constrcutor', this, this.name);
 		// if the object has a 'user' property, create an instance of user
 		if ( attribs && attribs['user'] )
 			this.createUserInstance ( attribs['user'] );

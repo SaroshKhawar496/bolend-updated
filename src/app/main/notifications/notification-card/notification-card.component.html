@@ -1,4 +1,4 @@
-<div *ngIf="n">
+<div *ngIf="n && n['notifiable_object']">
 
 	<!-- notification type -->
 	<div [ngSwitch]="n.Type" class="notif-type">

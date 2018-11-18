@@ -21,25 +21,28 @@
 .gradient-0-stop-0 {
     background-color: #8a2387;
 }
+.gradient-0-stop-0:hover { background-color: #72116e; }
 .gradient-0-stop-1 {
     background-color: #e94057;
 }
+.gradient-0-stop-1:hover { background-color: #DB142F; }
 .gradient-0-stop-2 {
     background-color: #f27121;
 }
+.gradient-0-stop-2:hover { background-color: #C75108; }
 
-/* .complementary-0 { */
 .gradient-1-stop-0 {
 	background-color: #8c4cb1;
 }
-/* .analogous-0 { */
+.gradient-1-stop-0:hover { background-color: #75319D; }
 .gradient-1-stop-1 {
 	background-color: #d8454a;
 }
-/* .bs-green-0 { */
+.gradient-1-stop-1:hover { background-color: #b82b30; }
 .gradient-1-stop-2 {
 	background-color: #7a941a;
 }
+.gradient-1-stop-2:hover { background-color: #586F03; }
 
 .white-text {
 	color: #fff;

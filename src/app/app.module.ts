@@ -37,6 +37,7 @@ import { ResultsComponent } from './main/search/results/results.component';
 import { SocialComponent } from './main/social/social.component';
 import { NotificationsComponent } from './main/notifications/notifications.component';
 import { NotificationCardComponent } from './main/notifications/notification-card/notification-card.component';
+import { RequestedComponent } from './main/items/requested/requested.component';
 
 
 // etc
@@ -83,6 +84,9 @@ const appRoutes = [
 		path: 'item/:id',
 		component: ItemDetailsComponent,
 		canActivate: [AuthGuard],
+		children: [
+			{ path: 'requests', component: RequestedComponent }
+		]
 	},
 
 	// search page
@@ -132,6 +136,7 @@ const appRoutes = [
 		SocialComponent,
 		NotificationsComponent,
 		NotificationCardComponent,
+		RequestedComponent,
 	],
 	imports: [
 		BrowserModule,
