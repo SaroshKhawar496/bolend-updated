@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocialComponent implements OnInit {
 
+	// constants
+	maxStrangers:	number = 6;
+	maxMutual:		number = 6;
+	
+
 	constructor() { }
 
 	ngOnInit() {

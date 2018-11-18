@@ -23,15 +23,27 @@ Rails.application.routes.draw do
     root "welcome#home"
     resources :users
     
-    post 'friendrequest', to: "friendships#newFriendRequest"
-    post 'addfriend', to: "friendships#acceptFriendRequest"
-    post 'declinefriend', to: "friendships#declineFriendRequest"
-    post 'blockfriend', to: "friendships#blockFriend"
-    get 'getpendingfriends', to: "friendships#getPendingRequests"
-    get 'getblockedfriends', to: "friendships#getBlockedFriends"
-    get 'friends', to: "friendships#getAllFriends"
-    get 'requestedfriends', to: "friendships#getRequestedFriends"
-    get 'mutualfriends', to: "friendships#getMutualFriends"
+    # post 'friendrequest', to: "friendships#newFriendRequest"
+    # post 'addfriend', to: "friendships#acceptFriendRequest"
+    # post 'declinefriend', to: "friendships#declineFriendRequest"
+    # post 'blockfriend', to: "friendships#blockFriend"
+    # get 'getpendingfriends', to: "friendships#getPendingRequests"
+    # get 'getblockedfriends', to: "friendships#getBlockedFriends"
+    # get 'friends', to: "friendships#getAllFriends"
+    # get 'requestedfriends', to: "friendships#getRequestedFriends"
+    # get 'mutualfriends', to: "friendships#getMutualFriends"
+
+    scope :friends do
+      post 'request', to: "friendships#newFriendRequest"
+      post 'add', to: "friendships#acceptFriendRequest"
+      post 'decline', to: "friendships#declineFriendRequest"
+      post 'block', to: "friendships#blockFriend"
+      get 'get-pending', to: "friendships#getPendingRequests"
+      get 'get-blocked', to: "friendships#getBlockedFriends"
+      get 'index', to: "friendships#getAllFriends"
+      get 'requested', to: "friendships#getRequestedFriends"
+      get 'mutual', to: "friendships#getMutualFriends"
+    end
 
     # get 'friendrequest', to "user_relations#show"
     # get 'friendrequest', to "user_relations#show"

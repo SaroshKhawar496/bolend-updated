@@ -38,6 +38,7 @@ import { SocialComponent } from './main/social/social.component';
 import { NotificationsComponent } from './main/notifications/notifications.component';
 import { NotificationCardComponent } from './main/notifications/notification-card/notification-card.component';
 import { RequestedComponent } from './main/items/requested/requested.component';
+import { ProfileCardComponent } from './main/profile/profile-card/profile-card.component';
 
 
 // etc
@@ -96,11 +97,14 @@ const appRoutes = [
 		canActivate: [AuthGuard],
 	},
 
-	// social page
+	// social group
 	{
 		path: 'social',
 		component: SocialComponent,
-		canActivate: [AuthGuard]
+		canActivate: [AuthGuard],
+		children: [
+			{ path: '', component: SocialComponent }
+		]
 	},
 
 	// notifications page
@@ -137,6 +141,7 @@ const appRoutes = [
 		NotificationsComponent,
 		NotificationCardComponent,
 		RequestedComponent,
+		ProfileCardComponent,
 	],
 	imports: [
 		BrowserModule,
