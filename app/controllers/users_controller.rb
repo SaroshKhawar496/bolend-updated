@@ -13,5 +13,10 @@ class UsersController < ApplicationController
   end
 
 
+  # get all users
+  def index
+    @user = User.all
+  end
+
 	
 end
