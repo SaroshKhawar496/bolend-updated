@@ -149,7 +149,7 @@ export class HttpService {
 	 * Build an `Observable` for an HTTP POST request. `subscribe()` to the Observable to send it
 	 * @param path API path
 	 * @param payload payload object
-	 * @param include include the request headers 
+	 * @param include include the response headers 
 	 */
 	postObservable ( path: string, payload: object, include: boolean = false ) 
 	: Observable<Object>
@@ -168,7 +168,7 @@ export class HttpService {
 	 * Build an `Observable` for an HTTP PUT request. `subscribe()` to send the request
 	 * @param path API path
 	 * @param payload payload object
-	 * @param include include the request headers?
+	 * @param include include the response headers?
 	 */
 	putObservable ( path: string, payload: object, include: boolean = false )
 	: Observable<object>
@@ -179,6 +179,22 @@ export class HttpService {
 		if (include) options['observe'] = 'response';
 
 		let request: Observable<Object> = this.http.put ( url, payload, options );
+		return request;
+	}
+
+
+	/**
+	 * Build an `Observable` for an HTTP DELETE request. `subscribe()` to send the request
+	 * @param path API path
+	 * @param include include the response headers?
+	 */
+	deleteObservable ( path: string, include: boolean = false ) {
+		// build the request
+		let url = `${this.baseUrl}${path}`;
+		let options: object = {};
+		if (include) options['observe'] = 'response';
+
+		let request: Observable<Object> = this.http.delete ( url, options );
 		return request;
 	}
 

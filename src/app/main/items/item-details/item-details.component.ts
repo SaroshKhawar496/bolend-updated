@@ -115,6 +115,21 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 
+	/**
+	 * Delete this item
+	 */
+	deleteItem () : void {
+		let path: string = `/items/${this.item.id}`;
+		this.http.deleteObservable(path).subscribe(
+			data => {
+				this.alert.success ( 'Item successfully deleted.', true );
+				this.router.navigate (['/']);		// return to home page
+			},
+			err => this.handleHttpError (err)
+		)
+	}
+
+
 	returnToItemDetails () {
 		this.router.navigate ([]);
 	}

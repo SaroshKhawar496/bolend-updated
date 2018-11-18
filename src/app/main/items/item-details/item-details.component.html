@@ -41,7 +41,7 @@
 					<svg><use href="assets/icons/navbar.svg#i-edit"></use></svg>
 				</div>
 				<!-- delete item -->
-				<div class="action-btn gradient-0-stop-1" title="Delete Item">
+				<div class="action-btn gradient-0-stop-1" title="Delete Item" (click)="deleteItem()">
 					<svg><use href="assets/icons/navbar.svg#i-trash"></use></svg>
 				</div>
 			</ng-container>
@@ -59,6 +59,7 @@
 					<svg><use href="assets/icons/navbar.svg#i-mail"></use></svg>
 				</div>
 			</ng-template>
+			
 
 			<!-- user PUBLIC profile -->
 			<div class="action-btn gradient-1-stop-0" title="Owner profile" (click)="navigateToOwnerProfile()">
