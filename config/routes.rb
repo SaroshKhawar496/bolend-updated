@@ -34,15 +34,17 @@ Rails.application.routes.draw do
     # get 'mutualfriends', to: "friendships#getMutualFriends"
 
     scope :friends do
-      post 'request', to: "friendships#newFriendRequest"
-      post 'add', to: "friendships#acceptFriendRequest"
-      post 'decline', to: "friendships#declineFriendRequest"
-      post 'block', to: "friendships#blockFriend"
-      get 'get-pending', to: "friendships#getPendingRequests"
-      get 'get-blocked', to: "friendships#getBlockedFriends"
-      get 'index', to: "friendships#getAllFriends"
-      get 'requested', to: "friendships#getRequestedFriends"
-      get 'mutual', to: "friendships#getMutualFriends"
+      post 'request',     to: "friendships#newFriendRequest"
+      post 'accept',      to: "friendships#acceptFriendRequest"
+      post 'deny',        to: "friendships#declineFriendRequest"
+      post 'block',       to: "friendships#blockFriend"
+
+      get 'get-pending',  to: "friendships#getPendingRequests"
+      get 'get-blocked',  to: "friendships#getBlockedFriends"
+      get 'index',        to: "friendships#getAllFriends"
+      get 'requested',    to: "friendships#getRequestedFriends"
+      get 'mutual',       to: "friendships#getMutualFriends"
+      get 'discover',     to: "friendships#discoverUsers"
     end
 
     # get 'friendrequest', to "user_relations#show"

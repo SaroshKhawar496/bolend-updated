@@ -1,26 +1,26 @@
 class FriendshipsController < ApplicationController
 
 	def newFriendRequest
-		@friend = User.find(params[:friend_id])
+		@friend = User.find(params[:user_id])
 		#assume @friend exists
 		@user = User.find(current_user.id)
 		@user.friend_request(@friend)
 	end
 
 	def acceptFriendRequest
-		@friend = User.find(params[:friend_id])
+		@friend = User.find(params[:user_id])
 		@user = User.find(current_user.id)
 		@user.accept_request(@friend)
 	end
 
 	def declineFriendRequest
-		@friend = User.find(params[:friend_id])
+		@friend = User.find(params[:user_id])
 		@user = User.find(current_user.id)
 		@user.decline_request(@friend)
 	end
 
 	def blockFriend
-		@friend = User.find(params[:friend_id])
+		@friend = User.find(params[:user_id])
 		@user = User.find(current_user.id)
 		@user.block_friend(@friend)
 	end
@@ -65,6 +65,15 @@ class FriendshipsController < ApplicationController
 
 	def getRequestedFriends
 		@user = User.find(current_user.id)
+	end
+
+	# this method should return all (or top ~15) users who:
+	# 	are not already your friend, and 
+	#   has not sent you a friend request, and
+	#	has not received a friend request from you
+	# sorted with some heuristic.
+	def discoverUsers 
+		@user = User.all
 	end
 
 end
