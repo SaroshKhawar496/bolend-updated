@@ -1,4 +1,4 @@
-	class User < ApplicationRecord
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 	devise :database_authenticatable, 
@@ -63,12 +63,16 @@
 	has_many :requests, dependent: :destroy
 	has_many :requested_items, :through => :requests, :source => :item
 
-  #loans association
-  has_many :loans, dependent: :destroy
-  has_many :borrowed_items, :through => :loans, :source => :item
+	#loans association
+	has_many :loans, dependent: :destroy
+	has_many :borrowed_items, :through => :loans, :source => :item
 
 
-  #notifications association
-  has_many :notifications, foreign_key: :recipient_id
+	#notifications association
+	has_many :notifications, foreign_key: :recipient_id
+
+	# search - match first or last name
+	# NOTE: this query uses "ILIKE" for case insensitive matching. May not work with all RDBMS's!!
+	scope :user_name, -> (search_user) { where("fname ILIKE ? OR lname ILIKE ?", "%#{search_user}%", "%#{search_user}%")}
 
 end

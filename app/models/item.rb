@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
   # respond_to :json
   
-  scope :item_name, -> (search_item) { where("name like ?", "%#{search_item}%")}
+	# NOTE: this query uses "ILIKE" for case insensitive matching. May not work with all RDBMS's!!
+  scope :item_name, -> (search_item) { where("name ILIKE ?", "%#{search_item}%")}
 
   belongs_to :user
   has_one_attached :image # one-to-one relationship

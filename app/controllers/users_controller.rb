@@ -15,7 +15,17 @@ class UsersController < ApplicationController
 
   # get all users
   def index
-    @user = User.all
+
+    # if a search term is present, perform a user search
+    if params[:search_user].present?
+      query = params[:search_user]
+      @user = User.user_name(query)
+
+    # otherwise, return all users
+    else
+      @user = User.all
+    end
+
   end
 
 	
