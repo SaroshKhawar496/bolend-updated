@@ -1,25 +1,126 @@
 class FriendshipsController < ApplicationController
 
 	def newFriendRequest
+
+		begin
+			@friend = User.find(params[:user_id])
+		rescue Exception => e
+			render json:
+			{
+				"message": "This user does not exist",
+				"success": false
+			}
+			return # game over , user does not exist
+		end
+		# friend user should not be in the pending collection
 		@friend = User.find(params[:user_id])
-		#assume @friend exists
 		@user = User.find(current_user.id)
-		@user.friend_request(@friend)
+		@users = User.all
+		friends = @user.friends
+		pendingFriends = @user.pending_friends
+		if friends.include? @friend
+			render json:
+			{
+				"message": "You are already friends with this user",
+				"success": false
+			}
+		elsif pendingFriends.include? @friend
+			render json:
+			{
+				"message": "Please wait for user to accept your request",
+				"success": false
+			}
+			# set status success or not
+		else
+			@user.friend_request(@friend)
+			render json:
+			{
+				"message": "Request sent successfully",
+				"success": true
+			}
+		end
 	end
 
 	def acceptFriendRequest
+
+		begin
+			@friend = User.find(params[:user_id])
+		rescue Exception => e
+			render json:
+			{
+				"message": "This user does not exist",
+				"success": false
+			}
+			return # game over , user does not exist
+		end
+
 		@friend = User.find(params[:user_id])
 		@user = User.find(current_user.id)
-		@user.accept_request(@friend)
+		# check if request exists to even add friend
+		requestedFriends = @user.requested_friends
+		if requestedFriends.include? @friend
+			@user.accept_request(@friend)
+			render json:
+			{
+				"message": "Congratulations, you are now friends with #{@friend.fname} #{@friend.lname}!",
+				"success": true
+			}
+		else
+			render json:
+			{
+				"message": "Cannot perform this action",
+				"success": false
+			}
+		end
 	end
 
 	def declineFriendRequest
+
+		begin
+			@friend = User.find(params[:user_id])
+		rescue Exception => e
+			render json:
+			{
+				"message": "This user does not exist",
+				"success": false
+			}
+			return # game over , user does not exist
+		end
+
 		@friend = User.find(params[:user_id])
 		@user = User.find(current_user.id)
-		@user.decline_request(@friend)
+		# check if request exists to even add friend
+		requestedFriends = @user.requested_friends
+		if requestedFriends.include? @friend
+			@user.decline_request(@friend)
+			render json:
+			{
+				"message": "Friend request from #{@friend.fname} #{@friend.lname} has been declined",
+				"success": true
+			}
+		else
+			render json:
+			{
+				"message": "Cannot perform this action",
+				"success": false
+			}
+		end
+		
 	end
 
 	def blockFriend
+
+		begin
+			@friend = User.find(params[:user_id])
+		rescue Exception => e
+			render json:
+			{
+				"message": "This user does not exist",
+				"success": false
+			}
+			return # game over , user does not exist
+		end
+
 		@friend = User.find(params[:user_id])
 		@user = User.find(current_user.id)
 		@user.block_friend(@friend)
