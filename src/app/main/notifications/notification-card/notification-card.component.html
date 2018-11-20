@@ -20,7 +20,8 @@
 		</ng-template>
 
 		<ng-template [ngSwitchCase]="type.friend_request">
-			<strong>{{n.Sender.fullName}}</strong> sent you a friend request.
+			<span (click)="navigateToSender()" class="pointer"><strong>{{n.Sender.fullName}} </strong></span>
+			sent you a friend request.
 		</ng-template>
 
 		<ng-template [ngSwitchCase]="type.borrow_accept">

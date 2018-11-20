@@ -107,12 +107,12 @@ export const FriendTabs: {
 	},
 	incoming: {
 		title: 'Requests Received', 
-		apiRoute: 'requested',
+		apiRoute: 'get-pending',
 		controls: [ FriendControls.accept, FriendControls.deny, FriendControls.block ]
 	},
 	outgoing: {
 		title: 'Requests Sent', 
-		apiRoute: 'get-pending',
+		apiRoute: 'requested',
 		controls: [ FriendControls.profile, FriendControls.block ]
 	},
 	discover: { 
