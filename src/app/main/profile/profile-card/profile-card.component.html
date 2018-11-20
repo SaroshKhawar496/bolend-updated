@@ -1,18 +1,83 @@
-<div class="profile-card flex">
+<div class="profile-card flex" *ngIf="user.id else noUser">
 
 	<!-- user profile image -->
-	<div class="profile-card-img">
-		some img here
+	<div class="profile-card-img-container">
+		<img class="profile-card-img round" [src]="user.profileImgUrl || 'assets/img/pepe.png'">
 	</div>
 
 	<!-- name -->
 	<div class="profile-card-name">
-		name here
+		<h4 (click)="navigateToUser()" class="pointer">{{user.fullName}}</h4>
 	</div>
 
 	<!-- controls -->
-	<div class="profile-card-ctrls">
-		controls
+	<div class="profile-card-ctrls flex" *ngIf="userControls">
+		<ng-container *ngFor="let ctrl of userControls">
+
+			<div [ngSwitch]="ctrl" class="ctrl round pointer trans-0-25 white-text" 
+				[ngClass]="{
+					'gradient-0-stop-0': ctrl==ctrls.sendRequest,
+					'gradient-0-stop-1': ctrl==ctrls.block || ctrl==ctrls.hide,
+					'gradient-0-stop-2': ctrl==ctrls.delete || ctrl==ctrls.deleteRequest,
+					'gradient-1-stop-0': ctrl==ctrls.message ,
+					'gradient-1-stop-1': ctrl==ctrls.deny,
+					'gradient-1-stop-2': ctrl==ctrls.accept || ctrl==ctrls.profile
+				}">
+
+				<!-- ctrl: navigate to profile -->
+				<ng-template [ngSwitchCase]="ctrls.profile">
+					<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
+				</ng-template>
+
+				<!-- ctrl: block user -->
+				<ng-template [ngSwitchCase]="ctrls.block">
+					<svg><use href="assets/icons/navbar.svg#i-ban"></use></svg>
+				</ng-template>
+
+				<!-- ctrl: accept incoming request -->
+				<ng-template [ngSwitchCase]="ctrls.accept">
+					<svg><use href="assets/icons/navbar.svg#i-checkmark"></use></svg>
+				</ng-template>
+
+				<!-- ctrl: deny incoming request -->
+				<ng-template [ngSwitchCase]="ctrls.deny">
+					<svg><use href="assets/icons/navbar.svg#i-close"></use></svg>
+				</ng-template>
+
+				<!-- ctrl: delete friend -->
+				<ng-template [ngSwitchCase]="ctrls.delete">
+					<svg><use href="assets/icons/navbar.svg#i-trash"></use></svg>
+				</ng-template>
+
+				<!-- ctrl: delete outgoing friend request -->
+				<ng-template [ngSwitchCase]="ctrls.deleteRequest">
+					<svg><use href="assets/icons/navbar.svg#i-trash"></use></svg>
+				</ng-template>
+
+				<!-- ctrl: send friend request to a user -->
+				<ng-template [ngSwitchCase]="ctrls.sendRequest">
+					<svg><use href="assets/icons/navbar.svg#i-heart"></use></svg>
+				</ng-template>
+
+				<!-- ctrl: hide user -->
+				<ng-template [ngSwitchCase]="ctrls.hide">
+					<svg><use href="assets/icons/navbar.svg#i-close"></use></svg>
+				</ng-template>
+
+				<!-- ctrl: message friend -->
+				<ng-template [ngSwitchCase]="ctrls.message">
+					<svg><use href="assets/icons/navbar.svg#i-mail"></use></svg>
+				</ng-template>
+
+			</div>
+
+		</ng-container>	
 	</div>
 
 </div>
+
+
+<!-- if the user object is invalid -->
+<ng-template #noUser>
+	User object is invalid; missing user ID.
+</ng-template>

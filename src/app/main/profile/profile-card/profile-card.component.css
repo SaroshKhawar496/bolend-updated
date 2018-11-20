@@ -1,0 +1,41 @@
+div.profile-card {
+	max-width: 15em;
+	margin: 1em;
+	height: 100%;
+}
+
+
+/* profile img */
+div.profile-card-img-container {
+	width: inherit;
+}
+img.profile-card-img {
+	width: 100%;
+	height: 100%;
+	border: 1px solid #ccc;
+}
+
+
+/* profile name */
+div.profile-card-name { width: 100%; }
+.profile-card-name h4 { text-align: center; }
+
+
+/* controls */
+div.profile-card-ctrls {
+	width: 100%;
+	justify-content: center;
+}
+.profile-card-ctrls .ctrl {
+	padding: 0.5em;
+	width: 1.75em;
+	height: 1.75em;
+	margin: 0.25em;
+}
+.profile-card-ctrls .ctrl:hover {
+	box-shadow: 0 0 6px 1px #bbb;
+}
+.ctrl svg {
+	width: 100%;
+	height: 100%;
+}

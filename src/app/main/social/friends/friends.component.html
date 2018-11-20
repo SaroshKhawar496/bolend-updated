@@ -2,15 +2,27 @@
 
 		<!-- tabs -->
 	<div class="tabs-container">
-			<div *ngFor="let tab of catKeys" 
-				class="tab trans-0-25" 
-				(click)="changeTab(tab)"
-				[ngClass]="{'tab-selected': category == tab}">
-				{{catLut[tab].title}}
+		<div *ngFor="let tab of catKeys" 
+			class="tab trans-0-25" 
+			(click)="changeTab(tab)"
+			[ngClass]="{'tab-selected': category == tab}">
+			{{catLut[tab].title}}
+		</div>
+	</div>
+
+	<!-- display users -->
+	<div *ngIf="users else noUsers" class="user-display">
+		<div class="card-carousel">
+			<div *ngFor="let user of users" class="profile-card-container">
+				<app-profile-card [user]="user" [userControls]="userControls"></app-profile-card>
 			</div>
 		</div>
-
-	<div>
-		<pre>{{friends|json}}</pre>
+		<pre>{{users|json}}</pre>
 	</div>
+
+	<!-- no users to show -->
+	<ng-template #noUsers>
+		There's no one to show. :(
+	</ng-template>
+
 </div>

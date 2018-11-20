@@ -28,13 +28,13 @@ export class FriendsComponent implements OnInit, OnDestroy {
 		this.paramSub = this.route.params.subscribe(
 			param => {
 				this.category = param['cat'];
-				// console.log ( this.category );
 				this.getFriendIndex(this.category);
 			}
 		)
 	}
 
-	friends: Array<User>;
+	users: Array<User>;
+	userControls: Array<FriendControls>;
 	/**
 	 * Get a list of friends, requests, friends-of-friends
 	 * @param cat 
@@ -47,10 +47,13 @@ export class FriendsComponent implements OnInit, OnDestroy {
 				console.log ( 'all my "friends"', data );
 				let userList = data['users'];
 				if ( userList )
-					this.friends = data['users'].map( user => {// for each user in the friend array of the response:
+					this.users = data['users'].map( user => {// for each user in the friend array of the response:
 						return new User(user);
 					});
-				else this.friends = [];
+				else this.users = [];
+
+				// set the available controls for each user
+				this.userControls = FriendTabs[cat].controls;
 			},
 			err => this.http.genericModelErrorHandler(err, Model.User)
 		)
@@ -75,11 +78,45 @@ export class FriendsComponent implements OnInit, OnDestroy {
 interface FriendTab {
 	title: string,
 	apiRoute: string,
+	controls: FriendControls[],
 }
-export const FriendTabs: object = {
-	friends: 		{ title: 'Friends', apiRoute: 'index' } ,
-	incoming:		{ title: 'Requests Received', apiRoute: 'get-pending' },
-	outgoing:		{ title: 'Requests Sent', apiRoute: 'requested' },
-	mutual_friends:	{ title: 'Mutual Friends', apiRoute: 'mutual' },
-	// strangers:		{ title: 'Internet Strangers', apiRoute: null },
+
+/** the following controls should appear on each profile card, if the tab specified is selected  */
+export enum FriendControls {
+	profile = 0,	// navigate to their public profile
+	block,			// block user
+	accept,			// accept request
+	deny,			// deny request
+	delete,			// delete friend
+	deleteRequest,	// delete outgoing friend request
+	sendRequest,	// send user a friend request
+	hide,			// hide user, i.e. prevent them from showing up in results
+	message,		// private message
+}
+export const FriendTabs: {
+	friends: FriendTab,
+	incoming: FriendTab,
+	outgoing: FriendTab,
+	discover: FriendTab,
+} = {
+	friends: {
+		title: 'Friends', 
+		apiRoute: 'index',
+		controls: [ FriendControls.delete, FriendControls.block ]
+	},
+	incoming: {
+		title: 'Requests Received', 
+		apiRoute: 'get-pending',
+		controls: [ FriendControls.accept, FriendControls.deny, FriendControls.block ]
+	},
+	outgoing: {
+		title: 'Requests Sent', 
+		apiRoute: 'requested',
+		controls: [ FriendControls.profile, FriendControls.deleteRequest, FriendControls.block ]
+	},
+	discover: { 
+		title: 'Make Friends', 
+		apiRoute: 'discover',
+		controls: [ FriendControls.sendRequest, FriendControls.hide ]
+	},
 }
