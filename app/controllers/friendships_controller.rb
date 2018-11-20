@@ -73,7 +73,7 @@ class FriendshipsController < ApplicationController
 	#	has not received a friend request from you
 	# sorted with some heuristic.
 	def discoverUsers 
-		@user = User.all
+		@users = User.all
 	end
 
 end

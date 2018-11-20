@@ -2,7 +2,10 @@
 
 	<!-- user profile image -->
 	<div class="profile-card-img-container">
-		<img class="profile-card-img round" [src]="user.profileImgUrl || 'assets/img/pepe.png'">
+		<img class="profile-card-img round pointer" 
+			[src]="user.profileImgUrl || 'assets/img/pepe.png'"
+			(click)="navigateToUser()"
+		>
 	</div>
 
 	<!-- name -->
@@ -22,7 +25,8 @@
 					'gradient-1-stop-0': ctrl==ctrls.message ,
 					'gradient-1-stop-1': ctrl==ctrls.deny,
 					'gradient-1-stop-2': ctrl==ctrls.accept || ctrl==ctrls.profile
-				}">
+				}"
+				(click)="processCtrl(ctrl)">
 
 				<!-- ctrl: navigate to profile -->
 				<ng-template [ngSwitchCase]="ctrls.profile">
@@ -50,12 +54,12 @@
 				</ng-template>
 
 				<!-- ctrl: delete outgoing friend request -->
-				<ng-template [ngSwitchCase]="ctrls.deleteRequest">
+				<!-- <ng-template [ngSwitchCase]="ctrls.deleteRequest">
 					<svg><use href="assets/icons/navbar.svg#i-trash"></use></svg>
-				</ng-template>
+				</ng-template> -->
 
 				<!-- ctrl: send friend request to a user -->
-				<ng-template [ngSwitchCase]="ctrls.sendRequest">
+				<ng-template [ngSwitchCase]="ctrls.request">
 					<svg><use href="assets/icons/navbar.svg#i-heart"></use></svg>
 				</ng-template>
 

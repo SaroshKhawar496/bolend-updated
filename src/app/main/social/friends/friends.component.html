@@ -12,7 +12,7 @@
 
 	<!-- display users -->
 	<div *ngIf="users else noUsers" class="user-display">
-		<div class="card-carousel">
+		<div class="card-carousel flex">
 			<div *ngFor="let user of users" class="profile-card-container">
 				<app-profile-card [user]="user" [userControls]="userControls"></app-profile-card>
 			</div>

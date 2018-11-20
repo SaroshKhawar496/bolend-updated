@@ -88,8 +88,8 @@ export enum FriendControls {
 	accept,			// accept request
 	deny,			// deny request
 	delete,			// delete friend
-	deleteRequest,	// delete outgoing friend request
-	sendRequest,	// send user a friend request
+	// deleteRequest,	// delete outgoing friend request
+	request,		// send user a friend request
 	hide,			// hide user, i.e. prevent them from showing up in results
 	message,		// private message
 }
@@ -106,17 +106,17 @@ export const FriendTabs: {
 	},
 	incoming: {
 		title: 'Requests Received', 
-		apiRoute: 'get-pending',
+		apiRoute: 'requested',
 		controls: [ FriendControls.accept, FriendControls.deny, FriendControls.block ]
 	},
 	outgoing: {
 		title: 'Requests Sent', 
-		apiRoute: 'requested',
-		controls: [ FriendControls.profile, FriendControls.deleteRequest, FriendControls.block ]
+		apiRoute: 'get-pending',
+		controls: [ FriendControls.profile, FriendControls.block ]
 	},
 	discover: { 
 		title: 'Make Friends', 
 		apiRoute: 'discover',
-		controls: [ FriendControls.sendRequest, FriendControls.hide ]
+		controls: [ FriendControls.request, FriendControls.hide ]
 	},
 }
