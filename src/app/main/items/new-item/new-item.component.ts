@@ -24,6 +24,7 @@ export class NewItemComponent implements OnInit {
 	itemCardOptions: ItemCardOptions = new ItemCardOptions (
 		{
 			colorWhite: true,
+			hideDescription: false,
 			// hideOwner: true
 		}
 	);
@@ -53,6 +54,7 @@ export class NewItemComponent implements OnInit {
 	}
 
 
+	/** Process an image file input; allow a preview of the image and attach it to payload */
 	processFile ( input: any ) : void {
 		console.log ( 'processFile', input);
 		const file: File = input.files[0];
@@ -68,14 +70,15 @@ export class NewItemComponent implements OnInit {
 	}
 
 
-
 	/**
 	 * Send POST request to server to create new item
 	 */
 	submitItem () : void {
 		let path: string = "/items";
+		let itemObj: object = Object.assign( {image: this.imgSrc}, this.itemForm.value );
 		let payload: object = {
-			item: this.itemForm.value
+			// item: this.itemForm.value
+			item: itemObj,
 		};
 		this.submitted = true;
 

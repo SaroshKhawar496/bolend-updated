@@ -4,3 +4,7 @@
 .card-carousel {
     justify-content: center;
 }
+
+.profile-card-container {
+    margin: 1em 0;
+}
