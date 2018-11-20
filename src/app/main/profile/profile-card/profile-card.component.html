@@ -19,7 +19,7 @@
 
 			<div [ngSwitch]="ctrl" class="ctrl round pointer trans-0-25 white-text" 
 				[ngClass]="{
-					'gradient-0-stop-0': ctrl==ctrls.sendRequest,
+					'gradient-0-stop-0': ctrl==ctrls.request,
 					'gradient-0-stop-1': ctrl==ctrls.block || ctrl==ctrls.hide,
 					'gradient-0-stop-2': ctrl==ctrls.delete || ctrl==ctrls.deleteRequest,
 					'gradient-1-stop-0': ctrl==ctrls.message ,

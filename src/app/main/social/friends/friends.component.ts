@@ -45,12 +45,13 @@ export class FriendsComponent implements OnInit, OnDestroy {
 		this.http.getObservable(path).subscribe(
 			data => {
 				console.log ( 'all my "friends"', data );
-				let userList = data['users'];
-				if ( userList )
+				if ( data ) {
+					let userList = data['users'];
 					this.users = data['users'].map( user => {// for each user in the friend array of the response:
 						return new User(user);
 					});
-				else this.users = [];
+				} else 
+					this.users = [];
 
 				// set the available controls for each user
 				this.userControls = FriendTabs[cat].controls;

@@ -51,6 +51,8 @@ export const TabToProperty: object = {
 		templateId: 'itemResults'
 	},
 	2: {
-		property: 'user'
+		property: 'user',
+		templateId: 'userResults',
+		
 	}
 }

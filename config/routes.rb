@@ -44,7 +44,9 @@ Rails.application.routes.draw do
       get 'index',        to: "friendships#getAllFriends"
       get 'requested',    to: "friendships#getRequestedFriends"
       get 'mutual',       to: "friendships#getMutualFriends"
-      get 'discover',     to: "friendships#discoverUsers"
+      # get 'discover',     to: "friendships#discover"
+      get 'discover',     to: "users#index"
+
     end
 
     # get 'friendrequest', to "user_relations#show"
