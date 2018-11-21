@@ -85,14 +85,14 @@ interface FriendTab {
 /** the following controls should appear on each profile card, if the tab specified is selected  */
 export enum FriendControls {
 	profile = 0,	// navigate to their public profile
-	block,			// block user
-	accept,			// accept request
-	deny,			// deny request
-	delete,			// delete friend
+	block = 69,		// block user
+	accept = 11,	// accept request
+	deny = 12,		// deny request
+	// delete,			// delete friend
 	// deleteRequest,	// delete outgoing friend request
-	request,		// send user a friend request
-	hide,			// hide user, i.e. prevent them from showing up in results
-	message,		// private message
+	request = 10,	// send user a friend request
+	hide = 99,		// hide user, i.e. prevent them from showing up in results
+	message = 98,	// private message
 }
 export const FriendTabs: {
 	friends: FriendTab,
@@ -103,7 +103,8 @@ export const FriendTabs: {
 	friends: {
 		title: 'Friends', 
 		apiRoute: 'index',
-		controls: [ FriendControls.delete, FriendControls.block ]
+		controls: [ FriendControls.profile, FriendControls.block ]
+		// controls: [ FriendControls.delete, FriendControls.block ]
 	},
 	incoming: {
 		title: 'Requests Received', 

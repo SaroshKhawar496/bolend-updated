@@ -26,8 +26,8 @@ export class User extends ExtensibleModel {
 	gender: string;         // optional
 	dateofbirth: string;
 
-	created_at: string;
-	updated_at: string;
+	created_at: Date;
+	updated_at: Date;
 	profileImgUrl: string;
 
 	items: Array<object>;
@@ -37,10 +37,10 @@ export class User extends ExtensibleModel {
 
 	dob: Date;
 	dobReadable: string;
-	created_date: Date;
-	created_readable: string;
-	updated_date: Date;
-	updated_readable: string;
+	// created_date: Date;
+	// created_readable: string;
+	// updated_date: Date;
+	// updated_readable: string;
 
 
 	/**
@@ -59,7 +59,7 @@ export class User extends ExtensibleModel {
 		}
 
 		// convert string dates to Date objects
-		this.dateStrToObj();
+		// this.dateStrToObj();
 
 		// parse user's items available
 		if ( attribs && attribs['items'] )
@@ -71,10 +71,10 @@ export class User extends ExtensibleModel {
 		if (this.dateofbirth){
 			this.dob = new Date ( this.dateofbirth );
 		}
-		if (this.created_at)
-			this.created_date = new Date ( this.created_at );
-		if (this.updated_at)
-			this.updated_date = new Date ( this.updated_at);
+		// if (this.created_at)
+		// 	this.created_date = new Date ( this.created_at );
+		// if (this.updated_at)
+		// 	this.updated_date = new Date ( this.updated_at);
 	}
 
 	/**
@@ -131,13 +131,6 @@ export class JWT {
 		this.tokenHeader = JSON.parse ( atob(split[0]) );
 		this.tokenPayload = JSON.parse ( atob(split[1]) );
 		this.tokenSignature = split[2];
-
-		// console.log (
-		// 	'JWT: header payload signature', 
-		// 	this.tokenHeader, 
-		// 	this.tokenPayload,
-		// 	this.tokenSignature
-		// );
 	}
 }
 

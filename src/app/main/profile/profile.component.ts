@@ -6,7 +6,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Consts } from '../../_models/consts';
 import { AlertService } from 'src/app/utils/alert/alert.service';
 import { Subscription } from 'rxjs';
-// import { Observable } from 'rxjs';
+// import * as moment from 'moment';
+import { timeDelta } from 'src/app/utils/app-utils';
+
 
 @Component({
 	selector: 'app-profile',
@@ -48,19 +50,32 @@ export class ProfileComponent implements OnInit, OnDestroy {
 	 * @param id user id
 	 */
 	loadUser ( id?: number ) : void {
-		// this.currentUser = this.http.getCurrentUser();
 		let path: string = `/users/${id}`;
 		this.http.getObservable ( path ).subscribe(
-			data => {
-				this.currentUser = new User(data);
-				this.you = (this.currentUser.id == this.http.getCurrentUser().id);
-				// console.log ( this.http.getCurrentUser() );
-			},
+			data => this.loadUserDataHandler(data),
 			(err: HttpErrorResponse) => this.http.genericModelErrorHandler(err, Model.User)
 		)
 	}
 
+
 	get user() { return this.currentUser; }
+	memberSince: string;
+
+	/** Data parser for request that loads user */
+	loadUserDataHandler ( data: object ) : object {
+		// create an instance of User and assign it to currentUser
+		this.currentUser = new User(data);
+
+		// determine if this user is you
+		this.you = (this.currentUser.id == this.http.getCurrentUser().id);
+
+		// determine the string for "Member since" status
+		if ( this.currentUser.created_at )
+			this.memberSince = timeDelta ( this.currentUser.created_at );
+		console.log ( 'wtf', this.currentUser.created_at, this.memberSince );
+
+		return this.currentUser;
+	}
 
 	ngOnDestroy(): void {
 		if ( this.paramSub )

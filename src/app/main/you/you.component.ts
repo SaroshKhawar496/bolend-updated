@@ -37,14 +37,24 @@ export class YouComponent extends ProfileComponent {
 	private loadYou () : void {
 		let path: string = '/users/you';
 		this.http.getObservable ( path ).subscribe (
-			data => {
-				console.log ( 'loadYou', data );
-				this.currentUser = new User(data);
-				this.you = true;
-			},
+			data => this.loadUserDataHandler(data),
+			// data => {
+			// 	// console.log ( 'loadYou', data );
+			// 	this.currentUser = new User(data);
+			// 	this.you = true;
+			// },
 			(err: HttpErrorResponse) => this.http.genericModelErrorHandler(err, Model.User),
 		)
 	}
+
+
+	loadUserDataHandler ( data: object ) : object {
+		console.log ( 'you.loadUserDataHandler', data );
+		super.loadUserDataHandler(data);
+		this.you = true;
+		return this.currentUser;
+	}
+
 
 	/**
 	 * Load your requests

@@ -15,13 +15,13 @@
 		<br />
 		<div class="profile full-name">{{user.fname}} {{user.lname}}</div>
 		<table class="profile">
-			<tr *ngIf="user.created_date"><td class="label">Member since</td><td class="data">{{user.created_date.toDateString()}}</td></tr>
+			<tr *ngIf="memberSince"><td class="label">Member since</td><td class="data">{{memberSince}}</td></tr>
 			<tr *ngIf="user.email"><td class="label">email</td><td class="data">{{user.email}}</td></tr>
 			<tr *ngIf="user.phone"><td class="label">phone</td><td class="data">{{user.phone}}</td></tr>
 			<tr *ngIf="user.address"><td class="label">address</td><td class="data">{{user.address}}</td></tr>
 			<tr *ngIf="user.gender"><td class="label">gender</td><td class="data">{{user.gender}}</td></tr>
 		</table>
-		<button *ngIf="you">Edit Profile</button>
+		<!-- <button *ngIf="you">Edit Profile</button> -->
 		<h5></h5>
 		<hr class="divider" />
 	</div>

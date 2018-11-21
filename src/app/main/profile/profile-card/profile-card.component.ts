@@ -81,7 +81,10 @@ export class ProfileCardComponent implements OnInit {
 		this.http.postObservable(path, payload).subscribe(
 			data => {		// on success
 				console.log ( 'friendPostRequest', data );
-				this.alertUser ( type, true );
+				if (data)
+					this.alertUser ( type, data['success'], data['message'] );
+				else
+					this.alertUser ( type, true );
 			},
 			err => {
 				// use a custom alert if 
