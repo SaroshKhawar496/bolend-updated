@@ -125,7 +125,11 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @item.update_attributes(permit_item)
+
+    # the only user allowed to update items is the owner of the item
+    if @item.user.id != current_user.id
+      render json: @item.errors, status: :forbidden
+    elsif @item.update_attributes(permit_item)
       puts ">item updated successfully!"
     end
   end

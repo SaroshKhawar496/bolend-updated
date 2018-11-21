@@ -238,11 +238,15 @@ Continue at your own risk.`
 			console.error ( `No ${type} with this ID exists!`, err.error['exception'] );
 			this.alert.error ( `No ${type} with this ID exists!` );
 			return true;
+		} else if (err.status == 403 ){
+			console.error ( `You are not allowed to perform this action.` );
+			this.alert.error ( `You are not allowed to perform this action.` );
+			return true;
 		} else if ( err.status >= 500 ) {
 			console.error ( Consts.serverFaultMsg );
 			this.alert.error ( Consts.serverFaultMsg );
 			return true;
-		} 
+		}
 		return false;
 	}
 }
