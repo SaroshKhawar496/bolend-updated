@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2018-11-18T06:26:10.226Z",
+	"__export_date": "2018-11-21T23:03:14.760Z",
 	"__export_source": "insomnia.desktop.app:v6.2.0",
 	"resources": [
 		{
@@ -22,12 +22,12 @@
 				"expired_jwt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTQxMjY5MTQ0LCJleHAiOjE1NDEyNzI3NDQsImp0aSI6ImY5NGYwYmM0LWVjYmUtNDgzYS05ZTgyLTRhOTMyMzEzNDE5NCJ9.9xoYbpawwTeIdK9wygNkaNBStW7X6QMUgmzfzncXZvE",
 				"heroku_jwt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTQxMzA4ODY0LCJleHAiOjE1NDEzMTI0NjQsImp0aSI6IjRiMTU0OTJiLTc5NGYtNDk5My04ODRmLWM4MWY5MjhkNDdiZiJ9.zRHfrN9Fr0mmSw68foUPYuqkEs_1CJTxHpjBqmIh7DM",
 				"heroku_url": "https://sheltered-reaches-72765.herokuapp.com/api",
-				"local_jwt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTQyNTIxOTQ2LCJleHAiOjE1NDI1MjU1NDYsImp0aSI6ImU3ZTllMDhiLWIyY2EtNDIzZC1hYmFmLTNkMDc2ZTc0YzBiNSJ9.leJQnYfHCDYjyANawj_vzALJ8zFEY811ZF0pc-xFHK4",
+				"local_jwt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTQyODM1MzU3LCJleHAiOjE1NDI4Mzg5NTcsImp0aSI6Ijc4YTUyNzhjLTZlYTgtNDIyYS1hYWY0LTRiMTczNGI1MGI4MiJ9.SKWySUSwmYQrL0XzngRAXldNx0ho5y3tZ_U-2fEnPV4",
 				"local_jwt_alt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNSIsInNjcCI6InVzZXIiLCJhdWQiOm51bGwsImlhdCI6MTU0MjUyMjE4OSwiZXhwIjoxNTQyNTI1Nzg5LCJqdGkiOiI2YWRjYjE5ZS0xNTM2LTQxYzQtYTEwYy0xMTM4ODU1ZTQ5YzgifQ.dyObmAR1xyQ7Sc0kmrAocQufTRA4cQNJFBJCFxJk1ms"
 			},
 			"isPrivate": false,
 			"metaSortKey": 1540940339937,
-			"modified": 1542522208372,
+			"modified": 1542835364007,
 			"name": "New Environment",
 			"parentId": "wrk_50657a3199e447988a55e6ac5a5b42b0",
 			"_type": "environment"
@@ -116,7 +116,7 @@
 			},
 			"body": {
 				"mimeType": "application/json",
-				"text": "{\n\t\"item\": {\n\t\t\"name\": \"fuckyou\",\n\t\t\"description\": \"fuckyou\"\n\t}\n}"
+				"text": "{\n\t\"item\": {\n\t\t\"name\": \"fuckyou\",\n\t\t\"description\": \"fuckyou\",\n\t\t\"base64\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAACnVBMVEUAAAA6OjpcXFwFBQUAAAA3Njfo5+cjIyMbGxs6OjpjY2MODg4LDAzf399GR0c7PT03ODhvcG/f3t5SUlKmpqYODg5ycnItLS0QDw8ICAiop6cBAgLS0tJlZGS/vr6Xl5fW1dWenZ3X19eKiop4eXhoaGgmJia+vr5DRkYzNTTm5uYgICAwMDBdXV3ExMR+fn0iISFlZGQ4ODhbW1ubmppmZmYoKiqSkpLJyMh8fHtfX19KSkrd3NzS0dEgICBYWFiAgICJiYlzc3MwMDCysbFcXFx0c3N3d3aFhYSko6KQkJCLyOeXqNdol8e3traenp2XlpaNi4tvbm3q7e5UvO7i6Os5q+vp6elHrOORvuBAntljoNIvjtKBm8+OocgeeMdciL4/e7pTh7cobLeysbCpqKeBgIBlZWVRUlFVwPA9tfDe6u/F3us6metNtuo5p+amyOV/vuU3oePI1uF4uuFVpeFEp98tmN8zmt60utyirtp6rNibrNVwpNMlidONstI/ktF6pNBVm9B+oc7Ny8txm8pblMk8fMlWkMQpfsTEw8NjlcKptsEzd716mLxzkrtNfrmDnbhcfLhsj7Vvh7N1kbGZo66LlaWQlp5teJ2Mkpybm5qIj5qDhox+g4d8fXxAQD/JTilgqfPS4vF8w/Cs0+82pO9nwu1Tkuje4uW1y+VAquVFjuVtt+RYsuNCluBgrdyCtNurtNgyk9hTo9eJqNOHpNM4ltOSodLR0NDHy8+ot8xfmMtrpMpmkcdNjsa0vcU3iMVHfsWNrcSYq8BXe8CKlL0VbL27u7sjarZ+jbVbhrVOe7RBarEWXLEzZK+ImK55hKmDjaeCf6FWeJ1UaJCEe46wjYprYHtxdHSRXWFXV1eASlSuTjuiQTUEnl26AAAAR3RSTlMA/v0bEA3ozaBwW09H+/Dty8O7loZYUUg/NiwqKSUZCf738/Lx7+zm5OPc1tPIxb68u7mqppyalpSQj4uEfHVyb0Y9OTctGa8zTnIAAAHjSURBVCjPYoABRzExeQZsgEvE3EVGDlNOxkKJl41NS8hWCkVYzoZtZ2qgh0egv5+6iBtCXEpIIcB93qzp0+fMc0/z0neFicvqdaXNvRC3qaqqJu7SXPd0XVmIOKvJCY9ZfVt9Kit9fHx2nJrjftuYFeIeRa8Zk1ubm+NqtsXGHrs8ZUYQExdYg2FgwFRfIGhc1brv4q2ZCVO9mARBWpxVPaYldXS07ald3Djz7o0JZ5KmBak4ASU4gwImJibub9pY3XZt4Z3ECVP6jwS6OwAlrN09J/cmJ3c29V5deG93QcKkSX2e7pZACcCE0zxPnz+bXFsQvev6lcItnSfPJaS4mwIlrLw8+4/GHoquLj6QtKEwKirmeLdfkDBQwj4gdWJ7e3x8fU935Np1EWUx8fV+TJxACXFlz56GurrowwdjlpYW5UVsbij25xMHSjALerREVkTt3V5eXro+P2R1RSRvugAzA8i9TP4rS8oiwvKL1qzIzQwrCZ3NaAcOEmajDL9Q77ysrLDcRctCvENTFhgwQ0JRQicjJTjHe3lmyBLvnPDUBdoSsHDnYWec3xIenJ0dHN41n5GdGxFTkhxqjOkes/29bmbwc0gixy0LNwe7Jj+fhoAZNwtaamCR5hEV5ZGGCwMAQvCdr1XGESgAAAAASUVORK5CYII=\"\n\t}\n}"
 			},
 			"created": 1540996531146,
 			"description": "",
@@ -130,7 +130,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1540998460815.5,
 			"method": "POST",
-			"modified": 1542255473557,
+			"modified": 1542835551207,
 			"name": "New item",
 			"parameters": [],
 			"parentId": "fld_2b29f0b47a1d4cf5a665db006f5c453f",
@@ -157,7 +157,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1540998460740.5,
 			"method": "GET",
-			"modified": 1542430215598,
+			"modified": 1542834704799,
 			"name": "List of Items",
 			"parameters": [],
 			"parentId": "fld_2b29f0b47a1d4cf5a665db006f5c453f",
@@ -174,7 +174,7 @@
 			"_id": "req_40d26960dc5246d98dba6e508ec4d293",
 			"authentication": {
 				"prefix": "Bearer",
-				"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNTQxMzA0NzczLCJleHAiOjE1NDEzMDgzNzMsImp0aSI6IjEzYTY1NGQ5LTUyYWYtNDVkZS1hMDcxLWY1MzZjNGRhNjE2OCJ9.J-c_Ldqi0_4gf4t-3LrwqSseCFjVSgxezmmlCrCv5ss",
+				"token": "{{ local_jwt  }}",
 				"type": "bearer"
 			},
 			"body": {},
@@ -184,7 +184,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1540998460765.5,
 			"method": "GET",
-			"modified": 1542329719191,
+			"modified": 1542841374448,
 			"name": "Item 1",
 			"parameters": [],
 			"parentId": "fld_2b29f0b47a1d4cf5a665db006f5c453f",
@@ -194,7 +194,7 @@
 			"settingRebuildPath": true,
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
-			"url": "http://localhost:3000/api/items/1.json",
+			"url": "http://localhost:3000/api/items/18",
 			"_type": "request"
 		},
 		{
@@ -261,6 +261,33 @@
 			"_type": "request"
 		},
 		{
+			"_id": "req_1ecfa058a80c499985be257a272903c1",
+			"authentication": {
+				"prefix": "Bearer",
+				"token": "{{ local_jwt  }}",
+				"type": "bearer"
+			},
+			"body": {},
+			"created": 1542829602454,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1542829602454,
+			"method": "PUT",
+			"modified": 1542829633417,
+			"name": "Update Item X",
+			"parameters": [],
+			"parentId": "fld_2b29f0b47a1d4cf5a665db006f5c453f",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/items/69",
+			"_type": "request"
+		},
+		{
 			"_id": "req_76d5d1e0b6fb4436bea139d0f2b38f09",
 			"authentication": {
 				"prefix": "Bearer",
@@ -274,7 +301,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1541082690445,
 			"method": "GET",
-			"modified": 1542521998623,
+			"modified": 1542834737565,
 			"name": "User X",
 			"parameters": [],
 			"parentId": "fld_38c721a4bd394bd4b04836c7e4e10837",
@@ -328,9 +355,15 @@
 			"isPrivate": false,
 			"metaSortKey": -1541040575630.25,
 			"method": "GET",
-			"modified": 1542522005936,
+			"modified": 1542834736949,
 			"name": "All users",
-			"parameters": [],
+			"parameters": [
+				{
+					"id": "pair_25e1647fc7ef4ac98bf70225423cceb2",
+					"name": "search_user",
+					"value": "test"
+				}
+			],
 			"parentId": "fld_38c721a4bd394bd4b04836c7e4e10837",
 			"settingDisableRenderRequestBody": false,
 			"settingEncodeUrl": true,
@@ -360,7 +393,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1540992875156,
 			"method": "POST",
-			"modified": 1542522174009,
+			"modified": 1542835364359,
 			"name": "Login test@test.com",
 			"parameters": [],
 			"parentId": "fld_f85134b137c74d26ae47ea2775febf81",
@@ -491,7 +524,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1540992875131,
 			"method": "POST",
-			"modified": 1542522208690,
+			"modified": 1542835353205,
 			"name": "Login 1@1.com",
 			"parameters": [],
 			"parentId": "fld_f85134b137c74d26ae47ea2775febf81",
@@ -608,7 +641,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1542521926440,
 			"method": "GET",
-			"modified": 1542522264289,
+			"modified": 1542832183771,
 			"name": "Friends - index",
 			"parameters": [],
 			"parentId": "fld_7de9fa75cca24575aa70fa1d5c8873d2",
@@ -628,22 +661,25 @@
 				"token": "{{ local_jwt  }}",
 				"type": "bearer"
 			},
-			"body": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"user_id\": 2555\n}"
+			},
 			"created": 1542522030743,
 			"description": "",
-			"headers": [],
+			"headers": [
+				{
+					"id": "pair_710a58cb48314a70a25fbe629c122a90",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
 			"isPrivate": false,
 			"metaSortKey": -1542521926490,
 			"method": "POST",
-			"modified": 1542522213155,
+			"modified": 1542767190769,
 			"name": "Friend request user X",
-			"parameters": [
-				{
-					"id": "pair_8ddd4c2040fe48268a8c7ab4094d5ce8",
-					"name": "friend_id",
-					"value": "25"
-				}
-			],
+			"parameters": [],
 			"parentId": "fld_7de9fa75cca24575aa70fa1d5c8873d2",
 			"settingDisableRenderRequestBody": false,
 			"settingEncodeUrl": true,
@@ -658,23 +694,86 @@
 			"_id": "req_ffc9b35d5dbc48df9a565dbe9ea4447a",
 			"authentication": {
 				"prefix": "Bearer",
-				"token": "{{ local_jwt_alt  }}",
+				"token": "{{ local_jwt  }}",
 				"type": "bearer"
 			},
-			"body": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"user_id\": 21\n}"
+			},
 			"created": 1542522241172,
 			"description": "",
-			"headers": [],
+			"headers": [
+				{
+					"id": "pair_ca687b8eb5d6463fac21e1ca27b72d3b",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
 			"isPrivate": false,
 			"metaSortKey": -1542521926465,
 			"method": "POST",
-			"modified": 1542522260758,
-			"name": "Friend request user X (Copy)",
+			"modified": 1542827704208,
+			"name": "Accept incoming friend request",
+			"parameters": [],
+			"parentId": "fld_7de9fa75cca24575aa70fa1d5c8873d2",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/friends/accept",
+			"_type": "request"
+		},
+		{
+			"_id": "req_aaf93c9147b44269ab489a5053e365af",
+			"authentication": {
+				"prefix": "Bearer",
+				"token": "{{ local_jwt  }}",
+				"type": "bearer"
+			},
+			"body": {},
+			"created": 1542523607963,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1542523607963,
+			"method": "GET",
+			"modified": 1542687911432,
+			"name": "Friends - outgoing reqs",
+			"parameters": [],
+			"parentId": "fld_7de9fa75cca24575aa70fa1d5c8873d2",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ base_url  }}/friends/get-pending",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1141f09b8ed54cb383146b0af300d5fa",
+			"authentication": {
+				"prefix": "Bearer",
+				"token": "{{ local_jwt  }}",
+				"type": "bearer"
+			},
+			"body": {},
+			"created": 1542738740727,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1542393814293,
+			"method": "GET",
+			"modified": 1542765435987,
+			"name": "Friends - discover",
 			"parameters": [
 				{
-					"id": "pair_8ddd4c2040fe48268a8c7ab4094d5ce8",
-					"name": "friend_id",
-					"value": "1"
+					"id": "pair_48979e521efd4fa2a8e17488a86d562e",
+					"name": "search_user",
+					"value": "osama"
 				}
 			],
 			"parentId": "fld_7de9fa75cca24575aa70fa1d5c8873d2",
@@ -684,7 +783,7 @@
 			"settingRebuildPath": true,
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
-			"url": "{{ base_url  }}/friends/add",
+			"url": "{{ base_url  }}/friends/discover",
 			"_type": "request"
 		}
 	]
