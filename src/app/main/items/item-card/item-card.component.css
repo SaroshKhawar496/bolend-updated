@@ -1,20 +1,27 @@
 div.item-card-container {
-    max-width: 14em;
-    margin: 1em auto;
+    width: 14em;
+    /* margin: 1em auto; */
     border: 1px solid #ccc;
     height: 100%;
 }
 
 div.item-img-main {
-    background-color: #ddd;
-    width: inherit;
+    background-color: #eee;
+    width: 14em;
+    height: 14em;
+
+    padding: 0;
+
 }
 .item-img-main img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 .item-img-main svg {
     width: 100%;
+    height: 100%;
+    color: #999;    /* nein nein NEIN */
 }
 
 .item-user-name { color: #444; }

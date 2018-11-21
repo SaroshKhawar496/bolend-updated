@@ -39,7 +39,7 @@
 
 
 	<!-- created how long ago? -->
-	<div *ngIf="n.created_at" class="notif-time-delta">
+	<div *ngIf="n.created_at" class="age-string notif-time-delta">
 		<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>
 		{{timeDelta(n.created_at)}}
 	</div>

@@ -77,7 +77,7 @@ export class NewItemComponent implements OnInit {
 	 */
 	submitItem () : void {
 		let path: string = "/items";
-		let itemObj: object = Object.assign( {image: this.imgSrc}, this.itemForm.value );
+		let itemObj: object = Object.assign( {base64: this.imgSrc}, this.itemForm.value );
 		let payload: object = {
 			// item: this.itemForm.value
 			item: itemObj,

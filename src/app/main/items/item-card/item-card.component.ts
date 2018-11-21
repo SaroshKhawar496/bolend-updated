@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Item, User } from 'src/app/_models/models';
 import { Router } from '@angular/router';
+import { timeDelta } from 'src/app/utils/app-utils';
 
 @Component({
 	selector: 'app-item-card',
@@ -17,7 +18,6 @@ export class ItemCardComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-
 	}
 
 
@@ -72,6 +72,7 @@ export class ItemCardOptions {
 	inRequest:		boolean = false;	// is this item card used to show an incoming request?
 	hideDescription:boolean = true;		// hide item description?
 	hideTags:		boolean = true;		// hide tags?
+	hideAge:		boolean = false;	// hide the age string?
 
 
 	constructor ( options?: object ) {

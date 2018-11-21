@@ -1,3 +1,5 @@
+import { timeDelta } from "../utils/app-utils";
+
 // import { Item } from "./item";
 
 
@@ -125,19 +127,23 @@ export class Item extends ExtensibleModel {
 	url: string;
 	tags: string | Array<string>;
 
-	imgUrl: string;			// main image; more images are allowed
+	image: string;			// main image URL
 	imgSrc: string | ArrayBuffer;	// src buffer of main image
 
 	user: User;
 
 	created_at: Date;
 	updated_at: Date;
+	age: string;
 
 	constructor ( attribs?: object ) {
 		super(attribs);
 		// if the object has a 'user' property, create an instance of user
 		if ( attribs && attribs['user'] )
 			this.createUserInstance ( attribs['user'] );
+
+		if ( this.updated_at )
+			this.age = timeDelta(this.updated_at);
 	}
 
 	createUserInstance ( userData: object ) {

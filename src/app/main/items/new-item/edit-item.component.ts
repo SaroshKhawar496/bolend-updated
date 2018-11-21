@@ -51,7 +51,7 @@ export class EditItemComponent extends NewItemComponent {
 	/** Send an HTTP PUT request with the updated item details to the server */
 	submitItem() {
 		let path: string = `/items/${this.itemId}`;
-		let itemObj: object = Object.assign( {image: this.imgSrc}, this.itemForm.value );
+		let itemObj: object = Object.assign( {base64: this.imgSrc}, this.itemForm.value );
 		let payload: object = { item: itemObj };
 		this.http.putObservable(path, payload).subscribe(
 			res => {

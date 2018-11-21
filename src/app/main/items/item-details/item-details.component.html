@@ -1,12 +1,13 @@
-<div *ngIf="!(+qparams.requested)" class="detail-container flex flex-column full-body-height">
+<div class="full-body-height">
+<div *ngIf="!(+qparams.requested)" class="detail-container flex flex-column ">
 	
 	<!-- item details -->
 	<div *ngIf="item" class="detail-card scale-fontsize">
 		<!-- <pre>{{item | json}}</pre> -->
 
 		<!-- cover photo/gallery carousel -->
-		<div class="fade-in">
-			carousel
+		<div *ngIf="item.image" class="item-img-container fade-in">
+			<img [src]="item.image">
 		</div>
 
 		<!-- title card + user details -->
@@ -29,10 +30,15 @@
 			{{item.tags || '#tags appear here'}}
 		</div>
 
+		<!-- item age -->
+		<div *ngIf="item.age" class="age-string fade-in delay-0-7">
+			<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>
+			{{item.age}}
+		</div>
 
 
 		<!-- controls -->
-		<div class="item-controls-container flex fade-in-up delay-0-7" id="CONTROLS">
+		<div class="item-controls-container flex fade-in-up delay-0-8" id="CONTROLS">
 
 			<!-- if this item belongs to the currentUser, display additional controls -->
 			<ng-container *ngIf="item.user.id == currentUser.id else notYou">
@@ -105,6 +111,7 @@
 
 		<div>&nbsp;</div>
 	</div>
+</div>
 </div>
 
 

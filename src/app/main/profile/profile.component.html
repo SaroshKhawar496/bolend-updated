@@ -1,14 +1,14 @@
 <div id="PROFILE-CONTAINER">
 
 	<!-- header -->
-	<div class="grid-header">
+	<div class="grid-header fade-in-down">
 		<h2 *ngIf="you">Your Profile</h2>
 		<h2 *ngIf="!you">{{user.fullName}}'s public profile</h2>
 	</div>
 
 
 	<!-- profile -->
-	<div class="grid-profile">
+	<div class="grid-profile fade-in-left delay-0-1">
 		<div style="width: 100%">
 			<img class="profile" [src]="user.profileImgUrl || 'assets/img/pepe.png'">
 		</div>
@@ -28,7 +28,7 @@
 	
 
 	<!-- items available -->
-	<div class="grid-box1">
+	<div class="grid-box1  fade-in delay-0-2">
 		<h3 class="box-title">Items Available</h3>
 		<div *ngIf="user.itemsAvailable" class="box-content flex card-carousel">
 			<div *ngFor="let item of user.itemsAvailable.slice(0,defaultMaxAvailableItems)" class="item">
@@ -41,7 +41,7 @@
 
 
 	<!-- items borrowed -->
-	<div class="grid-box2">
+	<div class="grid-box2 fade-in delay-0-3">
 		<h3 class="box-title">Items Borrowed</h3>
 		<hr class="divider" />
 	</div>
@@ -49,7 +49,7 @@
 
 
 	<!-- activity feed -->
-	<div class="grid-box3">
+	<div class="grid-box3 fade-in delay-0-4">
 		<h3 class="box-title">box3</h3>
 		<hr class="divider" />
 	</div>
@@ -61,14 +61,14 @@
 		<h3 class="box-title">Requests</h3>
 		
 		<!-- incoming requests -->
-		<div class="incoming-requests-container">
+		<div class="incoming-requests-container fade-in delay-0-5">
 			<h4>Incoming Item Requests</h4>
 			<ng-container *ngIf="in else noIncoming">
 				<div class="box-content flex card-carousel">
 					<div *ngFor="let request of in" class="notification">
 						<!-- user in this case is you -->
 						<!-- <app-item-card [item]="request['my_item']" ></app-item-card> -->
-						<pre>{{request | json}}</pre>
+						<!-- <pre>{{request | json}}</pre> -->
 					</div>
 				</div>
 			</ng-container>
@@ -78,12 +78,12 @@
 		</div>
 
 		<!-- outgoing requests -->
-		<div class="outgoing-requests-container">
+		<div class="outgoing-requests-container fade-in delay-0-6">
 			<h4>Outgoing Item Requests</h4>
 			<ng-container *ngIf="out else noOutgoing">
 				<div class="box-content flex card-carousel">
 					<div *ngFor="let request of out" class="notification">
-						<pre>{{request|json}}</pre>
+						<!-- <pre>{{request|json}}</pre> -->
 					</div>
 				</div>
 			</ng-container>

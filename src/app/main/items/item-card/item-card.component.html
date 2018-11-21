@@ -2,8 +2,10 @@
 
     <!-- item image -->
     <div class="item-img-main pointer" (click)='navigateToDetails()'>
-        <img *ngIf="item.imgSrc || item.imgUrl" [src]="item.imgSrc || item.imgUrl" />
-        <svg *ngIf="!item.imgSrc && !item.imgUrl"><use href="assets/icons/navbar.svg#i-photo"></use></svg>
+        <img *ngIf="item.imgSrc || item.image else defaultSvg" [src]="item.imgSrc || item.image" />
+        <ng-template #defaultSvg>
+            <svg><use href="assets/icons/navbar.svg#i-photo"></use></svg>
+        </ng-template>
     </div>
 
 
@@ -25,6 +27,11 @@
 
         <div *ngIf="!cardOptions.hideDescription" class="item-description">
             {{item.description}}
+        </div>
+
+        <div *ngIf="!cardOptions.hideAge && item.age" class="description">
+	    	<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>
+            {{item.age}}
         </div>
     </div>
 

@@ -182,6 +182,10 @@ svg.inline {
     color: #444;
     font-style: italic;
 }
+.age-string {
+	color: #444;
+    font-style: italic;
+}
 
 /*****************************************************
 **** TIMED ANIMATIONS
@@ -213,6 +217,11 @@ svg.inline {
 	opacity:0;
 	transform: translateY(-30px);
 	animation: fadeInY 0.5s ease-in-out forwards;
+}
+.fade-in-left {
+	opacity: 0;
+	transform: translateX(-30px);
+	animation: fadeInX 0.5s ease-in-out forwards;
 }
 .fade-in-right {
 	opacity: 0;
