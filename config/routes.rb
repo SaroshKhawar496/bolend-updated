@@ -62,7 +62,11 @@ Rails.application.routes.draw do
 
     resources :loans
 
-    resources :notifications
+    resources :notifications do 
+      collection do
+        post :mark_as_read
+      end
+    end
     
   end
  
