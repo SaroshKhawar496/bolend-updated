@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 
     # log(params[])
 
-    if params[:search_item].present?
+    if params[:query].present?
       # puts "search_item is present"
       # test = CGI::parse('param1=value1&param2=value2&param3=value3')
       # puts("-----------------\n ")
@@ -42,12 +42,12 @@ class ItemsController < ApplicationController
 
 
       # puts params.inspect
-      @items = Item.item_name(params[:search_item])
+      @items = Item.item_name(params[:query])
 
       if @items.length == 0
         render json: {
           "message": "We could not find what you were looking for!",
-          "item": []
+          "items": []
         }
        
       end

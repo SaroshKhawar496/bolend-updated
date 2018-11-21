@@ -1,4 +1,4 @@
-json.item @items.reverse do |item|
+json.items @items.reverse do |item|
   if ! item.borrower.present?
     json.id item.id
     json.name item.name
