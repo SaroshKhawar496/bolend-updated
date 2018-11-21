@@ -97,7 +97,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @user = User.find(current_user.id)
+    # @user = User.find(current_user.id)    # what is the point of this?
     @item.punch(request)
   end
 
@@ -121,6 +121,13 @@ class ItemsController < ApplicationController
       render json: @item.errors, status: :unprocessable_entity
     end
 
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update_attributes(permit_item)
+      puts ">item updated successfully!"
+    end
   end
 
 

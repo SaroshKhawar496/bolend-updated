@@ -24,7 +24,7 @@ export class User extends ExtensibleModel {
 	phone: string;          // optional
 	email: string;
 	gender: string;         // optional
-	dateofbirth: string;
+	dateofbirth: Date;
 
 	created_at: Date;
 	updated_at: Date;
@@ -35,12 +35,8 @@ export class User extends ExtensibleModel {
 
 	jwt: JWT;
 
-	dob: Date;
-	dobReadable: string;
-	// created_date: Date;
-	// created_readable: string;
-	// updated_date: Date;
-	// updated_readable: string;
+	// dob: Date;
+	// dobReadable: string;
 
 
 	/**
@@ -58,23 +54,9 @@ export class User extends ExtensibleModel {
 			this.jwt = new JWT (jwtStr);
 		}
 
-		// convert string dates to Date objects
-		// this.dateStrToObj();
-
 		// parse user's items available
 		if ( attribs && attribs['items'] )
 			this.parseItems ( this.items, 'itemsAvailable' );
-	}
-
-	dateStrToObj () : void {
-		// convert string dates to Date objects
-		if (this.dateofbirth){
-			this.dob = new Date ( this.dateofbirth );
-		}
-		// if (this.created_at)
-		// 	this.created_date = new Date ( this.created_at );
-		// if (this.updated_at)
-		// 	this.updated_date = new Date ( this.updated_at);
 	}
 
 	/**
@@ -147,6 +129,9 @@ export class Item extends ExtensibleModel {
 	imgSrc: string | ArrayBuffer;	// src buffer of main image
 
 	user: User;
+
+	created_at: Date;
+	updated_at: Date;
 
 	constructor ( attribs?: object ) {
 		super(attribs);

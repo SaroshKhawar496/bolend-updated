@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from 'src/app/http.service';
-import { Router } from '@angular/router';
+import { HttpService, Model } from 'src/app/http.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Item, User } from 'src/app/_models/models';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,12 +16,13 @@ import { AlertService } from 'src/app/utils/alert/alert.service';
 export class NewItemComponent implements OnInit {
 
 	// member properties
-	itemForm: FormGroup;
-	currentUser: User;
+	itemForm: 		FormGroup;
+	currentUser: 	User;
 	get f() { return this.itemForm.controls; }
-	imgSrc: string | ArrayBuffer;
-	submitted: boolean = false;
-	itemCardOptions: ItemCardOptions = new ItemCardOptions (
+	imgSrc: 		string | ArrayBuffer;
+	submitted: 		boolean = false;
+	editItem: 		boolean = false;
+	itemCardOptions:ItemCardOptions = new ItemCardOptions (
 		{
 			colorWhite: true,
 			hideDescription: false,
@@ -32,6 +33,7 @@ export class NewItemComponent implements OnInit {
 	constructor (
 		protected http: HttpService,
 		protected router: Router,
+		public route: ActivatedRoute,
 		protected formBuilder: FormBuilder,
 		protected alert: AlertService,
 	) { }
@@ -90,7 +92,7 @@ export class NewItemComponent implements OnInit {
 				this.alert.success ( "Your new item has been uploaded and is available for request!", true );
 				this.redirectOnSuccess ( res['id'].toString() );
 			},
-			(err: HttpErrorResponse) => console.error ( err )
+			(err: HttpErrorResponse) => this.http.genericModelErrorHandler(err, Model.Item)
 		)
 	}
 

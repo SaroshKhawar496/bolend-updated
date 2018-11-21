@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="form-column">
 		<span>&nbsp;</span>
-		<h2 class="fade-in">Post New Item</h2>
+		<h2 class="fade-in">{{editItem ? 'Edit' : 'Post New'}} Item</h2>
 
-		<div class="flex new-item-form">
+		<div *ngIf="itemForm" class="flex new-item-form">
 
 			<!-- preview card -->
 			<div style="margin: 1em 0;" class="fade-in-left delay-0-2">
@@ -45,7 +45,7 @@
 				<!-- item image(s) -->
 				<div class="input-wrapper fade-in-right delay-0-5">
 					<label class="fileContainer" title="Upload a cover image. More images can be added later.">
-					Add photo
+					{{editItem ? 'Change' : 'Add'}} photo
 					<input #imageInput
 						type="file"
 						accept="image/*"
