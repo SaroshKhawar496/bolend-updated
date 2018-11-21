@@ -1,3 +1,6 @@
+require 'base64'
+require 'stringio'
+
 class ItemsController < ApplicationController
   #using current_user.id now
   
@@ -109,6 +112,23 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(permit_item)
+
+    #Adding images old (with embedded ruby forms)
+    #@item.image.attach(@image)
+
+    #Adding image (with REST API, image is sent as JSON payload)
+    #Kinda dirty because of the intermediate storage
+    image_name = "#{@item.name}.jpg"
+    base64_image = params[:item][:base64].sub(/^data:.*,/, '')
+    decoded_image = Base64.decode64(base64_image)
+    image_io = StringIO.new(decoded_image)
+    @picture = { io: image_io, filename: image_name }
+    @item.image.attach(@picture)
+    @item.base64 = nil # no need to store in database anymore
+
+    #test for image stored on server
+    #@item.image.attach(io: File.open('/home/ivar/Pictures/1280px-Venus_botticelli_detail.jpg'), filename: image_name )
+
     @user = User.find(current_user.id)
     @item.user_id = @user.id
     if @item.save
@@ -127,7 +147,7 @@ class ItemsController < ApplicationController
   private
 
   def permit_item
-    params.require(:item).permit(:name, :description, :user_id, :image)
+    params.require(:item).permit(:name, :description, :user_id, :image, :base64)
   end
 
 end

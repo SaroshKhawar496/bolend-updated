@@ -11,4 +11,5 @@ json.items @user.items.reverse do |item|
   json.id item.id
   json.name item.name
   json.description item.description
+  json.image rails_blob_url(@item.image) if @item.image.attached?
 end
