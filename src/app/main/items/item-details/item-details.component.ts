@@ -129,6 +129,12 @@ export class ItemDetailsComponent implements OnInit {
 		)
 	}
 
+	/** Navigate to page to allow user to edit the details of this item */
+	navigateToEdit() {
+		let path : string[] = [ '/item', 'edit', this.item.id.toString() ];
+		this.router.navigate(path);
+	}
+
 
 	returnToItemDetails () {
 		this.router.navigate ([]);

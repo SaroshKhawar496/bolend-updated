@@ -40,6 +40,7 @@ import { NotificationCardComponent } from './main/notifications/notification-car
 import { RequestedComponent } from './main/items/requested/requested.component';
 import { ProfileCardComponent } from './main/profile/profile-card/profile-card.component';
 import { FriendsComponent } from './main/social/friends/friends.component';
+import { EditItemComponent } from './main/items/new-item/edit-item.component';
 
 
 // etc
@@ -82,6 +83,13 @@ const appRoutes = [
 		component: NewItemComponent,			// temporarily make the default items component NewItem
 		canActivate: [AuthGuard],
 	},
+	// edit item
+	{
+		path: 'item/edit/:id',
+		component: EditItemComponent,
+		canActivate: [AuthGuard],
+	},
+
 	// item details
 	{
 		path: 'item/:id',
@@ -146,6 +154,7 @@ const appRoutes = [
 		RequestedComponent,
 		ProfileCardComponent,
 		FriendsComponent,
+		EditItemComponent,
 	],
 	imports: [
 		BrowserModule,

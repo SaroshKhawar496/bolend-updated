@@ -37,7 +37,7 @@
 			<!-- if this item belongs to the currentUser, display additional controls -->
 			<ng-container *ngIf="item.user.id == currentUser.id else notYou">
 				<!-- edit item -->
-				<div class="action-btn gradient-1-stop-2" title="Edit Item">
+				<div class="action-btn gradient-1-stop-2" title="Edit Item" (click)="navigateToEdit()">
 					<svg><use href="assets/icons/navbar.svg#i-edit"></use></svg>
 				</div>
 				<!-- delete item -->

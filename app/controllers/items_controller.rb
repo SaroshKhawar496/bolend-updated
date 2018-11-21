@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
     
 
     # after implementing the searchkick
-    @user = User.find(current_user.id)
+    # @user = User.find(current_user.id)    # why is this needed?
     
 
 
@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
       # puts "items.length #{@items.length}"
     else
       # puts "item.all"
-      @items = Item.all
+      @items = Item.includes([:user, :loan, :borrower]).all
       # puts "items.length #{@items.length}"
 
     end
@@ -100,7 +100,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @user = User.find(current_user.id)
+    # @user = User.find(current_user.id)    # what is the point of this?
     @item.punch(request)
   end
 
@@ -141,6 +141,17 @@ class ItemsController < ApplicationController
       render json: @item.errors, status: :unprocessable_entity
     end
 
+  end
+
+  def update
+    @item = Item.find(params[:id])
+
+    # the only user allowed to update items is the owner of the item
+    if @item.user.id != current_user.id
+      render json: @item.errors, status: :forbidden
+    elsif @item.update_attributes(permit_item)
+      puts ">item updated successfully!"
+    end
   end
 
 
