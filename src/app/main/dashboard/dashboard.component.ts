@@ -19,21 +19,10 @@ export class DashboardComponent implements OnInit {
 
 	ngOnInit() {
 		this.loadCurrentUser();
-		// this.getItemsList();
 	}
 
 	loadCurrentUser () : void {
 		this.currentUser = this.http.getCurrentUser();
-	}
-
-	getItemsList () : void {
-		let path: string = '/items.json';
-		this.http.getObservable (path).subscribe (
-			data => {
-				this.itemList = data;
-				console.log ('getItemsList', data);
-			}
-		)
 	}
 
 }

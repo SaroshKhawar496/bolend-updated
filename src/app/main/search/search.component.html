@@ -13,4 +13,4 @@
 
 </div>
 
-<app-results [searchResults]="searchResults"></app-results>
+<app-results [searchResults]="searchResults" (loadMore)="loadPage($event)"></app-results>

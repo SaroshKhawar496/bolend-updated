@@ -176,6 +176,13 @@ svg.inline {
 	padding: 0.25em 0;
 }
 
+/* no results */
+.no-results {
+    text-align: center;
+    color: #444;
+    font-style: italic;
+}
+
 /*****************************************************
 **** TIMED ANIMATIONS
 ******************************************************/

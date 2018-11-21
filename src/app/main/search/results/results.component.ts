@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class ResultsComponent implements OnInit {
 	@Input() searchResults: object;
 	@Input() defaultTab?: ResultTab = ResultTab.All;
+	@Output() loadMore: EventEmitter<string> = new EventEmitter<string>();
+
 	get s() { return this.searchResults; }			// in template, 's' can used as a shorthand for searchResults
 	defaultMaxResults: 		number = 12;
 	defaultMaxTypedResults: number = 6;
@@ -34,7 +36,14 @@ export class ResultsComponent implements OnInit {
 		this.tabSelected = this.defaultTab;
 	}
 
-
+	/**
+	 * Emit event to alert the parent component to load additional pages of a specified type.  
+	 * This is used to create a never-ending scrollable page.
+	 * @param type type of result to load more of; can be 'items' or 'users'
+	 */
+	loadMorePages ( type: string ) {
+		this.loadMore.emit(type);
+	}
 
 }
 

@@ -28,21 +28,41 @@ export class SearchComponent implements OnInit, OnDestroy {
 	qparamsSub: Subscription;
 	qparams:	Params;
 	searchResults: object;
+	resultPagination: {
+		items: Pagination,
+		users: Pagination,
+	}
 
 	searchString: string;
 
 	ngOnInit() {
 		this.fullScreen = true;
 
+		// initialize results object to empty obj, and set up pagination of results with default values
+		this.searchResults = {};
+		this.resultPagination = { 
+			items: { currPage: 1, resultsPerPage: 10},
+			users: null,					// do not paginate users (for now)
+		};
+
 		// subscribe to 
 		this.qparams = this.route.snapshot.queryParamMap;
 		this.qparamsSub = this.route.queryParams.subscribe (
 			qparams => {
-				this.qparams = qparams;
-				this.searchString = qparams['q'];
-				this.performSearch ( qparams['q'] );
+				this.handleQparamsChange(qparams);
 			}
 		)
+	}
+
+	handleQparamsChange ( qparams: Params ) : void {
+		this.qparams = qparams;
+		this.searchString = qparams['q'];
+
+		// perform items search
+		this.performSearch ( "items", this.searchString );
+
+		// perform users search
+		this.performSearch ( "users", this.searchString );
 	}
 
 
@@ -61,14 +81,17 @@ export class SearchComponent implements OnInit, OnDestroy {
 	 * Perform a search with the query string provided
 	 * @param query query string; may not be undefined, null, or empty
 	 */
-	performSearch ( query: string ) : void {
-		if (!query) return;
-		let path = `/items/?search_item=${query}`;
+	performSearch ( type: string, query: string ) : void {
+		if (!query || !type) return;
+
+		// build request path & headers; pagination params is sent in headers
+		let path = `/${type}/?query=${query}`;
+
+
+
+		// perform query
 		this.http.getObservable ( path ).subscribe (
-			res => {
-				this.searchResults = res;
-				console.log ( 'search', res );
-			},
+			res => this.handleSearchResults ( res, type ),
 			err => this.http.genericModelErrorHandler(err)
 		);
 
@@ -77,8 +100,35 @@ export class SearchComponent implements OnInit, OnDestroy {
 	}
 
 
+	/** parse the results of a search */
+	handleSearchResults ( res: object, type: string ) : object {
+		this.searchResults[type] = res[type];
+		console.log ( `Updating search results of type ${type}.`, this.searchResults );
+		return res[type];
+	}
+
+
+	/**
+	 * If paginated, load an additional page of the specified type of search results
+	 * @param event 
+	 */
+	loadPage ( event: any ) {
+		console.log ( 'loadMore', event );
+		if ( this.resultPagination[event] ) {
+			console.log ( this.resultPagination[event] );
+		}
+	}
+
 
 	ngOnDestroy () {
 		this.qparamsSub.unsubscribe();
 	}
+}
+
+
+export interface Pagination {
+	currPage: number;
+	resultsPerPage: number;
+	totalPages?: number;
+	totalResults?: number;
 }

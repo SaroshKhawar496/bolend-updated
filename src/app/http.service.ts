@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, JWT } from './_models/models';
 import { Router, RouterStateSnapshot } from '@angular/router';
@@ -140,9 +140,18 @@ export class HttpService {
 		return this.baseUrl;
 	}
 
-	getObservable ( path: string ): Observable<object> {
+	/**
+	 * Build an `Observable` for an HTTP GET request. `subscribe()` to the Observable to send request
+	 * @param path API path
+	 * @param headers optional request headers
+	 * @param include include response headers
+	 */
+	getObservable ( path: string, headers?: HttpHeaders, include: boolean = false ): Observable<object> {
 		let url = `${this.baseUrl}${path}`;
-		return this.http.get ( url );
+		let options: object = { headers: headers };
+		if (include) options['observe']	= 'response';
+
+		return this.http.get ( url, options );
 	}
 
 	/**

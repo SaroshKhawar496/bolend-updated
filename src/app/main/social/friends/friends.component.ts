@@ -70,6 +70,12 @@ export class FriendsComponent implements OnInit, OnDestroy {
 	}
 
 
+	/** Delete the user object at the index specified */
+	hideIndex ( i: number ) : void {
+		this.users.splice(i,1);
+	}
+
+
 	ngOnDestroy() {
 		this.paramSub.unsubscribe();
 	}

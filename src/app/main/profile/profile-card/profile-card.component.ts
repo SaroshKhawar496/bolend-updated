@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/_models/models';
 import { HttpService } from 'src/app/http.service';
 import { Router } from '@angular/router';
@@ -13,10 +13,12 @@ import { AlertService } from 'src/app/utils/alert/alert.service';
 export class ProfileCardComponent implements OnInit {
 	@Input() user: User;
 	@Input() cardOptions?: ProfileCardOptions;
-	@Input() userControls: Array<FriendControls>;
+	@Input() userControls?: Array<FriendControls>;
+	@Output() hideCard: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	get u() { return this.user; }
 	get opts() { return this.cardOptions; }
+	hide() : void {	this.hideCard.emit(true); }
 
 	// misc class variables
 	fallbackImgSrc: string = "assets/img/pepe.png";
@@ -30,6 +32,8 @@ export class ProfileCardComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
+		if ( !this.user.fullName )
+			this.user = new User (this.user);
 	}
 
 
@@ -85,6 +89,9 @@ export class ProfileCardComponent implements OnInit {
 					this.alertUser ( type, data['success'], data['message'] );
 				else
 					this.alertUser ( type, true );
+				
+				// hide this profile card if successful
+				this.hide();
 			},
 			err => {
 				// use a custom alert if 

@@ -1,4 +1,4 @@
-<div *ngIf="searchResults" class="result-grid fade-in-up delay-0-2">
+<div *ngIf="searchResults" class="result-grid fade-in-up delay-0-2 scale-fontsize">
 	
 	<!-- tabs -->
 	<div class="tabs-container">
@@ -21,11 +21,27 @@
 			<!-- display items -->
 			<div class="result-block">
 				<h3>Items</h3>
-				<div class="card-container" >
-					<div *ngFor="let item of s.item" class="card">
+				<div class="card-container" *ngIf="s.items && s.items.length else noItems">
+					<div *ngFor="let item of s.items" class="card">
 						<app-item-card [item]="item"></app-item-card>
 					</div>
 				</div>
+				<ng-template #noItems>
+					<span class="no-results">No items were found.</span>
+				</ng-template>
+			</div>
+
+			<!-- display users -->
+			<div class="result-block">
+				<h3>Users</h3>
+				<div class="card-container" *ngIf="s.users && s.users.length else noUsers">
+					<div *ngFor="let user of s.users" class="card">
+						<app-profile-card [user]="user"></app-profile-card>
+					</div>
+				</div>
+				<ng-template #noUsers>
+					<span class="no-results">No users were found.</span>
+				</ng-template>
 			</div>
 				
 			<!-- </div> -->
@@ -39,15 +55,27 @@
 			<ng-container [ngSwitch]="tabSelected">
 
 				<div *ngSwitchCase="1" class="card-container" >
-					<ng-container *ngFor="let item of s.item">
-						<app-item-card [item]="item"></app-item-card>
+					<ng-container *ngIf="s.items && s.items.length else noItems">
+						<div *ngFor="let item of s.items" class="card">
+							<app-item-card [item]="item"></app-item-card>
+						</div>
+						<div class="load-more pointer" (click)="loadMorePages('items')">Load more items</div>
 					</ng-container>
+					<ng-template #noItems>
+						<span class="no-results">No items were found.</span>
+					</ng-template>
 				</div>
 
 				<div *ngSwitchCase="2" class="card-container">
-					<ng-container *ngFor="let user of s.users">
-						
+					<ng-container *ngIf="s.users && s.users.length else noUsers">
+						<div *ngFor="let user of s.users" class="card">
+							<app-profile-card [user]="user"></app-profile-card>
+						</div>
+						<!-- <div class="load-more pointer">Load more users</div> -->
 					</ng-container>
+					<ng-template #noUsers>
+						<span class="no-results">No users were found.</span>
+					</ng-template>
 				</div>
 
 			</ng-container>
