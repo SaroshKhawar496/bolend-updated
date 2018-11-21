@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
     
 
     # after implementing the searchkick
-    @user = User.find(current_user.id)
+    # @user = User.find(current_user.id)    # why is this needed?
     
 
 
@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
       # puts "items.length #{@items.length}"
     else
       # puts "item.all"
-      @items = Item.all
+      @items = Item.includes([:user, :loan, :borrower]).all
       # puts "items.length #{@items.length}"
 
     end
