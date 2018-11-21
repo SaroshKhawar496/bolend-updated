@@ -98,6 +98,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @user = User.find(current_user.id)
+    @item.punch(request)
   end
 
   def destroy

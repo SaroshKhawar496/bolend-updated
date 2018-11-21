@@ -4,6 +4,8 @@ json.items @items.reverse do |item|
     json.name item.name
     json.desc item.description
     json.user item.user
+    json.total_hits item.hits
+    json.hits_1week item.hits(1.week.ago)
   end
 end
 

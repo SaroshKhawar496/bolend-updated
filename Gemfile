@@ -14,6 +14,9 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 gem 'dotenv-rails', '>= 2.1.1'
 
+#to keep track of view count of items
+gem 'punching_bag'
+
 #changing DB over to Postgress
 gem 'pg'
 

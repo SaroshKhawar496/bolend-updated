@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   # respond_to :json
-  
+  acts_as_punchable
 	# NOTE: this query uses "ILIKE" for case insensitive matching. May not work with all RDBMS's!!
   scope :item_name, -> (search_item) { where("name ILIKE ?", "%#{search_item}%")}
 
@@ -12,6 +12,8 @@ class Item < ApplicationRecord
 
   has_one :loan, dependent: :destroy
   has_one :borrower, :through => :loan, :source => :user
+
+  
 
   #Searching
   # searchkick
