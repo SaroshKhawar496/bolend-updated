@@ -10,7 +10,8 @@ gem 'rails', '~> 5.2.1'
 #gem 'sqlite3'
 
 #Gem for pagination
-gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+# gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'kaminari'
 
 gem 'dotenv-rails', '>= 2.1.1'
 

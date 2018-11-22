@@ -4,8 +4,8 @@ require 'stringio'
 class ItemsController < ApplicationController
   #using current_user.id now
   
-  
-
+  # after_action only: [:index], {set_pagination_headers :items}
+  after_action Proc.new{ set_pagination_headers(:items) }, only: [:index]
   def new
     @item = Item.new
     @user = User.find(current_user.id)
@@ -19,32 +19,8 @@ class ItemsController < ApplicationController
     # Send Get to localhost:3000/api/items?search_item=el&page=2 for pagination
     # localhost:3000/api/items?search_item=el&page=2&per_page=5
 
-    #State before implementing the searchkick
-
-    # @items = Item.all
-    # @user = User.find(current_user.id)
-
-    # #old stuff
-    # #@user = session[:user_id]
-    # #userId = current_user.id
-    
-
-    # after implementing the searchkick
-    # @user = User.find(current_user.id)    # why is this needed?
-    
-
-
-    # log(params[])
-
     if params[:query].present?
-      # puts "search_item is present"
-      # test = CGI::parse('param1=value1&param2=value2&param3=value3')
-      # puts("-----------------\n ")
-      # puts("#{test}\n")
-      # puts("-------------\n")
 
-
-      # puts params.inspect
       @items = Item.item_name(params[:query])
 
       if @items.length == 0
@@ -55,43 +31,65 @@ class ItemsController < ApplicationController
        
       end
 
-      # puts "items.length #{@items.length}"
-    else
-      # puts "item.all"
+   else
+
       @items = Item.includes([:user, :loan, :borrower]).all
-      # puts "items.length #{@items.length}"
 
     end
     
 
     #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
     #option to change the numOfresults shown perpage also available 
-    @items = @items.paginate(page: page, per_page: per_page)
+    @items = @items.page(page).per(per_page)
     
     numOfPages = @items.total_pages
 
-        # check for not lettting page exceeding the last page, if it does show last page
+    # check for not lettting page exceeding the last page, if it does show last page
     if (params[:page].to_i > numOfPages.to_i)
 
-      # render json:{
-      #   "message": "Showing the last page of results"
-      # }
-      @items = @items.paginate(page: numOfPages, per_page: per_page)
-      
+      @items = @items.page(numOfPages).per(per_page)
 
     end
+
+    # set_pagination_headers(@items)
 
      
   end
 
-  # methods for pagination controls
-  def page
-    @page ||= params[:page] || 1
-  end
+  # # sending the pagination params via request headers
+  # def set_pagination_headers(v_name)
+  #   # render json: {
+  #   #   "message": "Set Pagination Headers called"
+  #   # }
+  #   pageCollect = instance_variable_get("@#{v_name}")
 
-  def per_page
-    @per_page ||= params[:per_page] || 10
-  end
+  #   headers["X-Total-Count"] = pageCollect.total_count
+
+  #   links = []
+  #   links << page_link(1,"first") unless pageCollect.first_page?
+  #   links << page_link(pageCollect.prev_page, "prev") if pageCollect.prev_page
+    
+  #   links << page_link(pageCollect.next_page, "next") if pageCollect.next_page
+  #   links << page_link(pageCollect.total_pages, "last") unless pageCollect.last_page?
+  #   headers["Link"] = links.join(", ") if links.present?
+
+
+  # end
+
+  # def page_link(page, rel)
+  #   base_uri = request.url.split("?").first
+  #   # "<#{items_url(request.query_parameters.merge(page: page))}>; rel='#{rel}'"
+  #   "<#{base_uri}?#{request.query_parameters.merge(page: page).to_param}>; rel='#{rel}'"
+  # end
+
+  # # methods for pagination controls
+  # def page
+  #   @page ||= params[:page] || 1
+  # end
+
+  # def per_page
+  #   @per_page ||= params[:per_page] || 10
+  # end
 
 
 
