@@ -1,7 +1,5 @@
 import { timeDelta } from "../utils/app-utils";
 
-// import { Item } from "./item";
-
 
 export class ExtensibleModel {
 	/**
@@ -126,6 +124,7 @@ export class Item extends ExtensibleModel {
 	description: string;
 	url: string;
 	tags: string | Array<string>;
+	requests: ItemRequest[];
 
 	image: string;			// main image URL
 	imgSrc: string | ArrayBuffer;	// src buffer of main image
@@ -142,11 +141,33 @@ export class Item extends ExtensibleModel {
 		if ( attribs && attribs['user'] )
 			this.createUserInstance ( attribs['user'] );
 
+		// create age string if updated_at is present
 		if ( this.updated_at )
 			this.age = timeDelta(this.updated_at);
+
+		// if requests array is present
+		if ( this.requests ) {
+			this.requests = this.requests.map ( 
+				request => new ItemRequest(request)
+			);
+		}
 	}
 
 	createUserInstance ( userData: object ) {
 		this.user = new User(userData);
+	}
+}
+
+
+export class ItemRequest extends ExtensibleModel {
+	id: string | number;
+	requesting_user: User;
+
+	constructor (attribs) {
+		super(attribs);
+		
+		// if requesting_user is provided, create an isntance of User with it
+		if ( this.requesting_user )
+			this.requesting_user = new User ( this.requesting_user );
 	}
 }

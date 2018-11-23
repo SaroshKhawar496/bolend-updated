@@ -79,6 +79,20 @@
 
 		</div>
 
+		<!-- incoming item requests -->
+		<div *ngIf="item.requests" class="fade-in-up delay-0-9">
+			<h4>This item requested by</h4>
+			<div *ngFor="let req of item.requests" class="request-card">
+				<div>
+					<strong>{{req.requesting_user.fullName}}</strong> is requesting this item.
+				</div>
+				<button (click)="acceptRequest(req.id)">
+					accept requqest
+				</button>
+			</div>
+		</div>
+
+
 	</div>
 
 	<!-- no item loaded error -->

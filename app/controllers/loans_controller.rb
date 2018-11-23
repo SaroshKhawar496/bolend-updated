@@ -22,7 +22,7 @@ class LoansController < ApplicationController
           render json: @loan.errors, status: :unprocessable_entity
         end  
       else
-        render json: {"message": "This item does not belong to you"}, status: :unprocessable_entity
+        render json: {"message": "This item does not belong to you"}, status: :forbidden
       end
     else
       render json: {"message": "error"}, status: :unprocessable_entity

@@ -1,6 +1,7 @@
 .detail-container {
 	margin: auto;
 	max-width: 48em;
+	min-height: inherit;
 	transition: 0.25s all ease-in-out;
 }
 .detail-container.flex-column {
