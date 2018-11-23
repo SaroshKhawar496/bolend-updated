@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   
   # after_action only: [:index], {set_pagination_headers :items}
   after_action Proc.new{ set_pagination_headers(:items) }, only: [:index]
+  
   def new
     @item = Item.new
     @user = User.find(current_user.id)
@@ -21,7 +22,7 @@ class ItemsController < ApplicationController
 
     if params[:query].present?
 
-      @items = Item.item_name(params[:query])
+      @items = Item.item_search(params[:query])
 
       if @items.length == 0
         render json: {
