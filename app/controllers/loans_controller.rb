@@ -10,7 +10,9 @@ class LoansController < ApplicationController
     if @requesting_user != current_user #shouldn't be able to accept your own requests
       @requested_item = @request.item
       if current_user.items.include? @requested_item #should only be able to approve items that you own
-        @loan = @requesting_user.loans.new(item: @requested_item)
+        duration = @request.days
+        due_date = duration.days.from_now
+        @loan = @requesting_user.loans.new(item: @requested_item, duedate: due_date.utc.end_of_day)
         if @loan.save
           @request.destroy # I don't think there is any point of keeping the request entry if it has been approved
 

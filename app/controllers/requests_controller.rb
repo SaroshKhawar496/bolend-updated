@@ -8,7 +8,7 @@ class RequestsController < ApplicationController
     elsif current_user.items.include? @item #to prevent user from requesting his own item
       render json: {"message": "You cannot request an item that belongs to you"}, status: :unprocessable_entity
     else
-      @request = current_user.requests.new(item: @item) 
+      @request = current_user.requests.new(item: @item, days: params[:days]) 
       if @request.save
         Notification.create(recipient: @item.user, sender: current_user, action: "item_request", notifiable_object: @request)
         render :show, status: :ok, location: @request
