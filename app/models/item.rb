@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   # respond_to :json
   acts_as_punchable
 	# NOTE: this query uses "ILIKE" for case insensitive matching. May not work with all RDBMS's!!
-  scope :item_search, -> (search_item) { where("name ILIKE ? OR description ILIKE ?", "%#{search_item}%", "%#{search_item}%")}
+  scope :item_search, -> (search_item) { where("name ILIKE ? OR description ILIKE OR tags ILIKE?", "%#{search_item}%", "%#{search_item}%", "%#{search_item}%")}
 
 
   belongs_to :user
