@@ -149,6 +149,13 @@ class ItemsController < ApplicationController
     if @item.user.id != current_user.id
       render json: @item.errors, status: :forbidden
     elsif @item.update_attributes(permit_item)
+      image_name = "#{@item.name}.jpg"
+      base64_image = params[:item][:base64].sub(/^data:.*,/, '')
+      decoded_image = Base64.decode64(base64_image)
+      image_io = StringIO.new(decoded_image)
+      @picture = { io: image_io, filename: image_name }
+      @item.image.attach(@picture)
+      @item.base64 = nil # no need to store in database anymore
       puts ">item updated successfully!"
     end
   end
