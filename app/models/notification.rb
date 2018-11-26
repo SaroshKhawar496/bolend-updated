@@ -34,8 +34,27 @@ class Notification < ApplicationRecord
   		# NotificationMailer.item_request_email(recepient_user,sending_user,item_name).deliver
   		NotificationMailer.item_request_email(params).deliver
 
-  	elsif (Notification.action == "accept_item_request")
-  	
+  	elsif (self[:action] == "accept_item_request")
+      #the requestor
+      recepient_user = User.find_by_id(self[:recipient_id])
+      #the owner
+      sending_user = User.find_by_id(self[:sender_id])
+      
+      #notifiable object in this case is the loan model
+      loan_id = (self[:notifiable_object_id])
+      loan = Loan.find(loan_id)
+      item = Item.find(loan.item_id );
+      
+      params = []
+      params = Array.new
+      params.push << recepient_user
+      params.push << sending_user
+      params.push << item
+      params.push << loan
+
+      NotificationMailer.accept_item_request_email(params).deliver
+
+  	   
   	end
 
   end

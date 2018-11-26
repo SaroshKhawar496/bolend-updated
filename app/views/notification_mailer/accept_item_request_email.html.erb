@@ -1,0 +1,11 @@
+<h3>444Chan by BoLend</h3>
+<p>
+  Hi <%= @recipientUser.fname.capitalize %>,
+  <%= @senderUser.fname.capitalize%> has approved your borrow request for <%= @item.name %>.
+  <br><br>
+  Click on the link below to see:
+  <br>
+  <a href="https://sheltered-reaches-72765.herokuapp.com/api/loans/<%=@loan.id%>">See The Loan</a>
+
+  <!-- <a href = "http://localhost:3000/api/loans/<%=@loan.id%>">See The Loan</a> -->
+</p>
