@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   get 'loans/index'
   get 'loans/create'
   #devise_for :users with path accounts to avoid confusion
@@ -57,6 +58,8 @@ Rails.application.routes.draw do
 
     # resources :friendships
 
+    get "hashtags/:hashtag",   to: "hashtags#show",      as: :hashtag
+    get "hashtags",            to: "hashtags#index",     as: :hashtags
   
     resources :requests
 

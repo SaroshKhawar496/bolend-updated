@@ -14,7 +14,9 @@ class Item < ApplicationRecord
   has_one :loan, dependent: :destroy
   has_one :borrower, :through => :loan, :source => :user
 
-  
+  #to be able to tag items
+  include SimpleHashtag::Hashtaggable
+  hashtaggable_attribute :tags
 
   #Searching
   # searchkick

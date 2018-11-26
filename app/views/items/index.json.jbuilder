@@ -3,6 +3,7 @@ json.items @items.reverse do |item|
     json.id item.id
     json.name item.name
     json.desc item.description
+    json.tags item.tags
     json.user item.user
     json.image rails_blob_url(item.image) if item.image.attached?
     json.total_hits item.hits

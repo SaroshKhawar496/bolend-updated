@@ -18,6 +18,9 @@ gem 'dotenv-rails', '>= 2.1.1'
 #to keep track of view count of items
 gem 'punching_bag'
 
+#to add tags to items, better than categories in my opinion
+gem 'simple_hashtag'
+
 #changing DB over to Postgress
 gem 'pg'
 

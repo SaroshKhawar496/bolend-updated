@@ -157,7 +157,7 @@ class ItemsController < ApplicationController
   private
 
   def permit_item
-    params.require(:item).permit(:name, :description, :user_id, :image, :base64)
+    params.require(:item).permit(:name, :description, :user_id, :image, :base64, :tags)
   end
 
 end
