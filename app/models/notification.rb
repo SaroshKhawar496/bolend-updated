@@ -22,13 +22,13 @@ class Notification < ApplicationRecord
 	    sending_user = User.find_by_id(self[:sender_id])
 	    
 	    request_id = (self[:notifiable_object_id])
-	    item_name = (Item.find( (Request.find(request_id)).item_id )).name;
+	    item = Item.find( (Request.find(request_id)).item_id );
 	    
 	    params = []
 	    params = Array.new
 	    params.push << recepient_user
 	    params.push << sending_user
-	    params.push << item_name
+	    params.push << item
 
 	    # puts("Requested Item is #{item.name}")
   		# NotificationMailer.item_request_email(recepient_user,sending_user,item_name).deliver
