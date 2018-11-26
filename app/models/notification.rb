@@ -14,10 +14,26 @@ class Notification < ApplicationRecord
   #Email funciton
   def send_email
   	# Check the notification action here: 1.item_request => Item borrow Request Email, 2.accept_item_request => Your Request was Accepted
-  	if (Notification.action == "item_request")
-  		recepient_user = User.find_by_id(Notification.recipient_id)
-  		# call the notification_mailer function item_request_email(user) and pass recepient_user as an argument
-  		NotificationMailer.item_request_email(recepient_user).deliver
+  	if (self[:action] == "item_request")
+  		
+  		# NotificationMailer.item_request_email(recepient_user).deliver
+
+  		recepient_user = User.find_by_id(self[:recipient_id])
+	    sending_user = User.find_by_id(self[:sender_id])
+	    
+	    request_id = (self[:notifiable_object_id])
+	    item_name = (Item.find( (Request.find(request_id)).item_id )).name;
+	    
+	    params = []
+	    params = Array.new
+	    params.push << recepient_user
+	    params.push << sending_user
+	    params.push << item_name
+
+	    # puts("Requested Item is #{item.name}")
+  		# NotificationMailer.item_request_email(recepient_user,sending_user,item_name).deliver
+  		NotificationMailer.item_request_email(params).deliver
+
   	elsif (Notification.action == "accept_item_request")
   	
   	end
