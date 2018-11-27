@@ -1,8 +1,8 @@
 <div class="full-body-height">
-<div *ngIf="!(+qparams.requested)" class="detail-container flex flex-column ">
+<div *ngIf="!(+qparams.requested)" class="detail-container flex flex-column scale-fontsize">
 	
 	<!-- item details -->
-	<div *ngIf="item" class="detail-card scale-fontsize">
+	<div *ngIf="item" class="detail-card ">
 		<!-- <pre>{{item | json}}</pre> -->
 
 		<!-- cover photo/gallery carousel -->
@@ -85,9 +85,9 @@
 			<hr class="short-divider fade-in delay-0-9" />
 
 			<h4>Incoming item requests</h4>
-			<div *ngFor="let req of item.requests" class="request-card">
-				<app-item-request-card [request]="req"></app-item-request-card>
-			</div>
+			<ng-container *ngFor="let req of item.requests">
+				<app-item-request-card [request]="req" class="request-card"></app-item-request-card>
+			</ng-container>
 		</div>
 
 
