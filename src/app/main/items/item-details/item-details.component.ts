@@ -73,7 +73,7 @@ export class ItemDetailsComponent implements OnInit {
 			res => {
 				console.log ('requestItem', res);
 
-				// 'navigate' to add queryparam 'requested=true'
+				// 'navigate' to add queryparam 'requested=1'
 				let extras: NavigationExtras = {
 					queryParams: { requested: 1 }
 				}
@@ -143,7 +143,14 @@ export class ItemDetailsComponent implements OnInit {
 	 */
 	acceptRequest ( id: number | string ) : void {
 		this.request.acceptItemRequest (id).subscribe(
-			res => this.alert.success('Request accepted! Item is loaned out!'),
+			res => {
+				this.alert.success('Request accepted! Item is loaned out!');
+				// 'navigate' to add queryparam 'loaned=1'
+				let extras: NavigationExtras = {
+					queryParams: { loaned: 1 }
+				}
+				this.router.navigate ([], extras );
+			},
 			err => this.http.genericModelErrorHandler(err)
 		)
 	}

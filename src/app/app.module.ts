@@ -96,9 +96,6 @@ const appRoutes = [
 		path: 'item/:id',
 		component: ItemDetailsComponent,
 		canActivate: [AuthGuard],
-		children: [
-			{ path: 'requests', component: RequestedComponent }
-		]
 	},
 
 	// search page

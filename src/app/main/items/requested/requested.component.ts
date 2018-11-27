@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
 	selector: 'app-requested',
 	templateUrl: './requested.component.html',
-	styleUrls: ['./requested.component.css']
+	styleUrls: ['../item-details/item-details.component.css']
 })
 export class RequestedComponent implements OnInit {
 

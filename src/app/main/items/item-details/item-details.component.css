@@ -92,7 +92,7 @@
 
 
 
-/***** requested splash page *****/
+/***** requested/loaned splash page *****/
 .requested-splash {
 	transition: 0.25s all ease-in-out;
 }
@@ -106,6 +106,16 @@
 	border: 2px solid #fff;
 }
 svg#SEND {
+	stroke-dasharray: 85;
+	stroke-dashoffset: 85;
+	animation-duration: 3s;
+	transition: 0.25s all ease-in-out;
+
+	flex-grow: 1;
+	max-height: 20em;
+	align-self: stretch;
+}
+svg#HEART {
 	stroke-dasharray: 85;
 	stroke-dashoffset: 85;
 	animation-duration: 3s;

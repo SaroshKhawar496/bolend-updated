@@ -1,5 +1,5 @@
 <div class="full-body-height">
-<div *ngIf="!(+qparams.requested)" class="detail-container flex flex-column scale-fontsize">
+<div *ngIf="!(+qparams.requested || +qparams.loaned)" class="detail-container flex flex-column scale-fontsize">
 	
 	<!-- item details -->
 	<div *ngIf="item" class="detail-card ">
@@ -107,24 +107,44 @@
 
 
 
-<!-- item successfully requested splash -->
-<div *ngIf="+qparams.requested" class="requested-splash full-body-height gradient-0">
+<!-- item successfully requested/loaned splash -->
+<div *ngIf="+qparams.requested || +qparams.loaned" class="requested-splash full-body-height gradient-0">
 	<div class="form-column scale-fontsize">
 		<div>&nbsp;</div>
 
-		<!-- animated send svg -->
-		<svg id="SEND" class="animated-svg"><use href="assets/icons/navbar.svg#i-send"></use></svg>
-		<div>
-			<h2 class="fade-in-up delay-0-2">Request sent!</h2>
-			<p class="fade-in-up delay-0-4">
-				You've successfully requested <strong>{{item ? item.name : 'this item'}}</strong>. <br>
-				You'll receive a notification when the owner makes a decision.
-			</p>
-		</div>
-		<div class="control-container fade-in-up delay-0-6">
-			<button class="nofill" (click)="returnToItemDetails()">Back to Item</button>
-			<a routerLink="/"><button class="nofill">Home</button></a>
-		</div>
+		<!-- requested -->
+		<ng-container *ngIf="+qparams.requested">
+			<!-- animated send svg -->
+			<svg id="SEND" class="animated-svg"><use href="assets/icons/navbar.svg#i-send"></use></svg>
+			<div>
+				<h2 class="fade-in-up delay-0-2">Request sent!</h2>
+				<p class="fade-in-up delay-0-4">
+					You've successfully requested <strong>{{item ? item.name : 'this item'}}</strong>. <br>
+					You'll receive a notification when the owner makes a decision.
+				</p>
+			</div>
+			<div class="control-container fade-in-up delay-0-6">
+				<button class="nofill" (click)="returnToItemDetails()">Back to Item</button>
+				<a routerLink="/"><button class="nofill">Home</button></a>
+			</div>
+		</ng-container>
+
+
+		<!-- loaned -->
+		<ng-container *ngIf="+qparams.loaned">
+			<svg id="HEART" class="animated-svg"><use href="assets/icons/navbar.svg#i-heart"></use></svg>
+			<div>
+				<h2 class="fade-in-up delay-0-2">Item Loaned Out!</h2>
+				<p class="fade-in-up delay-0-4">
+					You've successfully loaned out <strong>{{item ? item.name : 'this item'}}</strong>!
+				</p>
+			</div>
+			<div class="control-container fade-in-up delay-0-6">
+				<button class="nofill" (click)="returnToItemDetails()">Back to Item</button>
+				<a routerLink="/"><button class="nofill">Home</button></a>
+			</div>
+		</ng-container>
+
 
 		<div>&nbsp;</div>
 	</div>
@@ -132,4 +152,5 @@
 </div>
 
 
-<router-outlet></router-outlet>
+
+<!-- <router-outlet></router-outlet> -->
