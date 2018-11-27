@@ -23,6 +23,7 @@ div.item-img-main {
     height: 100%;
     color: #999;    /* nein nein NEIN */
 }
+.color-white .item-img-main svg { color: #ccc; }
 
 .item-user-name { color: #444; }
 .color-white .item-user-name { color: #ccc; }
