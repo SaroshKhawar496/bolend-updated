@@ -13,11 +13,16 @@ class ItemsController < ApplicationController
   end
 
   def page
-    @page ||= params[:page] || 1
+    page_param = (request.headers["page"])
+    # puts("-------------------------------page_param #{page_param}----------------------------------")
+    # @page ||= params[:page] || 1
+    @page ||= page_param || 1
   end
 
   def per_page
-    @per_page ||= params[:per_page] || 10
+    per_page_param = (request.headers["per-page"])
+    # puts("-------------------------------per_page_param #{per_page_param}----------------------------------")
+    @per_page ||= per_page_param || 10
   end
 
   def index
@@ -50,18 +55,22 @@ class ItemsController < ApplicationController
     #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
     #option to change the numOfresults shown perpage also available 
     @items = @items.page(page).per(per_page)
+    @per_page = per_page.to_i
     
-    numOfPages = @items.total_pages
+    # numOfPages = @items.total_pages
 
     # check for not lettting page exceeding the last page, if it does show last page
-    if (params[:page].to_i > numOfPages.to_i)
+    # if (params[:page].to_i > numOfPages.to_i)
 
-      @items = @items.page(numOfPages).per(per_page)
 
-      @per_page = per_page
 
-    end
+    #   # @items = @items.page(numOfPages).per(per_page)
 
+
+
+    # end
+       # puts("-------------------------------per_page_param #{per_page}----------------------------------")
+       
     # set_pagination_headers(@items)
 
 
