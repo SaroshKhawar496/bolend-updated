@@ -142,10 +142,7 @@ export class ItemDetailsComponent implements OnInit {
 	 * @param id request id; NOT the item id
 	 */
 	acceptRequest ( id: number | string ) : void {
-		let path: string = `/loans`;
-		let payload: object = { request_id: id };
-		console.log(payload);
-		this.http.postObservable ( path, payload ).subscribe(
+		this.request.acceptItemRequest (id).subscribe(
 			res => this.alert.success('Request accepted! Item is loaned out!'),
 			err => this.http.genericModelErrorHandler(err)
 		)

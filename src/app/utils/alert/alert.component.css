@@ -8,6 +8,7 @@
 
     /* border: 1px solid #fff; */
     color: #fff;
+    z-index: 9999;
 }
 
 .alert > .closebtn {

@@ -13,4 +13,4 @@
 
 </div>
 
-<app-results [searchResults]="searchResults" (loadMore)="loadPage($event)"></app-results>
+<app-results *ngIf="searchResults" [searchResults]="searchResults" (loadMore)="loadPage($event)"></app-results>
