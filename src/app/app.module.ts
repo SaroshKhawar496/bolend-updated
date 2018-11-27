@@ -123,6 +123,13 @@ const appRoutes = [
 		canActivate: [AuthGuard]
 	},
 
+	// explore page
+	{
+		path: 'explore',
+		component: ExploreComponent,
+		canActivate: [AuthGuard],
+	},
+
 	// profile page of currently authenticated user
 	{ path: 'you', component: YouComponent, canActivate: [AuthGuard] }
 ];
