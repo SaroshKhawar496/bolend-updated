@@ -16,6 +16,8 @@ class ApplicationController < ActionController::API
 		render :file => 'public/app/index.html'
 	end
 
+
+
 	def privilege
 		@viewer = User.find(current_user.id)
 		@user = User.find(params[:user_id])
@@ -46,6 +48,7 @@ class ApplicationController < ActionController::API
 	end
 
 	# Add the Loans Checke
+	
 	
 	protected
 		#passing the required fields for devise signup form. By default,
