@@ -16,9 +16,12 @@ export class RequestService {
 	 * Submit a request for an item
 	 * @param id item id
 	 */
-	public requestItem ( id: number ) : Observable<object> {
+	public requestItem ( id: number, days:number=7 ) : Observable<object> {
 		let path: string = "/requests";
-		let payload: object = { id: id }
+		let payload: object = { 
+			id: id,
+			days: days
+		}
 		return this.http.postObservable ( path, payload );
 	}
 
