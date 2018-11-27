@@ -5,11 +5,19 @@ class ItemsController < ApplicationController
   #using current_user.id now
   
   # after_action only: [:index], {set_pagination_headers :items}
-  after_action Proc.new{ set_pagination_headers(:items) }, only: [:index]
+  # after_action Proc.new{ set_pagination_headers(:items) }, only: [:index]
   
   def new
     @item = Item.new
     @user = User.find(current_user.id)
+  end
+
+  def page
+    @page ||= params[:page] || 1
+  end
+
+  def per_page
+    @per_page ||= params[:per_page] || 10
   end
 
   def index
@@ -29,10 +37,10 @@ class ItemsController < ApplicationController
           "message": "We could not find what you were looking for!",
           "items": []
         }
-       
+
       end
 
-   else
+    else
 
       @items = Item.includes([:user, :loan, :borrower]).all
 
@@ -50,11 +58,14 @@ class ItemsController < ApplicationController
 
       @items = @items.page(numOfPages).per(per_page)
 
+      @per_page = per_page
+
     end
 
     # set_pagination_headers(@items)
 
-     
+
+
   end
 
   # # sending the pagination params via request headers
@@ -69,7 +80,7 @@ class ItemsController < ApplicationController
   #   links = []
   #   links << page_link(1,"first") unless pageCollect.first_page?
   #   links << page_link(pageCollect.prev_page, "prev") if pageCollect.prev_page
-    
+
   #   links << page_link(pageCollect.next_page, "next") if pageCollect.next_page
   #   links << page_link(pageCollect.total_pages, "last") unless pageCollect.last_page?
   #   headers["Link"] = links.join(", ") if links.present?
