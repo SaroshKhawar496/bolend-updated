@@ -51,7 +51,7 @@ export class NewItemComponent implements OnInit {
 		this.itemForm = this.formBuilder.group ({
 			name: new FormControl ( null, [Validators.required] ),
 			description: new FormControl ( null, [Validators.required] ),
-			tags: new FormControl(),
+			tags: new FormControl ( null ),
 		});
 	}
 
@@ -79,7 +79,6 @@ export class NewItemComponent implements OnInit {
 		let path: string = "/items";
 		let itemObj: object = Object.assign( {base64: this.imgSrc}, this.itemForm.value );
 		let payload: object = {
-			// item: this.itemForm.value
 			item: itemObj,
 		};
 		this.submitted = true;

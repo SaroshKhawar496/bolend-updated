@@ -1,0 +1,34 @@
+div.item-request-card {
+	padding: 1em 0.2em;
+
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	grid-template-areas: 
+		"body ctrls"
+		/* "img body ctrls" */
+}
+
+.item-request-body {
+	grid-area: body;
+	vertical-align: middle;
+	display: table;
+}
+.item-request-body span {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.item-request-ctrls {
+	justify-content: flex-end;
+	grid-area: ctrls;
+}
+.item-request-ctrls > div {
+	width: 2em;
+	height: 2em;
+	padding: 1em;
+	margin: 0.5em;
+}
+.item-request-ctrls > div > svg {
+	height: 100%;
+	width: 100%;
+}

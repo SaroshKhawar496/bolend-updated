@@ -38,8 +38,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.fullScreen = true;
 
-		// initialize results object to empty obj, and set up pagination of results with default values
-		this.searchResults = {};
+		// set up pagination of results with default values
 		this.resultPagination = { 
 			items: { currPage: 1, resultsPerPage: 10},
 			users: null,					// do not paginate users (for now)
@@ -87,7 +86,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 		// build request path & headers; pagination params is sent in headers
 		let path = `/${type}/?query=${query}`;
 
-
+		// if searchResults object has not been init'd, init to empty obj
+		if ( !this.searchResults )
+			this.searchResults = {};
 
 		// perform query
 		this.http.getObservable ( path ).subscribe (

@@ -37,10 +37,11 @@ import { ResultsComponent } from './main/search/results/results.component';
 import { SocialComponent } from './main/social/social.component';
 import { NotificationsComponent } from './main/notifications/notifications.component';
 import { NotificationCardComponent } from './main/notifications/notification-card/notification-card.component';
-import { RequestedComponent } from './main/items/requested/requested.component';
 import { ProfileCardComponent } from './main/profile/profile-card/profile-card.component';
 import { FriendsComponent } from './main/social/friends/friends.component';
 import { EditItemComponent } from './main/items/new-item/edit-item.component';
+import { ItemRequestCardComponent } from './main/items/item-request-card/item-request-card.component';
+import { ExploreComponent } from './main/explore/explore.component';
 
 
 // etc
@@ -95,9 +96,6 @@ const appRoutes = [
 		path: 'item/:id',
 		component: ItemDetailsComponent,
 		canActivate: [AuthGuard],
-		children: [
-			{ path: 'requests', component: RequestedComponent }
-		]
 	},
 
 	// search page
@@ -123,6 +121,13 @@ const appRoutes = [
 		path: 'notifications',
 		component: NotificationsComponent,
 		canActivate: [AuthGuard]
+	},
+
+	// explore page
+	{
+		path: 'explore',
+		component: ExploreComponent,
+		canActivate: [AuthGuard],
 	},
 
 	// profile page of currently authenticated user
@@ -151,10 +156,11 @@ const appRoutes = [
 		SocialComponent,
 		NotificationsComponent,
 		NotificationCardComponent,
-		RequestedComponent,
 		ProfileCardComponent,
 		FriendsComponent,
 		EditItemComponent,
+		ItemRequestCardComponent,
+		ExploreComponent,
 	],
 	imports: [
 		BrowserModule,

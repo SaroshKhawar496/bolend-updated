@@ -16,6 +16,23 @@ class ApplicationController < ActionController::API
 		render :file => 'public/app/index.html'
 	end
 
+	def privilege
+		@viewer = User.find(current_user.id)
+		@user = User.find(params[:user_id])
+
+		if @user.blocked_friends.include? @viewer
+			return false
+		end
+		if @user.friends.include? @viewer
+			return true
+		else
+			if @user.privateMode==true
+				return false
+			else
+				return true
+			end
+		end
+	end
 	
 	protected
 		#passing the required fields for devise signup form. By default,
