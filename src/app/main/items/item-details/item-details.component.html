@@ -27,12 +27,13 @@
 
 		<!-- tags -->
 		<div class="tags-container fade-in delay-0-6">
-			{{item.tags || '#tags appear here'}}
+			<svg class="inline"><use href="assets/icons/navbar.svg#i-tag"></use></svg>&nbsp;
+			{{item.tags || '-'}}
 		</div>
 
 		<!-- item age -->
 		<div *ngIf="item.age" class="age-string fade-in delay-0-7">
-			<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>
+			<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>&nbsp;
 			{{item.age}}
 		</div>
 

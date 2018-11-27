@@ -85,7 +85,7 @@ form.item-form {
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-.preview-card-ctn { margin: 1em 0; }
+.preview-card-ctn { margin: 1em; }
 
 
 @media screen and (max-width:768px) {
