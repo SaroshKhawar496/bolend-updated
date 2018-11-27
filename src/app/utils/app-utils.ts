@@ -15,7 +15,7 @@ export function timeDelta ( date: Date ) : string {
 
     // if the time difference is over 1 week, return the date as a formatted string
     if ( Math.abs(diff) > 6.048e+8 ) 
-        return moment().format("MMM Do YYYY");
+        return dateMoment.format("MMM Do YYYY");
 
     // otherwise, return the fromNow() difference
     else 

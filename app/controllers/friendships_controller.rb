@@ -123,7 +123,76 @@ class FriendshipsController < ApplicationController
 
 		@friend = User.find(params[:user_id])
 		@user = User.find(current_user.id)
-		@user.block_friend(@friend)
+		# check if user is already added to the blocked list
+		blockedFriends = @user.blocked_friends
+		if blockedFriends.include? @friend
+			render json:
+			{
+				"message": "User already blocked",
+				"success": false
+			}
+		else
+			@user.block_friend(@friend)
+			render json:
+			{
+				"message": "#{@friend.fname} #{@friend.lname} has been blocked! Sorry for this experience.",
+				"success": true
+			}
+		end
+	end
+
+	def cancelFriendRequest
+		begin
+			@friend = User.find(params[:user_id])
+		rescue Exception => e
+			render json:
+			{
+				"message": "This user does not exist",
+				"success": false
+			}
+			return # game over , user does not exist
+		end
+
+		@friend = User.find(params[:user_id])
+		@user = User.find(current_user.id)
+		successPen = false
+		if @user.pending_friends.include? @friend
+			# request exists
+			list = @user.pending_friends.find(@friend.id).friendships
+			list.each do |pendingID|
+				if pendingID.friendable_id == @friend.id and pendingID.friend_id == @user.id
+					pendingID.delete
+					successPen = true
+				end
+			end
+		end
+
+		#safety measure
+		@user.pending_friends.delete(@friend)
+
+		if successPen == true
+			render json:
+			{
+				"message": "Friend request was cancelled!",
+				"success": true 
+			}
+		elsif @user.pending_friends.exclude? @friend and @friend.requested_friends.exclude? @user and @user.friends.exclude? @friend
+		render json:
+		{
+			"message": "Friendship was already cancelled!",
+			"success": true
+		}			
+		else
+			render json:
+			{
+				"message": "Friend request could not be cancelled, friend may have already accepted",
+				"success": false
+			}
+		end
+	end
+
+	def deleteFriend
+		
 	end
 
 	def getMutualFriends

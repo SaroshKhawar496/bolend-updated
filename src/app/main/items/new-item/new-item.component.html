@@ -1,12 +1,12 @@
 <div class="container">
-	<div class="form-column">
+	<div class="form-column scale-fontsize">
 		<span>&nbsp;</span>
 		<h2 class="fade-in">{{editItem ? 'Edit' : 'Post New'}} Item</h2>
 
 		<div *ngIf="itemForm" class="flex new-item-form">
 
 			<!-- preview card -->
-			<div style="margin: 1em 0;" class="fade-in-left delay-0-2">
+			<div class="preview-card-ctn fade-in-left delay-0-2">
 				<app-item-card [item]="{
 					name: f.name.value,
 					description: f.description.value,
@@ -37,10 +37,10 @@
 					
 
 				<!-- item tags -->
-				<!-- <div class="input-wrapper fade-in-right delay-0-4">
-					<label for="tags"></label>
-					<input type="text" formControlName="tags" name="tags">
-				</div> -->
+				<div class="input-wrapper fade-in-right delay-0-4">
+					<label for="tags">Tags</label>
+					<input type="text" formControlName="tags" name="tags" placeholder="#optional #spaceseparated #tags" class="text-input">
+				</div>
 				
 				<!-- item image(s) -->
 				<div class="input-wrapper fade-in-right delay-0-5">

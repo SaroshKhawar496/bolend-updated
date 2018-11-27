@@ -68,11 +68,12 @@ export class ItemDetailsComponent implements OnInit {
 	 * Submit a request to borrow an item
 	 */
 	requestItem () : void {
+		this.alert.info ( "Requesting this item..." );
 		this.request.requestItem ( +this.item.id ).subscribe (
 			res => {
 				console.log ('requestItem', res);
 
-				// 'navigate' to add queryparam 'requested=true'
+				// 'navigate' to add queryparam 'requested=1'
 				let extras: NavigationExtras = {
 					queryParams: { requested: 1 }
 				}
@@ -136,12 +137,20 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 
+	/**
+	 * Accept an incoming item request with the specified request id
+	 * @param id request id; NOT the item id
+	 */
 	acceptRequest ( id: number | string ) : void {
-		let path: string = `/loans`;
-		let payload: object = { request_id: id };
-		console.log(payload);
-		this.http.postObservable ( path, payload ).subscribe(
-			res => this.alert.success('Request accepted! Item is loaned out!'),
+		this.request.acceptItemRequest (id).subscribe(
+			res => {
+				this.alert.success('Request accepted! Item is loaned out!');
+				// 'navigate' to add queryparam 'loaned=1'
+				let extras: NavigationExtras = {
+					queryParams: { loaned: 1 }
+				}
+				this.router.navigate ([], extras );
+			},
 			err => this.http.genericModelErrorHandler(err)
 		)
 	}

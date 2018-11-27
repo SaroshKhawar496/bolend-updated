@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       post 'accept',      to: "friendships#acceptFriendRequest"
       post 'deny',        to: "friendships#declineFriendRequest"
       post 'block',       to: "friendships#blockFriend"
+      post 'cancel',      to: "friendships#cancelFriendRequest"
 
       get 'get-pending',  to: "friendships#getPendingRequests"
       get 'get-blocked',  to: "friendships#getBlockedFriends"
@@ -47,6 +48,7 @@ Rails.application.routes.draw do
       get 'mutual',       to: "friendships#getMutualFriends"
       # get 'discover',     to: "friendships#discover"
       get 'discover',     to: "users#index"
+
 
     end
 

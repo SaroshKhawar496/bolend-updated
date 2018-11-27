@@ -92,7 +92,7 @@
 
 
 
-/***** requested splash page *****/
+/***** requested/loaned splash page *****/
 .requested-splash {
 	transition: 0.25s all ease-in-out;
 }
@@ -115,6 +115,31 @@ svg#SEND {
 	max-height: 20em;
 	align-self: stretch;
 }
+svg#HEART {
+	stroke-dasharray: 85;
+	stroke-dashoffset: 85;
+	animation-duration: 3s;
+	transition: 0.25s all ease-in-out;
+
+	flex-grow: 1;
+	max-height: 20em;
+	align-self: stretch;
+}
 div.control-container {
 	padding: 1em;
+}
+
+
+
+/* incoming item requests */
+hr.short-divider {
+	border: 1px solid #bbb;
+	height: 0;
+	width: 50%;
+	float: left;
+	margin: 1em 50% 1em 0;
+}
+
+.request-card + .request-card {
+	border-top: 1px solid #bbb;
 }

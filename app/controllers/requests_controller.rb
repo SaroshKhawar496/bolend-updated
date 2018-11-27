@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @user = User.find(current_user.id)
+    @user = User.includes([:items, :requests]).find(current_user.id)
   end
 
   def show

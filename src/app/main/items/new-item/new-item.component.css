@@ -13,8 +13,6 @@ div.container {
 }
 
 div.new-item-form {
-	/* background: #eee; */
-	/* padding: 1em; */
 	align-items: stretch;
 }
 
@@ -87,8 +85,11 @@ form.item-form {
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+.preview-card-ctn { margin: 1em; }
+
 
 @media screen and (max-width:768px) {
+	.preview-card-ctn { margin: 1em auto; }
 	div.new-item-form { flex-direction: column; }
 }
 @media screen and (min-width:1281px) {
@@ -101,15 +102,3 @@ h2 {
 	font-weight: 300;
 	color: #fff;
 }
-
-/* div.form-column {
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	align-content: center;
-
-	height: 100%;
-	min-height: inherit;
-} */
