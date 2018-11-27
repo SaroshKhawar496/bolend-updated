@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 })
 export class ItemRequestCardComponent implements OnInit {
 	@Input() request: ItemRequest;
-	@Output() accepted: EventEmitter<boolean> = new EventEmitter<boolean>();
-	@Output() declined: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Output() accepted: EventEmitter<number> = new EventEmitter<number>();
+	@Output() declined: EventEmitter<number> = new EventEmitter<number>();
 
-	accept () { this.accepted.emit(true); }
-	decline() { this.declined.emit(true); }
+	accept () { this.accepted.emit(+this.request.id); }	// even more dirty javascript hacks
+	decline() { this.declined.emit(+this.request.id); }
 	get req(): ItemRequest { return this.request; }		// shorthand
 
 	constructor (
@@ -31,6 +31,5 @@ export class ItemRequestCardComponent implements OnInit {
 		let path: string[] = [ '/user', id + '' ];		// i love dirty javascript hacks
 		this.router.navigate ( path );
 	}
-
 
 }

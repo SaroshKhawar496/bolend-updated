@@ -86,7 +86,11 @@
 
 			<h4>Incoming item requests</h4>
 			<ng-container *ngFor="let req of item.requests">
-				<app-item-request-card [request]="req" class="request-card"></app-item-request-card>
+				<app-item-request-card 
+					[request]="req"
+					(accepted)="acceptRequest($event)"
+					class="request-card">
+				</app-item-request-card>
 			</ng-container>
 		</div>
 

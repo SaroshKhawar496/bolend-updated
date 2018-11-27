@@ -137,6 +137,10 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 
+	/**
+	 * Accept an incoming item request with the specified request id
+	 * @param id request id; NOT the item id
+	 */
 	acceptRequest ( id: number | string ) : void {
 		let path: string = `/loans`;
 		let payload: object = { request_id: id };
