@@ -68,6 +68,7 @@ export class ItemDetailsComponent implements OnInit {
 	 * Submit a request to borrow an item
 	 */
 	requestItem () : void {
+		this.alert.info ( "Requesting this item..." );
 		this.request.requestItem ( +this.item.id ).subscribe (
 			res => {
 				console.log ('requestItem', res);

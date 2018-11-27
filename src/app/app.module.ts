@@ -41,6 +41,7 @@ import { RequestedComponent } from './main/items/requested/requested.component';
 import { ProfileCardComponent } from './main/profile/profile-card/profile-card.component';
 import { FriendsComponent } from './main/social/friends/friends.component';
 import { EditItemComponent } from './main/items/new-item/edit-item.component';
+import { ItemRequestCardComponent } from './main/items/item-request-card/item-request-card.component';
 
 
 // etc
@@ -155,6 +156,7 @@ const appRoutes = [
 		ProfileCardComponent,
 		FriendsComponent,
 		EditItemComponent,
+		ItemRequestCardComponent,
 	],
 	imports: [
 		BrowserModule,

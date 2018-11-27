@@ -118,3 +118,14 @@ svg#SEND {
 div.control-container {
 	padding: 1em;
 }
+
+
+
+/* incoming item requests */
+hr.short-divider {
+	border: 1px solid #bbb;
+	height: 0;
+	width: 50%;
+	float: left;
+	margin: 1em 50% 1em 0;
+}
