@@ -13,3 +13,5 @@ if @item.user_id == current_user.id
     end
   end
 end
+json.loan @item.loan if @item.loan.present?
+json.loaning_user @item.loan.user if @item.loan.present?
