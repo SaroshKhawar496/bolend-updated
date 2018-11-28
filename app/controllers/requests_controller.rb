@@ -18,6 +18,8 @@ class RequestsController < ApplicationController
   end
 
   def index
+    my_items = Item.includes([:requests]).find(current_user.id)
+    @incoming_requests = Item.where(:user_id => current_user.id).joins([:requests])
     @user = User.includes([:items, :requests]).find(current_user.id)
   end
 

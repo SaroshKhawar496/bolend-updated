@@ -110,7 +110,7 @@
 				<ng-container *ngIf="req.request_status == 'pending' || req.request_status==null">
 					<app-item-request-card 
 						[request]="req"
-						[incoming]="1"
+						[cardOptions]="{outgoing:false}"
 						(remove)="removeRequest(i)"
 						class="request-card">
 					</app-item-request-card>

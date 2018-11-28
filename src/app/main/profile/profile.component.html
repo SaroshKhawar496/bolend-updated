@@ -65,11 +65,11 @@
 			<h4>Incoming Item Requests</h4>
 			<ng-container *ngIf="in else noIncoming">
 				<div class="box-content flex card-carousel">
-					<div *ngFor="let request of in" class="notification">
-						<pre>{{request | json}}</pre>
+					<div *ngFor="let request of in" class="request-card-container">
+						<!-- <pre>{{request | json}}</pre> -->
 						<app-item-request-card 
 							[request]="request"
-							[incoming]="1"
+							[cardOptions]="inOpts"
 							class="request-card">
 						</app-item-request-card>
 

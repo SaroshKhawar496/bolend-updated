@@ -70,7 +70,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
 		// determine the string for "Member since" status
 		if ( this.currentUser.created_at )
 			this.memberSince = timeDelta ( this.currentUser.created_at );
-		console.log ( 'wtf', this.currentUser.created_at, this.memberSince );
 
 		return this.currentUser;
 	}

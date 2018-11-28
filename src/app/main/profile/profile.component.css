@@ -139,3 +139,6 @@ h2, h3 {
 	color: #666;
 	font-style: italic;
 }
+.request-card-container {
+	width: 100%;
+}

@@ -5,9 +5,9 @@
 		<span>
 			<p>
 				<strong (click)="navigateToUser(req.requesting_user.id)" class="pointer">
-					{{req.requesting_user.fullName}} 
+					{{req.requesting_user.fullName || req.requesting_user.fname || 'Anon'}} 
 				</strong> 
-				is requesting this item.
+				is requesting {{opt.link}}this item.
 			</p>
 			<p *ngIf="req.age" class="age-string">
 				<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>&nbsp;
@@ -18,7 +18,16 @@
 
 	<!-- controls -->
 	<div class="item-request-ctrls flex">
-		<ng-container *ngIf="incoming else outgoingCtrls">
+		<!-- common controls -->
+		<div *ngIf="opt.link"
+			(click)="navigateToItem(req.item.id)"
+			tooltip="View item" tooltip-position="bottom"
+			class="gradient-0-stop-2 round white-text trans-0-25 pointer">
+			<svg><use href="assets/icons/navbar.svg#i-bag"></use></svg>
+		</div>
+
+		<!-- incoming request controls -->
+		<ng-container *ngIf="!(opt.outgoing) else outgoingCtrls">
 			<!-- accept request -->
 			<div (click)="acceptRequest(request.id)" 
 				tooltip="Accept request" tooltip-position="bottom"
@@ -34,6 +43,7 @@
 			</div>
 		</ng-container>
 
+		<!-- outgoing controls -->
 		<ng-template #outgoingCtrls>
 			<!-- delete request -->
 			<div (click)="deleteRequest()" 

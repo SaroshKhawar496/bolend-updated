@@ -14,14 +14,15 @@ import { HttpService } from 'src/app/http.service';
 })
 export class ItemRequestCardComponent implements OnInit {
 	@Input() request: ItemRequest;
-	@Input() incoming: number;
+	@Input() cardOptions?: ItemRequestCardOptions = {};
+	// @Input() incoming: number;
 	// @Output() accepted: EventEmitter<number> = new EventEmitter<number>();
 	// @Output() declined: EventEmitter<number> = new EventEmitter<number>();
 	@Output() remove: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-	// accept () { this.accepted.emit(+this.request.id); }	// even more dirty javascript hacks
-	// decline() { this.declined.emit(+this.request.id); }
+	// getters (and abbreviations)
 	get req(): ItemRequest { return this.request; }		// shorthand
+	get opt() { return this.cardOptions; }
 
 	constructor (
 		protected router: Router,
@@ -39,6 +40,11 @@ export class ItemRequestCardComponent implements OnInit {
 		this.router.navigate ( path );
 	}
 
+	/** Navigate to the page of the item being requested */
+	navigateToItem( id: string | number ) : void {
+		let path: string[] = [ '/item', id + '' ];
+		this.router.navigate ( path );
+	}
 
 	/**
 	 * Accept an incoming item request with the specified request id
@@ -76,4 +82,17 @@ export class ItemRequestCardComponent implements OnInit {
 		)
 	}
 
+}
+
+
+export interface ItemRequestCardOptions {
+	// the options in this interface are optional; they need not all be specified
+	// remember that any unspecified property is undefined, and undefined is FALSY
+	// i.e. any omitted property is undefined and false by default
+
+	// is this card showing an outgoing request? If false, assume it is incoming
+	outgoing?:	boolean,		
+
+	// should this card contain a link to the item? If false, do not include link
+	link?: boolean,
 }

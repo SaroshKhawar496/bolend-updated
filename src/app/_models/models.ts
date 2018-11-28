@@ -179,8 +179,9 @@ export class Item extends ExtensibleModel {
 
 export class ItemRequest extends ExtensibleModel {
 	id: string | number;
-	requesting_user: User;
+	requesting_user?: User;
 	request_status: string;
+	item?: Item;
 
 	constructor (attribs) {
 		super(attribs);
@@ -188,6 +189,9 @@ export class ItemRequest extends ExtensibleModel {
 		// if requesting_user is provided, create an isntance of User with it
 		if ( this.requesting_user )
 			this.requesting_user = new User ( this.requesting_user );
+
+		if ( this.item )
+			this.item = new Item ( this.item );
 	}
 }
 
@@ -207,8 +211,8 @@ export class Loan extends ExtensibleModel {
 		super(attribs);
 
 		// compute the age and timeToDue strings, using updated_at and duedate respectively
-		// if ( this.updated_at )
-		// 	this.age = timeDelta (this.updated_at);
+		if ( this.updated_at )
+			this.age = timeDelta (this.updated_at);
 		if ( this.duedate )
 			this.timeToDue = timeDelta (this.duedate);
 	}

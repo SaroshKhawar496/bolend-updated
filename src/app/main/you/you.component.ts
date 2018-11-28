@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
-import { User } from 'src/app/_models/models';
+import { User, ItemRequest } from 'src/app/_models/models';
 import { Model } from 'src/app/http.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ItemCardOptions } from '../items/item-card/item-card.component';
+import { ItemRequestCardOptions } from '../items/item-request-card/item-request-card.component';
 
 @Component({
 	selector: 'app-you',
@@ -11,10 +12,14 @@ import { ItemCardOptions } from '../items/item-card/item-card.component';
 	styleUrls: ['../profile/profile.component.css']
 })
 export class YouComponent extends ProfileComponent {
-	incomingRequests: object;
-	outgoingRequests: object;
+	incomingRequests: ItemRequest[];
+	incomingCardOptions: ItemRequestCardOptions;
+	outgoingRequests: ItemRequest[];
+	outgoingCardOptions: ItemRequestCardOptions;
 	get in () { return this.incomingRequests; }
 	get out() { return this.outgoingRequests; }
+	get inOpts() { return this.incomingCardOptions; }
+	get outOpts(){ return this.outgoingCardOptions; }
 
 	// incoming & outgoing item-card options
 	inCardOptions: ItemCardOptions = new ItemCardOptions({
@@ -29,6 +34,15 @@ export class YouComponent extends ProfileComponent {
 
 		this.loadYou();
 		this.loadRequests();
+
+		this.incomingCardOptions = {
+			link: true,
+			outgoing: false,
+		}
+		this.outgoingCardOptions = {
+			link: true,
+			outgoing: true,
+		}
 	}
 
 	/**
@@ -38,11 +52,6 @@ export class YouComponent extends ProfileComponent {
 		let path: string = '/users/you';
 		this.http.getObservable ( path ).subscribe (
 			data => this.loadUserDataHandler(data),
-			// data => {
-			// 	// console.log ( 'loadYou', data );
-			// 	this.currentUser = new User(data);
-			// 	this.you = true;
-			// },
 			(err: HttpErrorResponse) => this.http.genericModelErrorHandler(err, Model.User),
 		)
 	}
@@ -61,11 +70,18 @@ export class YouComponent extends ProfileComponent {
 		let path: string = '/requests';
 		this.http.getObservable (path).subscribe(
 			data => {
-				this.incomingRequests = data['incoming_requests'];
-				this.outgoingRequests = data['outgoing_requests'];
+				// this.incomingRequests = data['incoming_requests'];
+				this.incomingRequests = this.requestsDataHandler ( data['incoming_requests'] );
+				// this.outgoingRequests = data['outgoing_requests'];
+				this.outgoingRequests = this.requestsDataHandler ( data['outgoing_requests'] );
 				console.log ( 'loadRequests', this.incomingRequests, this.outgoingRequests );
 			}
 		)
+	}
+
+
+	private requestsDataHandler ( data: object[] ) : ItemRequest[] {
+		return data.map ( req => new ItemRequest(req) );
 	}
 
 }
