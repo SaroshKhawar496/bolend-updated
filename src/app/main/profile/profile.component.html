@@ -58,7 +58,7 @@
 
 	<!-- item requests -->
 	<div *ngIf="you" class="grid-box4">
-		<h3 class="box-title">Requests</h3>
+		<h3 class="box-title">Pending Requests</h3>
 		
 		<!-- incoming requests -->
 		<div class="incoming-requests-container fade-in delay-0-5">
@@ -66,9 +66,13 @@
 			<ng-container *ngIf="in else noIncoming">
 				<div class="box-content flex card-carousel">
 					<div *ngFor="let request of in" class="notification">
-						<!-- user in this case is you -->
-						<!-- <app-item-card [item]="request['my_item']" ></app-item-card> -->
-						<!-- <pre>{{request | json}}</pre> -->
+						<pre>{{request | json}}</pre>
+						<app-item-request-card 
+							[request]="request"
+							[incoming]="1"
+							class="request-card">
+						</app-item-request-card>
+
 					</div>
 				</div>
 			</ng-container>
@@ -88,7 +92,7 @@
 				</div>
 			</ng-container>
 			<ng-template #noOutgoing>
-				<p class="status">You have no outgoing item requests.</p>
+				<p class="status">You have no pending outgoing item requests.</p>
 			</ng-template>
 		</div>
 

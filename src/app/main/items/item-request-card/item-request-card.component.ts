@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ItemRequestCardComponent implements OnInit {
 	@Input() request: ItemRequest;
+	@Input() incoming: number;
 	@Output() accepted: EventEmitter<number> = new EventEmitter<number>();
 	@Output() declined: EventEmitter<number> = new EventEmitter<number>();
 

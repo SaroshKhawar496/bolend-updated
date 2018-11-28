@@ -26,7 +26,7 @@
 		</div>
 
 		<!-- tags -->
-		<div class="tags-container fade-in delay-0-6">
+		<div class="tags-container fade-in delay-0-5">
 			<svg class="inline"><use href="assets/icons/navbar.svg#i-tag"></use></svg>&nbsp;
 			{{item.tags || '-'}}
 		</div>
@@ -35,6 +35,12 @@
 		<div *ngIf="item.age" class="age-string fade-in delay-0-6">
 			<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>&nbsp;
 			{{item.age}}
+		</div>
+		<!-- item view count -->
+		<div *ngIf="item.age" class="age-string fade-in delay-0-6">
+			<svg class="inline"><use href="assets/icons/navbar.svg#i-eye"></use></svg>&nbsp;
+			{{item.total_hits}} {{item.total_hits>1 ? 'views' : 'view'}}. 
+			{{item.hits_1week}} {{item.hits_1week>1 ? 'views' : 'view'}} this week.
 		</div>
 
 		<!-- show if item has been loaned out -->
@@ -94,6 +100,7 @@
 				<ng-container *ngIf="req.request_status == 'pending'">
 					<app-item-request-card 
 						[request]="req"
+						[incoming]="1"
 						(accepted)="acceptRequest($event)"
 						(declined)="declineRequest($event, i)"
 						class="request-card">

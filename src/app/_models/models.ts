@@ -135,6 +135,8 @@ export class Item extends ExtensibleModel {
 	created_at: Date;
 	updated_at: Date;
 	age: string;
+	total_hits: number;
+	hits_1week: number;
 
 	loan: Loan;
 

@@ -10,18 +10,23 @@
 
 	<!-- controls -->
 	<div class="item-request-ctrls flex">
+		<ng-container *ngIf="incoming else outgoingCtrls">
+			<!-- accept request -->
+			<div (click)="accept()"
+				class="gradient-1-stop-2 round white-text trans-0-25 pointer">
+				<svg><use href="assets/icons/navbar.svg#i-checkmark"></use></svg>
+			</div>
 
-		<!-- accept request -->
-		<div (click)="accept()"
-			class="gradient-1-stop-2 round white-text trans-0-25 pointer">
-			<svg><use href="assets/icons/navbar.svg#i-checkmark"></use></svg>
-		</div>
+			<!-- decline request -->
+			<div (click)="decline()"
+				class="gradient-0-stop-1 round white-text trans-0-25 pointer">
+				<svg><use href="assets/icons/navbar.svg#i-close"></use></svg>
+			</div>
+		</ng-container>
 
-		<!-- decline request -->
-		<div (click)="decline()"
-			class="gradient-0-stop-1 round white-text trans-0-25 pointer">
-			<svg><use href="assets/icons/navbar.svg#i-close"></use></svg>
-		</div>
+		<ng-template #outgoingCtrls>
+			outgoingCtrls
+		</ng-template>
 
 	</div>
 </div>
