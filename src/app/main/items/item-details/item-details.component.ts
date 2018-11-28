@@ -156,6 +156,24 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 
+	/**
+	 * Decline an incoming item request with the specified request id
+	 * @param id request id
+	 * @param index 
+	 */
+	declineRequest ( id: number | string, index: number ) : void {
+		this.request.declineItemRequest(id).subscribe (
+			res => {
+				this.alert.success ('Request successfully declined.' );
+
+				// remove the request from item.requests array
+				this.item.requests.splice(index,1);
+			},
+			err => this.http.genericModelErrorHandler(err),
+		)
+	}
+
+
 	returnToItemDetails () {
 		this.router.navigate ([]);
 	}

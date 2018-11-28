@@ -246,6 +246,9 @@ Continue at your own risk.`
 			console.error ( Consts.serverFaultMsg );
 			this.alert.error ( Consts.serverFaultMsg );
 			return true;
+		} else if ( err.error['message'] ) {		// if error response has a message, show it
+			console.error ( err.error['message'] );
+			this.alert.error ( err.error['message'] );
 		}
 		return false;
 	}

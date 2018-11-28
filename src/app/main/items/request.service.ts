@@ -38,4 +38,16 @@ export class RequestService {
 		};
 		return this.http.postObservable (path, payload);
 	}
+
+	/**
+	 * Decline an incoming item request with the specified id
+	 * @param id request id; NOT the item id
+	 */
+	public declineItemRequest ( id: number | string ) : Observable<object> {
+		let path: string = '/requests/decline';
+		let payload: object = {
+			id: id,
+		}
+		return this.http.postObservable (path, payload);
+	}
 }

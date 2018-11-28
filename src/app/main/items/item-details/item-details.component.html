@@ -86,10 +86,11 @@
 			<hr class="short-divider fade-in delay-0-9" />
 
 			<!-- <h4>Incoming item requests</h4> -->
-			<ng-container *ngFor="let req of item.requests">
+			<ng-container *ngFor="let req of item.requests; let i=index">
 				<app-item-request-card 
 					[request]="req"
 					(accepted)="acceptRequest($event)"
+					(declined)="declineRequest($event, i)"
 					class="request-card">
 				</app-item-request-card>
 			</ng-container>
