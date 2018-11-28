@@ -2,6 +2,10 @@ import { timeDelta } from "../utils/app-utils";
 
 
 export class ExtensibleModel {
+	created_at: Date;
+	updated_at: Date;
+	age: string;
+
 	/**
 	 * Initialize an object with attribs by assigning every property from input object to this object
 	 * @param attribs object containing properties to be copied
@@ -11,6 +15,10 @@ export class ExtensibleModel {
 			for ( let prop in attribs )
 				this[prop] = attribs[prop];
 		}
+
+		// compute the age string, if updated_at is defined
+		if ( this.updated_at )
+			this.age = timeDelta(this.updated_at);
 	}
 }
 
@@ -26,8 +34,8 @@ export class User extends ExtensibleModel {
 	gender: string;         // optional
 	dateofbirth: Date;
 
-	created_at: Date;
-	updated_at: Date;
+	// created_at: Date;
+	// updated_at: Date;
 	profileImgUrl: string;
 	privateMode: boolean;
 
@@ -132,8 +140,8 @@ export class Item extends ExtensibleModel {
 
 	user: User;				// owner
 
-	created_at: Date;
-	updated_at: Date;
+	// created_at: Date;
+	// updated_at: Date;
 	age: string;
 	total_hits: number;
 	hits_1week: number;
@@ -147,8 +155,8 @@ export class Item extends ExtensibleModel {
 			this.createUserInstance ( attribs['user'] );
 
 		// create age string if updated_at is present
-		if ( this.updated_at )
-			this.age = timeDelta(this.updated_at);
+		// if ( this.updated_at )
+		// 	this.age = timeDelta(this.updated_at);
 
 		// if requests array is present
 		if ( this.requests ) {
@@ -189,8 +197,8 @@ export class Loan extends ExtensibleModel {
 	user_id:	number;
 	item_id:	number;
 
-	created_at:	Date;
-	updated_at: Date;
+	// created_at:	Date;
+	// updated_at: Date;
 	duedate:	Date;
 	age:		string;
 	timeToDue:	string;
@@ -199,8 +207,8 @@ export class Loan extends ExtensibleModel {
 		super(attribs);
 
 		// compute the age and timeToDue strings, using updated_at and duedate respectively
-		if ( this.updated_at )
-			this.age = timeDelta (this.updated_at);
+		// if ( this.updated_at )
+		// 	this.age = timeDelta (this.updated_at);
 		if ( this.duedate )
 			this.timeToDue = timeDelta (this.duedate);
 	}

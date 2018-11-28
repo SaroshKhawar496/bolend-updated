@@ -82,6 +82,7 @@ export class ProfileCardComponent implements OnInit {
 	friendPostRequest ( type: FriendControls, userId: number ) : void {
 		let path: string = `/friends/${FriendControls[type]}`;
 		let payload: { user_id: number } = { user_id: userId };
+		this.alert.info ( "Licking the stamp and sending it..." );
 		this.http.postObservable(path, payload).subscribe(
 			data => {		// on success
 				console.log ( 'friendPostRequest', data );

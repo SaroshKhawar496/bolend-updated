@@ -46,7 +46,7 @@
 		<!-- show if item has been loaned out -->
 		<div *ngIf="item.loan" class="desc-container fade-in delay-0-7">
 			<svg class="inline"><use href="assets/icons/navbar.svg#i-heart"></use></svg>&nbsp;
-			<i>Item loaned out since {{item.loan.age}}. Due on <strong>{{item.loan.timeToDue}}</strong></i>
+			<i>Item loaned out {{item.loan.age}}. Due <strong>{{item.loan.timeToDue}}</strong></i>
 		</div>
 
 

@@ -17,8 +17,12 @@ div.item-request-card {
 	display: table-cell;
 	vertical-align: middle;
 }
+.item-request-body span > p {
+	line-height: 1.75em;
+}
 
 .item-request-ctrls {
+	flex-wrap: nowrap;
 	justify-content: flex-end;
 	grid-area: ctrls;
 }

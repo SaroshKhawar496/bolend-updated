@@ -12,6 +12,8 @@ if @item.user_id == current_user.id
       json.id request.id
       json.requesting_user request.user
       json.request_status request.status
+      json.created_at request.created_at
+      json.updated_at	request.updated_at
     end
   end
 end

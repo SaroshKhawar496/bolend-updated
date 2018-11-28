@@ -3,10 +3,16 @@
 
 	<div class="item-request-body">
 		<span>
-			<strong (click)="navigateToUser(req.requesting_user.id)" class="pointer">
-				{{req.requesting_user.fullName}} 
-			</strong> 
-			is requesting this item.
+			<p>
+				<strong (click)="navigateToUser(req.requesting_user.id)" class="pointer">
+					{{req.requesting_user.fullName}} 
+				</strong> 
+				is requesting this item.
+			</p>
+			<p *ngIf="req.age" class="age-string">
+				<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>&nbsp;
+				{{req.age}}
+			</p>
 		</span>
 	</div>
 
