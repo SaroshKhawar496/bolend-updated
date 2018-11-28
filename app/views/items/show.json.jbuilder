@@ -10,6 +10,7 @@ if @item.user_id == current_user.id
     json.requests @item.requests do |request|
       json.id request.id
       json.requesting_user request.user
+      json.request_status request.status
     end
   end
 end
