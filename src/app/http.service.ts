@@ -234,7 +234,11 @@ Continue at your own risk.`
 	 */
 	public genericModelErrorHandler ( err: HttpErrorResponse, type?: Model ) : boolean {
 		// user not found
-		if ( err.status == 404 ) {
+		if ( err.error['message'] ) {		// if error response has a message, show it
+			console.error ( err.error['message'] );
+			this.alert.error ( err.error['message'] );
+			return true;
+		} else if ( err.status == 404 ) {
 			console.error ( `No ${type} with this ID exists!`, err.error['exception'] );
 			this.alert.error ( `No ${type} with this ID exists!` );
 			return true;
@@ -246,11 +250,8 @@ Continue at your own risk.`
 			console.error ( Consts.serverFaultMsg );
 			this.alert.error ( Consts.serverFaultMsg );
 			return true;
-		} else if ( err.error['message'] ) {		// if error response has a message, show it
-			console.error ( err.error['message'] );
-			this.alert.error ( err.error['message'] );
-		}
-		return false;
+		} else				// if none of the above have handled the error, return false
+			return false;
 	}
 }
 

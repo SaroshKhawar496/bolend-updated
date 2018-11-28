@@ -150,6 +150,7 @@ export class Item extends ExtensibleModel {
 			this.requests = this.requests.map ( 
 				request => new ItemRequest(request)
 			);
+
 		}
 	}
 
@@ -162,6 +163,7 @@ export class Item extends ExtensibleModel {
 export class ItemRequest extends ExtensibleModel {
 	id: string | number;
 	requesting_user: User;
+	request_status: string;
 
 	constructor (attribs) {
 		super(attribs);
