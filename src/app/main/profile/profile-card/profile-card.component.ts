@@ -23,7 +23,7 @@ export class ProfileCardComponent implements OnInit {
 	// misc class variables
 	fallbackImgSrc: string = "assets/img/pepe.png";
 	ctrls: typeof FriendControls = FriendControls;
-
+	tooltip: typeof ProfileCardControlTooltip = ProfileCardControlTooltip;
 
 	constructor (
 		protected http: HttpService,
@@ -136,4 +136,15 @@ export class ProfileCardComponent implements OnInit {
 export interface ProfileCardOptions {
 	message: string,
 	controls: FriendControls,
+}
+
+
+export const ProfileCardControlTooltip : object = {
+	[FriendControls.profile]:	'View profile',
+	[FriendControls.accept]:	'Accept friend request',
+	[FriendControls.deny]:		'Decline friend request',
+	[FriendControls.block]:		'Block user',
+	[FriendControls.request]:	'Send friend request',
+	[FriendControls.hide]:		'Hide user card',
+	[FriendControls.message]:	'Message user',
 }

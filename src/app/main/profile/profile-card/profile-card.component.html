@@ -26,10 +26,11 @@
 					'gradient-1-stop-1': ctrl==ctrls.deny,
 					'gradient-1-stop-2': ctrl==ctrls.accept || ctrl==ctrls.profile
 				}"
+				[attr.tooltip]="tooltip[ctrl] || 'card ctrl'" tooltip-position="bottom"
 				(click)="processCtrl(ctrl)">
 
 				<!-- ctrl: navigate to profile -->
-				<ng-template [ngSwitchCase]="ctrls.profile">
+				<ng-template [ngSwitchCase]="ctrls.profile" >
 					<svg><use href="assets/icons/navbar.svg#i-user"></use></svg>
 				</ng-template>
 
