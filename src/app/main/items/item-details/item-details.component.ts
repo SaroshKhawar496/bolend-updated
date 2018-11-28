@@ -116,18 +116,22 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 
-	/**
-	 * Delete this item
-	 */
+	deleteConfirmation: boolean = false;
+	/** Delete this item; if item is currently loaned out, prompt for confirmation */
 	deleteItem () : void {
-		let path: string = `/items/${this.item.id}`;
-		this.http.deleteObservable(path).subscribe(
-			data => {
-				this.alert.success ( 'Item successfully deleted.', true );
-				this.router.navigate (['/']);		// return to home page
-			},
-			err => this.handleHttpError (err)
-		)
+		if ( this.item.loan && !this.deleteConfirmation ) {
+			this.alert.warning ( "This item is currently loaned out. Are you sure you want to delete it? Click delete again to confirm." );
+			this.deleteConfirmation = true;
+		} else {
+			let path: string = `/items/${this.item.id}`;
+			this.http.deleteObservable(path).subscribe(
+				data => {
+					this.alert.success ( 'Item successfully deleted.', true );
+					this.router.navigate (['/']);		// return to home page
+				},
+				err => this.handleHttpError (err)
+			)
+		}
 	}
 
 	/** Navigate to page to allow user to edit the details of this item */

@@ -32,9 +32,15 @@
 		</div>
 
 		<!-- item age -->
-		<div *ngIf="item.age" class="age-string fade-in delay-0-7">
+		<div *ngIf="item.age" class="age-string fade-in delay-0-6">
 			<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>&nbsp;
 			{{item.age}}
+		</div>
+
+		<!-- show if item has been loaned out -->
+		<div *ngIf="item.loan" class="desc-container fade-in delay-0-7">
+			<svg class="inline"><use href="assets/icons/navbar.svg#i-heart"></use></svg>&nbsp;
+			<i>Item loaned out since {{item.loan.age}}. Due on <strong>{{item.loan.timeToDue}}</strong></i>
 		</div>
 
 
@@ -52,8 +58,6 @@
 					<svg><use href="assets/icons/navbar.svg#i-trash"></use></svg>
 				</div>
 			</ng-container>
-
-
 
 			<!-- only display these controls if NOT the current user -->
 			<ng-template #notYou>

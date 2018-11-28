@@ -29,6 +29,7 @@ export class User extends ExtensibleModel {
 	created_at: Date;
 	updated_at: Date;
 	profileImgUrl: string;
+	privateMode: boolean;
 
 	items: Array<object>;
 	itemsAvailable: Array<Item>;
@@ -129,11 +130,13 @@ export class Item extends ExtensibleModel {
 	image: string;			// main image URL
 	imgSrc: string | ArrayBuffer;	// src buffer of main image
 
-	user: User;
+	user: User;				// owner
 
 	created_at: Date;
 	updated_at: Date;
 	age: string;
+
+	loan: Loan;
 
 	constructor ( attribs?: object ) {
 		super(attribs);
@@ -150,7 +153,11 @@ export class Item extends ExtensibleModel {
 			this.requests = this.requests.map ( 
 				request => new ItemRequest(request)
 			);
+		}
 
+		// if loan is present
+		if ( this.loan ) {
+			this.loan = new Loan(this.loan);
 		}
 	}
 
@@ -171,5 +178,28 @@ export class ItemRequest extends ExtensibleModel {
 		// if requesting_user is provided, create an isntance of User with it
 		if ( this.requesting_user )
 			this.requesting_user = new User ( this.requesting_user );
+	}
+}
+
+
+export class Loan extends ExtensibleModel {
+	id:			number;
+	user_id:	number;
+	item_id:	number;
+
+	created_at:	Date;
+	updated_at: Date;
+	duedate:	Date;
+	age:		string;
+	timeToDue:	string;
+
+	constructor ( attribs?: object ) {
+		super(attribs);
+
+		// compute the age and timeToDue strings, using updated_at and duedate respectively
+		if ( this.updated_at )
+			this.age = timeDelta (this.updated_at);
+		if ( this.duedate )
+			this.timeToDue = timeDelta (this.duedate);
 	}
 }
