@@ -63,7 +63,11 @@ Rails.application.routes.draw do
     get "hashtags/:hashtag",   to: "hashtags#show",      as: :hashtag
     get "hashtags",            to: "hashtags#index",     as: :hashtags
   
-    resources :requests
+    resources :requests do
+      collection do
+        post :decline
+      end
+    end
 
     resources :loans
 
