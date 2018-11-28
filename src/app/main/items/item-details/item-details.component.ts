@@ -178,8 +178,12 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 
-	returnToItemDetails () {
+	returnToItemDetails ( reload: boolean = false ) {
 		this.router.navigate ([]);
+		if ( reload ) {
+			let id: number = +this.route.snapshot.params['id'];
+			this.loadItem(id);
+		}
 	}
 
 }
