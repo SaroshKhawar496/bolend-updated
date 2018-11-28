@@ -176,7 +176,12 @@ class ItemsController < ApplicationController
       @picture = { io: image_io, filename: image_name }
       @item.image.attach(@picture)
       @item.base64 = nil # no need to store in database anymore
-      puts ">item updated successfully!"
+      @item.save
+      if @item.save
+        render :show, status: :ok, location: @item
+      else
+        render json: @item.errors, status: :unprocessable_entity
+      end
     end
   end
 
