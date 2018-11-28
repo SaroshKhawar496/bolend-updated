@@ -20,8 +20,8 @@ class ItemsController < ApplicationController
   end
 
   def per_page
-    per_page_param = (request.headers["per-page"])
-    # puts("-------------------------------per_page_param #{per_page_param}----------------------------------")
+    per_page_param = (request.headers["perpage"])
+    puts("-------------------------------per_page_param #{per_page_param}----------------------------------")
     @per_page ||= per_page_param || 10
   end
 

@@ -25,6 +25,7 @@ Devise.setup do |config|
   # JWT config
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.secret_key_base
+    jwt.expiration_time = 10000
   end
 
   # do not use flash messages
