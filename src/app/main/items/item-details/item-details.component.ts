@@ -142,39 +142,11 @@ export class ItemDetailsComponent implements OnInit {
 
 
 	/**
-	 * Accept an incoming item request with the specified request id
-	 * @param id request id; NOT the item id
+	 * Remove a request from the array of requests
+	 * @param index index of request to remove; NOT the item or request id
 	 */
-	acceptRequest ( id: number | string ) : void {
-		this.request.acceptItemRequest (id).subscribe(
-			res => {
-				this.alert.success('Request accepted! Item is loaned out!');
-				// 'navigate' to add queryparam 'loaned=1'
-				let extras: NavigationExtras = {
-					queryParams: { loaned: 1 }
-				}
-				this.router.navigate ([], extras );
-			},
-			err => this.http.genericModelErrorHandler(err)
-		)
-	}
-
-
-	/**
-	 * Decline an incoming item request with the specified request id
-	 * @param id request id
-	 * @param index 
-	 */
-	declineRequest ( id: number | string, index: number ) : void {
-		this.request.declineItemRequest(id).subscribe (
-			res => {
-				this.alert.success ('Request successfully declined.' );
-
-				// remove the request from item.requests array
-				this.item.requests.splice(index,1);
-			},
-			err => this.http.genericModelErrorHandler(err),
-		)
+	removeRequest ( index: number ) : void {
+		this.item.requests.splice(index,1);
 	}
 
 

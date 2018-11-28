@@ -107,12 +107,11 @@
 
 			<ng-container *ngFor="let req of item.requests; let i=index">
 				<!-- show only pending requests -->
-				<ng-container *ngIf="req.request_status == 'pending'">
+				<ng-container *ngIf="req.request_status == 'pending' || req.request_status==null">
 					<app-item-request-card 
 						[request]="req"
 						[incoming]="1"
-						(accepted)="acceptRequest($event)"
-						(declined)="declineRequest($event, i)"
+						(remove)="removeRequest(i)"
 						class="request-card">
 					</app-item-request-card>
 				</ng-container>

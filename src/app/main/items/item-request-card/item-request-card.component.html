@@ -3,7 +3,9 @@
 
 	<div class="item-request-body">
 		<span>
-			<strong (click)="navigateToUser(req.requesting_user.id)" class="pointer">{{req.requesting_user.fullName}} </strong> 
+			<strong (click)="navigateToUser(req.requesting_user.id)" class="pointer">
+				{{req.requesting_user.fullName}} 
+			</strong> 
 			is requesting this item.
 		</span>
 	</div>
@@ -12,20 +14,27 @@
 	<div class="item-request-ctrls flex">
 		<ng-container *ngIf="incoming else outgoingCtrls">
 			<!-- accept request -->
-			<div (click)="accept()"
+			<div (click)="acceptRequest(request.id)" 
+				tooltip="Accept request" tooltip-position="bottom"
 				class="gradient-1-stop-2 round white-text trans-0-25 pointer">
 				<svg><use href="assets/icons/navbar.svg#i-checkmark"></use></svg>
 			</div>
 
 			<!-- decline request -->
-			<div (click)="decline()"
+			<div (click)="declineRequest(request.id)" 
+				tooltip="Decline request" tooltip-position="bottom"
 				class="gradient-0-stop-1 round white-text trans-0-25 pointer">
 				<svg><use href="assets/icons/navbar.svg#i-close"></use></svg>
 			</div>
 		</ng-container>
 
 		<ng-template #outgoingCtrls>
-			outgoingCtrls
+			<!-- delete request -->
+			<div (click)="deleteRequest()" 
+				tooltip="Delete request" tooltip-position="bottom"
+				class="gradient-1-stop-1 round white-text trans-0-25 pointer">
+				<svg><use href="assets/icons/navbar.svg#i-trash"></use></svg>
+			</div>
 		</ng-template>
 
 	</div>
