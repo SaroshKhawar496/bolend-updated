@@ -5,11 +5,24 @@ class ItemsController < ApplicationController
   #using current_user.id now
   
   # after_action only: [:index], {set_pagination_headers :items}
-  after_action Proc.new{ set_pagination_headers(:items) }, only: [:index]
+  # after_action Proc.new{ set_pagination_headers(:items) }, only: [:index]
   
   def new
     @item = Item.new
     @user = User.find(current_user.id)
+  end
+
+  def page
+    page_param = (request.headers["page"])
+    # puts("-------------------------------page_param #{page_param}----------------------------------")
+    # @page ||= params[:page] || 1
+    @page ||= page_param || 1
+  end
+
+  def per_page
+    per_page_param = (request.headers["per-page"])
+    # puts("-------------------------------per_page_param #{per_page_param}----------------------------------")
+    @per_page ||= per_page_param || 10
   end
 
   def index
@@ -29,10 +42,10 @@ class ItemsController < ApplicationController
           "message": "We could not find what you were looking for!",
           "items": []
         }
-       
+
       end
 
-   else
+    else
 
       @items = Item.includes([:user, :loan, :borrower]).all
 
@@ -42,19 +55,26 @@ class ItemsController < ApplicationController
     #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
     #option to change the numOfresults shown perpage also available 
     @items = @items.page(page).per(per_page)
+    @per_page = per_page.to_i
     
-    numOfPages = @items.total_pages
+    # numOfPages = @items.total_pages
 
     # check for not lettting page exceeding the last page, if it does show last page
-    if (params[:page].to_i > numOfPages.to_i)
+    # if (params[:page].to_i > numOfPages.to_i)
 
-      @items = @items.page(numOfPages).per(per_page)
 
-    end
 
+    #   # @items = @items.page(numOfPages).per(per_page)
+
+
+
+    # end
+       # puts("-------------------------------per_page_param #{per_page}----------------------------------")
+       
     # set_pagination_headers(@items)
 
-     
+
+
   end
 
   # # sending the pagination params via request headers
@@ -69,7 +89,7 @@ class ItemsController < ApplicationController
   #   links = []
   #   links << page_link(1,"first") unless pageCollect.first_page?
   #   links << page_link(pageCollect.prev_page, "prev") if pageCollect.prev_page
-    
+
   #   links << page_link(pageCollect.next_page, "next") if pageCollect.next_page
   #   links << page_link(pageCollect.total_pages, "last") unless pageCollect.last_page?
   #   headers["Link"] = links.join(", ") if links.present?

@@ -44,6 +44,8 @@ class ApplicationController < ActionController::API
 			end
 		end
 	end
+
+	# Add the Loans Checke
 	
 	protected
 		#passing the required fields for devise signup form. By default,
@@ -98,7 +100,7 @@ class ApplicationController < ActionController::API
 		  end
 
 		  def per_page
-		    @per_page ||= params[:per_page] || 10
+		    @per_page ||= params[:per] || 10
 		  end
 # Pagination Ended --------------------------------------------------------------------------------------------------
 

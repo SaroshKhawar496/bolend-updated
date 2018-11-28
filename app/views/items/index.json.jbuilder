@@ -12,13 +12,13 @@ json.items @items.reverse do |item|
 end
 
 # JSON Containing results of the pages for items
-# json.pages do
-# 	json.current_page @items.current_page
-# 	json.see_per_page @items.per_page
-# 	json.total_results @items.total_entries
-# 	json.total_pages @items.total_pages 
+json.pages do
+	json.current_page @items.current_page
+	json.see_per_page @per_page
+	json.total_results @items.total_count
+	json.total_pages @items.total_pages 
 
-# end
+end
 
 
 
