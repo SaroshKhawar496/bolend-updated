@@ -56,9 +56,7 @@ export class YouComponent extends ProfileComponent {
 	}
 
 
-	/**
-	 * Load your requests
-	 */
+	/** Load your item requests */
 	private loadRequests () : void {
 		let path: string = '/requests';
 		this.http.getObservable (path).subscribe(

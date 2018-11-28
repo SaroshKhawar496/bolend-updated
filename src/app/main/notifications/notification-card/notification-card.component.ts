@@ -26,11 +26,21 @@ export class NotificationCardComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	/**
+	 * Navigate to object, according to the notification type
+	 * @param type NotificationType
+	 * @param nObj notification_object
+	 */
 	protected navigateToLink ( type: NotificationType, nObj: object ) : void {
 		let path: Array<string|number>;
 		switch ( type ) {
-			case NotificationType.item_request: path = [ '/item', nObj['item_id'] ];
+
+			// for incoming item requests and accepted item requests, navigate to the item page
+			case NotificationType.item_request:
+			case NotificationType.accept_item_request:
+				path = [ '/item', nObj['item_id'] ];
 				break;
+
 			default: path = [];
 		}
 		this.router.navigate ( path );
@@ -53,7 +63,7 @@ export enum NotificationType {
 	Generic = 0,
 	item_request,
 	friend_request,
-	borrow_accept,
+	accept_item_request,
 	friend_accept,
 }
 
