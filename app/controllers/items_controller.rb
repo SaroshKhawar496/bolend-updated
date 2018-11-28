@@ -137,13 +137,15 @@ class ItemsController < ApplicationController
 
     #Adding image (with REST API, image is sent as JSON payload)
     #Kinda dirty because of the intermediate storage
-    image_name = "#{@item.name}.jpg"
-    base64_image = params[:item][:base64].sub(/^data:.*,/, '')
-    decoded_image = Base64.decode64(base64_image)
-    image_io = StringIO.new(decoded_image)
-    @picture = { io: image_io, filename: image_name }
-    @item.image.attach(@picture)
-    @item.base64 = nil # no need to store in database anymore
+    if(params[:item][:base64] != nil) 
+      image_name = "#{@item.name}.jpg"
+      base64_image = params[:item][:base64].sub(/^data:.*,/, '')
+      decoded_image = Base64.decode64(base64_image)
+      image_io = StringIO.new(decoded_image)
+      @picture = { io: image_io, filename: image_name }
+      @item.image.attach(@picture)
+      @item.base64 = nil # no need to store in database anymore
+    end
 
     #test for image stored on server
     #@item.image.attach(io: File.open('/home/ivar/Pictures/1280px-Venus_botticelli_detail.jpg'), filename: image_name )
@@ -169,19 +171,28 @@ class ItemsController < ApplicationController
     if @item.user.id != current_user.id
       render json: @item.errors, status: :forbidden
     elsif @item.update_attributes(permit_item)
-      image_name = "#{@item.name}.jpg"
-      base64_image = params[:item][:base64].sub(/^data:.*,/, '')
-      decoded_image = Base64.decode64(base64_image)
-      image_io = StringIO.new(decoded_image)
-      @picture = { io: image_io, filename: image_name }
-      @item.image.attach(@picture)
-      @item.base64 = nil # no need to store in database anymore
-      @item.save
-      if @item.save
-        render :show, status: :ok, location: @item
-      else
-        render json: @item.errors, status: :unprocessable_entity
-      end
+      if(params[:item][:base64] != nil) 
+        image_name = "#{@item.name}.jpg"
+        base64_image = params[:item][:base64].sub(/^data:.*,/, '')
+        decoded_image = Base64.decode64(base64_image)
+        image_io = StringIO.new(decoded_image)
+        @picture = { io: image_io, filename: image_name }
+        @item.image.attach(@picture)
+        @item.base64 = nil # no need to store in database anymore
+        @item.save
+        if @item.save
+          render :show, status: :ok, location: @item
+        else
+          render json: @item.errors, status: :unprocessable_entity
+        end
+      else #if base64 is set to null, remove image
+        @item.image.purge if @item.image.attached?
+        if @item.save
+          render :show, status: :ok, location: @item
+        else
+          render json: @item.errors, status: :unprocessable_entity
+        end
+      end 
     end
   end
 
