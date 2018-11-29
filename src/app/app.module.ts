@@ -42,6 +42,7 @@ import { FriendsComponent } from './main/social/friends/friends.component';
 import { EditItemComponent } from './main/items/new-item/edit-item.component';
 import { ItemRequestCardComponent } from './main/items/item-request-card/item-request-card.component';
 import { ExploreComponent } from './main/explore/explore.component';
+import { ExploreTagsComponent } from './main/explore/explore-tags/explore-tags.component';
 
 
 // etc
@@ -110,6 +111,7 @@ const appRoutes = [
 		path: 'social',
 		component: SocialComponent,
 		canActivate: [AuthGuard],
+		// canActivateChild: [AuthGuard],
 		children: [
 			{ path: ':cat', component: FriendsComponent },
 			{ path: '', redirectTo: 'friends', pathMatch: 'full' },
@@ -128,6 +130,11 @@ const appRoutes = [
 		path: 'explore',
 		component: ExploreComponent,
 		canActivate: [AuthGuard],
+		// canActivateChild: [AuthGuard],
+		children: [
+			{ path: '', redirectTo: 'tags', pathMatch: 'full' },
+			{ path: 'tags', component: ExploreTagsComponent }
+		]
 	},
 
 	// profile page of currently authenticated user
@@ -161,6 +168,7 @@ const appRoutes = [
 		EditItemComponent,
 		ItemRequestCardComponent,
 		ExploreComponent,
+		ExploreTagsComponent,
 	],
 	imports: [
 		BrowserModule,

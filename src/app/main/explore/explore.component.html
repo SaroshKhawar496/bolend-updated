@@ -1,5 +1,47 @@
 <div class="full-body-height">
 
-	
+    <!-- explore tabs -->
+    <div class="explore-tab-container scale-fontsize border-box">
+
+        <!-- tags tab -->
+        <div class="explore-tab grid-tags trans-0-25" (click)="changeTab('tags')"
+            [ngClass]="{'explore-tab-selected': 'tags'==selectedTab}"
+            >
+            <div class="explore-tab-content">
+                Tags
+            </div>
+        </div>
+
+        <!-- trending tab -->
+        <div class="explore-tab grid-trending trans-0-25" (click)="changeTab('trending')"
+            [ngClass]="{'explore-tab-selected': 'trending'==selectedTab}"
+            >
+            <div class="explore-tab-content">
+                Trending
+            </div>
+        </div>
+
+        <!-- new tab -->
+        <div class="explore-tab grid-new trans-0-25" (click)="changeTab('new')"
+            [ngClass]="{'explore-tab-selected': 'new'==selectedTab}"
+            >
+            <div class="explore-tab-content">
+                New
+            </div>
+        </div>
+
+        <!-- friends tab -->
+        <div class="explore-tab grid-friends trans-0-25" (click)="changeTab('friends')"
+            [ngClass]="{'explore-tab-selected': 'friends'==selectedTab}"
+            >
+            <div class="explore-tab-content">
+                Friends
+            </div>
+        </div>
+
+    </div>
+
+    <!-- this outlet will display the component containing the results -->
+	<router-outlet></router-outlet>
 
 </div>
