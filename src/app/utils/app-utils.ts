@@ -28,5 +28,7 @@ export interface Pagination {
 	page: number;
 	perpage: number;
 	total_results?: number;
-	total_pages?: number;
+    total_pages?: number;
+    
+    path?: string;          // use this path string when repeating the query with updated page numbers
 }

@@ -44,7 +44,7 @@ export class EditItemComponent extends NewItemComponent {
 		this.itemForm = this.formBuilder.group ({
 			name: new FormControl ( item.name, [Validators.required] ),
 			description: new FormControl ( item.description, [Validators.required] ),
-			tags: new FormControl(),
+			tags: new FormControl ( item.tags ),
 		});
 	}
 

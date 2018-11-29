@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
 
     if params[:query].present?
 
-      @items = Item.item_search(params[:query])
+      @items = Item.item_search(params[:query]).order(id: :desc)
 
       if @items.length == 0
         render json: {
@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
 
     else
 
-      @items = Item.includes([:user, :loan, :borrower]).all
+      @items = Item.includes([:user, :loan, :borrower]).all.order(id: :desc)
 
     end
     
@@ -75,6 +75,17 @@ class ItemsController < ApplicationController
 
 
 
+  end
+
+
+  # show the most recently updated items first
+  def index_new
+    @items = Item.includes([:user, :loan, :borrower]).all.order(updated_at: :desc)
+        #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
+    #option to change the numOfresults shown perpage also available 
+    @items = @items.page(page).per(per_page)
+    @per_page = per_page.to_i
+    render :index
   end
 
   # # sending the pagination params via request headers

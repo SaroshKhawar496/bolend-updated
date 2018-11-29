@@ -56,6 +56,11 @@ Rails.application.routes.draw do
     # get 'friendrequest', to "user_relations#show"
 
     resources :user_relations
+
+    # custom items routes
+    scope :items do
+      get 'new',    to: "items#index_new"
+    end
     resources :items
 
     # resources :friendships

@@ -98,3 +98,10 @@
 .item-card-container {
     margin: 0.35em;
 }
+
+.load-button {
+    font-size: 1.25em;
+    padding: 1.5em;
+    color: #444;
+    text-align: center;
+}

@@ -2,6 +2,8 @@ json.partial! "items/item", item: @item
 json.name @item.name
 json.description @item.description
 json.tags @item.tags
+json.created_at @item.created_at
+json.updated_at @item.updated_at
 json.image rails_blob_url(@item.image) if @item.image.attached?
 json.base64 @item.base64
 json.total_hits @item.hits

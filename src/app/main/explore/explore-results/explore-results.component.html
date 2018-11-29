@@ -8,6 +8,8 @@
 	<!-- <pre>{{items|json}}</pre> -->
 </div>
 
-<div *ngIf="options.paginated" class="load-button scale-fontsize">
+<div *ngIf="options.paginated" 
+	class="load-button scale-fontsize pointer"
+	(click)="loadMoreItems()">
 	Load more items
 </div>
