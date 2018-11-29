@@ -65,7 +65,7 @@ export class ItemRequestCardComponent implements OnInit {
 	}
 
 
-		/**
+	/**
 	 * Decline an incoming item request with the specified request id
 	 * @param id request id
 	 * @param index 
@@ -76,7 +76,22 @@ export class ItemRequestCardComponent implements OnInit {
 				this.alert.success ('Request successfully declined.' );
 
 				// remove the request from item.requests array
-				this.remove.emit(true);
+				this.remove.emit(false);
+			},
+			err => this.http.genericModelErrorHandler(err),
+		)
+	}
+
+
+	/**
+	 * Delete the outgoing item request with the specified request id
+	 * @param id request id
+	 */
+	deleteRequest ( id: number | string ) : void {
+		this.rs.deleteItemRequest (id).subscribe(
+			res => {
+				this.alert.success ( 'Request successfully deleted.' );
+				this.remove.emit(true);	// prompt parent to remove this request from view
 			},
 			err => this.http.genericModelErrorHandler(err),
 		)

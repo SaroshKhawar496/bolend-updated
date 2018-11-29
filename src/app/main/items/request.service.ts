@@ -50,4 +50,14 @@ export class RequestService {
 		}
 		return this.http.postObservable (path, payload);
 	}
+
+	
+	/**
+	 * Delete the outgoing item request with the specified id
+	 * @param id request id
+	 */
+	public deleteItemRequest ( id: number | string ) : Observable<object> {
+		let path: string = `/requests/${id}`;
+		return this.http.deleteObservable(path);
+	}
 }

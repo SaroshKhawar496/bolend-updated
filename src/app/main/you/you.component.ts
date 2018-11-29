@@ -80,6 +80,12 @@ export class YouComponent extends ProfileComponent {
 	}
 
 
+	/** Hide a deleted outgoing request by removing it from the outgoingRequests array */
+	private removeOutgoingRequest (index: number) {
+		this.outgoingRequests.splice(index,1);
+	}
+
+
 	private requestsDataHandler ( data: object[] ) : ItemRequest[] {
 		return data.map ( req => new ItemRequest(req) );
 	}
