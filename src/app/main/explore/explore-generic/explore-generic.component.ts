@@ -99,7 +99,6 @@ export class ExploreGenericComponent implements OnInit {
 	styleUrls: ['../explore.component.css'],
 })
 export class ExploreNewComponent extends ExploreGenericComponent {
-
 	// enable pagination
 	resultsOptions: ExploreResultsOptions = {
 		paginated: true,
@@ -110,5 +109,22 @@ export class ExploreNewComponent extends ExploreGenericComponent {
 		let path: string = `/items/new`;
 		this.fetchItems ( path );
 	}
+}
 
+
+
+@Component({
+	selector: 'app-explore-trending',
+	templateUrl: './explore-generic.component.html',
+	styleUrls: ['../explore.component.css'],
+})
+export class ExploreTrendingComponent extends ExploreGenericComponent {
+	// enable pagination
+	resultsOptions: ExploreResultsOptions = { paginated: true }
+
+	/** Fetch up to 100 most viewed items in the past week */
+	invokeFetchItems () : void {
+		let path: string = `/items/trending`;
+		this.fetchItems ( path );
+	}
 }

@@ -47,6 +47,7 @@ import { ExploreResultsComponent } from './main/explore/explore-results/explore-
 import { 
 	ExploreGenericComponent,
 	ExploreNewComponent,
+	ExploreTrendingComponent,
 } from './main/explore/explore-generic/explore-generic.component';
 
 
@@ -140,7 +141,7 @@ const appRoutes = [
 			{ path: '', redirectTo: 'tags', pathMatch: 'full' },
 			{ path: 'tags', component: ExploreTagsComponent },
 			{ path: 'new',	component: ExploreNewComponent },
-			
+			{ path: 'trending', component: ExploreTrendingComponent },
 		]
 	},
 
@@ -179,6 +180,7 @@ const appRoutes = [
 		ExploreResultsComponent,
 		ExploreGenericComponent,
 		ExploreNewComponent,
+		ExploreTrendingComponent,
 	],
 	imports: [
 		BrowserModule,
