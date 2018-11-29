@@ -1,10 +1,12 @@
 .explore-tab-container {
     width: 100%;
-    padding: 1em;
+    padding: 0;
+    margin: 0;
+    /* border-bottom: 1px solid #bbb; */
 
     /* mobile-first grid layout */
     display: grid;
-    grid-gap: 0.5em;
+    /* grid-gap: 0.5em; */
     grid-template-rows: [top] 1fr [middle] 1fr [bottom];
     grid-template-columns: [left] 1fr [middle] 1fr [right];
     grid-template-areas: 
@@ -47,8 +49,8 @@
 .explore-tab-selected.grid-tags:hover {background-color: #DB142F;}
 /* .explore-tab-selected.grid-
 .explore-tab-selected.grid- */
-/* .explore-tab-selected.grid-
-.explore-tab-selected.grid- */
+.explore-tab-selected.grid-new { background-color: #8c4cb1; }
+.explore-tab-selected.grid-new:hover { background-color: #75319D; }
 /* .explore-tab-selected.grid-
 .explore-tab-selected.grid- */
 

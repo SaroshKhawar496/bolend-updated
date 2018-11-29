@@ -44,6 +44,10 @@ import { ItemRequestCardComponent } from './main/items/item-request-card/item-re
 import { ExploreComponent } from './main/explore/explore.component';
 import { ExploreTagsComponent } from './main/explore/explore-tags/explore-tags.component';
 import { ExploreResultsComponent } from './main/explore/explore-results/explore-results.component';
+import { 
+	ExploreGenericComponent,
+	ExploreNewComponent,
+} from './main/explore/explore-generic/explore-generic.component';
 
 
 // etc
@@ -134,7 +138,9 @@ const appRoutes = [
 		// canActivateChild: [AuthGuard],
 		children: [
 			{ path: '', redirectTo: 'tags', pathMatch: 'full' },
-			{ path: 'tags', component: ExploreTagsComponent }
+			{ path: 'tags', component: ExploreTagsComponent },
+			{ path: 'new',	component: ExploreNewComponent },
+			
 		]
 	},
 
@@ -171,6 +177,8 @@ const appRoutes = [
 		ExploreComponent,
 		ExploreTagsComponent,
 		ExploreResultsComponent,
+		ExploreGenericComponent,
+		ExploreNewComponent,
 	],
 	imports: [
 		BrowserModule,
