@@ -59,7 +59,8 @@ Rails.application.routes.draw do
 
     # custom items routes
     scope :items do
-      get 'new',    to: "items#index_new"
+      get 'new',      to: "items#index_new"
+      get 'trending', to: "items#index_trending"
     end
     resources :items
 

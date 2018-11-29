@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
   def per_page
     per_page_param = (request.headers["perpage"])
-    puts("-------------------------------per_page_param #{per_page_param}----------------------------------")
+    # puts("-------------------------------per_page_param #{per_page_param}----------------------------------")
     @per_page ||= per_page_param || 10
   end
 
@@ -81,7 +81,21 @@ class ItemsController < ApplicationController
   # show the most recently updated items first
   def index_new
     @items = Item.includes([:user, :loan, :borrower]).all.order(updated_at: :desc)
-        #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
+    @items = Item.most_hit
+
+    #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
+    #option to change the numOfresults shown perpage also available 
+    @items = @items.page(page).per(per_page)
+    @per_page = per_page.to_i
+    render :index
+  end
+
+
+  # show the most popular items in the last week
+  def index_trending
+    @items = Item.most_hit(1.week.ago, 100)
+
+    #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
     #option to change the numOfresults shown perpage also available 
     @items = @items.page(page).per(per_page)
     @per_page = per_page.to_i
