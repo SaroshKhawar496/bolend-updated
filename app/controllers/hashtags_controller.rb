@@ -5,7 +5,7 @@ class HashtagsController < ApplicationController
   end
 
   def show
-    @hashtag = SimpleHashtag::Hashtag.find_by_name(params[:hashtag])
+    @hashtag = SimpleHashtag::Hashtag.find_by_name(params[:hashtag]).includes([:items, :users])#.includes(:users)
     @hashtagged = @hashtag.hashtaggables if @hashtag
   end
 

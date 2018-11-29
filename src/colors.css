@@ -83,3 +83,14 @@ button.nofill:hover {
 .trans-0-5 	{ transition: 0.5s all ease-in-out; }
 .trans-0-75 { transition: 0.75s all ease-in-out; }
 .trans-1 	{ transition: 1s all ease-in-out; }
+
+
+
+
+/*****************************************************
+**** Font & text colors + styles
+******************************************************/
+.gray-italic {
+	color: #444;
+	font-style: italic;
+}

@@ -1,3 +1,13 @@
-<p>
-  explore-results works!
-</p>
+<div class="explore-results-container flex">
+	<ng-container *ngFor="let item of items; let i=index">
+		<div class="item-card-container">
+			<app-item-card [item]="item">
+			</app-item-card>
+		</div>
+	</ng-container>
+	<!-- <pre>{{items|json}}</pre> -->
+</div>
+
+<div *ngIf="options.paginated" class="load-button">
+	Load more items
+</div>

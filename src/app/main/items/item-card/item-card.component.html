@@ -29,8 +29,8 @@
             {{item.description}}
         </div>
 
-        <div *ngIf="!cardOptions.hideAge && item.age" class="description">
-	    	<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>
+        <div *ngIf="!cardOptions.hideAge && item.age" class="gray-italic" style="font-size: 0.9em;">
+	    	<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>&nbsp;
             {{item.age}}
         </div>
     </div>

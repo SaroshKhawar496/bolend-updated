@@ -1,18 +1,22 @@
 <div class="explore-results-container">
-	<!-- hello expl results tag -->
+	
+	<ng-container *ngIf="hashtags else noHashtags">
+		<div class="tags-container scale-fontsize flex">
+			<ng-container *ngFor="let hashtag of hashtags; let i=index">
+				<div class="hashtag round pointer trans-0-25" 
+					[ngClass]="{'hashtag-selected': i==tagIndexSelected}"
+					(click)="tagIndexSelected=i">
+					#{{hashtag.name}}
+				</div>
+			</ng-container>
+		</div>
 
-	<div class="tags-container scale-fontsize flex">
-		<ng-container *ngFor="let hashtag of hashtags; let i=index">
-			<div class="hashtag round pointer trans-0-25" 
-				[ngClass]="{'hashtag-selected': i==tagIndexSelected}"
-				(click)="tagIndexSelected=i">
-				#{{hashtag.name}}
-			</div>
-		</ng-container>
-	</div>
+		<app-explore-results [items]="hashtags[tagIndexSelected].items">
 
-	<app-explore-results>
+		</app-explore-results>
+	</ng-container>
 
-	</app-explore-results>
-
+	<ng-template #noHashtags>
+		Loading hashtags...
+	</ng-template>
 </div>

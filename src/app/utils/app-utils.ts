@@ -21,3 +21,12 @@ export function timeDelta ( date: Date ) : string {
     else 
         return dateMoment.fromNow();
 }
+
+
+
+export interface Pagination {
+	page: number;
+	perpage: number;
+	total_results?: number;
+	total_pages?: number;
+}

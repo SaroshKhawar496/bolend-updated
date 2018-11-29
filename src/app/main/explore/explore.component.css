@@ -32,10 +32,10 @@
     /* border: 1px solid #bbb; */
     
     cursor: pointer;
-    border-bottom: 3px solid rgba(0,0,0,0);     /* transparent bottom border unless selected */
+    border-bottom: 2px solid rgba(0,0,0,0);     /* transparent bottom border unless selected */
 }
 .explore-tab:hover:not(.explore-tab-selected) {
-    border-bottom: 1px solid #8c4cb1;
+    border-bottom: 2px solid #8c4cb1;
 }
 .explore-tab-selected {
     color: #fff;
@@ -57,7 +57,9 @@
     margin: 1em auto;
     text-align: center;
 }
-
+.explore-tab-content svg {
+    stroke-width: 2px;
+}
 
 
 
@@ -87,4 +89,10 @@
     font-weight: 600;
     background-color: #e94057;
     color: #fff;
+}
+
+
+
+.item-card-container {
+    margin: 0.35em;
 }

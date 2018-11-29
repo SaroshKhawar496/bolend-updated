@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/route
 import { Subscription } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { AlertService } from 'src/app/utils/alert/alert.service';
+import { Pagination } from 'src/app/utils/app-utils';
 
 
 @Component({
@@ -167,9 +168,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 }
 
 
-export interface Pagination {
-	page: number;
-	perpage: number;
-	total_results?: number;
-	total_pages?: number;
-}
+// export interface Pagination {
+// 	page: number;
+// 	perpage: number;
+// 	total_results?: number;
+// 	total_pages?: number;
+// }
