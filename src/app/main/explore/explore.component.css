@@ -40,8 +40,6 @@
 .explore-tab-selected {
     color: #fff;
     border: none;
-    /* border-bottom: 3px solid #f00; */
-    /* background-color: #444; */
 }
 
 /* tab colors */
@@ -58,4 +56,35 @@
     font-size: 1.25em;
     margin: 1em auto;
     text-align: center;
+}
+
+
+
+
+
+
+/*********************************************
+***** RESULTS 
+*********************************************/
+.explore-results-container {
+    padding: 1.5em;
+}
+
+.tags-container {
+    margin: 0.5em 0;
+}
+
+.hashtag {
+    margin: 0.25em 0.25em;
+    padding: 0.5em 1em;
+    background: #ddd;
+    display:inline-block
+}
+.hashtag:hover {
+    box-shadow: 0 0 5px 1px #bbb;
+}
+.hashtag-selected {
+    font-weight: 600;
+    background-color: #e94057;
+    color: #fff;
 }

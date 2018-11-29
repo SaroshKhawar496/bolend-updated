@@ -46,7 +46,6 @@ export class ExploreComponent implements OnInit, OnDestroy {
 	handleNavChanges (path: string) {
 		let pathArray: string[] = path.split('/');
 		this.selectedTab = pathArray [ pathArray.length-1 ].toString();
-		console.log ( 'handleNavChanges', pathArray, this.selectedTab );
 	}
 
 }

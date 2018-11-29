@@ -43,6 +43,7 @@ import { EditItemComponent } from './main/items/new-item/edit-item.component';
 import { ItemRequestCardComponent } from './main/items/item-request-card/item-request-card.component';
 import { ExploreComponent } from './main/explore/explore.component';
 import { ExploreTagsComponent } from './main/explore/explore-tags/explore-tags.component';
+import { ExploreResultsComponent } from './main/explore/explore-results/explore-results.component';
 
 
 // etc
@@ -169,6 +170,7 @@ const appRoutes = [
 		ItemRequestCardComponent,
 		ExploreComponent,
 		ExploreTagsComponent,
+		ExploreResultsComponent,
 	],
 	imports: [
 		BrowserModule,

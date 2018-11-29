@@ -2,6 +2,7 @@ import { timeDelta } from "../utils/app-utils";
 
 
 export class ExtensibleModel {
+	id: number;
 	created_at: Date;
 	updated_at: Date;
 	age: string;
@@ -25,7 +26,6 @@ export class ExtensibleModel {
 
 
 export class User extends ExtensibleModel {
-	id: number;
 	fname: string;
 	lname: string;
 	address: string;        // optional
@@ -128,7 +128,6 @@ export class JWT {
 
 
 export class Item extends ExtensibleModel {
-	id: string | number;
 	name: string;
 	description: string;
 	url: string;
@@ -178,7 +177,6 @@ export class Item extends ExtensibleModel {
 
 
 export class ItemRequest extends ExtensibleModel {
-	id: string | number;
 	requesting_user?: User;
 	request_status: string;
 	item?: Item;
@@ -215,5 +213,22 @@ export class Loan extends ExtensibleModel {
 			this.age = timeDelta (this.updated_at);
 		if ( this.duedate )
 			this.timeToDue = timeDelta (this.duedate);
+	}
+}
+
+
+export class Hashtag extends ExtensibleModel {
+	name: string;
+	items: Item[];
+	items_with_hashtag: object[];
+
+	constructor ( attribs?: object ) {
+		super(attribs);
+
+		// if items are associated with this hashtag
+		if ( this.items_with_hashtag )
+			this.items = this.items_with_hashtag.map (
+				item => new Item(item)
+			);
 	}
 }

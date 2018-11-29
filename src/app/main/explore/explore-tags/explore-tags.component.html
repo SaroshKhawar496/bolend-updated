@@ -1,3 +1,18 @@
-<p>
-	explore-tags works!
-</p>
+<div class="explore-results-container">
+	<!-- hello expl results tag -->
+
+	<div class="tags-container scale-fontsize flex">
+		<ng-container *ngFor="let hashtag of hashtags; let i=index">
+			<div class="hashtag round pointer trans-0-25" 
+				[ngClass]="{'hashtag-selected': i==tagIndexSelected}"
+				(click)="tagIndexSelected=i">
+				#{{hashtag.name}}
+			</div>
+		</ng-container>
+	</div>
+
+	<app-explore-results>
+
+	</app-explore-results>
+
+</div>
