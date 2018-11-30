@@ -98,22 +98,34 @@ export class HttpService {
 		return true;
 	}
 
+	public initCheckToken ( token: string ) {
+	}
 
 	/**
 	 * Given a JWT token, check that it is valid with the server.  
 	 * If it is valid, load data about the currently authenticated user
 	 * @param token 
 	 */
-	public checkToken ( token: string ) : boolean {
+	public async checkToken ( token: string ) {
 		let path: string = "/users/you";
-		this.getObservable (path).subscribe(
-			data => {
-				this.currentUser = new User(data);
-				return true;
-			},
-			err => false			// do not need to handle error if request does not work
-		);
-		return true;
+		let result: boolean = await new Promise<boolean>(resolve =>
+			this.getObservable (path).subscribe(
+				data => {
+					this.currentUser = new User(data);
+					resolve(true);
+				},
+				err => {
+					// do not need to handle error if request returns error
+					resolve(false);
+				},
+			)
+		)
+		return await result;
+	}
+
+	public async asyncCheckToken ( token: string ) {
+		let path: string = "/users/you";
+		return this.getObservable(path).toPromise();
 	}
 
 
