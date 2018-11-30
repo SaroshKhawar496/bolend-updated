@@ -12,30 +12,14 @@ class ItemsController < ApplicationController
     @user = User.find(current_user.id)
   end
 
-  def page
-    page_param = (request.headers["page"])
-    # puts("-------------------------------page_param #{page_param}----------------------------------")
-    # @page ||= params[:page] || 1
-    @page ||= page_param || 1
-  end
-
-  def per_page
-    per_page_param = (request.headers["perpage"])
-    puts("-------------------------------per_page_param #{per_page_param}----------------------------------")
-    @per_page ||= per_page_param || 10
-  end
 
   def index
 
-    #to search send GET request to localhost:3000/api/items?search_item=hel
-    #search_item=hel searching for item with name hel
-
-    # Send Get to localhost:3000/api/items?search_item=el&page=2 for pagination
-    # localhost:3000/api/items?search_item=el&page=2&per_page=5
+    #to search send GET request to localhost:3000/api/items?query=hel
 
     if params[:query].present?
 
-      @items = Item.item_search(params[:query])
+      @items = Item.item_search(params[:query]).order(id: :desc)
 
       if @items.length == 0
         render json: {
@@ -47,7 +31,7 @@ class ItemsController < ApplicationController
 
     else
 
-      @items = Item.includes([:user, :loan, :borrower]).all
+      @items = Item.includes([:user, :loan, :borrower]).all.order(id: :desc)
 
     end
     
@@ -57,24 +41,32 @@ class ItemsController < ApplicationController
     @items = @items.page(page).per(per_page)
     @per_page = per_page.to_i
     
-    # numOfPages = @items.total_pages
 
-    # check for not lettting page exceeding the last page, if it does show last page
-    # if (params[:page].to_i > numOfPages.to_i)
+  end
 
 
+  # show the most recently updated items first
+  def index_new
+    @items = Item.includes([:user, :loan, :borrower]).all.order(updated_at: :desc)
+    @items = Item.most_hit
 
-    #   # @items = @items.page(numOfPages).per(per_page)
+    #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
+    #option to change the numOfresults shown perpage also available 
+    @items = @items.page(page).per(per_page)
+    @per_page = per_page.to_i
+    render :index
+  end
 
 
+  # show the most popular items in the last week
+  def index_trending
+    @items = Item.most_hit(1.week.ago, 100)
 
-    # end
-       # puts("-------------------------------per_page_param #{per_page}----------------------------------")
-       
-    # set_pagination_headers(@items)
-
-
-
+    #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
+    #option to change the numOfresults shown perpage also available 
+    @items = @items.page(page).per(per_page)
+    @per_page = per_page.to_i
+    render :index
   end
 
   # # sending the pagination params via request headers

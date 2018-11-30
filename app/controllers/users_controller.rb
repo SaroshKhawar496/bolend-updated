@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+  # 
 	
 	#current_user is available through devise gem
   def show
@@ -7,10 +9,10 @@ class UsersController < ApplicationController
   end
 
   def you
-    puts "running UsersController#you"
     @user = User.find(current_user.id)
     render :show
   end
+
 
 
   # get all users
@@ -19,12 +21,15 @@ class UsersController < ApplicationController
     # if a search term is present, perform a user search
     if params[:query].present?
       query = params[:query]
-      @user = User.user_name(query)
+      @users = User.user_name(query).order(id: :desc)
 
     # otherwise, return all users
     else
-      @user = User.all
+      @users = User.all.order(id: :desc)
     end
+
+    @users = @users.page(page).per(per_page)
+    @per_page = per_page.to_i
 
   end
 

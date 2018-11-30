@@ -1,4 +1,4 @@
-<div class="explore-results-container flex">
+<div class="explore-results-container flex scale-fontsize">
 	<ng-container *ngFor="let item of items; let i=index">
 		<div class="item-card-container">
 			<app-item-card [item]="item">
@@ -8,6 +8,8 @@
 	<!-- <pre>{{items|json}}</pre> -->
 </div>
 
-<div *ngIf="options.paginated" class="load-button">
+<div *ngIf="options.paginated" 
+	class="load-button scale-fontsize pointer"
+	(click)="loadMoreItems()">
 	Load more items
 </div>

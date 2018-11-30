@@ -1,4 +1,4 @@
-<div id="PROFILE-CONTAINER">
+<div id="PROFILE-CONTAINER" class="scale-fontsize">
 
 	<!-- header -->
 	<div class="grid-header fade-in-down">
@@ -66,12 +66,13 @@
 			<ng-container *ngIf="in else noIncoming">
 				<div class="box-content flex card-carousel">
 					<div *ngFor="let request of in" class="request-card-container">
-						<app-item-request-card 
-							[request]="request"
-							[cardOptions]="inOpts"
-							class="request-card">
-						</app-item-request-card>
-
+						<ng-container *ngIf="request.request_status == 'pending' || request.request_status==null">
+							<app-item-request-card 
+								[request]="request"
+								[cardOptions]="inOpts"
+								class="request-card">
+							</app-item-request-card>
+						</ng-container>
 					</div>
 				</div>
 			</ng-container>
@@ -86,12 +87,14 @@
 			<ng-container *ngIf="out else noOutgoing">
 				<div class="box-content flex card-carousel">
 					<div *ngFor="let request of out; let i=index" class="request-card-container">
-						<app-item-request-card
-							[request]="request"
-							[cardOptions]="outOpts"
-							(remove)="removeOutgoingRequest(i)"
-						>
-						</app-item-request-card>
+						<ng-container *ngIf="request.request_status == 'pending' || request.request_status==null">
+							<app-item-request-card
+								[request]="request"
+								[cardOptions]="outOpts"
+								(remove)="removeOutgoingRequest(i)"
+							>
+							</app-item-request-card>
+						</ng-container>	
 					</div>
 				</div>
 			</ng-container>
