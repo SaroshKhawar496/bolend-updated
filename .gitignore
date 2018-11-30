@@ -38,3 +38,5 @@
 
 .evn
 Procfile
+*.swp
+.rake_tasks~
