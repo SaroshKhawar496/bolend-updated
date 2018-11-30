@@ -7,3 +7,9 @@ one:
 two:
   user: two
   item: two
+
+book_request:
+  user: bob
+  item: book
+  days: 10
+  status: 'pending'
