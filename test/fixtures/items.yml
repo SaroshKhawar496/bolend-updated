@@ -8,3 +8,4 @@ two:
 
 book:
   description: "Thick Book"
+  tags: "#book"

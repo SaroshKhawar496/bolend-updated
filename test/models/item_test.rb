@@ -32,4 +32,16 @@ class ItemTest < ActiveSupport::TestCase
   test "item should not have an owner" do
     assert_nil items(:book).user_id
   end
+
+  test "item has created at timestamp" do
+    assert_not_nil items(:book).created_at
+  end
+
+  test "item has updated at timestamp" do
+    assert_not_nil items(:book).updated_at
+  end
+
+  test "item has tags" do
+    assert_equal(items(:book).tags, "#book")
+  end
 end
