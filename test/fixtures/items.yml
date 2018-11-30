@@ -7,5 +7,6 @@ two:
   description: MyText
 
 book:
+  name: "Big book"
   description: "Thick Book"
   tags: "#book"

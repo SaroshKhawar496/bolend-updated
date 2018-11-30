@@ -29,6 +29,10 @@ class ItemTest < ActiveSupport::TestCase
     assert_not_nil(items(:book).loan)
   end
 
+  test "item loan should have a user" do
+    assert_not_nil(items(:book).loan.user_id)
+  end
+
   test "item should not have an owner" do
     assert_nil items(:book).user_id
   end
@@ -43,5 +47,9 @@ class ItemTest < ActiveSupport::TestCase
 
   test "item has tags" do
     assert_equal(items(:book).tags, "#book")
+  end
+
+  test "item has a name" do
+    assert_not_nil items(:book).name
   end
 end
