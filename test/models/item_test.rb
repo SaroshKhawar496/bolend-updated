@@ -8,4 +8,17 @@ class ItemTest < ActiveSupport::TestCase
     item = Item.new
     assert_not item.save
   end
+
+  test "should look up item" do
+    assert items(:one)
+  end
+
+  test "should look up item 2" do
+    assert items(:book)
+  end
+
+  test "should look up description" do
+    assert_equal(items(:book).description, "Thick Book")
+  end
+
 end
