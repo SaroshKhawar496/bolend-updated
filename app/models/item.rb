@@ -4,7 +4,7 @@ class Item < ApplicationRecord
 	# NOTE: this query uses "ILIKE" for case insensitive matching. May not work with all RDBMS's!!
   scope :item_search, -> (search_item) { where("name ILIKE ? OR description ILIKE ?", "%#{search_item}%", "%#{search_item}%")}
 
-
+  validates :name, presence: true
   belongs_to :user
   has_one_attached :image # one-to-one relationship
 
