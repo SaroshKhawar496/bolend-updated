@@ -11,3 +11,4 @@ two:
 book_loan:
   user: bob
   item: book
+  duedate: '2018-11-30 20:40:06.029348'
