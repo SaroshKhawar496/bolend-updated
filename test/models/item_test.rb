@@ -21,4 +21,11 @@ class ItemTest < ActiveSupport::TestCase
     assert_equal(items(:book).description, "Thick Book")
   end
 
+  test "description should not match garbage data" do
+    assert_not_equal(items(:book).description, "Garbage Description")
+  end
+
+  test "item should not have a loan" do
+    assert_nil(items(:book).loan)
+  end
 end
