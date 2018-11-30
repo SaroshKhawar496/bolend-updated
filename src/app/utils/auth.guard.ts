@@ -13,25 +13,30 @@ export class AuthGuard implements CanActivate {
 		private http: HttpService,
 	) {}
 
-	canActivate ( 
+	async canActivate ( 
 		next: ActivatedRouteSnapshot, 
 		state: RouterStateSnapshot
-	): Observable<boolean> | Promise<boolean> | boolean {
+	){//}: //Observable<boolean> | Promise<boolean> | boolean {
 
 		// check if http.currentUser has an id & JWT; if it does, that means http.authenticate() has already been called
 		let user: User = this.http.getCurrentUser();
 		if ( user.id )
 			return true;		// so we can safely return true
 		
+
 		// otherwise, try to get a JWT out of localstorage and ask HttpService to check that token
 		let currentUserJWT = localStorage.getItem('currentUser');
 		if ( currentUserJWT ) {
 			// check if the token is valid and not expired
-			this.http.checkToken ( currentUserJWT );
+			let result = await this.http.checkToken ( currentUserJWT );
 
-			// allow component to render - no privileged data will be shown, just empty component
-			return true;
-		}
+			// if result is OK, return true; otherwise, redirect to login page
+			if ( result )
+				return true;
+			else
+				console.log ( 'token validation failed! redirecting to login page');
+		} else 
+			console.log ( 'no JWT available. Redirecting to login page' );
 
 		// not logged in so redirect to login page with the return url
 		this.router.navigate(['/accounts/login'], { queryParams: { returnUrl: state.url }});
