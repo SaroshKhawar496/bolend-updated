@@ -73,15 +73,15 @@
 			<ng-template #notYou>
 				<!-- request -->
 				<div class="action-btn gradient-0-stop-0 tooltip" title="Request Item" 
-					(click)="requestItem()"
+					*ngIf="!item.loan" (click)="requestItem()"
 					tooltip="Request item" tooltip-position="bottom">
 					<svg><use href="assets/icons/navbar.svg#i-heart"></use></svg>
 				</div>
 				<!-- message owner -->
-				<div class="action-btn gradient-0-stop-2" title="Message Owner"
+				<!-- <div class="action-btn gradient-0-stop-2" title="Message Owner"
 					tooltip="Message owner" tooltip-position="bottom">
 					<svg><use href="assets/icons/navbar.svg#i-mail"></use></svg>
-				</div>
+				</div> -->
 			</ng-template>
 			
 
@@ -93,10 +93,10 @@
 			</div>
 
 			<!-- link -->
-			<div class="action-btn gradient-1-stop-1" title="Get link to item"
+			<!-- <div class="action-btn gradient-1-stop-1" title="Get link to item"
 				tooltip="Get shareable link" tooltip-position="bottom">
 				<svg><use href="assets/icons/navbar.svg#i-link"></use></svg>
-			</div>
+			</div> -->
 
 		</div>
 

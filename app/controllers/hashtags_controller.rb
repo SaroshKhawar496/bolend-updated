@@ -2,6 +2,10 @@ class HashtagsController < ApplicationController
 
   def index
     @hashtags = SimpleHashtag::Hashtag.all
+
+    # enable pagination
+    @hashtags = @hashtags.page(page).per(per_page)
+    @per_page = per_page.to_i
   end
 
   def show

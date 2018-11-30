@@ -9,3 +9,5 @@ json.hashtags @hashtags.reverse do |hashtag|
     end
   # end
 end
+
+json.partial! "pagination/pagination", locals: {model: @hashtags, per_page: @per_page}
