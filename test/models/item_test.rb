@@ -25,7 +25,11 @@ class ItemTest < ActiveSupport::TestCase
     assert_not_equal(items(:book).description, "Garbage Description")
   end
 
-  test "item should not have a loan" do
-    assert_nil(items(:book).loan)
+  test "item should have a loan" do
+    assert_not_nil(items(:book).loan)
+  end
+
+  test "item should not have an owner" do
+    assert_nil items(:book).user_id
   end
 end
