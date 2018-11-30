@@ -78,4 +78,25 @@ export class ProfileComponent implements OnInit, OnDestroy {
 		if ( this.paramSub )
 			this.paramSub.unsubscribe();
 	}
+
+
+	requestFriend () : boolean {
+		// make sure this user is not you, since you can't be friends with yourself.
+		if ( this.you || this.user.id == this.http.getCurrentUser().id ) {
+			this.alert.warning ( "You are viewing your own public profile - you can't be friends with yourself. You are your own worst enemy" );
+			return false;
+		}
+
+		let path: string = `/friends/request`;
+		let payload: object = { user_id: this.currentUser.id };
+		this.http.postObservable ( path, payload ).subscribe (
+			res => {
+				if ( res['success'] )
+					this.alert.success ("You've successfully sent this user a friend request.");
+				else this.alert.warning ( res['message'] );
+			},
+			err => this.http.genericModelErrorHandler(err),
+		)
+		return true;
+	}
 }

@@ -140,7 +140,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
 			// check if this is the last page
 			if ( p.page == p.total_pages ) {
-				this.alert.info ( "You've reached the last page of results." );
+				this.alert.info ( "You've reached the end of results." );
 				return;
 			}
 
