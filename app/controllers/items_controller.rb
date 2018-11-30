@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
 
     #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
     #option to change the numOfresults shown perpage also available 
-    @items = @items.page(page).per(per_page)
+    @items = @items.page(page).per(per_page(15))
     @per_page = per_page.to_i
     render :index
   end

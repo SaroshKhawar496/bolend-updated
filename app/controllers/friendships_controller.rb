@@ -218,6 +218,7 @@ class FriendshipsController < ApplicationController
 		intermediate = @heuristicArray.uniq
 
 		@return = intermediate.sort {|x| x[3]}
+		# paginateFriends(@return)
 		# @nonempty = intermediate.uniq # ensure uniquness, TODO: can potentially by used to determine how many mutual friends and use as heuristic
 	end
 
@@ -231,10 +232,21 @@ class FriendshipsController < ApplicationController
 
 	def getAllFriends
 		@user = User.find(current_user.id)
+		paginateFriends(@user.friends)
 	end
 
 	def getRequestedFriends
 		@user = User.find(current_user.id)
+	end
+
+	# paginate the results fetched by this controller and add the necessary variables for jbuilder
+	def paginateFriends(results)
+		if results.length == 0
+			return
+		end
+		
+		@friends = results.page(page).per(per_page(1))
+		@per_page = per_page.to_i
 	end
 
 	# this method should return all (or top ~15) users who:

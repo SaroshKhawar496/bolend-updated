@@ -71,6 +71,7 @@
 						<div *ngFor="let user of s.users" class="card">
 							<app-profile-card [user]="user"></app-profile-card>
 						</div>
+						<div class="load-more pointer" (click)="loadMorePages('users')">Load more users</div>
 						<!-- <div class="load-more pointer">Load more users</div> -->
 					</ng-container>
 					<ng-template #noUsers>

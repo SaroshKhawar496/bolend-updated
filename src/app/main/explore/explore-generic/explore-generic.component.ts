@@ -69,7 +69,7 @@ export class ExploreGenericComponent implements OnInit {
 		if ( this.pages && this.pages.path ) {
 			// check if this is the last page; if so, inform user and do nothing
 			if ( this.pages.page == this.pages.total_pages ) {
-				this.alert.info ( "You have reached the last page of results." );
+				this.alert.info ( "You have reached the end of results." );
 				return;
 			}
 

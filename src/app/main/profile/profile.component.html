@@ -22,6 +22,20 @@
 			<tr *ngIf="user.gender"><td class="label">gender</td><td class="data">{{user.gender}}</td></tr>
 		</table>
 		<!-- <button *ngIf="you">Edit Profile</button> -->
+
+		<!-- controls -->
+		<div class="profile-ctrls flex">
+
+			<!-- friend request -->
+			<div *ngIf="!you" class="round pointer trans-0-25 white-text gradient-0-stop-0"
+				tooltip="Send friend request" tooltip-position="bottom"
+				(click)="requestFriend()">
+				<svg><use href="assets/icons/navbar.svg#i-heart"></use></svg>
+			</div>
+
+		</div>
+
+
 		<h5></h5>
 		<hr class="divider" />
 	</div>
