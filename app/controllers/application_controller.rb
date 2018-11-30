@@ -69,42 +69,45 @@ class ApplicationController < ActionController::API
 			root_path
 		end
 
-		# Pagination ------------------------------------------------------
-	private
-			  # sending the pagination params via request headers
-		  def set_pagination_headers(v_name)
-		    # render json: {
-		    #   "message": "Set Pagination Headers called"
-		    # }
-		    pageCollect = instance_variable_get("@#{v_name}")
+# Pagination ------------------------------------------------------
+	protected
 
-		    headers["X-Total-Count"] = pageCollect.total_count
+		# sending the pagination params via request headers
+		def set_pagination_headers(v_name)
+			# render json: {
+			#   "message": "Set Pagination Headers called"
+			# }
+			pageCollect = instance_variable_get("@#{v_name}")
 
-		    links = []
-		    links << page_link(1,"first") unless pageCollect.first_page?
-		    links << page_link(pageCollect.prev_page, "prev") if pageCollect.prev_page
-		    
-		    links << page_link(pageCollect.next_page, "next") if pageCollect.next_page
-		    links << page_link(pageCollect.total_pages, "last") unless pageCollect.last_page?
-		    headers["Link"] = links.join(", ") if links.present?
+			headers["X-Total-Count"] = pageCollect.total_count
+
+			links = []
+			links << page_link(1,"first") unless pageCollect.first_page?
+			links << page_link(pageCollect.prev_page, "prev") if pageCollect.prev_page
+			
+			links << page_link(pageCollect.next_page, "next") if pageCollect.next_page
+			links << page_link(pageCollect.total_pages, "last") unless pageCollect.last_page?
+			headers["Link"] = links.join(", ") if links.present?
 
 
-		  end
+		end
 
-		  def page_link(page, rel)
-		    base_uri = request.url.split("?").first
-		    # "<#{items_url(request.query_parameters.merge(page: page))}>; rel='#{rel}'"
-		    "<#{base_uri}?#{request.query_parameters.merge(page: page).to_param}>; rel='#{rel}'"
-		  end
+		def page_link(page, rel)
+			base_uri = request.url.split("?").first
+			# "<#{items_url(request.query_parameters.merge(page: page))}>; rel='#{rel}'"
+			"<#{base_uri}?#{request.query_parameters.merge(page: page).to_param}>; rel='#{rel}'"
+		end
 
-		  # methods for pagination controls
-		  def page
-		    @page ||= params[:page] || 1
-		  end
+		# methods for pagination controls
+		def page
+			page_param = (request.headers["page"])
+			@page ||= page_param || 1
+		end
 
-		  def per_page
-		    @per_page ||= params[:per] || 10
-		  end
+		def per_page
+			per_page_param = (request.headers["perpage"])
+			@per_page ||= per_page_param || 12
+		end
 # Pagination Ended --------------------------------------------------------------------------------------------------
 
 

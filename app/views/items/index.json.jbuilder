@@ -13,14 +13,15 @@ json.items @items do |item|
   end
 end
 
-# JSON Containing results of the pages for items
-json.pages do
-	json.page @items.current_page
-	json.perpage @per_page
-	json.total_results @items.total_count
-	json.total_pages @items.total_pages 
+json.partial! "pagination/pagination", locals: {model: @items, per_page: @per_page}
 
-end
+# JSON Containing results of the pages for items
+# json.pages_inline do
+# 	json.page @items.current_page
+# 	json.perpage @per_page
+# 	json.total_results @items.total_count
+# 	json.total_pages @items.total_pages 
+# end
 
 
 

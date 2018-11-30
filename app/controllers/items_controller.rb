@@ -12,26 +12,10 @@ class ItemsController < ApplicationController
     @user = User.find(current_user.id)
   end
 
-  def page
-    page_param = (request.headers["page"])
-    # puts("-------------------------------page_param #{page_param}----------------------------------")
-    # @page ||= params[:page] || 1
-    @page ||= page_param || 1
-  end
-
-  def per_page
-    per_page_param = (request.headers["perpage"])
-    # puts("-------------------------------per_page_param #{per_page_param}----------------------------------")
-    @per_page ||= per_page_param || 10
-  end
 
   def index
 
-    #to search send GET request to localhost:3000/api/items?search_item=hel
-    #search_item=hel searching for item with name hel
-
-    # Send Get to localhost:3000/api/items?search_item=el&page=2 for pagination
-    # localhost:3000/api/items?search_item=el&page=2&per_page=5
+    #to search send GET request to localhost:3000/api/items?query=hel
 
     if params[:query].present?
 
@@ -57,23 +41,6 @@ class ItemsController < ApplicationController
     @items = @items.page(page).per(per_page)
     @per_page = per_page.to_i
     
-    # numOfPages = @items.total_pages
-
-    # check for not lettting page exceeding the last page, if it does show last page
-    # if (params[:page].to_i > numOfPages.to_i)
-
-
-
-    #   # @items = @items.page(numOfPages).per(per_page)
-
-
-
-    # end
-       # puts("-------------------------------per_page_param #{per_page}----------------------------------")
-       
-    # set_pagination_headers(@items)
-
-
 
   end
 
