@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class ResultsComponent implements OnInit {
 	@Input() searchResults: object;
 	@Input() defaultTab?: ResultTab = ResultTab.All;
+	@Input() searchQuery?: string;
 	@Output() loadMore: EventEmitter<string> = new EventEmitter<string>();
 
 	get s() { return this.searchResults; }			// in template, 's' can used as a shorthand for searchResults
@@ -51,7 +52,8 @@ export class ResultsComponent implements OnInit {
 export enum ResultTab {
 	All = 0,
 	Items = 1,
-	Users = 2
+	Users = 2,
+	Hashtags = 3,
 }
 
 export const TabToProperty: object = {
@@ -63,5 +65,9 @@ export const TabToProperty: object = {
 		property: 'user',
 		templateId: 'userResults',
 		
+	},
+	3: {
+		property: 'hashtag',
+		templateId: 'hashtagResults',
 	}
 }

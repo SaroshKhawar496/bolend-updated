@@ -35,6 +35,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 	pages: {
 		items: Pagination,
 		users: Pagination,
+		hashtags: Pagination,
 	}
 
 	searchString: string;
@@ -60,6 +61,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 		this.pages = { 
 			items: null,
 			users: null,							// do not paginate users (for now)
+			hashtags: null,
 		};
 	}
 
@@ -74,6 +76,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 
 		// perform users search
 		this.performSearch ( "users", this.searchString );
+
+		// perform hashtags search - strip leading '#' character
+		this.performSearch ( "hashtags", this.searchString.replace(/\B(\#)/, '') );
 	}
 
 
@@ -96,7 +101,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 		if (!query || !type) return;
 
 		// build request path & headers; pagination params is sent in headers
-		let path = `/${type}/?query=${query}`;
+		let path: string = `/${type}/?query=${query}`;
 
 		// if searchResults object has not been init'd, init to empty obj
 		if ( !this.searchResults )
@@ -117,7 +122,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 	/** parse the results of a search */
 	handleSearchResults ( res: object, type: string, concat:boolean=false ) : object {
 		// save results; if concat is true, then concatenate instead of replace current results
-		this.searchResults[type] = concat ? this.searchResults[type].concat(res[type]) : res[type] ;
+		if ( type == "hashtags" )		// special treatment for hashtag results
+			this.searchResults[type] = res['items_with_hashtag'];
+		else
+			this.searchResults[type] = concat ? this.searchResults[type].concat(res[type]) : res[type] ;
 
 		// check if pagination is enabled; if so, save pagination info
 		if ( res['pages'] )

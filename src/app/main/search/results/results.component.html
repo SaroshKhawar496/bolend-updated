@@ -43,6 +43,19 @@
 					<span class="no-results">No users were found.</span>
 				</ng-template>
 			</div>
+
+			<!-- display results from hashtag -->
+			<div class="result-block">
+				<h3>Hashtag {{searchQuery ? ': #'+searchQuery : '' }}</h3>
+				<div class="card-container" *ngIf="s.hashtags && s.hashtags.length else noHashtags">
+					<div *ngFor="let item of s.hashtags" class="card">
+						<app-item-card [item]="item"></app-item-card>
+					</div>
+				</div>
+				<ng-template #noHashtags>
+					<span class="no-results">No items were found with this hashtag</span>
+				</ng-template>
+			</div>
 				
 			<!-- </div> -->
 		</ng-container>
@@ -54,6 +67,7 @@
 		<ng-container *ngIf="tabSelected > 0">
 			<ng-container [ngSwitch]="tabSelected">
 
+				<!-- items -->
 				<div *ngSwitchCase="1" class="card-container" >
 					<ng-container *ngIf="s.items && s.items.length else noItems">
 						<div *ngFor="let item of s.items" class="card">
@@ -66,16 +80,28 @@
 					</ng-template>
 				</div>
 
+				<!-- users -->
 				<div *ngSwitchCase="2" class="card-container">
 					<ng-container *ngIf="s.users && s.users.length else noUsers">
 						<div *ngFor="let user of s.users" class="card">
 							<app-profile-card [user]="user"></app-profile-card>
 						</div>
 						<div class="load-more pointer" (click)="loadMorePages('users')">Load more users</div>
-						<!-- <div class="load-more pointer">Load more users</div> -->
 					</ng-container>
 					<ng-template #noUsers>
 						<span class="no-results">No users were found.</span>
+					</ng-template>
+				</div>
+
+				<!-- hashtag -->
+				<div *ngSwitchCase="3" class="card-container">
+					<ng-container *ngIf="s.hashtags && s.hashtags.length else noHashtags">
+						<div *ngFor="let item of s.hashtags" class="card">
+							<app-item-card [item]="item"></app-item-card>
+						</div>
+					</ng-container>
+					<ng-template #noHashtags>
+						<span class="no-results">No items were found with this hashtag</span>
 					</ng-template>
 				</div>
 

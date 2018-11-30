@@ -1,6 +1,15 @@
 class HashtagsController < ApplicationController
 
+  # with optional search
   def index
+    # if a query is included, show hashtag matching EXACTLY that query
+    if ( params[:query] )
+      show(params[:query])
+      render :show
+      return
+    end
+
+    # otherwise, list all hashtags
     @hashtags = SimpleHashtag::Hashtag.all
 
     # enable pagination
@@ -8,8 +17,9 @@ class HashtagsController < ApplicationController
     @per_page = per_page.to_i
   end
 
-  def show
-    @hashtag = SimpleHashtag::Hashtag.find_by_name(params[:hashtag]).includes([:items, :users])#.includes(:users)
+  def show(query=nil)
+    param ||= query || params[:hashtag]
+    @hashtag = SimpleHashtag::Hashtag.find_by_name(param)
     @hashtagged = @hashtag.hashtaggables if @hashtag
   end
 
