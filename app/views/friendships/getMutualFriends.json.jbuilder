@@ -4,3 +4,6 @@ json.users @return.each do |mutual|
 	json.lastname "#{mutual[2]}"
 	json.heuristic "#{mutual[3]}"
 end
+
+
+# json.partial! "pagination/pagination", locals: {model: @friends, per_page: @per_page}

@@ -98,15 +98,16 @@ class ApplicationController < ActionController::API
 			"<#{base_uri}?#{request.query_parameters.merge(page: page).to_param}>; rel='#{rel}'"
 		end
 
-		# methods for pagination controls
+
+		##### methods for pagination controls
+		# use this method to determine the page number; reads from request header first
 		def page
-			page_param = (request.headers["page"])
-			@page ||= page_param || 1
+			@page ||= request.headers["page"] || 1
 		end
 
-		def per_page
-			per_page_param = (request.headers["perpage"])
-			@per_page ||= per_page_param || 12
+		# determine how many entries per page; reads from request header, then from count
+		def per_page(count=nil)
+			@per_page ||= request.headers["perpage"] || count || 12
 		end
 # Pagination Ended --------------------------------------------------------------------------------------------------
 
