@@ -19,7 +19,7 @@
 				<!-- <pre>{{tab | json}}_{{s[tab.property] | json}}</pre> -->
 
 			<!-- display items -->
-			<div class="result-block">
+			<div class="result-block" id="ITEM-BLOCK">
 				<h3>Items</h3>
 				<div class="card-container" *ngIf="s.items && s.items.length else noItems">
 					<div *ngFor="let item of s.items" class="card">
@@ -32,7 +32,7 @@
 			</div>
 
 			<!-- display users -->
-			<div class="result-block">
+			<div class="result-block" id="USER-BLOCK">
 				<h3>Users</h3>
 				<div class="card-container" *ngIf="s.users && s.users.length else noUsers">
 					<div *ngFor="let user of s.users" class="card">
@@ -45,7 +45,7 @@
 			</div>
 
 			<!-- display results from hashtag -->
-			<div class="result-block">
+			<div class="result-block" id="HASHTAG-BLOCK">
 				<h3>Hashtag {{searchQuery ? ': #'+searchQuery : '' }}</h3>
 				<div class="card-container" *ngIf="s.hashtags && s.hashtags.length else noHashtags">
 					<div *ngFor="let item of s.hashtags" class="card">
@@ -94,15 +94,18 @@
 				</div>
 
 				<!-- hashtag -->
-				<div *ngSwitchCase="3" class="card-container">
-					<ng-container *ngIf="s.hashtags && s.hashtags.length else noHashtags">
-						<div *ngFor="let item of s.hashtags" class="card">
-							<app-item-card [item]="item"></app-item-card>
-						</div>
-					</ng-container>
-					<ng-template #noHashtags>
-						<span class="no-results">No items were found with this hashtag</span>
-					</ng-template>
+				<div *ngSwitchCase="3">
+					<h3>Hashtag {{searchQuery ? ': #'+searchQuery : '' }}</h3>
+					<div class="card-container">
+						<ng-container *ngIf="s.hashtags && s.hashtags.length else noHashtags">
+							<div *ngFor="let item of s.hashtags" class="card">
+								<app-item-card [item]="item"></app-item-card>
+							</div>
+						</ng-container>
+						<ng-template #noHashtags>
+							<span class="no-results">No items were found with this hashtag</span>
+						</ng-template>
+					</div>
 				</div>
 
 			</ng-container>

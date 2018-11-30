@@ -57,9 +57,17 @@
 
 
 /***** body *****/
-.tags-container {
+/* .tags-container {
 	font-weight: 600;
+} */
+.tag {
+	display: inline-block;
+	font-weight: 600;
+	margin: 0.25em 0.25em;
+    padding: 0.5em 1em;
+    background: #ddd;
 }
+.tag:hover { box-shadow: 0 0 5px 1px #bbb; }
 
 
 

@@ -28,7 +28,14 @@
 		<!-- tags -->
 		<div class="tags-container fade-in delay-0-5">
 			<svg class="inline"><use href="assets/icons/navbar.svg#i-tag"></use></svg>&nbsp;
-			{{item.tags || '-'}}
+			<!-- {{item.tags || '-'}} -->
+			<ng-container *ngIf="item.tagArray">
+				<div *ngFor="let tag of item.tagArray"
+					(click)="searchHashtag(tag)"
+					class="tag round pointer trans-0-25">
+					{{tag}}
+				</div>
+			</ng-container>
 		</div>
 
 		<!-- item age -->

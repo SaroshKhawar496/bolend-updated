@@ -158,4 +158,11 @@ export class ItemDetailsComponent implements OnInit {
 		}
 	}
 
+
+	searchHashtag ( hashtag: string ) {
+		let path: string[] = ['/search'];
+		let qparams: NavigationExtras = { queryParams: {q: hashtag} };
+		this.router.navigate ( path, qparams );
+	}
+
 }

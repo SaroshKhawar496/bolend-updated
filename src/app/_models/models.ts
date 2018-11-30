@@ -131,7 +131,8 @@ export class Item extends ExtensibleModel {
 	name: string;
 	description: string;
 	url: string;
-	tags: string | Array<string>;
+	tags: string;
+	tagArray: string[];
 	requests: ItemRequest[];
 
 	image: string;			// main image URL
@@ -168,6 +169,10 @@ export class Item extends ExtensibleModel {
 		if ( this.loan ) {
 			this.loan = new Loan(this.loan);
 		}
+
+		// if tags string is present
+		if ( this.tags )
+			this.tagArray = this.tags.match(/\B(\#[\w]+\b)/g);
 	}
 
 	createUserInstance ( userData: object ) {

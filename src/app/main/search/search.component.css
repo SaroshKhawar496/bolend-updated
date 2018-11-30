@@ -51,10 +51,11 @@
 .result-content-container {
 	margin: 1em;
 }
-.result-content-container h3 {
+.result-content-container h3, h3 {
 	font-size: 1.75em;
 	margin: 0.5em;
 	font-weight: 400;
+	text-align: center;
 }
 
 .result-block {

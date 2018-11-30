@@ -43,6 +43,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.fullScreen = true;
+		this.searchString = '';
 
 		// set up pagination of results with default values
 		this.initializePagination();
@@ -68,8 +69,8 @@ export class SearchComponent implements OnInit, OnDestroy {
 	/** Handle changes in queryParams of the URL; perform new search when they change */
 	handleQparamsChange ( qparams: Params ) : void {
 		this.qparams = qparams;
-		this.searchString = qparams['q'];
-		// this.initializePagination();		// reset pagination parameters for the new search
+		this.searchString = qparams['q'] || '';		// if there is no such queryParam, set to empty string
+		this.searchString = this.searchString.replace(/\B(\#)/, '');
 
 		// perform items search
 		this.performSearch ( "items", this.searchString );
@@ -78,7 +79,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 		this.performSearch ( "users", this.searchString );
 
 		// perform hashtags search - strip leading '#' character
-		this.performSearch ( "hashtags", this.searchString.replace(/\B(\#)/, '') );
+		this.performSearch ( "hashtags", this.searchString );
 	}
 
 
