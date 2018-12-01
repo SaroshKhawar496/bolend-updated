@@ -7,8 +7,11 @@ json.phone @user.phone
 json.gender @user.gender
 json.dateofbirth @user.dateofbirth
 json.created_at @user.created_at
+
+json.private @user.privateMode
 json.friend @friend
 json.privilege @privilege
+
 json.items @user.items.reverse do |item|
   json.id item.id
   json.name item.name

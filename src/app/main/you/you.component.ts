@@ -70,9 +70,7 @@ export class YouComponent extends ProfileComponent {
 		let path: string = '/requests';
 		this.http.getObservable (path).subscribe(
 			data => {
-				// this.incomingRequests = data['incoming_requests'];
 				this.incomingRequests = this.requestsDataHandler ( data['incoming_requests'] );
-				// this.outgoingRequests = data['outgoing_requests'];
 				this.outgoingRequests = this.requestsDataHandler ( data['outgoing_requests'] );
 				console.log ( 'loadRequests', this.incomingRequests, this.outgoingRequests );
 			}
@@ -88,6 +86,24 @@ export class YouComponent extends ProfileComponent {
 
 	private requestsDataHandler ( data: object[] ) : ItemRequest[] {
 		return data.map ( req => new ItemRequest(req) );
+	}
+
+	/** Edit your own profile */
+	editProfile() {
+
+	}
+
+
+	setProfilePrivacy ( setPrivate: boolean ) {
+		let path: string = `/users/private-mode-${setPrivate}`;
+		this.http.putObservable ( path, null ).subscribe (
+			res => {
+				console.log ( "Successfully changed profile permissions." );
+				this.alert.success ( "Successfully changed your profile's permissions." );
+				this.loadYou();
+			},
+			err => this.http.genericModelErrorHandler(err),
+		)
 	}
 
 }

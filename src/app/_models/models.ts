@@ -43,6 +43,10 @@ export class User extends ExtensibleModel {
 
 	jwt: JWT;
 
+	private: boolean;		// is user profile private?
+	friend: boolean;		// is this user your friend?
+	privilege: boolean;		// do you have the privilege to view this user's profile and items?
+
 	/**
 	 * Instantiate a User object, optionally providing an object with attributes required for 
 	 * @param attribs 

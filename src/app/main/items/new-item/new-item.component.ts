@@ -49,7 +49,7 @@ export class NewItemComponent implements OnInit {
 	 */
 	initializeForm () : void {
 		this.itemForm = this.formBuilder.group ({
-			name: new FormControl ( null, [Validators.required] ),
+			name: new FormControl ( null, [Validators.required, Validators.minLength(2)] ),
 			description: new FormControl ( null, [Validators.required] ),
 			tags: new FormControl ( null ),
 		});
@@ -76,6 +76,12 @@ export class NewItemComponent implements OnInit {
 	 * Send POST request to server to create new item
 	 */
 	submitItem () : void {
+		// stop here if form is invalid
+		if (this.itemForm.invalid) {
+			this.alert.warning ( "This item is invalid. Please check that you have an item name." );
+			return;
+		}
+
 		let path: string = "/items";
 		let itemObj: object = Object.assign( {base64: this.imgSrc}, this.itemForm.value );
 		let payload: object = {

@@ -30,10 +30,9 @@ class ApplicationController < ActionController::API
 		# if user has blocked the viewer, return false
 		if @user.blocked_friends.include? @viewer
 			return false
-		end
 
 		# otherwise, if user and viewer are friends, return true
-		if @user.friends.include? @viewer
+		elsif @user.friends.include? @viewer
 			return true
 
 		# if user and viewer are NOT friends

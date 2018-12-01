@@ -19,8 +19,8 @@ Rails.application.routes.draw do
 
     # custom routes for resources
     get "users/you", to: 'users#you'    # show currently auth'd user
-    get "users/private-mode-true", to: "users#privateModeOn"
-    get "users/private-mode-false", to: "users#privateModeOff"
+    put "users/private-mode-true", to: "users#privateModeOn"
+    put "users/private-mode-false", to: "users#privateModeOff"
 
 
     root "welcome#home"
