@@ -128,3 +128,21 @@ export class ExploreTrendingComponent extends ExploreGenericComponent {
 		this.fetchItems ( path );
 	}
 }
+
+
+
+@Component({
+	selector: 'app-explore-trending',
+	templateUrl: './explore-generic.component.html',
+	styleUrls: ['../explore.component.css'],
+})
+export class ExploreFriendsItemsComponent extends ExploreGenericComponent {
+	// enable pagination
+	resultsOptions: ExploreResultsOptions = { paginated: true }
+
+	/** Fetch up to 100 most viewed items in the past week */
+	invokeFetchItems () : void {
+		let path: string = `/friends/get-friend-items`;
+		this.fetchItems ( path );
+	}
+}

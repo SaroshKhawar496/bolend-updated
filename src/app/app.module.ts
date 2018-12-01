@@ -48,6 +48,7 @@ import {
 	ExploreGenericComponent,
 	ExploreNewComponent,
 	ExploreTrendingComponent,
+	ExploreFriendsItemsComponent,
 } from './main/explore/explore-generic/explore-generic.component';
 
 
@@ -136,12 +137,12 @@ const appRoutes = [
 		path: 'explore',
 		component: ExploreComponent,
 		canActivate: [AuthGuard],
-		// canActivateChild: [AuthGuard],
 		children: [
 			{ path: '', redirectTo: 'tags', pathMatch: 'full' },
 			{ path: 'tags', component: ExploreTagsComponent },
 			{ path: 'new',	component: ExploreNewComponent },
 			{ path: 'trending', component: ExploreTrendingComponent },
+			{ path: 'friends', component: ExploreFriendsItemsComponent },
 		]
 	},
 
@@ -181,6 +182,7 @@ const appRoutes = [
 		ExploreGenericComponent,
 		ExploreNewComponent,
 		ExploreTrendingComponent,
+		ExploreFriendsItemsComponent,
 	],
 	imports: [
 		BrowserModule,
