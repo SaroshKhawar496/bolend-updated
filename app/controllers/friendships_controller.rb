@@ -108,6 +108,22 @@ class FriendshipsController < ApplicationController
 		
 	end
 
+	def getItemsFromFriends
+		@unloanedFriendItems = []
+		friends = User.find(current_user.id).friends
+		friends.each do |friend|
+			items = Item.where("user_id = #{friend.id}")
+				items.each do |item|
+				if item.loan.present?
+					#pass
+				else
+					@unloanedFriendItems << item
+				end
+			end
+		end
+		puts "#{@items}"
+	end
+
 	def blockFriend
 
 		begin
@@ -131,12 +147,18 @@ class FriendshipsController < ApplicationController
 				"message": "User already blocked",
 				"success": false
 			}
-		else
+		elsif @user.pending_friends.include? @friend
 			@user.block_friend(@friend)
 			render json:
 			{
 				"message": "#{@friend.fname} #{@friend.lname} has been blocked! Sorry for this experience.",
 				"success": true
+			}
+		else
+			render json:
+			{
+				"message": "Cannot perform this action",
+				"success": false
 			}
 		end
 	end
@@ -192,7 +214,34 @@ class FriendshipsController < ApplicationController
 	end
 
 	def deleteFriend
-		
+		begin
+			@friend = User.find(params[:user_id])
+		rescue Exception => e
+			render json:
+			{
+				"message": "This user does not exist",
+				"success": false
+			}
+			return # game over , user does not exist
+		end
+
+		if @user.friends.include? @friend and @friend.friends.include? @user
+			@user.friends.delete(@friend)
+			@friend.friends.delete(@user)
+			#deleted
+			render json:
+			{
+				"message": "#{friend.fname} #{friend.lname} was removed from your friends list!",
+				"success": true
+			}
+		else
+			render json:
+			{
+				"message": "Friend was already deleted, or never added.",
+				"success": false
+			}
+		end
+
 	end
 
 	def getMutualFriends

@@ -18,9 +18,9 @@ class ApplicationController < ActionController::API
 
 
 
-	def privilege
+	def privilege(userID)
 		@viewer = User.find(current_user.id)
-		@user = User.find(params[:user_id])
+		@user = User.find(userID)
 
 		# if the viewer and user are the same person, return true
 		if @viewer == @user
@@ -47,9 +47,7 @@ class ApplicationController < ActionController::API
 		end
 	end
 
-	# Add the Loans Checke
-	
-	
+
 	protected
 		#passing the required fields for devise signup form. By default,
 		#devise only has allows email and password fields

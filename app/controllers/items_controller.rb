@@ -5,13 +5,35 @@ class ItemsController < ApplicationController
   #using current_user.id now
   
   # after_action only: [:index], {set_pagination_headers :items}
-  # after_action Proc.new{ set_pagination_headers(:items) }, only: [:index]
+
+  after_action Proc.new{ set_pagination_headers(:items) }, only: [:index]
+
+  # def change
+  #   @items = Item.item_search(params[:query]) 
+  # end
   
   def new
     @item = Item.new
     @user = User.find(current_user.id)
   end
 
+  def Privilege(viewer, user)
+    @viewer = User.find(viewer)
+    @user = User.find(user)
+
+    if @user.blocked_friends.include? @viewer
+      return false
+    end
+    if @user.friends.include? @viewer
+      return true
+    else
+      if @user.privateMode==true
+        return false
+      else
+        return true
+      end
+    end
+  end
 
   def index
 
@@ -20,6 +42,7 @@ class ItemsController < ApplicationController
     if params[:query].present?
 
       @items = Item.item_search(params[:query]).order(id: :desc)
+      @items = @items.select { |item| privilege(item.user_id) }
 
       if @items.length == 0
         render json: {
@@ -29,9 +52,13 @@ class ItemsController < ApplicationController
 
       end
 
+      @items = Kaminari.paginate_array(@items)
+
     else
 
       @items = Item.includes([:user, :loan, :borrower]).all.order(id: :desc)
+      @items = @items.select { |item| privilege(item.user_id) }
+      @items = Kaminari.paginate_array(@items)
 
     end
     
@@ -44,11 +71,12 @@ class ItemsController < ApplicationController
 
   end
 
-
   # show the most recently updated items first
   def index_new
     @items = Item.includes([:user, :loan, :borrower]).all.order(updated_at: :desc)
     @items = Item.most_hit
+    @items = @items.select { |item| privilege(item.user_id) }
+    @items = Kaminari.paginate_array(@items)
 
     #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
     #option to change the numOfresults shown perpage also available 
@@ -61,13 +89,19 @@ class ItemsController < ApplicationController
   # show the most popular items in the last week
   def index_trending
     @items = Item.most_hit(1.week.ago, 100)
-
+    @items = @items.select { |item| privilege(item.user_id) }
+    @items = Kaminari.paginate_array(@items)
     #paginating in either case, uses params[:page] if present otherwise uses page 1 of results.
     #option to change the numOfresults shown perpage also available 
     @items = @items.page(page).per(per_page(15))
     @per_page = per_page.to_i
     render :index
   end
+    #
+    # set_pagination_headers(@items)
+
+
+  # end
 
   # # sending the pagination params via request headers
   # def set_pagination_headers(v_name)

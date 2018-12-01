@@ -4,8 +4,14 @@ class UsersController < ApplicationController
 	
 	#current_user is available through devise gem
   def show
-    # @user = User.find(current_user.id)
+    @currentUser = User.find(current_user.id)
     @user = User.find(params[:id])
+    if @currentUser.friends.include? @user
+      @friend = true
+    else
+      @friend = false
+    end
+    @privilege = privilege(params[:id]) 
   end
 
   def you
@@ -13,7 +19,19 @@ class UsersController < ApplicationController
     render :show
   end
 
+  def privateModeOn
+    @user = User.find(current_user.id)
+    @user.privateMode = true
+    @user.save
+    # no payload , #current_user always exists and the flag can be changed as it exists, no fail 
+  end
 
+  def privateModeOff
+    @user = User.find(current_user.id)
+    @user.privateMode = false
+    @user.save
+    # no payload , #current_user always exists and the flag can be changed as it exists, no fail 
+  end
 
   # get all users
   def index
