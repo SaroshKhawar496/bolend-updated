@@ -87,7 +87,7 @@
 			<div *ngFor="let item of user.itemsAvailable.slice(0,defaultMaxAvailableItems)" class="item">
 				<app-item-card [item]="item" [owner]="user.userIdentity"></app-item-card>
 			</div>
-			<p class="status">No items available. Yet.</p>
+			<p *ngIf="!user.itemsAvailable.length" class="status">No items available. Yet.</p>
 		</div>
 		<hr class="divider" />
 	</div>
@@ -101,7 +101,7 @@
 			<div *ngFor="let item of user.itemsBorrowed" class="item">
 				<app-item-card [item]="item" [owner]="item.user"></app-item-card>
 			</div>
-			<p class="status">No borrowed items. Yet.</p>
+			<p *ngIf="!user.itemsBorrowed.length" class="status">No borrowed items. Yet.</p>
 		</div>
 		<hr class="divider" />
 	</div>
