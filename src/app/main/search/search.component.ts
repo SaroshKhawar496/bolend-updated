@@ -70,16 +70,16 @@ export class SearchComponent implements OnInit, OnDestroy {
 	handleQparamsChange ( qparams: Params ) : void {
 		this.qparams = qparams;
 		this.searchString = qparams['q'] || '';		// if there is no such queryParam, set to empty string
-		this.searchString = this.searchString.replace(/\B(\#)/, '');
+		let query: string = this.searchString.replace(/\B(\#)/g, '');
 
 		// perform items search
-		this.performSearch ( "items", this.searchString );
+		this.performSearch ( "items", query );
 
 		// perform users search
-		this.performSearch ( "users", this.searchString );
+		this.performSearch ( "users", query );
 
 		// perform hashtags search - strip leading '#' character
-		this.performSearch ( "hashtags", this.searchString );
+		this.performSearch ( "hashtags", query );
 	}
 
 
