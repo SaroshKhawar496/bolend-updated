@@ -1,5 +1,5 @@
 json.items @unloanedFriendItems.reverse do |item|
-  if ! item.borrower.present?
+  if !item.loan.present? || item.loan.date_of_return.present?
     json.id item.id
     json.name item.name
     json.desc item.description
@@ -10,3 +10,5 @@ json.items @unloanedFriendItems.reverse do |item|
     json.hits_1week item.hits(1.week.ago)
   end
 end
+
+json.partial! "pagination/pagination", locals: {model: @items, per_page: @per_page}

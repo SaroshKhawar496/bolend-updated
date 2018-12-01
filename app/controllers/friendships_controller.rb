@@ -110,18 +110,17 @@ class FriendshipsController < ApplicationController
 
 	def getItemsFromFriends
 		@unloanedFriendItems = []
-		friends = User.find(current_user.id).friends
-		friends.each do |friend|
-			items = Item.where("user_id = #{friend.id}")
-				items.each do |item|
-				if item.loan.present?
-					#pass
-				else
-					@unloanedFriendItems << item
-				end
+		@items = Item.where(user_id: User.find(current_user.id).friends)
+		@items = @items.page(page).per(per_page(20)) # load up to 20 items at a time; does NOT guarantee 20 items will be returned
+		@per_page = per_page.to_i
+
+		# filter items to include only items that are not currently loaned out
+		@items.each do |item|
+			# if loan is active (i.e. either never been loaned, or has been returned since last loan)
+			if !item.loan.present? || item.loan.date_of_return.present?
+				@unloanedFriendItems << item
 			end
 		end
-		puts "#{@items}"
 	end
 
 	def blockFriend
