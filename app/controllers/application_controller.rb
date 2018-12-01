@@ -10,6 +10,7 @@ class ApplicationController < ActionController::API
 	before_action :authenticate_user!, :except => [:fallback_index_html]
 
 	respond_to :json
+	helper_method :privilege
 
 	# used to serve static files for frontend SPA
 	def fallback_index_html

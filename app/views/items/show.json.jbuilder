@@ -1,13 +1,9 @@
 json.partial! "items/item", item: @item
-json.name @item.name
-json.description @item.description
-json.tags @item.tags
-json.created_at @item.created_at
-json.updated_at @item.updated_at
-json.image rails_blob_url(@item.image) if @item.image.attached?
-json.base64 @item.base64
-json.total_hits @item.hits
-json.hits_1week @item.hits(1.week.ago)
+
+# display the owner's information
+json.user @item.user
+
+# show incoming requests for this item, if the owner is requesting it
 if @item.user_id == current_user.id
   if @item.requests.present?
     json.requests @item.requests do |request|
