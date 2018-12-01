@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
-import { Hashtag } from 'src/app/_models/models';
+import { Hashtag, Item } from 'src/app/_models/models';
 
 @Component({
 	selector: 'app-explore-tags',
@@ -37,9 +37,30 @@ export class ExploreTagsComponent implements OnInit {
 		);
 
 		// if there are hashtags and tagIndexSelected is undefined or 0, set it to 0 (leave it otherwise)
-		if ( this.hashtags.length )
+		if ( this.hashtags.length ){
 			this.tagIndexSelected = this.tagIndexSelected ? this.tagIndexSelected : 0;
+			this.changeHashtag(this.tagIndexSelected);
+		}
 			
 		console.log ( 'handleHashtagsIndex', this.hashtags );
+	}
+
+	changeHashtag ( index: number ) {
+		this.tagIndexSelected = index;
+
+		// do a request for items associated with this hashtag
+		let path: string = `/hashtags?id=${this.hashtags[index].id}`;
+		this.http.getObservable (path).subscribe (
+			data => {
+				this.handleHashtagsShow(index, data);
+			},
+			err => this.http.genericModelErrorHandler(err),
+		)
+	}
+	handleHashtagsShow ( index: number, data: object ) {
+		let items_with_hashtag: object[] = data['items_with_hashtag'] || [];
+		this.hashtags[index].items = items_with_hashtag.map (
+			item => new Item(item)
+		)
 	}
 }

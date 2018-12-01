@@ -5,15 +5,16 @@
 			<ng-container *ngFor="let hashtag of hashtags; let i=index">
 				<div class="hashtag round pointer trans-0-25" 
 					[ngClass]="{'hashtag-selected': i==tagIndexSelected}"
-					(click)="tagIndexSelected=i">
+					(click)="changeHashtag(i)">
 					#{{hashtag.name}}
 				</div>
 			</ng-container>
 		</div>
 
+		<!-- show results -->
 		<app-explore-results [items]="hashtags[tagIndexSelected].items">
-
 		</app-explore-results>
+
 	</ng-container>
 
 	<ng-template #noHashtags>
