@@ -139,6 +139,7 @@ export class Item extends ExtensibleModel {
 	hits_1week: number;
 
 	loan: Loan;
+	loan_active: boolean;
 
 	constructor ( attribs?: object ) {
 		super(attribs);

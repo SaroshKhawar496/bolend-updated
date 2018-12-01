@@ -51,7 +51,7 @@
 		</div>
 
 		<!-- show if item has been loaned out -->
-		<div *ngIf="item.loan" class="desc-container fade-in delay-0-7">
+		<div *ngIf="item.loan_active" class="desc-container fade-in delay-0-7">
 			<svg class="inline"><use href="assets/icons/navbar.svg#i-heart"></use></svg>&nbsp;
 			<i>Item loaned out {{item.loan.age}}. Due <strong>{{item.loan.timeToDue}}</strong></i>
 		</div>
@@ -75,7 +75,7 @@
 					<svg><use href="assets/icons/navbar.svg#i-trash"></use></svg>
 				</div>
 				<!-- mark item as returned; show only if item currently loaned -->
-				<div *ngIf="item.loan && !item.loan.date_of_return" class="action-btn gradient-0-stop-2" 
+				<div *ngIf="item.loan_active" class="action-btn gradient-0-stop-2" 
 					(click)="markAsReturned(item.loan)"
 					tooltip="Mark item as returned" tooltip-position="bottom">
 					<svg><use href="assets/icons/navbar.svg#i-import"></use></svg>
@@ -86,7 +86,7 @@
 			<ng-template #notYou>
 				<!-- request -->
 				<div class="action-btn gradient-0-stop-0 tooltip" title="Request Item" 
-					*ngIf="!item.loan || item.loan.date_of_return" (click)="requestItem()"
+					*ngIf="!item.loan_active" (click)="requestItem()"
 					tooltip="Request item" tooltip-position="bottom">
 					<svg><use href="assets/icons/navbar.svg#i-heart"></use></svg>
 				</div>

@@ -1,5 +1,5 @@
 json.items @items do |item|
-  if ! item.borrower.present?
+  if !item.loan.present? || item.loan.date_of_return.present?
     json.id item.id
     json.name item.name
     json.desc item.description

@@ -119,7 +119,7 @@ export class ItemDetailsComponent implements OnInit {
 	deleteConfirmation: boolean = false;
 	/** Delete this item; if item is currently loaned out, prompt for confirmation */
 	deleteItem () : void {
-		if ( this.item.loan && !this.deleteConfirmation ) {
+		if ( this.item.loan_active  && !this.deleteConfirmation ) {
 			this.alert.warning ( "This item is currently loaned out. Are you sure you want to delete it? Click delete again to confirm." );
 			this.deleteConfirmation = true;
 		} else {
