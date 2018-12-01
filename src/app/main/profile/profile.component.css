@@ -20,8 +20,8 @@
 		"header header"
 		"profile box1"
 		"profile box2"
-		"profile box3"
-		"profile box4";
+		"profile box3";
+		/* "profile box4"; */
 
 	
 	transition: all 0.25s ease-in-out;
@@ -104,8 +104,14 @@ table.profile {
 	font-size: 1.25em;
 	padding: 0.5em;
 }
+.profile svg {
+	stroke-width: 2px;
+}
 
-h2, h3 {
+h2 { font-weight: 400; }
+h3 { font-weight: 600; }
+h4 {
+	font-size: 1.15em;
 	font-weight: 600;
 }
 
