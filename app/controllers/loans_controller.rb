@@ -46,6 +46,20 @@ class LoansController < ApplicationController
     end  
   end
 
+  def mark_as_returned
+    @loan = Loan.find(params[:id])
+    if current_user.id == @loan.item.user.id
+      if @loan.date_of_return != nil
+        render json: {"message": "This loan was already terminated on #{@loan.date_of_return}"}, status: :conflict
+      else  
+        @loan.update_attributes(:date_of_return => Time.zone.now)
+        render json: {"message": "Loan successfully terminated."}, status: :ok
+      end
+    else
+      render json: {"message": "Borrowed item does not belong to you"}, status: :forbidden
+    end
+  end
+
   def show
     @loan = Loan.find(params[:id])
   end
