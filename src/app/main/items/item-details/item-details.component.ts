@@ -56,7 +56,7 @@ export class ItemDetailsComponent implements OnInit {
 		this.http.getObservable ( path ).subscribe (
 			data => {
 				this.item = new Item(data);
-				console.log ( 'loadItem', this.item, id==data['id'], this.item.loan.date_of_return );
+				console.log ( 'loadItem', this.item, id==data['id'] );
 			},
 			(err: HttpErrorResponse) => 
 				this.http.genericModelErrorHandler(err, Model.Item)

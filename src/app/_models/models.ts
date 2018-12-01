@@ -38,7 +38,8 @@ export class User extends ExtensibleModel {
 	privateMode: boolean;
 
 	items: Array<object>;
-	itemsAvailable: Array<Item>;
+	itemsAvailable:	Array<Item>;
+	itemsBorrowed:	Array<Item>;
 
 	jwt: JWT;
 
@@ -60,6 +61,13 @@ export class User extends ExtensibleModel {
 		// parse user's items available
 		if ( attribs && attribs['items'] )
 			this.parseItems ( this.items, 'itemsAvailable' );
+		// parse items borrowed by user
+		if ( attribs && attribs['items_borrowed'] && Array.isArray(attribs['items_borrowed']) ) {
+			let borrowedItems: Item[] = attribs['items_borrowed'].map (
+				item => new Item(item)
+			);
+			this.itemsBorrowed = borrowedItems;
+		}
 	}
 
 	/**

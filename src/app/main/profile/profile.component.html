@@ -55,8 +55,13 @@
 
 
 	<!-- items borrowed -->
-	<div class="grid-box2 fade-in delay-0-3">
+	<div class="grid-box2 fade-in delay-0-3" *ngIf="user.itemsBorrowed && user.itemsBorrowed.length">
 		<h3 class="box-title">Items Borrowed</h3>
+		<div class="box-content flex card-carousel">
+			<div *ngFor="let item of user.itemsBorrowed" class="item">
+				<app-item-card [item]="item" [owner]="item.user"></app-item-card>
+			</div>
+		</div>
 		<hr class="divider" />
 	</div>
 

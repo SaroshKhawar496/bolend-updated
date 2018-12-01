@@ -15,10 +15,14 @@ json.items @user.items.reverse do |item|
   json.description item.description
   json.image rails_blob_url(item.image) if item.image.attached?
 end
-json.borrowed_items @user.loans.reverse do |loan|
-  json.loan_info loan
-  json.id loan.item.id
-  json.name loan.item.name
-  json.description loan.item.description
-  json.image rails_blob_url(loan.item.image) if loan.item.image.attached?
+
+json.items_borrowed @user.loans.reverse do |loan|
+  if !loan.date_of_return.present?
+    json.loan loan
+    json.id loan.item.id
+    json.name loan.item.name
+    json.description loan.item.description
+    json.image rails_blob_url(loan.item.image) if loan.item.image.attached?
+    json.user loan.item.user 
+  end
 end
