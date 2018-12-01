@@ -10,8 +10,8 @@
     grid-template-rows: [top] 1fr [middle] 1fr [bottom];
     grid-template-columns: [left] 1fr [middle] 1fr [right];
     grid-template-areas: 
-        "tags   trending"
-        "new    friends";
+        "trending tags"
+        "new      friends";
 }
 
 .grid-tags      { grid-area: tags; }
@@ -25,7 +25,7 @@
         grid-template-rows: [top] 1fr [bottom];
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-areas: 
-            "tags trending new friends";
+            "trending tags new friends";
     }
 }
 
@@ -45,14 +45,14 @@
 }
 
 /* tab colors */
-.explore-tab-selected.grid-tags {background-color: #e94057;}
-.explore-tab-selected.grid-tags:hover {background-color: #DB142F;}
-.explore-tab-selected.grid-trending { background-color: #f27121; }
-.explore-tab-selected.grid-trending:hover { background-color: #C75108; }
-.explore-tab-selected.grid-new { background-color: #8c4cb1; }
-.explore-tab-selected.grid-new:hover { background-color: #75319D; }
-/* .explore-tab-selected.grid-
-.explore-tab-selected.grid- */
+.explore-tab-selected.grid-tags             { background-color: #e94057; }
+.explore-tab-selected.grid-tags:hover       { background-color: #DB142F; }
+.explore-tab-selected.grid-trending         { background-color: #f27121; }
+.explore-tab-selected.grid-trending:hover   { background-color: #C75108; }
+.explore-tab-selected.grid-new              { background-color: #8c4cb1; }
+.explore-tab-selected.grid-new:hover        { background-color: #75319D; }
+.explore-tab-selected.grid-friends          { background-color: #7a941a; }
+.explore-tab-selected.grid-friends:hover    { background-color: #586F03; }
 
 .explore-tab-content {
     font-size: 1.25em;

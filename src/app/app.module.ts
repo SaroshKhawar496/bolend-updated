@@ -138,7 +138,7 @@ const appRoutes = [
 		component: ExploreComponent,
 		canActivate: [AuthGuard],
 		children: [
-			{ path: '', redirectTo: 'tags', pathMatch: 'full' },
+			{ path: '', redirectTo: 'trending', pathMatch: 'full' },
 			{ path: 'tags', component: ExploreTagsComponent },
 			{ path: 'new',	component: ExploreNewComponent },
 			{ path: 'trending', component: ExploreTrendingComponent },
