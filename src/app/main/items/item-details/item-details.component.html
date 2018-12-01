@@ -74,13 +74,19 @@
 					tooltip="Delete item" tooltip-position="bottom">
 					<svg><use href="assets/icons/navbar.svg#i-trash"></use></svg>
 				</div>
+				<!-- mark item as returned; show only if item currently loaned -->
+				<div *ngIf="item.loan && !item.loan.date_of_return" class="action-btn gradient-0-stop-2" 
+					(click)="markAsReturned(item.loan)"
+					tooltip="Mark item as returned" tooltip-position="bottom">
+					<svg><use href="assets/icons/navbar.svg#i-import"></use></svg>
+				</div>				
 			</ng-container>
 
 			<!-- only display these controls if NOT the current user -->
 			<ng-template #notYou>
 				<!-- request -->
 				<div class="action-btn gradient-0-stop-0 tooltip" title="Request Item" 
-					*ngIf="!item.loan" (click)="requestItem()"
+					*ngIf="!item.loan || item.loan.date_of_return" (click)="requestItem()"
 					tooltip="Request item" tooltip-position="bottom">
 					<svg><use href="assets/icons/navbar.svg#i-heart"></use></svg>
 				</div>

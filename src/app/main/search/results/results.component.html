@@ -46,7 +46,7 @@
 
 			<!-- display results from hashtag -->
 			<div class="result-block" id="HASHTAG-BLOCK">
-				<h3>Hashtag {{searchQuery ? ': #'+searchQuery : '' }}</h3>
+				<h3>Hashtag{{searchQuery ? ': #'+searchQuery : '' }}</h3>
 				<div class="card-container" *ngIf="s.hashtags && s.hashtags.length else noHashtags">
 					<div *ngFor="let item of s.hashtags" class="card">
 						<app-item-card [item]="item"></app-item-card>
@@ -95,7 +95,7 @@
 
 				<!-- hashtag -->
 				<div *ngSwitchCase="3">
-					<h3>Hashtag {{searchQuery ? ': #'+searchQuery : '' }}</h3>
+					<h3>Hashtag{{searchQuery ? ': #'+searchQuery : '' }}</h3>
 					<div class="card-container">
 						<ng-container *ngIf="s.hashtags && s.hashtags.length else noHashtags">
 							<div *ngFor="let item of s.hashtags" class="card">

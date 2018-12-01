@@ -34,8 +34,6 @@ export class User extends ExtensibleModel {
 	gender: string;         // optional
 	dateofbirth: Date;
 
-	// created_at: Date;
-	// updated_at: Date;
 	profileImgUrl: string;
 	privateMode: boolean;
 
@@ -43,10 +41,6 @@ export class User extends ExtensibleModel {
 	itemsAvailable: Array<Item>;
 
 	jwt: JWT;
-
-	// dob: Date;
-	// dobReadable: string;
-
 
 	/**
 	 * Instantiate a User object, optionally providing an object with attributes required for 
@@ -140,8 +134,6 @@ export class Item extends ExtensibleModel {
 
 	user: User;				// owner
 
-	// created_at: Date;
-	// updated_at: Date;
 	age: string;
 	total_hits: number;
 	hits_1week: number;
@@ -153,10 +145,6 @@ export class Item extends ExtensibleModel {
 		// if the object has a 'user' property, create an instance of user
 		if ( attribs && attribs['user'] )
 			this.createUserInstance ( attribs['user'] );
-
-		// create age string if updated_at is present
-		// if ( this.updated_at )
-		// 	this.age = timeDelta(this.updated_at);
 
 		// if requests array is present
 		if ( this.requests ) {
@@ -204,11 +192,10 @@ export class Loan extends ExtensibleModel {
 	user_id:	number;
 	item_id:	number;
 
-	// created_at:	Date;
-	// updated_at: Date;
 	duedate:	Date;
 	age:		string;
 	timeToDue:	string;
+	date_of_return: Date;
 
 	constructor ( attribs?: object ) {
 		super(attribs);

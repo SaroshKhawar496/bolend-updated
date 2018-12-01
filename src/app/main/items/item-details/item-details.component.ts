@@ -3,7 +3,7 @@ import { HttpService, Model } from 'src/app/http.service';
 import { AlertService } from 'src/app/utils/alert/alert.service';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Item, User } from 'src/app/_models/models';
+import { Item, User, Loan } from 'src/app/_models/models';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RequestService } from '../request.service';
 
@@ -56,7 +56,7 @@ export class ItemDetailsComponent implements OnInit {
 		this.http.getObservable ( path ).subscribe (
 			data => {
 				this.item = new Item(data);
-				console.log ( 'loadItem', this.item, id==data['id'] );
+				console.log ( 'loadItem', this.item, id==data['id'], this.item.loan.date_of_return );
 			},
 			(err: HttpErrorResponse) => 
 				this.http.genericModelErrorHandler(err, Model.Item)
@@ -150,6 +150,7 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 
+	/** Navigate back the the main item details view */
 	returnToItemDetails ( reload: boolean = false ) {
 		this.router.navigate ([]);
 		if ( reload ) {
@@ -159,10 +160,24 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 
+	/** Redirect to search page and enter the search string */
 	searchHashtag ( hashtag: string ) {
 		let path: string[] = ['/search'];
 		let qparams: NavigationExtras = { queryParams: {q: hashtag} };
 		this.router.navigate ( path, qparams );
+	}
+
+
+	/** Item owner: mark item as returned. */
+	markAsReturned ( loan: Loan ) : void {
+		let path: string = `/loans/mark_as_returned`;
+		let payload: object = { id: loan.id };
+		this.http.postObservable ( path, payload ).subscribe (
+			res => {
+				this.alert.success ( "You've successfully marked the item as returned!" )
+			},
+			err => this.http.genericModelErrorHandler(err),
+		)
 	}
 
 }
