@@ -33,6 +33,7 @@ class FriendshipsController < ApplicationController
 			# set status success or not
 		else
 			@user.friend_request(@friend)
+			Notification.create(recipient: @friend, sender: @user, action: "new_friend_request", notifiable_object: @user)
 			render json:
 			{
 				"message": "Request sent successfully",
@@ -60,6 +61,7 @@ class FriendshipsController < ApplicationController
 		requestedFriends = @user.requested_friends
 		if requestedFriends.include? @friend
 			@user.accept_request(@friend)
+			Notification.create(recipient: @friend, sender: @user, action: "accepted_friend_request", notifiable_object: @friend)
 			render json:
 			{
 				"message": "Congratulations, you are now friends with #{@friend.fname} #{@friend.lname}!",
