@@ -5,7 +5,9 @@
   <br><br>
   Click on the link below to see:
   <br>
-  <a href="https://sheltered-reaches-72765.herokuapp.com/app/item/<%=@item.id%>">See The Request</a>
+  <%item = @item.id.to_s%>
+  <!-- <a href="https://sheltered-reaches-72765.herokuapp.com/app/item/<%=@item.id%>">See The Request</a> -->
+  <p><%= link_to 'See The Request', ENV["PRODUCTION_HOST"]+"/app/item/"+item %></p>
 
   <!-- <a href = "http://localhost:3000/api/items/<%=@item.id%>">See The Request</a> -->
 </p>
