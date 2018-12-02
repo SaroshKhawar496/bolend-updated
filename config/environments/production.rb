@@ -95,9 +95,13 @@ Rails.application.configure do
 
 
   # Adding Email Config
-  config.action_mailer.default_url_options = { :host => 'sheltered-reaches-72765.herokuapp.com' }
+  # config.action_mailer.default_url_options = { :host => 'sheltered-reaches-72765.herokuapp.com' }
+  config.action_mailer.default_url_options = { 
+    :host => ENV["PRODUCTION_HOST"],
+    :protocol => 'https'
+  }
 
-  Rails.application.routes.default_url_options[:host] = 'sheltered-reaches-72765.herokuapp.com'
+  Rails.application.routes.default_url_options[:host] = ENV["PRODUCTION_HOST"]
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true

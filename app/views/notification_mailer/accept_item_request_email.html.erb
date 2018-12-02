@@ -5,7 +5,5 @@
   <br><br>
   Click on the link below to see:
   <br>
-  <a href="https://sheltered-reaches-72765.herokuapp.com/app/notifications>">See The Loan</a>
-
-  <!-- <a href = "http://localhost:3000/api/loans/<%=@loan.id%>">See The Loan</a> -->
+  <p><%= link_to 'See The Loan', ENV["PRODUCTION_HOST"]+"/app/notifications" %></p>
 </p>
