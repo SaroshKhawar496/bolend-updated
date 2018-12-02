@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
 	currentUser: User;
 	you: boolean = false;
+	youPublic: boolean = false;	// is this your public profile?
 	paramSub: Subscription;
 	defaultMaxAvailableItems:	number = 666;
 	defaultMaxBorrowedItems:	number = 666;
@@ -65,7 +66,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 		this.currentUser = new User(data);
 
 		// determine if this user is you
-		// this.you = (this.currentUser.id == this.http.getCurrentUser().id);
+		this.youPublic = (this.currentUser.id == this.http.getCurrentUser().id);
 
 		// determine the string for "Member since" status
 		if ( this.currentUser.created_at )
