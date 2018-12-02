@@ -18,12 +18,21 @@ class FriendshipsController < ApplicationController
 		@users = User.all
 		friends = @user.friends
 		pendingFriends = @user.pending_friends
+		requestedFriends = @user.requested_friends
 		if friends.include? @friend
 			render json:
 			{
 				"message": "You are already friends with this user",
 				"success": false
 			}
+		elsif requestedFriends.include? @friend
+			@user.accept_request(@friend)
+			Notification.create(recipient: @friend, sender: @user, action: "accepted_friend_request", notifiable_object: @friend)
+			render json:
+			{
+				"message": "#{@friend.fname} #{@friend.lname} had already sent you a Request, you are now friends!",
+				"success": true
+			}			
 		elsif pendingFriends.include? @friend
 			render json:
 			{
