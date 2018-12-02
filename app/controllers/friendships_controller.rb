@@ -12,6 +12,7 @@ class FriendshipsController < ApplicationController
 			}
 			return # game over , user does not exist
 		end
+
 		# friend user should not be in the pending collection
 		@friend = User.find(params[:user_id])
 		@user = User.find(current_user.id)
@@ -19,7 +20,13 @@ class FriendshipsController < ApplicationController
 		friends = @user.friends
 		pendingFriends = @user.pending_friends
 		requestedFriends = @user.requested_friends
-		if friends.include? @friend
+		if current_user.id == params[:user_id]
+			render json:
+			{
+				"message": "Cannot add yourself as a friend",
+				"success": false
+			}
+		elsif friends.include? @friend
 			render json:
 			{
 				"message": "You are already friends with this user",
