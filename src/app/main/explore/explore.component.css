@@ -72,10 +72,12 @@
 *********************************************/
 .explore-results-container {
     padding: 1.5em;
+    justify-content: center;
 }
 
 .tags-container {
     margin: 0.5em 0;
+    justify-content: center;
 }
 
 .hashtag {
