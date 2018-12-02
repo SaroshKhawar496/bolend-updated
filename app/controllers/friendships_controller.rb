@@ -295,7 +295,7 @@ class FriendshipsController < ApplicationController
 			return
 		end
 		
-		@friends = results.page(page).per(per_page(1))
+		@friends = results.page(page).per(per_page)
 		@per_page = per_page.to_i
 	end
 

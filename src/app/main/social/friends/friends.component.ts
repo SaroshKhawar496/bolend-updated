@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService, Model } from 'src/app/http.service';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/_models/models';
+import { Pagination } from 'src/app/utils/app-utils';
+import { AlertService } from 'src/app/utils/alert/alert.service';
+import { HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -19,6 +22,7 @@ export class FriendsComponent implements OnInit, OnDestroy {
 		protected route: ActivatedRoute,
 		protected http: HttpService,
 		protected router: Router,
+		protected alert: AlertService,
 	) { }
 
 	category: string;
@@ -35,6 +39,7 @@ export class FriendsComponent implements OnInit, OnDestroy {
 
 	users: Array<User>;
 	userControls: Array<FriendControls>;
+	pages: Pagination;
 	/**
 	 * Get a list of friends, requests, friends-of-friends
 	 * @param cat 
@@ -50,6 +55,10 @@ export class FriendsComponent implements OnInit, OnDestroy {
 					this.users = data['users'].map( user => {// for each user in the friend array of the response:
 						return new User(user);
 					});
+					if ( data['pages'] ){
+						this.pages = data['pages'];
+						this.pages.path = path;
+					}
 				} else 
 					this.users = [];
 
@@ -78,6 +87,30 @@ export class FriendsComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy() {
 		this.paramSub.unsubscribe();
+	}
+
+
+	loadNextPage(){
+		if ( this.pages && this.pages.path ) {
+			if ( this.pages.page >= this.pages.total_pages ){
+				this.alert.info ("That's all the friends you have. Did you think that you're popular or something?");
+				return;
+			}
+
+			this.pages.page ++;
+			let pageHeaders: HttpHeaders = new HttpHeaders ({
+				'page': this.pages.page.toString(),
+				'perpage': this.pages.perpage.toString() || null,
+			})
+			this.http.getObservable ( this.pages.path, pageHeaders ).subscribe(
+				data => {
+					let userList: object[] = data['users'];
+					this.users = this.users.concat (
+						userList.map ( user => new User(user) )
+					)
+				}
+			)
+		}
 	}
 
 }

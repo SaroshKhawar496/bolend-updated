@@ -9,3 +9,10 @@
     margin: 1em 0;
 }
 
+.load-button {
+    /* font-size: 1.15em; */
+    padding: 1.5em 1em;
+    margin: 1em auto;
+    color: #444;
+    text-align: center;
+}

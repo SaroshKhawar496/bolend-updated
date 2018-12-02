@@ -62,9 +62,9 @@ export class NotificationCardComponent implements OnInit {
 export enum NotificationType {
 	Generic = 0,
 	item_request,
-	friend_request,
+	new_friend_request,
 	accept_item_request,
-	friend_accept,
+	accepted_friend_request,
 }
 
 export interface NotificationCardOptions {

@@ -3,9 +3,9 @@
 	<!-- notification type -->
 	<div [ngSwitch]="n.Type" class="notif-type">
 		<ng-template [ngSwitchCase]="type.item_request">Incoming item request</ng-template>
-		<ng-template [ngSwitchCase]="type.friend_request">Friend request</ng-template>
+		<ng-template [ngSwitchCase]="type.new_friend_request">Friend request</ng-template>
 		<ng-template [ngSwitchCase]="type.accept_item_request">Borrow request accepted</ng-template>
-		<ng-template [ngSwitchCase]="type.friend_accept">Friend request accepted</ng-template>
+		<ng-template [ngSwitchCase]="type.accepted_friend_request">Friend request accepted</ng-template>
 		<ng-template *ngSwitchDefault>Notification</ng-template>
 	</div>
 
@@ -19,9 +19,10 @@
 			<span (click)="navigateToLink(n.Type, n['notifiable_object'])" class="pointer"><strong>item</strong></span>.
 		</ng-template>
 
-		<ng-template [ngSwitchCase]="type.friend_request">
+		<ng-template [ngSwitchCase]="type.new_friend_request">
 			<span (click)="navigateToSender()" class="pointer"><strong>{{n.Sender.fullName}} </strong></span>
-			sent you a friend request.
+			sent you a 
+			<span >friend request</span>.
 		</ng-template>
 
 		<ng-template [ngSwitchCase]="type.accept_item_request">
@@ -30,8 +31,8 @@
 			<strong (click)="navigateToLink(n.Type, n['notifiable_object'])" class="pointer">item</strong>.
 		</ng-template>
 
-		<ng-template [ngSwitchCase]="type.friend_accept">
-			<strong>{{n.Sender.fullName}}</strong> Friend accept
+		<ng-template [ngSwitchCase]="type.accepted_friend_request">
+			<strong>{{n.Sender.fullName}}</strong> accepted your friend request.
 		</ng-template>
 									
 		<ng-template *ngSwitchDefault>

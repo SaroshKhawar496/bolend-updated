@@ -1,5 +1,7 @@
 .notif-type, .notif-time-delta {
     font-size: 0.9em;
+    color: #444;
+    font-style: italic;
 }
 
 .notif-body, .notif-type, .notif-time-delta {
