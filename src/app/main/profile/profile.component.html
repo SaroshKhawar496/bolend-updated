@@ -42,11 +42,11 @@
 			<!-- show these controls only if you -->
 			<ng-container *ngIf="you || youPublic">
 				<!-- edit profile -->
-				<div class="round pointer trans-0-25 white-text gradient-1-stop-2"
+				<!-- <div class="round pointer trans-0-25 white-text gradient-1-stop-2"
 					tooltip="Edit profile" tooltip-position="bottom"
 					(click)="editProfile()">
 					<svg><use href="assets/icons/navbar.svg#i-edit"></use></svg>
-				</div>
+				</div> -->
 
 				<!-- toggle profile private/public -->
 				<ng-container *ngIf="user.private else userPublic">
