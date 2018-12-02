@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
 		}
 
 		// submit authentication request
+		this.alert.info ( "Authenticating..." );
 		let user = this.http.authenticate ( this.username, this.password, this.returnUrl, true );
 	}
 

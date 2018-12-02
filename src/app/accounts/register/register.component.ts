@@ -60,6 +60,7 @@ export class RegisterComponent implements OnInit {
 		// stop here if form is invalid
 		if (this.regForm.invalid) {
 			console.log ( 'submitRegistration: form is invalid!' );
+			this.alert.warning ( "Some form fields are invalid. Please check again." );
 			return;
 		}
 
@@ -70,6 +71,8 @@ export class RegisterComponent implements OnInit {
 			user: this.regForm.value
 		}
 		let fname: string = this.regForm.value.fname;
+
+		this.alert.info ( "Creating your account..." );
 
 		// include headers with the request. We will do our own error handling here
 		this.http.postObservable ( registerPath, payload, true ).subscribe(
