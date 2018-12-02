@@ -253,7 +253,8 @@ Continue at your own risk.`
 			return true;
 		} else if ( err.status == 404 ) {
 			console.error ( `No ${type} with this ID exists!`, err.error['exception'] );
-			this.alert.error ( `No ${type} with this ID exists!` );
+			this.alert.error ( `No ${type} with this ID exists!`, true );
+			this.router.navigate (['/404']);
 			return true;
 		} else if (err.status == 403 ){
 			console.error ( `You are not allowed to perform this action.` );
@@ -265,6 +266,11 @@ Continue at your own risk.`
 			return true;
 		} else				// if none of the above have handled the error, return false
 			return false;
+	}
+
+	/** Use on 404 */
+	notFoundRedirect () {
+
 	}
 }
 

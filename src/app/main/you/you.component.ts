@@ -30,7 +30,8 @@ export class YouComponent extends ProfileComponent {
 
 	ngOnInit() {
 		// load default, empty user
-		this.currentUser = this.http.getCurrentUser();
+		this.you = true;
+		this.currentUser = new User;
 
 		this.loadYou();
 		this.loadRequests();

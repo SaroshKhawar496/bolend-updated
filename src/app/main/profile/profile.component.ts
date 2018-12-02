@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
 	ngOnInit () {
 		// load a default, empty user
-		this.currentUser = this.http.getCurrentUser();
+		this.currentUser = new User;
 
 		// subscribe to changes in url params
 		this.paramSub = this.route.params.subscribe (

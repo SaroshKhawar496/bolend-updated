@@ -1,0 +1,8 @@
+img.pepe {
+	max-width: 50vw;
+	max-height: 35vh;
+	object-fit: fill;
+	/* border-radius: 50%; */
+	box-shadow: 0 0 5px 1px #bbb;
+	margin: 0.5em;
+}

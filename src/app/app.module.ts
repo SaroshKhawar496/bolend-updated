@@ -50,6 +50,7 @@ import {
 	ExploreTrendingComponent,
 	ExploreFriendsItemsComponent,
 } from './main/explore/explore-generic/explore-generic.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 // etc
@@ -147,7 +148,13 @@ const appRoutes = [
 	},
 
 	// profile page of currently authenticated user
-	{ path: 'you', component: YouComponent, canActivate: [AuthGuard] }
+	{ path: 'you', component: YouComponent, canActivate: [AuthGuard] },
+
+	// 404 not found
+	{ path: '404', component: NotFoundComponent },
+
+	// default - redirect to homepage if nothing matches
+	{ path: '**', redirectTo: '404' },
 ];
 
 
@@ -183,6 +190,7 @@ const appRoutes = [
 		ExploreNewComponent,
 		ExploreTrendingComponent,
 		ExploreFriendsItemsComponent,
+		NotFoundComponent,
 	],
 	imports: [
 		BrowserModule,
