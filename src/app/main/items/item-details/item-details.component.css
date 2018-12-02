@@ -3,6 +3,7 @@
 	max-width: 48em;
 	min-height: inherit;
 	transition: 0.25s all ease-in-out;
+	align-items: flex-start;
 }
 .detail-container.flex-column {
 	flex-direction: column;
@@ -22,6 +23,7 @@
 
 .detail-card {
 	flex-grow: 0;
+	margin: 0 auto;
 	padding: 1em;
 }
 

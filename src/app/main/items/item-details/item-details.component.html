@@ -3,11 +3,10 @@
 	
 	<!-- item details -->
 	<div *ngIf="item" class="detail-card ">
-		<!-- <pre>{{item | json}}</pre> -->
 
 		<!-- cover photo/gallery carousel -->
 		<div *ngIf="item.image" class="item-img-container fade-in">
-			<img [src]="item.image">
+			<img class="item-image" [src]="item.image">
 		</div>
 
 		<!-- title card + user details -->
