@@ -134,6 +134,7 @@ export class HttpService {
 	 */
 	public logout ( redirect: boolean = true ) : void {
 		localStorage.removeItem ( HttpService.lsTokenKey );
+		this.currentUser = new User;		// reset currentUser
 		let state: RouterStateSnapshot = this.router.routerState.snapshot;
 		if ( redirect )
 			this.router.navigate(['/accounts/login'], { queryParams: { returnUrl: state.url }});
