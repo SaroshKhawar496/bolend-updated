@@ -10,3 +10,10 @@
 h2 {
     margin: 0.5em;
 }
+
+.load-button {
+    /* font-size: 1.15em; */
+    padding: 1.5em 1em;
+    margin: 1em 0;
+    color: #444;
+}

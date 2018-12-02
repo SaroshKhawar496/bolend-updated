@@ -1,12 +1,16 @@
 <div class="full-body-height pad-1em scale-fontsize border-box">
 	<h2>Notifications</h2>
 	
-	<div *ngIf="notifications && n" class="notifications-container unread-notifications">
+	<div *ngIf="n && n.length" class="notifications-container unread-notifications">
 		<ng-container *ngFor="let notif of n" >
 			<div *ngIf="notif.notifiable_object" class="notification-card-container pad-1em">
 				<app-notification-card [notification]="notif"></app-notification-card>
 			</div>
 		</ng-container>
+
+		<div (click)="loadNextPage()" class="load-button pointer">
+			Load more notifications
+		</div>
 	</div>
 
 </div>

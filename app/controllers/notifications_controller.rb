@@ -1,7 +1,11 @@
 class NotificationsController < ApplicationController
    
 	def index
-    @notifications = Notification.where(recipient: current_user)
+    @notifications = Notification.where(recipient: current_user).order(id: :desc)
+
+    # paginate notifications
+    @notifications = @notifications.page(page).per(per_page(30))
+    @per_page = per_page.to_i
 	end
 
   def mark_as_read
