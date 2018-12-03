@@ -150,6 +150,7 @@
 
 		<!-- requested -->
 		<ng-container *ngIf="+qparams.requested">
+			<ng-container *ngIf="requestSubmitted else requestInput">
 			<!-- animated send svg -->
 			<svg id="SEND" class="animated-svg"><use href="assets/icons/navbar.svg#i-send"></use></svg>
 			<div>
@@ -163,6 +164,13 @@
 				<button class="nofill" (click)="returnToItemDetails()">Back to Item</button>
 				<a routerLink="/"><button class="nofill">Home</button></a>
 			</div>
+			</ng-container>
+
+			<ng-template #requestInput>
+				<h3>How many days would you like to request this item?</h3>
+				<input type="number" [(ngModel)]="requestLength" />
+				<button (click)="submitItemRequest()" class="nofill">Send request</button>
+			</ng-template>
 		</ng-container>
 
 

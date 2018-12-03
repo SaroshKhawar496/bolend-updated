@@ -64,24 +64,36 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 
+	requestLength: string = "7";
+	requestSubmitted: boolean = false;
 	/**
 	 * Submit a request to borrow an item
 	 */
 	requestItem () : void {
-		this.alert.info ( "Requesting this item..." );
-		this.request.requestItem ( +this.item.id ).subscribe (
+		// first, redirect to a splash page and ask user to enter how many days they'd like to borrow the item
+		let extras: NavigationExtras = {
+			queryParams: { requested: 1 }
+		}
+		this.router.navigate ([], extras );
+	}
+
+	submitItemRequest () {
+		// extract an integer from the string
+		let requestDays: number = +this.requestLength;
+		if ( !requestDays ){
+			this.alert.warning ( "Please stop being an idiot and enter a number." );
+			return;
+		}
+
+		this.alert.info ( `Requesting this item for ${requestDays} days` );
+		this.request.requestItem ( +this.item.id, requestDays ).subscribe (
 			res => {
 				console.log ('requestItem', res);
-
-				// 'navigate' to add queryparam 'requested=1'
-				let extras: NavigationExtras = {
-					queryParams: { requested: 1 }
-				}
-				this.router.navigate ([], extras );
+				this.alert.clear();
+				this.requestSubmitted = true;
 			},
 			(err: HttpErrorResponse) =>
 				this.handleHttpError (err)
-				// this.http.genericModelErrorHandler(err, Model.Item)
 		)
 	}
 

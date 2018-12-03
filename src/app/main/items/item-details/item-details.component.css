@@ -55,7 +55,7 @@
 	color: #444;
 	stroke-width: 2px;
 }
-
+h3 { font-weight: 400;}
 
 
 /***** body *****/
@@ -152,4 +152,17 @@ hr.short-divider {
 
 .request-card + .request-card {
 	border-top: 1px solid #bbb;
+}
+
+
+/* request days input */
+.requested-splash input {
+	margin: 1em;
+	background: none;
+	padding: 0.5em;
+	border: none;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+	font-size: 1.5em;
+	width: 4em;
 }
