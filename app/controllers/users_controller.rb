@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
 
   def you
-    @user = User.find(current_user.id)
+    @user = User.includes(:loans).find(current_user.id)
     @privilege = true
     render :show
   end

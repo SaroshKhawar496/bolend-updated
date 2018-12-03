@@ -74,7 +74,7 @@ class ItemsController < ApplicationController
   # show the most recently updated items first
   def index_new
     @items = Item.includes([:user, :loan, :borrower]).all.order(updated_at: :desc)
-    @items = Item.most_hit
+    # @items = Item.most_hit
     @items = @items.select { |item| privilege(item.user_id) }
     @items = Kaminari.paginate_array(@items)
 
