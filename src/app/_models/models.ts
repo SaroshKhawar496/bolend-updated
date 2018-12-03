@@ -186,6 +186,7 @@ export class ItemRequest extends ExtensibleModel {
 	requesting_user?: User;
 	request_status: string;
 	item?: Item;
+	days: number;
 
 	constructor (attribs) {
 		super(attribs);

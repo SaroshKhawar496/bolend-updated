@@ -7,7 +7,8 @@
 				<strong (click)="navigateToUser(req.requesting_user.id)" class="pointer">
 					{{req.requesting_user.fullName || req.requesting_user.fname || 'Anon'}} 
 				</strong> 
-				is requesting {{ opt.link ? 'an' : 'this' }} item.
+				is requesting {{ opt.link ? 'an' : 'this' }} item
+				{{req.days ? " for " + req.days + " days" : ''}}.
 			</p>
 			<p *ngIf="req.age" class="age-string">
 				<svg class="inline"><use href="assets/icons/navbar.svg#i-clock"></use></svg>&nbsp;
