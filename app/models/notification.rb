@@ -2,6 +2,8 @@ class Notification < ApplicationRecord
 
   #Sending the Notification Email 
   after_save :send_email
+  # before_save :check_it
+
 
   belongs_to :recipient, class_name: "User"
   belongs_to :sender, class_name: "User"
@@ -10,6 +12,9 @@ class Notification < ApplicationRecord
 
   scope :unread, ->{ where(read_at: nil)}
 
+  # def check_it
+  #   puts("GOING TO SAVE THE NOTIFICATION")
+  # end
 
   #Email funciton
   def send_email
@@ -18,17 +23,17 @@ class Notification < ApplicationRecord
   		
   		# NotificationMailer.item_request_email(recepient_user).deliver
 
-  		recepient_user = User.find_by_id(self[:recipient_id])
-	    sending_user = User.find_by_id(self[:sender_id])
-	    
-	    request_id = (self[:notifiable_object_id])
-	    item = Item.find( (Request.find(request_id)).item_id );
-	    
-	    params = []
-	    params = Array.new
-	    params.push << recepient_user
-	    params.push << sending_user
-	    params.push << item
+  	 recepient_user = User.find_by_id(self[:recipient_id])
+     sending_user = User.find_by_id(self[:sender_id])
+
+     request_id = (self[:notifiable_object_id])
+     item = Item.find( (Request.find(request_id)).item_id );
+
+     params = []
+     params = Array.new
+     params.push << recepient_user
+     params.push << sending_user
+     params.push << item
 
 	    # puts("Requested Item is #{item.name}")
   		# NotificationMailer.item_request_email(recepient_user,sending_user,item_name).deliver
@@ -54,8 +59,32 @@ class Notification < ApplicationRecord
 
       NotificationMailer.accept_item_request_email(params).deliver
 
-  	   
-  	end
+
+      # For the FriendShips ************ DO these **********8
+    elsif (self[:action] == "accepted_friend_request")
+      
+    elsif (self[:action] == "new_friend_request")
+      
+      
+      # Forr the Reminders
+    elsif (self[:action] == "item_2d_overdue")
+      # puts("ITEM DUE TOMORROW. Here in Notification.rb file")
+
+    elsif (self[:action] == "item_1d_overdue")
+      # puts("ITEM DUE TOMORROW. Here in Notification.rb file")
+
+    elsif (self[:action] == "item_due_today")
+      # puts("ITEM DUE TOMORROW. Here in Notification.rb file")
+
+    elsif (self[:action] == "item_due_tomorrow")
+      # puts("ITEM DUE TOMORROW. Here in Notification.rb file")
+
+    elsif (self[:action] == "item_due_dayAfterTomorrow")
+      # puts("ITEM DUE TOMORROW. Here in Notification.rb file")
+
+
+
+    end
 
   end
 
