@@ -12,7 +12,7 @@
 	/* grid */
 	display: grid;
 	/* grid-template-columns: [left-bar] 256px [left-bar-end body1] 1fr [body1-end body2] 1fr [body2-end]; */
-	grid-template-columns: [left-bar] 16em [left-bar-end body1] 1fr [body1-end];
+	grid-template-columns: [left-bar] auto [left-bar-end body1] 1fr [body1-end];
 	grid-template-rows: auto;
 	grid-gap: 1em;
 
@@ -64,7 +64,7 @@ hr.divider {
 * Grid items
 **************************************************************/
 .grid-header { grid-area: header; }
-.grid-profile { grid-area: profile; }
+.grid-profile { grid-area: profile; max-width: 16em; }
 .grid-box1 { grid-area: box1; }
 .grid-box2 { grid-area: box2; }
 .grid-box3 { grid-area: box3; }
@@ -94,7 +94,10 @@ table.profile {
 	margin: 1em auto;
 	border: none;
 	border-spacing: 1em 0.25em;
+	width: 100%;
+	max-width: inherit;
 }
+table.profile tr { max-width: 16em; width: 100%; }
 .profile td.label {
 	font-weight: 600;
 	text-align: right;

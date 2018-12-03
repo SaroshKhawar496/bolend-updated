@@ -156,7 +156,7 @@ export const FriendTabs: {
 		controls: [ FriendControls.profile, FriendControls.block ]
 	},
 	discover: { 
-		title: 'Make Friends', 
+		title: 'Mutual Friends', 
 		apiRoute: 'mutual',
 		controls: [ FriendControls.request, FriendControls.hide ]
 	},
