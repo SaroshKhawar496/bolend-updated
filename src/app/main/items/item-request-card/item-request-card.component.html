@@ -30,7 +30,7 @@
 		<!-- incoming request controls -->
 		<ng-container *ngIf="!(opt.outgoing) else outgoingCtrls">
 			<!-- accept request -->
-			<div (click)="acceptRequest(request.id)" 
+			<div (click)="acceptRequest(request.id, request )" 
 				tooltip="Accept request" tooltip-position="bottom"
 				class="gradient-1-stop-2 round white-text trans-0-25 pointer">
 				<svg><use href="assets/icons/navbar.svg#i-checkmark"></use></svg>

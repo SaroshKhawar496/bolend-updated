@@ -50,13 +50,13 @@ export class ItemRequestCardComponent implements OnInit {
 	 * Accept an incoming item request with the specified request id
 	 * @param id request id; NOT the item id
 	 */
-	acceptRequest ( id: number | string ) : void {
+	acceptRequest ( id: number | string, req: ItemRequest ) : void {
 		this.rs.acceptItemRequest (id).subscribe(
 			res => {
 				this.alert.success('Request accepted! Item is loaned out!');
 				// 'navigate' to add queryparam 'loaned=1'
 				let extras: NavigationExtras = {
-					queryParams: { loaned: 1 }
+					queryParams: { loaned: 1, userId: req.requesting_user.id }
 				}
 				this.router.navigate ([], extras );
 			},

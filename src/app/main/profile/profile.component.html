@@ -20,6 +20,10 @@
 			<tr *ngIf="user.phone"><td class="label">phone</td><td class="data">{{user.phone}}</td></tr>
 			<tr *ngIf="user.address"><td class="label">address</td><td class="data">{{user.address}}</td></tr>
 			<tr *ngIf="user.gender"><td class="label">gender</td><td class="data">{{user.gender}}</td></tr>
+			<tr *ngIf="user.private">
+				<td class="label"><svg class="inline"><use href="assets/icons/navbar.svg#i-lock"></use></svg></td>
+				<td class="data">Private profile</td>
+			</tr>
 			<tr *ngIf="user.friend">
 				<td class="label">
 					<svg class="inline"><use href="assets/icons/navbar.svg#i-heart"></use></svg>
@@ -117,7 +121,7 @@
 
 
 	<!-- item requests -->
-	<div *ngIf="you" class="grid-box3">
+	<div *ngIf="you" class="grid-box3 fade-in delay-0-4">
 		<h3 class="box-title">Pending Requests</h3>
 		
 		<!-- incoming requests -->

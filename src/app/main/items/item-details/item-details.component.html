@@ -180,12 +180,13 @@
 			<div>
 				<h2 class="fade-in-up delay-0-2">Item Loaned Out!</h2>
 				<p class="fade-in-up delay-0-4">
-					You've successfully loaned out <strong>{{item ? item.name : 'this item'}}</strong>!
+					You've successfully loaned out <strong>{{item ? item.name : 'this item'}}</strong>!  
+					It's time to get in touch with the borrower!
 				</p>
 			</div>
 			<div class="control-container fade-in-up delay-0-6">
 				<button class="nofill" (click)="returnToItemDetails(true)">Back to Item</button>
-				<a routerLink="/"><button class="nofill">Home</button></a>
+				<button (click)="navigateToOwnerProfile(qparams.userId || null)" class="nofill">Borrower profile</button>
 			</div>
 		</ng-container>
 
