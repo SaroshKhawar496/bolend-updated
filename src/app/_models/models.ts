@@ -179,7 +179,6 @@ export class Item extends ExtensibleModel {
 		// if item url is available, make sure it is using https:// if in production
 		if ( this.image && environment.forceImgHttps && this.image.startsWith('http://') ){
 			this.image = this.image.replace('http://', 'https://');
-			console.log ( 'imgurl', this.image );
 		}
 	}
 

@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { AlertService } from 'src/app/utils/alert/alert.service';
 import { Pagination } from 'src/app/utils/app-utils';
+import { Item, User } from 'src/app/_models/models';
+import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 
 
 @Component({
@@ -125,8 +127,18 @@ export class SearchComponent implements OnInit, OnDestroy {
 		// save results; if concat is true, then concatenate instead of replace current results
 		if ( type == "hashtags" )		// special treatment for hashtag results
 			this.searchResults[type] = res['items_with_hashtag'];
-		else
-			this.searchResults[type] = concat ? this.searchResults[type].concat(res[type]) : res[type] ;
+		else {
+			let resArr: any[] = res[type];
+			switch ( type ) {
+				case 'items':
+					resArr = resArr.map ( input => new Item(input) );
+					break;
+				case 'users':
+					resArr = resArr.map ( input => new User(input) );
+					break;
+			}
+			this.searchResults[type] = concat ? this.searchResults[type].concat(resArr) : resArr ;
+		}
 
 		// check if pagination is enabled; if so, save pagination info
 		if ( res['pages'] )
