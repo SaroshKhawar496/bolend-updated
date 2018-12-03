@@ -11,6 +11,7 @@ import { AlertService } from './utils/alert/alert.service';
 import { Consts } from './_models/consts';
 
 
+declare var window: any;
 
 @Injectable({
 	providedIn: 'root'
@@ -23,7 +24,8 @@ export class HttpService {
 		private alert: AlertService,
 	) {}
 
-	private baseUrl: string = environment.baseUrl;
+	// private baseUrl: string = environment.baseUrl;
+	private baseUrl: string = window.location.origin + '/api';
 	private authPath: string = "/accounts/sign_in";
 	private currentUser: User = new User;
 	public static lsTokenKey: string = 'currentUser';			// access the JWT in localStorage with this key
