@@ -15,12 +15,13 @@
 # end
 
 json.incoming_requests @incoming_requests do |request|
-  json.id request.id      # request id
-  json.created_at request.created_at
-  json.updated_at request.updated_at
-  json.request_status request.status
-  json.days request.days
-  json.user_id request.user_id
+  # json.id request.id      # request id
+  # json.created_at request.created_at
+  # json.updated_at request.updated_at
+  # json.request_status request.status
+  # json.days request.days
+  # json.user_id request.user_id
+  json.partial! "requests/request", locals: { request: request }
   json.item do |item|
     json.id request.item_id
     json.name item.name
@@ -30,13 +31,14 @@ json.incoming_requests @incoming_requests do |request|
 end
 
 json.outgoing_requests @user.requests do |request|
-  json.id request.id      # request id
-  json.created_at request.created_at
-  json.updated_at request.updated_at
-  json.request_status request.status
-  json.days request.days
-  json.user_id request.user_id
+  # json.id request.id      # request id
+  # json.created_at request.created_at
+  # json.updated_at request.updated_at
+  # json.request_status request.status
+  # json.days request.days
+  # json.user_id request.user_id
   json.item_id request.item_id
+  json.partial! "requests/request", locals: { request: request }
 
   json.requesting_user request.user
   json.item request.item

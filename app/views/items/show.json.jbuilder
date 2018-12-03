@@ -7,11 +7,12 @@ json.user @item.user
 if @item.user_id == current_user.id
   if @item.requests.present?
     json.requests @item.requests do |request|
-      json.id request.id
+      json.partial! "requests/request", locals: { request: request }
+      # json.id request.id
       json.requesting_user request.user
-      json.request_status request.status
-      json.created_at request.created_at
-      json.updated_at	request.updated_at
+      # json.request_status request.status
+      # json.created_at request.created_at
+      # json.updated_at	request.updated_at
     end
   end
 end
