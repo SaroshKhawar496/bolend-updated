@@ -1,4 +1,5 @@
 import { timeDelta } from "../utils/app-utils";
+import { environment } from "src/environments/environment";
 
 
 export class ExtensibleModel {
@@ -175,9 +176,11 @@ export class Item extends ExtensibleModel {
 		if ( this.tags )
 			this.tagArray = this.tags.match(/\B(\#[\w]+\b)/g);
 
-		// if item url is available, make sure it is using https://
-		if ( this.image && this.image.startsWith('http://') )
-			this.image.replace('http://', 'https://');
+		// if item url is available, make sure it is using https:// if in production
+		if ( this.image && environment.forceImgHttps && this.image.startsWith('http://') ){
+			this.image = this.image.replace('http://', 'https://');
+			console.log ( 'imgurl', this.image );
+		}
 	}
 
 	createUserInstance ( userData: object ) {

@@ -6,7 +6,7 @@ export const environment = {
 	production: false,
 	// baseUrl: 'https://www.444chan.com',
 	baseUrl: 'http://localhost:3000/api',
-	
+	forceImgHttps: false,
 
 
 
