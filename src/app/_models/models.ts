@@ -174,6 +174,10 @@ export class Item extends ExtensibleModel {
 		// if tags string is present
 		if ( this.tags )
 			this.tagArray = this.tags.match(/\B(\#[\w]+\b)/g);
+
+		// if item url is available, make sure it is using https://
+		if ( this.image && this.image.startsWith('http://') )
+			this.image.replace('http://', 'https://');
 	}
 
 	createUserInstance ( userData: object ) {
