@@ -1,0 +1,9 @@
+<h3>444Chan by BoLend</h3>
+<p>
+  Hi <%= @recipientUser.fname.capitalize %>,
+  <%= @senderUser.fname.capitalize%> will needs his <%= @item.name.capitalize %> back by tomorrow. 
+  <br><br>
+  	If you have already returned this item, please contact the owner to acknowledge the return.
+  <br>
+  <p><%= link_to 'Login Into Application', ENV["PRODUCTION_HOST"]+"/app" %></p>
+</p>

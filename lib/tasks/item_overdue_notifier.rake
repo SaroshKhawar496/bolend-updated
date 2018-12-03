@@ -47,20 +47,19 @@ namespace :csc444 do
 			case rounded_off_days_difference
 			when -2
 				puts ("item is 2 days overdue")
-				Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_2d_overdue", notifiable_object: loaned_item)
+				Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_2d_overdue", notifiable_object: loaned)
 			when -1
-				Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_1d_overdue", notifiable_object: loaned_item)
+				Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_1d_overdue", notifiable_object: loaned)
 				puts ("item is 1 day overdue")
 			when 0
-				Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_due_today", notifiable_object: loaned_item)
+				Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_due_today", notifiable_object: loaned)
 				puts("item is due today")
 			when 1
-				Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_due_tomorrow", notifiable_object: loaned_item)
+				Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_due_tomorrow", notifiable_object: loaned)
 				puts("Item due tomorrow")
-				# set the notifiable object! nil right now************************
-				# Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_due_tom", notifiable_object: nil)
+				
 			when 2
-				Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_due_dayAfterTomorrow", notifiable_object: loaned_item)
+				Notification.create(recipient: notif_recipient, sender: sender_user, action: "item_due_dayAfterTomorrow", notifiable_object: loaned)
 				puts("Item due day after tomorrow")
 			end
 
