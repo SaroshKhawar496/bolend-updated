@@ -126,7 +126,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 	handleSearchResults ( res: object, type: string, concat:boolean=false ) : object {
 		// save results; if concat is true, then concatenate instead of replace current results
 		if ( type == "hashtags" )		// special treatment for hashtag results
-			this.searchResults[type] = res['items_with_hashtag'];
+			this.searchResults[type] = res['items_with_hashtag'].map ( input => new Item(input) );
 		else {
 			let resArr: any[] = res[type];
 			switch ( type ) {
