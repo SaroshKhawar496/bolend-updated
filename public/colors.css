@@ -1,0 +1,96 @@
+/*****************************************************
+**** Backgrounds
+******************************************************/
+.gradient-0 {
+	color: #fff;
+	background: #8a2387; /* fallback for old browsers */
+	background: -webkit-linear-gradient(135deg, #8a2387, #e94057, #f27121); 
+	background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
+}
+.gradient-1 {
+	background: #8E0E00;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(45deg, #6701bb, #c74028);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(45deg, #6701bb, #c74028); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+
+/*****************************************************
+**** Homepage: gradient stops
+******************************************************/
+.gradient-0-stop-0 {
+    background-color: #8a2387;
+}
+.gradient-0-stop-0:hover { background-color: #72116e; }
+.gradient-0-stop-1 {
+    background-color: #e94057;
+}
+.gradient-0-stop-1:hover { background-color: #DB142F; }
+.gradient-0-stop-2 {
+    background-color: #f27121;
+}
+.gradient-0-stop-2:hover { background-color: #C75108; }
+
+.gradient-1-stop-0 {
+	background-color: #8c4cb1;
+}
+.gradient-1-stop-0:hover { background-color: #75319D; }
+.gradient-1-stop-1 {
+	background-color: #d8454a;
+}
+.gradient-1-stop-1:hover { background-color: #b82b30; }
+.gradient-1-stop-2 {
+	background-color: #7a941a;
+}
+.gradient-1-stop-2:hover { background-color: #586F03; }
+
+.white-text {
+	color: #fff;
+}
+.white-text::placeholder {
+	color: #bbb;
+}
+
+
+/*****************************************************
+**** Generic control buttons
+******************************************************/
+button.solid {
+	border: 2px solid #fff;
+	background: #fff;
+	color: #e94057;
+}
+button.solid:hover {
+	box-shadow: 0 0 10px 2px #fff;
+	background: #fff;
+}
+
+button.nofill {
+	border: 2px solid #fff;
+	color: #fff;
+	background: none;
+}
+button.nofill:hover {
+	background: #fff;
+	color: #e94057;
+}
+
+
+/*****************************************************
+**** Transitions
+******************************************************/
+.trans-0-25 { transition: 0.25s all ease-in-out; }
+.trans-0-5 	{ transition: 0.5s all ease-in-out; }
+.trans-0-75 { transition: 0.75s all ease-in-out; }
+.trans-1 	{ transition: 1s all ease-in-out; }
+
+
+
+
+/*****************************************************
+**** Font & text colors + styles
+******************************************************/
+.gray-italic {
+	color: #444;
+	font-style: italic;
+}
