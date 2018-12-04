@@ -90,6 +90,11 @@ export class User extends ExtensibleModel {
 
 			this.itemsLoaned = this.loans.filter ( loan => loan.item ).map( loan => loan.item );
 		}
+
+		// if item url is available, make sure it is using https:// if in production
+		if ( this.image && environment.forceImgHttps && this.image.startsWith('http://') ){
+			this.image = this.image.replace('http://', 'https://');
+		}
 	}
 
 	/**
