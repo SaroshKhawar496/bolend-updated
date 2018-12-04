@@ -60,13 +60,7 @@ class Notification < ApplicationRecord
       NotificationMailer.accept_item_request_email(params).deliver
 
 
-      # For the FriendShips ************ DO these **********8
-    elsif (self[:action] == "accepted_friend_request")
-
-    elsif (self[:action] == "new_friend_request")
-
-
-      # Forr the Reminders
+      # For the Reminders
     elsif (self[:action] == "item_2d_overdue")
       # the borrower
       recepient_user = User.find_by_id(self[:recipient_id])
