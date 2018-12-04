@@ -39,6 +39,7 @@ export class NotificationCardComponent implements OnInit {
 			case NotificationType.item_request:
 			case NotificationType.accept_item_request:
 			case NotificationType.item_due_tomorrow:
+			case NotificationType.item_due_today:
 				path = [ '/item', nObj['item_id'] ];
 				break;
 			// case NotificationType.item_due_tomorrow:
@@ -69,6 +70,7 @@ export enum NotificationType {
 	accept_item_request,
 	accepted_friend_request,
 	item_due_tomorrow,
+	item_due_today
 }
 
 export interface NotificationCardOptions {

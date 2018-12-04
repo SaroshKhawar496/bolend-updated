@@ -7,6 +7,7 @@
 		<ng-template [ngSwitchCase]="type.accept_item_request">Borrow request accepted</ng-template>
 		<ng-template [ngSwitchCase]="type.accepted_friend_request">Friend request accepted</ng-template>
 		<ng-template [ngSwitchCase]="type.item_due_tomorrow">Item return reminder</ng-template>
+		<ng-template [ngSwitchCase]="type.item_due_today">Item return reminder</ng-template>
 		<ng-template *ngSwitchDefault>Notification</ng-template>
 	</div>
 
@@ -38,6 +39,10 @@
 
 		<ng-template [ngSwitchCase]="type.item_due_tomorrow">
 			You have an <strong (click)="navigateToLink(n.Type, n['notifiable_object'])">item</strong> that must be returned by tomorrow.
+		</ng-template>
+
+		<ng-template [ngSwitchCase]="type.item_due_today">
+			You have an <strong (click)="navigateToLink(n.Type, n['notifiable_object'])">item</strong> that must be returned today.
 		</ng-template>
 									
 		<ng-template *ngSwitchDefault>
