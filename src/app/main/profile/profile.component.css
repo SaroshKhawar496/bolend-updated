@@ -142,6 +142,19 @@ h4 {
 	height: 100%;
 }
 
+.fileContainer {
+	background: none;
+	cursor: pointer;
+	/* border: 2px solid #eee; */
+	/* padding: 0.5em 1em; */
+	width: 100%;
+	/* transition: all 0.25s ease-in-out; */
+	/* margin: 0.5em 0; */
+
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
 
 /*************************************************************
 * Item section

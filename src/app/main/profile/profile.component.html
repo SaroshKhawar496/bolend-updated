@@ -10,7 +10,7 @@
 	<!-- profile -->
 	<div class="grid-profile fade-in-left delay-0-1">
 		<div style="width: 100%">
-			<img class="profile" [src]="user.profileImgUrl || 'assets/img/pepe.png'">
+			<img class="profile" [src]="imgSrc || user.image || 'assets/img/pepe.png'">
 		</div>
 		<br />
 		<div class="profile full-name">{{user.fname}} {{user.lname}}</div>
@@ -45,12 +45,17 @@
 
 			<!-- show these controls only if you -->
 			<ng-container *ngIf="you || youPublic">
-				<!-- edit profile -->
-				<!-- <div class="round pointer trans-0-25 white-text gradient-1-stop-2"
-					tooltip="Edit profile" tooltip-position="bottom"
-					(click)="editProfile()">
-					<svg><use href="assets/icons/navbar.svg#i-edit"></use></svg>
-				</div> -->
+				<!-- edit profile img -->
+				<div class="round pointer trans-0-25 white-text gradient-1-stop-2"
+					tooltip="Change profile image" tooltip-position="bottom">
+					<svg><use href="assets/icons/navbar.svg#i-camera"></use></svg>
+					<label class="fileContainer" title="Upload a new profile image.">
+						<input #imageInput
+							type="file"
+							accept="image/*"
+							(change)="changeProfileImg(imageInput)">
+					</label>
+				</div>
 
 				<!-- toggle profile private/public -->
 				<ng-container *ngIf="user.private else userPublic">

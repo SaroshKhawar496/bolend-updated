@@ -111,5 +111,30 @@ export class YouComponent extends ProfileComponent {
 	}
 
 
+	/** Allow user  */
+
+	imgSrc: string | ArrayBuffer;		// image binary data in a buffer; can be displayed
+	/** Process an image file input; allow a preview of the image and attach it to payload */
+	changeProfileImg ( input: any ) : void {
+		const file: File = input.files[0];
+		const reader: FileReader = new FileReader();
+		if (file){
+			reader.onload = (e: any) => {
+				this.imgSrc = e.target.result;
+				this.submitProfileImg(this.imgSrc);
+			}
+			reader.readAsDataURL(file);
+		}
+	}
+
+	submitProfileImg ( src: string | ArrayBuffer ) {
+		let path: string = "/users/update_avatar";
+		let payload: object = { base64: src };
+		this.http.postObservable ( path, payload ).subscribe (
+			res => this.alert.success ( "Successfully changed your profile picture! Cute!" ),
+			err => this.http.genericModelErrorHandler(err),
+		)
+	}
+
 	
 }

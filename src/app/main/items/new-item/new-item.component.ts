@@ -58,13 +58,10 @@ export class NewItemComponent implements OnInit {
 
 	/** Process an image file input; allow a preview of the image and attach it to payload */
 	processFile ( input: any ) : void {
-		console.log ( 'processFile', input);
 		const file: File = input.files[0];
 		const reader: FileReader = new FileReader();
 		if (file){
-			console.log ( 'file', file );
 			reader.onload = (e: any) => {
-				console.log ('onload', e);
 				this.imgSrc = e.target.result;
 			}
 			reader.readAsDataURL(file);

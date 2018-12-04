@@ -35,7 +35,7 @@ export class User extends ExtensibleModel {
 	gender: string;         // optional
 	dateofbirth: Date;
 
-	profileImgUrl: string;
+	image: string;
 	privateMode: boolean;
 
 	items: Array<object>;
