@@ -20,12 +20,15 @@ namespace :csc444 do
 
 		for loaned in @current_loans
 			if (loaned.date_of_return == nil)
-				current_time = Time.current
+				current_time = Time.now.utc
 				item_id = loaned.item_id
 				borrower_id = loaned.user_id
 				date_of_return = loaned.duedate.to_s
+
 				# puts("TIme.current: "+ current_time.to_s)
 				# puts("Time.zone.now: "+Time.zone.now.to_s)
+				# puts("Time.utc "+Time.now.utc.to_s)
+
 				puts ("Loaned item_id: #{item_id} | Loaned to User: #{borrower_id} | DueDate: #{date_of_return}")
 				# if (Time.now())
 				# end
