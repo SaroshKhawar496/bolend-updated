@@ -55,15 +55,17 @@ export class RegisterComponent implements OnInit {
 	 * Display alert with error if unsuccessful
 	 */
 	submitRegistration () : void {
-		this.submitted = true;
-
 		// stop here if form is invalid
 		if (this.regForm.invalid) {
 			console.log ( 'submitRegistration: form is invalid!' );
 			this.alert.warning ( "Some form fields are invalid. Please check again." );
+			this.submitted = false
 			return;
 		}
 
+		if ( this.submitted ) return;
+
+		this.submitted = true;
 		this.loading = true;
 
 		let registerPath: string = '/accounts'
@@ -73,6 +75,7 @@ export class RegisterComponent implements OnInit {
 		let fname: string = this.regForm.value.fname;
 
 		this.alert.info ( "Creating your account..." );
+		console.log("Creating your account...");
 
 		// include headers with the request. We will do our own error handling here
 		this.http.postObservable ( registerPath, payload, true ).subscribe(
@@ -97,6 +100,7 @@ export class RegisterComponent implements OnInit {
 			},
 			(err: HttpErrorResponse) => {
 				this.errorHandler ( err );
+				this.submitted = false;
 			}
 		)
 

@@ -90,7 +90,8 @@ export class YouComponent extends ProfileComponent {
 	}
 
 
-	/** Set the privacy setting of your profile
+	/** 
+	 * Set the privacy setting of your profile
 	 * @param setPrivate true = make profile private
 	 */
 	setProfilePrivacy ( setPrivate: boolean ) {
@@ -105,4 +106,6 @@ export class YouComponent extends ProfileComponent {
 		)
 	}
 
+
+	
 }
