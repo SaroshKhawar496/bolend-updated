@@ -84,9 +84,9 @@
 	</div>
 
 
-	<!-- items available -->
+	<!-- All items posted -->
 	<div class="grid-box1  fade-in delay-0-2" *ngIf="user.itemsAvailable">
-		<h3 class="box-title">Items Available</h3>
+		<h3 class="box-title">Items Posted</h3>
 		<div *ngIf="user.itemsAvailable" class="box-content flex card-carousel">
 			<div *ngFor="let item of user.itemsAvailable.slice(0,defaultMaxAvailableItems)" class="item">
 				<app-item-card [item]="item" [owner]="user.userIdentity"></app-item-card>
@@ -112,16 +112,21 @@
 
 
 
-	<!-- activity feed -->
-	<!-- <div class="grid-box3 fade-in delay-0-4">
-		<h3 class="box-title">box3</h3>
+	<!-- items loaned out -->
+	<div class="grid-box3 fade-in delay-0-4" *ngIf="user.itemsLoaned">
+		<h3 class="box-title">Items Loaned Out</h3>
+		<div class="box-content flex card-carousel">
+			<div *ngFor="let item of user.itemsLoaned" class="item">
+				<app-item-card [item]="item" [owner]="user.userIdentity"></app-item-card>
+			</div>
+		</div>
 		<hr class="divider" />
-	</div> -->
+	</div>
 
 
 
 	<!-- item requests -->
-	<div *ngIf="you" class="grid-box3 fade-in delay-0-4">
+	<div *ngIf="you" class="grid-box4 fade-in delay-0-5">
 		<h3 class="box-title">Pending Requests</h3>
 		
 		<!-- incoming requests -->

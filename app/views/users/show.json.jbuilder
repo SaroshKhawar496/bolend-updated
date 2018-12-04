@@ -14,6 +14,18 @@ if privilege(@user.id)
     if !loan.date_of_return.present?
       json.loan loan
       json.partial! "items/item", item: loan.item
+      json.user  loan.item.user           # borrowed item user
+    end
+  end
+
+  # shwo items this user has loaned out
+  json.loaned_out_items @user.items do |item|
+    if item.borrower.present?
+      json.item do
+        json.partial! "items/item", item: item
+      end
+      json.loan item.loan
+      json.borrowing_user item.borrower
     end
   end
 

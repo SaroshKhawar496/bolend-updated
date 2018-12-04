@@ -59,9 +59,9 @@ export class YouComponent extends ProfileComponent {
 
 
 	loadUserDataHandler ( data: object ) : object {
-		console.log ( 'you.loadUserDataHandler', data );
 		super.loadUserDataHandler(data);
 		this.you = true;
+		console.log ( 'you.loadUserDataHandler', this.currentUser );
 		return this.currentUser;
 	}
 

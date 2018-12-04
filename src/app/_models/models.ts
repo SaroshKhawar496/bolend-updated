@@ -41,6 +41,8 @@ export class User extends ExtensibleModel {
 	items: Array<object>;
 	itemsAvailable:	Array<Item>;
 	itemsBorrowed:	Array<Item>;
+	itemsLoaned: Array<Item>;
+	loans: Array<Loan>;
 
 	jwt: JWT;
 
@@ -72,6 +74,21 @@ export class User extends ExtensibleModel {
 				item => new Item(item)
 			);
 			this.itemsBorrowed = borrowedItems;
+		}
+		// parse items loaned out by user
+		if ( attribs && attribs['loaned_out_items'] && Array.isArray(attribs['loaned_out_items']) ) {
+			// this.parseItems ( attribs['loaned_out_items'], 'itemsLoaned' );
+			let rawLoans: object[] = attribs['loaned_out_items'];
+			this.loans = rawLoans.map ( loan => {
+				let attrs: object = {
+					item: loan['item'],
+					// user: loan['borrowing_user'],
+				}
+				attrs = Object.assign ( attrs, loan['loan'] );
+				return new Loan (attrs);
+			});
+
+			this.itemsLoaned = this.loans.filter ( loan => loan.item ).map( loan => loan.item );
 		}
 	}
 
@@ -210,7 +227,9 @@ export class ItemRequest extends ExtensibleModel {
 export class Loan extends ExtensibleModel {
 	id:			number;
 	user_id:	number;
+	user?:		User;
 	item_id:	number;
+	item?:		Item;
 
 	duedate:	Date;
 	age:		string;
@@ -225,6 +244,10 @@ export class Loan extends ExtensibleModel {
 			this.age = timeDelta (this.updated_at);
 		if ( this.duedate )
 			this.timeToDue = timeDelta (this.duedate);
+		if ( this.item )
+			this.item = new Item(this.item);
+		if ( this.user )
+			this.user = new User(this.user);
 	}
 }
 
