@@ -67,6 +67,7 @@ class User < ApplicationRecord
 	has_many :loans, dependent: :destroy
 	has_many :borrowed_items, :through => :loans, :source => :item
 
+  has_one_attached :image # one-to-one relationship
 
 	#notifications association
 	has_many :notifications, foreign_key: :recipient_id

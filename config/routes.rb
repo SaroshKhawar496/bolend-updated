@@ -24,7 +24,11 @@ Rails.application.routes.draw do
 
 
     root "welcome#home"
-    resources :users
+    resources :users do
+      collection do
+        post :update_avatar
+      end
+    end
     
     # post 'friendrequest', to: "friendships#newFriendRequest"
     # post 'addfriend', to: "friendships#acceptFriendRequest"

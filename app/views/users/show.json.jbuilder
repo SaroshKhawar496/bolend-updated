@@ -27,3 +27,4 @@ end
 json.private @user.privateMode
 json.friend @friend
 json.privilege @privilege
+json.image rails_blob_url(@user.image) if @user.image.attached?

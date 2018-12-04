@@ -54,5 +54,31 @@ class UsersController < ApplicationController
 
   end
 
+  def update_avatar
+    # the only user allowed to update items is the owner of the item
+    @user = User.find(current_user.id)
+    if(params[:base64] != nil) 
+      image_name = "#{@user.fname}.jpg"
+      base64_image = params[:base64].sub(/^data:.*,/, '')
+      decoded_image = Base64.decode64(base64_image)
+      image_io = StringIO.new(decoded_image)
+      @picture = { io: image_io, filename: image_name }
+      @user.image.attach(@picture)
+      if @user.save
+        render :show, status: :ok, location: @user
+      else
+        render json: @user.errors, status: :unprocessable_entity
+      end
+    else #if base64 is set to null, remove image
+      @user.image.purge if @user.image.attached?
+      if @user.save
+        render :show, status: :ok, location: @user
+      else
+        render json: @user.errors, status: :unprocessable_entity
+      end
+    end 
+  end
+
+
 	
 end
