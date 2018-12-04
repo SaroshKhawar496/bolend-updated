@@ -83,6 +83,10 @@ export class YouComponent extends ProfileComponent {
 	private removeOutgoingRequest (index: number) {
 		this.outgoingRequests.splice(index,1);
 	}
+	
+	private removeIncomingRequest (index: number) {
+		this.incomingRequests.splice(index,1);
+	}
 
 
 	private requestsDataHandler ( data: object[] ) : ItemRequest[] {

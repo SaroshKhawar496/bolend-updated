@@ -129,12 +129,14 @@
 			<h4>Incoming Item Requests</h4>
 			<ng-container *ngIf="in && in.length else noIncoming">
 				<div class="box-content flex card-carousel">
-					<div *ngFor="let request of in" class="request-card-container">
+					<div *ngFor="let request of in; let i=index" class="request-card-container">
 						<ng-container *ngIf="request.request_status == 'pending' || request.request_status==null">
 							<app-item-request-card 
 								[request]="request"
 								[cardOptions]="inOpts"
-								class="request-card">
+								class="request-card"
+								(remove)="removeIncomingRequest(i)"
+								>
 							</app-item-request-card>
 						</ng-container>
 					</div>

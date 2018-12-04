@@ -59,6 +59,7 @@ export class ItemRequestCardComponent implements OnInit {
 					queryParams: { loaned: 1, userId: req.requesting_user.id }
 				}
 				this.router.navigate ([], extras );
+				this.remove.emit(true);
 			},
 			err => this.http.genericModelErrorHandler(err)
 		)
