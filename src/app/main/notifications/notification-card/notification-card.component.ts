@@ -38,8 +38,11 @@ export class NotificationCardComponent implements OnInit {
 			// for incoming item requests and accepted item requests, navigate to the item page
 			case NotificationType.item_request:
 			case NotificationType.accept_item_request:
+			case NotificationType.item_due_tomorrow:
 				path = [ '/item', nObj['item_id'] ];
 				break;
+			// case NotificationType.item_due_tomorrow:
+			// 	path = [ '/item']
 
 			default: path = [];
 		}
@@ -65,6 +68,7 @@ export enum NotificationType {
 	new_friend_request,
 	accept_item_request,
 	accepted_friend_request,
+	item_due_tomorrow,
 }
 
 export interface NotificationCardOptions {
