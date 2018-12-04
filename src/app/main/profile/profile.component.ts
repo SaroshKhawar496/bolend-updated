@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 	paramSub: Subscription;
 	defaultMaxAvailableItems:	number = 666;
 	defaultMaxBorrowedItems:	number = 666;
-
+	imgSrc: string | ArrayBuffer;
 
 	constructor ( 
 		protected http: HttpService,
