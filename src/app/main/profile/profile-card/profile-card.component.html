@@ -3,7 +3,7 @@
 	<!-- user profile image -->
 	<div class="profile-card-img-container">
 		<img class="profile-card-img round pointer" 
-			[src]="user.profileImgUrl || 'assets/img/pepe.png'"
+			[src]="user.image || 'assets/img/pepe.png'"
 			(click)="navigateToUser()"
 		>
 	</div>
