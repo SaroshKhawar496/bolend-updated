@@ -8,6 +8,8 @@ div.profile-card {
 /* profile img */
 div.profile-card-img-container {
 	width: inherit;
+	width: 14em;
+	height: 14em;
 }
 img.profile-card-img {
 	width: 100%;
