@@ -181,7 +181,7 @@ div.banner h2 {
 div.slide {
 	background-color: #f0f0f0;
 	color: #222;
-	min-height: 30vh;
+	/* min-height: 30vh; */
 	padding: 3em 15%;
 
 	/* display: flex;
