@@ -124,7 +124,7 @@ export class ItemDetailsComponent implements OnInit {
 	 * Navigate to the public profile page of the item owner
 	 */
 	navigateToOwnerProfile ( id: string | number ) : void {
-		let path: Array<string> = ['/user', ''+id || this.item.user.id.toString()];
+		let path: Array<string> = ['/user', id ? ''+id : this.item.user.id.toString()];
 		this.router.navigate(path);
 	}
 

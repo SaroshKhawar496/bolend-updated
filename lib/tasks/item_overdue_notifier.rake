@@ -19,15 +19,17 @@ namespace :csc444 do
 		@current_loans = Loan.all
 
 		for loaned in @current_loans
-			if (loaned.date_of_return != nil)
-				current_time = Time.zone.now()
+			if (loaned.date_of_return == nil)
+				current_time = Time.current
 				item_id = loaned.item_id
 				borrower_id = loaned.user_id
 				date_of_return = loaned.duedate.to_s
+				# puts("TIme.current: "+ current_time.to_s)
+				# puts("Time.zone.now: "+Time.zone.now.to_s)
 				puts ("Loaned item_id: #{item_id} | Loaned to User: #{borrower_id} | DueDate: #{date_of_return}")
 				# if (Time.now())
 				# end
-				time_diff = Time.parse(date_of_return)-Time.now()
+				time_diff = Time.parse(date_of_return)-Time.current
 				rounded_off_days_difference = (time_diff/ 1.day).round
 
 				puts (rounded_off_days_difference)

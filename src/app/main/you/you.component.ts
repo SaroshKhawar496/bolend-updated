@@ -89,12 +89,11 @@ export class YouComponent extends ProfileComponent {
 		return data.map ( req => new ItemRequest(req) );
 	}
 
-	/** Edit your own profile */
-	editProfile() {
 
-	}
-
-
+	/** 
+	 * Set the privacy setting of your profile
+	 * @param setPrivate true = make profile private
+	 */
 	setProfilePrivacy ( setPrivate: boolean ) {
 		let path: string = `/users/private-mode-${setPrivate}`;
 		this.http.putObservable ( path, null ).subscribe (
@@ -107,4 +106,6 @@ export class YouComponent extends ProfileComponent {
 		)
 	}
 
+
+	
 }
