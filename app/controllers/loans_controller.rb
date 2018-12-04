@@ -52,7 +52,7 @@ class LoansController < ApplicationController
       if @loan.date_of_return != nil
         render json: {"message": "This loan was already terminated on #{@loan.date_of_return}"}, status: :conflict
       else  
-        @loan.update_attributes(:date_of_return => Time.zone.now)
+        @loan.update_attributes(:date_of_return => Time.now.utc)
         render json: {"message": "Loan successfully terminated."}, status: :ok
       end
     else
