@@ -88,7 +88,7 @@ export class User extends ExtensibleModel {
 				return new Loan (attrs);
 			});
 
-			this.itemsLoaned = this.loans.filter ( loan => loan.item ).map( loan => loan.item );
+			this.itemsLoaned = this.loans.filter ( loan => loan.item && !loan.date_of_return ).map( loan => loan.item );
 		}
 
 		// if item url is available, make sure it is using https:// if in production

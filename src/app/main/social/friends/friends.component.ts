@@ -55,6 +55,7 @@ export class FriendsComponent implements OnInit, OnDestroy {
 					this.users = data['users'].map( user => {// for each user in the friend array of the response:
 						return new User(user);
 					});
+					console.log ( this.users );
 					if ( data['pages'] ){
 						this.pages = data['pages'];
 						this.pages.path = path;
