@@ -13,7 +13,7 @@ import { HttpService } from './http.service';
 })
 
 export class AppComponent {
-	title = 'BoLend;
+	title = 'BoLend';
 	sidebarHidden = true;
 	navigationDislay = true;
 
